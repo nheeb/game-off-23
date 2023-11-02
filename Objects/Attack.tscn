@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://dmq5fcwwxk2uy"]
+
+[ext_resource type="Script" path="res://Objects/Attack.gd" id="1_oogyd"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h1yee"]
+transparency = 1
+albedo_color = Color(0.627451, 0.12549, 0.941176, 0.0941176)
+
+[node name="Attack" type="CSGCylinder3D"]
+transform = Transform3D(1, 0, 0, 0, 0.01, 0, 0, 0, 1, 0, -0.4, 0)
+material = SubResource("StandardMaterial3D_h1yee")
+script = ExtResource("1_oogyd")

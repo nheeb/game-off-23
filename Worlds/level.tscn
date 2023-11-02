@@ -1,0 +1,68 @@
+[gd_scene load_steps=4 format=3 uid="uid://bq0g082undrdv"]
+
+[ext_resource type="Script" path="res://Worlds/level.gd" id="1_dwx18"]
+[ext_resource type="Script" path="res://Logic/Camera3D.gd" id="2_ihpaw"]
+[ext_resource type="PackedScene" uid="uid://bhueo6tisd45a" path="res://Objects/base.tscn" id="4_ycnu5"]
+
+[node name="level" type="Node3D"]
+script = ExtResource("1_dwx18")
+
+[node name="a1" type="AudioStreamPlayer" parent="."]
+
+[node name="a2" type="AudioStreamPlayer" parent="."]
+
+[node name="a3" type="AudioStreamPlayer" parent="."]
+
+[node name="a4" type="AudioStreamPlayer" parent="."]
+
+[node name="land" type="CSGBox3D" parent="."]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+size = Vector3(1, 0, 1)
+
+[node name="Towers" type="Node3D" parent="."]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.707107, -0.5, 0.5, 0, 0.707107, 0.707107, -0.707107, -0.5, 0.5, 10, 8, 10)
+script = ExtResource("2_ihpaw")
+
+[node name="base" parent="." instance=ExtResource("4_ycnu5")]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.00067661, -0.965559, 0.260184, 0.00251094, 0.260184, 0.965556, -0.999997, 1.16415e-10, 0.0026005, 19.8217, 0, 0)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 2.0
+offset_top = 96.0
+offset_right = 101.0
+offset_bottom = 148.0
+text = "move=WASD
+click=turret+pickup item"
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Button" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 56.0
+offset_right = 111.0
+offset_bottom = 87.0
+text = "Start wave"
+
+[node name="Button2" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 12.0
+offset_right = 109.0
+offset_bottom = 43.0
+text = "Place turret"
+
+[node name="wave_timer" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+
+[connection signal="pressed" from="Control/Button" to="." method="_start_wave"]
+[connection signal="pressed" from="Control/Button2" to="." method="_add_tower"]

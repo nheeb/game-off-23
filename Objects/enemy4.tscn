@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cxqe6r8u0mbrc"]
+
+[ext_resource type="Script" path="res://Objects/enemy.gd" id="1_in1vr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fjb2g"]
+albedo_color = Color(1, 0.647059, 0, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_02sn0"]
+
+[node name="enemy" type="CSGSphere3D"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 2.5, 0)
+material = SubResource("StandardMaterial3D_fjb2g")
+script = ExtResource("1_in1vr")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 8
+collision_mask = 8
+monitoring = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+shape = SubResource("SphereShape3D_02sn0")

@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://cihjye8x7u143"]
+
+[ext_resource type="Script" path="res://Objects/tower.gd" id="1_v45wr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dpn3x"]
+albedo_color = Color(0, 0, 1, 1)
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_yfio8"]
+
+[node name="tower2" type="CSGBox3D"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 1.07995, 0)
+material = SubResource("StandardMaterial3D_dpn3x")
+script = ExtResource("1_v45wr")
+note_index = 2
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 2
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+shape = SubResource("SphereShape3D_yfio8")
