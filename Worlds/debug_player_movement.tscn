@@ -1,0 +1,105 @@
+[gd_scene load_steps=15 format=3 uid="uid://cqd3cixtqlfsr"]
+
+[ext_resource type="Script" path="res://Logic/Player/movement_controls.gd" id="1_dvigv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r1c6q"]
+albedo_color = Color(0.576471, 0.576471, 0.576471, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_avyk6"]
+albedo_color = Color(0.215686, 0.223529, 0.258824, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5nxmj"]
+albedo_color = Color(0.215686, 0.223529, 0.258824, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o42t6"]
+albedo_color = Color(0.215686, 0.223529, 0.258824, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b0glq"]
+albedo_color = Color(0.215686, 0.223529, 0.258824, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g1amm"]
+albedo_color = Color(1, 0.576471, 0.666667, 1)
+
+[sub_resource type="PrismMesh" id="PrismMesh_dwj8a"]
+left_to_right = 0.0
+size = Vector3(4, 1, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_430y5"]
+albedo_color = Color(0.321569, 0.329412, 0.321569, 1)
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tsyot"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_nrej8"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_y4exb"]
+
+[sub_resource type="Sky" id="Sky_5ccci"]
+sky_material = SubResource("ProceduralSkyMaterial_y4exb")
+
+[sub_resource type="Environment" id="Environment_05wpq"]
+background_mode = 2
+sky = SubResource("Sky_5ccci")
+ambient_light_source = 3
+
+[node name="debug_player_moement" type="Node3D"]
+
+[node name="prototype_level" type="CSGCombiner3D" parent="."]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+use_collision = true
+
+[node name="floor" type="CSGBox3D" parent="prototype_level"]
+size = Vector3(10, 1, 10)
+material = SubResource("StandardMaterial3D_r1c6q")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="prototype_level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -5.5)
+size = Vector3(10, 1, 1)
+material = SubResource("StandardMaterial3D_avyk6")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="prototype_level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 5.5)
+size = Vector3(10, 1, 1)
+material = SubResource("StandardMaterial3D_5nxmj")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="prototype_level"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -5.5, 1, 2.40413e-07)
+size = Vector3(10, 1, 1)
+material = SubResource("StandardMaterial3D_o42t6")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="prototype_level"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 5.5, 1, -2.40413e-07)
+size = Vector3(10, 1, 1)
+material = SubResource("StandardMaterial3D_b0glq")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="prototype_level"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+operation = 2
+radius = 3.663
+material = SubResource("StandardMaterial3D_g1amm")
+
+[node name="ramp" type="CSGMesh3D" parent="prototype_level"]
+transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, 1.56969, 0, 0)
+mesh = SubResource("PrismMesh_dwj8a")
+material = SubResource("StandardMaterial3D_430y5")
+
+[node name="player" type="CharacterBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.55645, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="player"]
+shape = SubResource("CapsuleShape3D_tsyot")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="player"]
+mesh = SubResource("CapsuleMesh_nrej8")
+
+[node name="Camera3D" type="Camera3D" parent="player"]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 55.5046, 94.9536)
+projection = 1
+size = 40.0
+
+[node name="controls" type="Node" parent="player"]
+
+[node name="movement_controls" type="Node3D" parent="player/controls"]
+script = ExtResource("1_dvigv")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_05wpq")
