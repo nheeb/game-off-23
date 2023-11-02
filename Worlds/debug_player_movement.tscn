@@ -1,6 +1,8 @@
-[gd_scene load_steps=15 format=3 uid="uid://cqd3cixtqlfsr"]
+[gd_scene load_steps=28 format=3 uid="uid://cqd3cixtqlfsr"]
 
-[ext_resource type="Script" path="res://Logic/Player/movement_controls.gd" id="1_dvigv"]
+[ext_resource type="PackedScene" uid="uid://cn65k1b6rqpes" path="res://Assets/Models/Placeholders/Knight.fbx" id="1_7745t"]
+[ext_resource type="Script" path="res://Logic/Player/MovementControls.gd" id="2_8km2h"]
+[ext_resource type="Script" path="res://Logic/Player/DodgingControls.gd" id="3_m31n2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r1c6q"]
 albedo_color = Color(0.576471, 0.576471, 0.576471, 1)
@@ -28,8 +30,59 @@ size = Vector3(4, 1, 1)
 albedo_color = Color(0.321569, 0.329412, 0.321569, 1)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tsyot"]
+height = 1.6234
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_nrej8"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_cb8ch"]
+animation = &"Dodge_Forward"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_10juv"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vclwf"]
+animation = &"Running_A"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pdufi"]
+animation = &"Running_A"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xk8xb"]
+animation = &"Running_A"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_as7dn"]
+animation = &"Running_A"
+
+[sub_resource type="AnimationNodeBlendSpace2D" id="AnimationNodeBlendSpace2D_4n613"]
+blend_point_0/node = SubResource("AnimationNodeAnimation_10juv")
+blend_point_0/pos = Vector2(0, 0)
+blend_point_1/node = SubResource("AnimationNodeAnimation_vclwf")
+blend_point_1/pos = Vector2(0, 1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_pdufi")
+blend_point_2/pos = Vector2(-1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_xk8xb")
+blend_point_3/pos = Vector2(1, 0)
+blend_point_4/node = SubResource("AnimationNodeAnimation_as7dn")
+blend_point_4/pos = Vector2(0, -1)
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ho307"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_532cg"]
+advance_mode = 2
+advance_condition = &"is_dodging"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_4aiyr"]
+xfade_time = 0.4
+advance_mode = 2
+advance_condition = &"is_dodging_completed"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_wqlad"]
+states/Dodge_Forward/node = SubResource("AnimationNodeAnimation_cb8ch")
+states/Dodge_Forward/position = Vector2(709, 48)
+states/End/position = Vector2(1101, 100)
+states/IdleAndMovement/node = SubResource("AnimationNodeBlendSpace2D_4n613")
+states/IdleAndMovement/position = Vector2(460, 100)
+transitions = ["Start", "IdleAndMovement", SubResource("AnimationNodeStateMachineTransition_ho307"), "IdleAndMovement", "Dodge_Forward", SubResource("AnimationNodeStateMachineTransition_532cg"), "Dodge_Forward", "IdleAndMovement", SubResource("AnimationNodeStateMachineTransition_4aiyr")]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_y4exb"]
 
@@ -44,7 +97,7 @@ ambient_light_source = 3
 [node name="debug_player_moement" type="Node3D"]
 
 [node name="prototype_level" type="CSGCombiner3D" parent="."]
-transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 0, 0)
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 use_collision = true
 
 [node name="floor" type="CSGBox3D" parent="prototype_level"]
@@ -82,24 +135,119 @@ transform = Transform3D(-0.866025, 0, -0.5, 0, 1, 0, 0.5, 0, -0.866025, 1.56969,
 mesh = SubResource("PrismMesh_dwj8a")
 material = SubResource("StandardMaterial3D_430y5")
 
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 59.0611, 94.9536)
+projection = 1
+size = 5.0
+
 [node name="player" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.55645, 0)
+
+[node name="Knight" parent="player" instance=ExtResource("1_7745t")]
+transform = Transform3D(-0.65, 0, -5.68248e-08, 0, 0.65, 0, 5.68248e-08, 0, -0.65, 0, -0.836309, 0)
+
+[node name="Skeleton3D" parent="player/Knight/RootNode/Rig" index="0"]
+bones/0/position = Vector3(0, 0.0005, -2.18557e-11)
+bones/1/position = Vector3(6.31089e-32, 0.00410848, 5.4242e-28)
+bones/1/rotation = Quaternion(0.0966238, -1.18651e-07, 1.15185e-08, 0.995321)
+bones/2/rotation = Quaternion(0.112294, -0.125086, 0.00984257, 0.985722)
+bones/3/rotation = Quaternion(0.0421348, -0.00206941, -0.0106461, 0.999053)
+bones/5/position = Vector3(0.00212007, 0.00124592, -0.000490813)
+bones/5/rotation = Quaternion(-0.862285, -0.0916333, -0.330277, 0.372808)
+bones/6/rotation = Quaternion(1.12484e-07, -5.44493e-08, -0.48889, 0.872345)
+bones/8/rotation = Quaternion(-0.235299, -0.325323, -0.330411, 0.854183)
+bones/9/rotation = Quaternion(-0.0545054, 0.0545054, -0.539162, 0.838667)
+bones/15/position = Vector3(-0.00186377, 0.0011176, -0.000421582)
+bones/15/rotation = Quaternion(-0.732076, 0.214296, 0.577487, 0.290949)
+bones/16/rotation = Quaternion(-9.55148e-08, 3.223e-08, 0.575882, 0.817533)
+bones/18/rotation = Quaternion(-0.131016, 0.308655, 0.206641, 0.919166)
+bones/19/rotation = Quaternion(-0.0545054, -0.0545054, 0.539162, 0.838667)
+bones/22/rotation = Quaternion(-0.129527, 0.123273, -0.00753967, 0.983855)
+bones/24/position = Vector3(0.00170945, 0.00113587, -0.000901638)
+bones/24/rotation = Quaternion(0.999875, -1.04105e-08, 1.78288e-08, 0.0158269)
+bones/25/rotation = Quaternion(0.625687, 5.30904e-08, -4.41618e-08, 0.780074)
+bones/26/rotation = Quaternion(-0.155364, -1.90663e-08, -9.84097e-08, 0.987857)
+bones/27/rotation = Quaternion(3.35581e-09, 0.914537, -0.404501, 1.44117e-07)
+bones/28/position = Vector3(-0.00170945, 0.00113587, 0.000901639)
+bones/28/rotation = Quaternion(0.899919, 2.48322e-07, 1.41652e-07, 0.436056)
+bones/29/rotation = Quaternion(0.114334, -2.76054e-07, 3.38842e-07, 0.993442)
+bones/30/rotation = Quaternion(-0.545077, 2.53262e-07, -1.47351e-07, 0.838386)
+bones/31/rotation = Quaternion(-1.248e-09, 0.920355, -0.391084, -1.44151e-07)
+bones/32/position = Vector3(0.00170945, 0.00302743, 0.00586245)
+bones/32/rotation = Quaternion(0.707107, -2.29302e-07, -4.60551e-08, 0.707107)
+bones/33/position = Vector3(0.00170945, 0.001264, -0.00431918)
+bones/33/rotation = Quaternion(0.198354, -1.00155e-07, 1.66512e-08, 0.98013)
+bones/39/position = Vector3(-0.00170945, 0.00302743, 0.00586245)
+bones/39/rotation = Quaternion(0.707107, -3.82385e-08, 1.45009e-07, 0.707107)
+bones/40/position = Vector3(-0.00170945, 0.00324673, 0.00587509)
+bones/40/rotation = Quaternion(-0.939305, -4.02649e-08, -9.81614e-08, 0.343084)
+bones/46/position = Vector3(0.00453507, 0.00906761, -0.00688859)
+bones/47/position = Vector3(0.00513182, 0.00839757, 0.0011844)
+bones/47/rotation = Quaternion(-0.66804, -0.446285, -0.548479, -0.23178)
+bones/48/position = Vector3(-0.00453507, 0.00906761, -0.0068886)
+bones/49/position = Vector3(-0.00513182, 0.00839757, 0.0011844)
+bones/49/rotation = Quaternion(0.668041, -0.446285, -0.548479, 0.23178)
+
+[node name="Knight_Cape" parent="player/Knight/RootNode/Rig/Skeleton3D" index="0"]
+transform = Transform3D(0.968513, -0.0474699, -0.244396, -0.0772768, 0.875849, -0.476359, 0.236666, 0.480246, 0.844603, -0.000293583, 0.0120515, 0.00304604)
+bone_idx = 4
+
+[node name="Rectangle_Shield" parent="player/Knight/RootNode/Rig/Skeleton3D" index="1"]
+transform = Transform3D(-0.338026, -0.000928066, 0.941136, 0.797053, 0.531463, 0.2868, -0.500445, 0.847081, -0.178908, 0.0072321, 0.00823721, 0.00219431)
+bone_idx = 10
+
+[node name="Round_Shield" parent="player/Knight/RootNode/Rig/Skeleton3D" index="2"]
+transform = Transform3D(-0.338026, -0.000928066, 0.941136, 0.797053, 0.531463, 0.2868, -0.500445, 0.847081, -0.178908, 0.0072321, 0.00823721, 0.00219431)
+bone_idx = 11
+
+[node name="Spike_Shield" parent="player/Knight/RootNode/Rig/Skeleton3D" index="3"]
+transform = Transform3D(-0.338026, -0.000928066, 0.941136, 0.797053, 0.531463, 0.2868, -0.500445, 0.847081, -0.178908, 0.0072321, 0.00823721, 0.00219431)
+bone_idx = 12
+
+[node name="Badge_Shield" parent="player/Knight/RootNode/Rig/Skeleton3D" index="4"]
+transform = Transform3D(-0.338026, -0.000928066, 0.941136, 0.797053, 0.531463, 0.2868, -0.500445, 0.847081, -0.178908, 0.0072321, 0.00823721, 0.00219431)
+bone_idx = 13
+
+[node name="1H_Sword_Offhand" parent="player/Knight/RootNode/Rig/Skeleton3D" index="5"]
+transform = Transform3D(-0.338026, -0.000928066, 0.941136, 0.797053, 0.531463, 0.2868, -0.500445, 0.847081, -0.178908, 0.00576501, 0.00779013, 0.0024732)
+bone_idx = 14
+
+[node name="2H_Sword" parent="player/Knight/RootNode/Rig/Skeleton3D" index="6"]
+transform = Transform3D(-0.340458, 0.00140226, -0.940258, -0.796792, 0.530497, 0.289302, 0.49921, 0.847685, -0.179495, -0.00515985, 0.00755837, 0.00282489)
+bone_idx = 20
+
+[node name="1H_Sword" parent="player/Knight/RootNode/Rig/Skeleton3D" index="7"]
+transform = Transform3D(-0.340458, 0.00140226, -0.940258, -0.796792, 0.530497, 0.289302, 0.49921, 0.847685, -0.179495, -0.00515985, 0.00755837, 0.00282489)
+bone_idx = 21
+
+[node name="Knight_Helmet" parent="player/Knight/RootNode/Rig/Skeleton3D" index="8"]
+transform = Transform3D(0.999992, 0.000312067, -0.0039587, -0.00126544, 0.969977, -0.243192, 0.00376397, 0.243195, 0.96997, -0.000305779, 0.0120274, 0.00310656)
+bone_idx = 23
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="player"]
 shape = SubResource("CapsuleShape3D_tsyot")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="player"]
+visible = false
 mesh = SubResource("CapsuleMesh_nrej8")
-
-[node name="Camera3D" type="Camera3D" parent="player"]
-transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 55.5046, 94.9536)
-projection = 1
-size = 40.0
 
 [node name="controls" type="Node" parent="player"]
 
-[node name="movement_controls" type="Node3D" parent="player/controls"]
-script = ExtResource("1_dvigv")
+[node name="MovementControls" type="Node3D" parent="player/controls"]
+script = ExtResource("2_8km2h")
+
+[node name="DodgingControls" type="Node3D" parent="player/controls"]
+script = ExtResource("3_m31n2")
+
+[node name="animations" type="AnimationTree" parent="player"]
+tree_root = SubResource("AnimationNodeStateMachine_wqlad")
+anim_player = NodePath("../Knight/AnimationPlayer")
+active = true
+parameters/conditions/is_dodging = false
+parameters/conditions/is_dodging_completed = false
+parameters/IdleAndMovement/blend_position = Vector2(0.00960004, 1.04682)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_05wpq")
+
+[editable path="player/Knight"]
