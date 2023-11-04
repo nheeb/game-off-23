@@ -7,6 +7,7 @@ class_name MovementControls extends Node3D
 @export var turn_sensitivity = 10.0
 
 var dodge_boost_speed = 0.0
+var range_attack_speed_coefficient = 1.0
 
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -17,10 +18,11 @@ func _physics_process(delta):
 
 func handle_movement_intent(delta):
 	var input_direction = Input.get_vector("movement_left", "movement_right", "movement_forwards", "movement_backwards")
-	var movement_velocity = Vector3(input_direction.x, 0, input_direction.y) * get_movement_speed()
+	var movement_velocity = Vector3(input_direction.x, 0, input_direction.y)
 	if movement_velocity.length() > 0:
 		var targetRotation = player.global_transform.looking_at(player.global_position + movement_velocity).basis.get_rotation_quaternion()
 		player.quaternion = player.quaternion.slerp(targetRotation, turn_sensitivity * delta)
+	movement_velocity *= get_movement_speed()
 	movement_velocity.y = player.velocity.y
 	player.velocity = movement_velocity
 	
@@ -32,4 +34,4 @@ func handle_gravity(delta):
 		player.velocity.y -= gravity * delta
 
 func get_movement_speed():
-	return move_speed + dodge_boost_speed
+	return (move_speed + dodge_boost_speed) * range_attack_speed_coefficient

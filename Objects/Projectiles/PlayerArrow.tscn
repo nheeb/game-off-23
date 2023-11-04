@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://de8aywd6qx838"]
+
+[ext_resource type="Script" path="res://Logic/Projectiles/Projectile.gd" id="1_t0wbk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y3p2i"]
+albedo_color = Color(0.180392, 0.180392, 0.180392, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_wl6jj"]
+top_radius = 0.01
+bottom_radius = 0.01
+height = 0.4
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_8is7x"]
+radius = 0.2
+
+[node name="PlayerArrow" type="Node3D"]
+script = ExtResource("1_t0wbk")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_y3p2i")
+mesh = SubResource("CylinderMesh_wl6jj")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_8is7x")
