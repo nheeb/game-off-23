@@ -7,6 +7,7 @@ class_name RangedAttackControls extends Node
 @export var max_charge = 3.0
 
 var is_charging = false
+var is_range_charging = false
 var charge = 0.0
 var projectile_scene = preload("res://Objects/Projectiles/PlayerArrow.tscn")
 
@@ -14,25 +15,40 @@ func _process(delta):
 	if is_charging:
 		charge += delta
 		charge = min(charge, max_charge)
-	if is_charging and Input.is_action_just_released("shoot"):
-		end_shoot()
-	if Input.is_action_just_pressed("shoot"):
+		if not is_range_charging and charge > 0.2:
+			movement_controls.range_attack_speed_coefficient = 0.0
+			is_range_charging = true
+	if is_charging and Input.is_action_just_released("melee"):
+		if charge < 0.2:
+			perform_melee()
+		else:
+			perform_shoot()
+	if Input.is_action_just_pressed("melee"):
 		start_shoot()
 		
+func reset_charge():
+	is_charging = false
+	is_range_charging = false
+	charge = 0.0
+	movement_controls.range_attack_speed_coefficient = 1.0
+
 func start_shoot():
-	is_charging = true
+	animation_tree.set("parameters/conditions/performing_melee", false)
 	animation_tree.set("parameters/conditions/has_released_shot", false)
 	animation_tree.set("parameters/conditions/is_aiming", true)
-	movement_controls.range_attack_speed_coefficient = 0.0
+	is_charging = true
 	charge = 0.0
 	
-func end_shoot():
-	is_charging = false
+func perform_shoot():
 	animation_tree.set("parameters/conditions/is_aiming", false)
 	animation_tree.set("parameters/conditions/has_released_shot", true)
-	movement_controls.range_attack_speed_coefficient = 1.0
 	create_projectile()
-	charge = 0.0
+	reset_charge()
+
+func perform_melee():
+	animation_tree.set("parameters/conditions/is_aiming", false)
+	animation_tree.set("parameters/conditions/performing_melee", true)
+	reset_charge()
 	
 func create_projectile():
 	var projectile: Projectile = projectile_scene.instantiate()
