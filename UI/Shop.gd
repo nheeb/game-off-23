@@ -48,26 +48,6 @@ func scale_weight():
 			weight += body.price_weight
 	return weight
 
-func _process(delta):
-	# debug hover
-	# get_node("Label").text = str(selected_scale)
-	# debug weight
-	get_node("Label").text = str(scale_weight())
-	if len(scales) < scale_count_yellow:
-		spawn_yellow_scale()
-	
-	# todo: make logarithmic scale?
-	var shaft_angle_target = max(-max_scale_angle, min(max_scale_angle, -scale_weight()/10))
-	if shaft_angle_target != last_shaft_angle:
-		last_shaft_angle = shaft_angle_target
-		shaft_angle_time_left = 1
-	shaft_angle_time_left -= delta
-	shaft_angle = shaft_angle_target * (1 - shaft_angle_time_left) + shaft_angle * shaft_angle_time_left
-	get_node('Scale/ScaleShaft').rotation = deg_to_rad(shaft_angle)
-	var new_pos = get_node('Scale/ScaleShaft/left_connect').get_relative_transform_to_parent(get_node('Scale')).origin
-	get_node('Scale/Left').transform.origin = new_pos - left_scale_connect_original_pos + left_scale_original_pos
-	new_pos = get_node('Scale/ScaleShaft/right_connect').get_relative_transform_to_parent(get_node('Scale')).origin
-	get_node('Scale/Right').transform.origin = new_pos - right_scale_connect_original_pos + right_scale_original_pos
 
 func _physics_process(delta):
 	var mousePos = get_local_mouse_position()
@@ -90,3 +70,25 @@ func _physics_process(delta):
 			selected_scale = hover[0].collider
 		else:
 			selected_scale = null
+	
+	
+		# debug hover
+	# get_node("Label").text = str(selected_scale)
+	# debug weight
+	get_node("Label").text = str(scale_weight())
+
+	if len(scales) < scale_count_yellow:
+		spawn_yellow_scale()
+	
+	# todo: make logarithmic scale?
+	var shaft_angle_target = max(-max_scale_angle, min(max_scale_angle, -scale_weight()/10))
+	if shaft_angle_target != last_shaft_angle:
+		last_shaft_angle = shaft_angle_target
+		shaft_angle_time_left = 1
+	shaft_angle_time_left = max(0.0, shaft_angle_time_left - delta)
+	shaft_angle = shaft_angle_target * (1 - shaft_angle_time_left) + shaft_angle * shaft_angle_time_left
+	get_node('Scale/ScaleShaft').rotation = deg_to_rad(shaft_angle)
+	var new_pos = get_node('Scale/ScaleShaft/left_connect').get_relative_transform_to_parent(get_node('Scale')).origin
+	get_node('Scale/Left').transform.origin = new_pos - left_scale_connect_original_pos + left_scale_original_pos
+	new_pos = get_node('Scale/ScaleShaft/right_connect').get_relative_transform_to_parent(get_node('Scale')).origin
+	get_node('Scale/Right').transform.origin = new_pos - right_scale_connect_original_pos + right_scale_original_pos

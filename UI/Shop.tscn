@@ -19,7 +19,7 @@ size = Vector2(37, 145)
 
 [node name="Shop" type="Node2D"]
 script = ExtResource("1_hwity")
-scale_count_yellow = 50
+scale_count_yellow = 20
 
 [node name="Scale" type="Node2D" parent="."]
 position = Vector2(276, 247)
