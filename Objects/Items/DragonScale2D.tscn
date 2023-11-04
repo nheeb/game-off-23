@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://ctqcnuwakd7eg"]
+
+[ext_resource type="Texture2D" uid="uid://bn3pyoyd8yf5p" path="res://Assets/Sprites/placeholder/dragon_scale_yellow_1.png" id="1_53brl"]
+[ext_resource type="Script" path="res://Objects/Items/DragonScale2D.gd" id="1_mg0rl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_yxevt"]
+radius = 14.0
+
+[node name="DragonScale" type="RigidBody2D"]
+script = ExtResource("1_mg0rl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_53brl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_yxevt")
