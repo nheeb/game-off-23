@@ -15,6 +15,10 @@ run/main_scene="res://Worlds/DebugPlayerMovement.tscn"
 config/features=PackedStringArray("4.1", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Game="*res://Utility/Game.tscn"
+
 [dotnet]
 
 project/assembly_name="GameOff23"

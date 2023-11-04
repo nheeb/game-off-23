@@ -1,4 +1,4 @@
-extends Spatial
+extends Node3D
 class_name MouseDetectionLayer
 
 var current_mouse_position: Vector3
@@ -14,14 +14,13 @@ func get_global_layer_mouse_position() -> Vector3:
 	return current_mouse_position
 
 func calculate_mouse_position() -> Vector3:
-	var camera = GameInfo.main_cam
+	var camera = Game.main_cam
 	var from = camera.project_ray_origin(get_viewport().get_mouse_position())
 	var to = camera.project_ray_normal(get_viewport().get_mouse_position())
 	return get_plane().intersects_ray(from, to)
 
-export var layer_name := "TEST"
 func _ready():
-	GameInfo.mouse_layers[layer_name] = self
+	Game.mouse_layer = self
 
 func _physics_process(delta):
 	position_has_been_calculated_this_frame = false
