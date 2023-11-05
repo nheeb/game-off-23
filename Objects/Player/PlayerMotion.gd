@@ -27,6 +27,10 @@ func handle_movement_intent(delta):
 	if movement_intent.length() > 0:
 		var targetRotation = player.global_transform.looking_at(player.global_position + movement_intent).basis.get_rotation_quaternion()
 		player.quaternion = player.quaternion.slerp(targetRotation, turn_sensitivity * delta)
+		if not $"../../footstep".playing:
+			$"../../footstep".play()
+	else:
+		$"../../footstep".stop()
 	var movement_velocity = movement_intent * get_movement_speed()
 	movement_velocity.y = player.velocity.y
 	player.velocity = movement_velocity

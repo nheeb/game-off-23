@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://cioqbcguslxti"]
+
+[ext_resource type="AudioStream" uid="uid://d04fe2itnihv4" path="res://Assets/Sounds/placeholder/buzzer.ogg" id="1_46u8w"]
+
+[node name="noisemaker" type="Node3D"]
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("1_46u8w")
+autoplay = true
+max_distance = 20.0

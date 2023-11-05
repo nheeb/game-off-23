@@ -50,6 +50,7 @@ func perform_shoot():
 func perform_melee():
 	animation_tree.set("parameters/Core/conditions/is_aiming", false)
 	animation_tree.set("parameters/Core/conditions/performing_melee", true)
+	$"../../swordwoosh".play()
 	reset_charge()
 	
 func create_projectile():
