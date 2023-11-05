@@ -1,8 +1,9 @@
-[gd_scene load_steps=26 format=3 uid="uid://c6fi4uotdsqog"]
+[gd_scene load_steps=27 format=3 uid="uid://c6fi4uotdsqog"]
 
 [ext_resource type="Texture2D" uid="uid://pcywtafrx0sa" path="res://Assets/Textures/Flame02.png" id="2_645sc"]
 [ext_resource type="Shader" path="res://Shaders/fire_particle.gdshader" id="3_uh3s8"]
 [ext_resource type="Texture2D" uid="uid://1kslui81daew" path="res://Assets/Textures/Flare00.PNG" id="4_tyc4p"]
+[ext_resource type="AudioStream" uid="uid://c756orgcd8nge" path="res://Assets/Sounds/placeholder/passive_fire.ogg" id="4_w3d4u"]
 
 [sub_resource type="Shader" id="Shader_ik1nb"]
 code = "shader_type spatial;
@@ -260,3 +261,8 @@ lifetime = 2.0
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_irfi7")
 draw_pass_1 = SubResource("QuadMesh_wyn5k")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("4_w3d4u")
+autoplay = true
+max_polyphony = 10

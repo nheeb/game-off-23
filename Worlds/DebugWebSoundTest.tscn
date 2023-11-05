@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://bsusbysjj4lhm"]
+
+[ext_resource type="Script" path="res://Worlds/DebugWebSoundTest.gd" id="1_nk0lb"]
+[ext_resource type="PackedScene" uid="uid://q0ul6kun0gv4" path="res://Objects/Player/PlayerCamera.tscn" id="1_xrnby"]
+[ext_resource type="PackedScene" uid="uid://d1t8v3yidk6mp" path="res://Objects/Player/Player.tscn" id="2_s7vem"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r1c6q"]
+albedo_color = Color(0.576471, 0.576471, 0.576471, 1)
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_y4exb"]
+
+[sub_resource type="Sky" id="Sky_5ccci"]
+sky_material = SubResource("ProceduralSkyMaterial_y4exb")
+
+[sub_resource type="Environment" id="Environment_05wpq"]
+background_mode = 3
+sky = SubResource("Sky_5ccci")
+ambient_light_source = 3
+glow_hdr_threshold = 0.1
+glow_hdr_scale = 2.67
+volumetric_fog_density = 0.02
+
+[node name="debugWebSoundTest" type="Node3D"]
+script = ExtResource("1_nk0lb")
+
+[node name="prototype_level" type="CSGCombiner3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+use_collision = true
+
+[node name="floor" type="CSGBox3D" parent="prototype_level"]
+size = Vector3(10, 1, 10)
+material = SubResource("StandardMaterial3D_r1c6q")
+
+[node name="PlayerCamera" parent="." node_paths=PackedStringArray("player") instance=ExtResource("1_xrnby")]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 1.29076, 0)
+player = NodePath("../Player")
+
+[node name="Player" parent="." instance=ExtResource("2_s7vem")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_05wpq")
+
+[node name="SoundProducers" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.67154, 0)
