@@ -2,7 +2,9 @@ extends Area3D
 
 var current_intersections: Array = []
 
-@onready var health_system = $"../Behaviours/HealthSystem"
+@onready var player: Player = $".."
+@onready var health_system: HealthSystem = $"../Behaviours/HealthSystem"
+@onready var player_motion: PlayerMotion = $"../Behaviours/PlayerMotion"
 @onready var animation_tree: AnimationTree = $"../animations"
 
 func _ready():
@@ -17,12 +19,15 @@ func _on_area_entered(area):
 func _on_area_exited(area):
 	current_intersections.erase(area)
 	
-func _on_damage_taken():
+func _on_damage_taken(source: Node3D):
 	animation_tree.set("parameters/conditions/is_hit", true)
+	var knockback = (player.global_position - source.global_position).normalized() * 10.0
+	knockback.y = 0
+	player_motion.apply_knockback(knockback)
 	await get_tree().create_timer(0.25).timeout
 	reset_animation()
 	
-func _on_death():
+func _on_death(_source):
 	animation_tree.set("parameters/conditions/is_dead", true)
 
 func reset_animation():
@@ -33,4 +38,4 @@ func is_hitting_damage_box():
 
 func _physics_process(delta):
 	if health_system.can_take_damage() and is_hitting_damage_box():
-		health_system.take_damage()
+		health_system.take_damage(current_intersections[0], 1)

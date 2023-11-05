@@ -2,7 +2,7 @@ class_name AttackControls extends Node
 
 @onready var player: Player = $"../.."
 @onready var animation_tree: AnimationTree = $"../../animations"
-@onready var movement_controls: MovementControls = $"../MovementControls"
+@onready var player_motion: PlayerMotion = $"../PlayerMotion"
 @onready var mouse_detection_layer: MouseDetectionLayer = $"../../MouseDetectionLayer"
 @export var max_charge = 3.0
 
@@ -18,7 +18,7 @@ func _process(delta):
 		charge += delta
 		charge = min(charge, max_charge)
 		if not is_range_charging and charge > 0.2:
-			movement_controls.range_attack_speed_coefficient = 0.0
+			player_motion.range_attack_speed_coefficient = 0.0
 			is_range_charging = true
 	if is_charging and Input.is_action_just_released("melee"):
 		if charge < 0.2:
@@ -32,7 +32,7 @@ func reset_charge():
 	is_charging = false
 	is_range_charging = false
 	charge = 0.0
-	movement_controls.range_attack_speed_coefficient = 1.0
+	player_motion.range_attack_speed_coefficient = 1.0
 
 func start_shoot():
 	animation_tree.set("parameters/Core/conditions/performing_melee", false)
