@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://beic24q65m21e"]
+
+[ext_resource type="Script" path="res://Objects/Prop/FireballDispenser.gd" id="1_vedrh"]
+
+[node name="FireballDispenser" type="Node3D"]
+script = ExtResource("1_vedrh")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.608892, 0)

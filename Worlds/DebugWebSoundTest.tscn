@@ -1,10 +1,11 @@
-[gd_scene load_steps=10 format=3 uid="uid://bsusbysjj4lhm"]
+[gd_scene load_steps=11 format=3 uid="uid://bsusbysjj4lhm"]
 
 [ext_resource type="Script" path="res://Worlds/DebugWebSoundTest.gd" id="1_nk0lb"]
 [ext_resource type="PackedScene" uid="uid://q0ul6kun0gv4" path="res://Objects/Player/PlayerCamera.tscn" id="1_xrnby"]
 [ext_resource type="PackedScene" uid="uid://d1t8v3yidk6mp" path="res://Objects/Player/Player.tscn" id="2_s7vem"]
 [ext_resource type="AudioStream" uid="uid://nrfdwbyvamo6" path="res://Assets/Sounds/placeholder/bgmusic_test.ogg" id="4_0rkyr"]
-[ext_resource type="PackedScene" uid="uid://cioqbcguslxti" path="res://Objects/Effects/noisemaker.tscn" id="4_bwj0k"]
+[ext_resource type="PackedScene" uid="uid://cioqbcguslxti" path="res://Objects/Prop/noisemaker.tscn" id="4_bwj0k"]
+[ext_resource type="PackedScene" uid="uid://beic24q65m21e" path="res://Objects/Prop/FireballDispenser.tscn" id="5_btw3i"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r1c6q"]
 albedo_color = Color(0.576471, 0.576471, 0.576471, 1)
@@ -56,6 +57,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.5879, -1.02958, -8.76592)
 
 [node name="noisemaker4" parent="SoundProducers" instance=ExtResource("4_bwj0k")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 16.2592, -1.02958, -8.76592)
+
+[node name="FireballDispenser" parent="SoundProducers" instance=ExtResource("5_btw3i")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.103575, 0.251531, -20.7663)
+frequency = 1.5
 
 [node name="music" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_0rkyr")

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://b868r55x2o0kq"]
+
+[ext_resource type="Script" path="res://Objects/Projectiles/fireball.gd" id="1_qsei1"]
+[ext_resource type="AudioStream" uid="uid://xpff7ia1o30s" path="res://Assets/Sounds/placeholder/fireball.ogg" id="2_yvy8l"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rvd3g"]
+albedo_color = Color(1, 0, 0, 1)
+
+[node name="fireball" type="Node3D"]
+script = ExtResource("1_qsei1")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+material = SubResource("StandardMaterial3D_rvd3g")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_yvy8l")
+autoplay = true
+max_distance = 50.0
