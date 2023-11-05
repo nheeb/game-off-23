@@ -1,4 +1,4 @@
-extends RigidBody2D
+class_name DragonScaleItem extends RigidBody2D
 
 @export var price_weight : int = 10
 @export var stage : int = 1: set=set_stage

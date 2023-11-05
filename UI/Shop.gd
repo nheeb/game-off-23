@@ -14,6 +14,7 @@ var shaft_angle : float = 0
 var shaft_angle_time_left : float = 0
 var last_shaft_angle = 0
 
+
 @onready var left_scale_original_pos = get_node('Scale/Left').transform.origin
 @onready var left_scale_connect_original_pos = get_node('Scale/ScaleShaft/left_connect').get_relative_transform_to_parent(get_node('Scale')).origin
 @onready var right_scale_original_pos = get_node('Scale/Right').transform.origin
@@ -38,12 +39,31 @@ func clear_scales():
 			child.queue_free()
 		scales = []
 
+func toggle_item_on_scale(item_ref):
+	if item_ref.on_scale:
+		item_ref.freeze = true
+		item_ref.on_scale = false
+		item_ref.transform.origin = item_ref.shelf_location
+	else:
+		item_ref.freeze = false
+		item_ref.on_scale = true
+		item_ref.shelf_location = item_ref.transform.origin
+		item_ref.transform.origin = $Scale/Right.global_transform.origin
+
 func _ready():
-	pass
+	for item in $Items.get_children():
+		item.shop_ref = self
 
 func scale_weight():
 	var weight = 0
 	for body in get_node("Scale/Left/scales_paid").get_overlapping_bodies():
+		if 'price_weight' in body and body != scale_in_hand:
+			weight += body.price_weight
+	return weight
+
+func item_weight():
+	var weight = 0
+	for body in get_node("Scale/Right/scales_paid").get_overlapping_bodies():
 		if 'price_weight' in body and body != scale_in_hand:
 			weight += body.price_weight
 	return weight
@@ -54,10 +74,16 @@ func _physics_process(delta):
 	if Input.is_action_pressed("ShopInteract"):
 		if selected_scale != null:
 			scale_in_hand = selected_scale
+			selected_scale.gravity_scale = 0
+			selected_scale.linear_damp = 10
 			var distance = mousePos - selected_scale.transform.origin
-			var SPRING_CONSTANT = abs(distance.x) + abs(distance.y)
-			selected_scale.apply_central_impulse(SPRING_CONSTANT * (mousePos - selected_scale.transform.origin) * delta)
+			var SPRING_CONSTANT = 200
+			if abs(distance.x) + abs(distance.y) > 15:
+				selected_scale.apply_central_impulse(SPRING_CONSTANT * (mousePos - selected_scale.transform.origin).normalized())
 	else:
+		if scale_in_hand != null:
+			selected_scale.gravity_scale = 1
+			selected_scale.linear_damp = 0
 		scale_in_hand = null
 		var space = get_world_2d().direct_space_state
 		var parameters = PhysicsPointQueryParameters2D.new()
@@ -66,13 +92,13 @@ func _physics_process(delta):
 		parameters.collide_with_bodies = true
 		parameters.collision_mask = 1
 		var hover = space.intersect_point(parameters, 1)
-		if hover.size() > 0 and hover[0].collider is RigidBody2D:
+		if hover.size() > 0 and hover[0].collider is DragonScaleItem:
 			selected_scale = hover[0].collider
 		else:
 			selected_scale = null
 	
 	
-		# debug hover
+	# debug hover
 	# get_node("Label").text = str(selected_scale)
 	# debug weight
 	get_node("Label").text = str(scale_weight())
@@ -81,7 +107,7 @@ func _physics_process(delta):
 		spawn_yellow_scale()
 	
 	# todo: make logarithmic scale?
-	var shaft_angle_target = max(-max_scale_angle, min(max_scale_angle, -scale_weight()/10))
+	var shaft_angle_target = max(-max_scale_angle, min(max_scale_angle, (item_weight()-scale_weight())/10))
 	if shaft_angle_target != last_shaft_angle:
 		last_shaft_angle = shaft_angle_target
 		shaft_angle_time_left = 1

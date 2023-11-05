@@ -7,6 +7,7 @@
 radius = 14.0
 
 [node name="DragonScale" type="RigidBody2D"]
+can_sleep = false
 script = ExtResource("1_mg0rl")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
