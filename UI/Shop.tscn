@@ -1,0 +1,106 @@
+[gd_scene load_steps=9 format=3 uid="uid://bkjep3xq6tfxs"]
+
+[ext_resource type="Texture2D" uid="uid://bgxfs4owgftqh" path="res://Assets/Sprites/placeholder/Stand.png" id="1_dbt80"]
+[ext_resource type="Script" path="res://UI/Shop.gd" id="1_hwity"]
+[ext_resource type="Texture2D" uid="uid://m6g8gyy7gye0" path="res://Assets/Sprites/placeholder/Left.png" id="2_ocnwg"]
+[ext_resource type="Texture2D" uid="uid://dexvv0faoka5p" path="res://Assets/Sprites/placeholder/Shaft.png" id="3_brkt0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mi0mg"]
+size = Vector2(178, 208)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qa5ft"]
+size = Vector2(24, 660)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_73a3m"]
+size = Vector2(1164, 20)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ce5ek"]
+size = Vector2(37, 145)
+
+[node name="Shop" type="Node2D"]
+script = ExtResource("1_hwity")
+scale_count_yellow = 20
+
+[node name="Scale" type="Node2D" parent="."]
+position = Vector2(276, 247)
+
+[node name="ScaleStand" type="Sprite2D" parent="Scale"]
+texture_filter = 1
+position = Vector2(343, 200.5)
+scale = Vector2(7, 7)
+texture = ExtResource("1_dbt80")
+
+[node name="Left" type="AnimatableBody2D" parent="Scale"]
+position = Vector2(96, 200.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="Scale/Left"]
+texture_filter = 1
+scale = Vector2(7, 7)
+texture = ExtResource("2_ocnwg")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Scale/Left"]
+position = Vector2(-10, 94.5)
+build_mode = 1
+polygon = PackedVector2Array(-87, -27, -64, -35, -41, -9, 69, -10, 80, -35, 106, -34, 85, 14, -51, 15)
+one_way_collision = true
+
+[node name="scales_paid" type="Area2D" parent="Scale/Left"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Scale/Left/scales_paid"]
+position = Vector2(0, -11.5)
+shape = SubResource("RectangleShape2D_mi0mg")
+
+[node name="Right" type="AnimatableBody2D" parent="Scale"]
+position = Vector2(592, 200.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="Scale/Right"]
+texture_filter = 1
+scale = Vector2(7, 7)
+texture = ExtResource("2_ocnwg")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Scale/Right"]
+position = Vector2(-10, 94.5)
+build_mode = 1
+polygon = PackedVector2Array(-87, -27, -64, -35, -41, -9, 69, -10, 80, -35, 106, -34, 85, 14, -51, 15)
+one_way_collision = true
+
+[node name="scales_paid" type="Area2D" parent="Scale/Right"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Scale/Right/scales_paid"]
+position = Vector2(0, -11.5)
+shape = SubResource("RectangleShape2D_mi0mg")
+
+[node name="ScaleShaft" type="Sprite2D" parent="Scale"]
+texture_filter = 1
+position = Vector2(343, 84.5)
+scale = Vector2(7, 7)
+texture = ExtResource("3_brkt0")
+
+[node name="left_connect" type="Node2D" parent="Scale/ScaleShaft"]
+position = Vector2(-35.5714, 1.78571)
+
+[node name="right_connect" type="Node2D" parent="Scale/ScaleShaft"]
+position = Vector2(35.2857, 1.78571)
+
+[node name="DragonScale" type="Node2D" parent="."]
+
+[node name="Boundary" type="Node2D" parent="."]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Boundary"]
+position = Vector2(364, 473)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/StaticBody2D"]
+position = Vector2(-365, -147)
+shape = SubResource("RectangleShape2D_qa5ft")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Boundary/StaticBody2D"]
+position = Vector2(208, 173)
+shape = SubResource("RectangleShape2D_73a3m")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Boundary/StaticBody2D"]
+position = Vector2(-102, 107.5)
+shape = SubResource("RectangleShape2D_ce5ek")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
