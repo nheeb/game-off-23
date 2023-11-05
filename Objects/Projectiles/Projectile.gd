@@ -1,9 +1,14 @@
 class_name Projectile extends Node3D
 
+@onready var rotation_point = $RotationPoint
+
 var velocity: Vector3 = Vector3.FORWARD
 
 func _ready():
 	look_at(global_position + velocity)
+
+func _process(delta):
+	rotation_point.rotation.y += delta * PI * 3
 
 func _physics_process(delta):
 	var target_pos = global_position + velocity * delta

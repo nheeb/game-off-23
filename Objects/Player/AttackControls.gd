@@ -1,9 +1,9 @@
-class_name RangedAttackControls extends Node
+class_name AttackControls extends Node
 
 @onready var player: CharacterBody3D = $"../.."
 @onready var animation_tree: AnimationTree = $"../../animations"
 @onready var movement_controls: MovementControls = $"../MovementControls"
-
+@onready var mouse_detection_layer: MouseDetectionLayer = $"../../MouseDetectionLayer"
 @export var max_charge = 3.0
 
 var is_charging = false
@@ -51,9 +51,11 @@ func perform_melee():
 	reset_charge()
 	
 func create_projectile():
+	var target_position = mouse_detection_layer.get_global_layer_mouse_position()
+	var direction = (target_position - player.global_position).normalized()
 	var projectile: Projectile = projectile_scene.instantiate()
 	projectile.position = player.global_position
-	projectile.velocity = -player.global_transform.basis.z * get_projectile_speed()
+	projectile.velocity = direction * get_projectile_speed()
 	get_tree().root.add_child(projectile)
 
 func get_projectile_speed():

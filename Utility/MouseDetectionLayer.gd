@@ -14,7 +14,7 @@ func get_global_layer_mouse_position() -> Vector3:
 	return current_mouse_position
 
 func calculate_mouse_position() -> Vector3:
-	var camera = Game.main_cam
+	var camera = get_viewport().get_camera_3d()#Game.main_cam
 	var from = camera.project_ray_origin(get_viewport().get_mouse_position())
 	var to = camera.project_ray_normal(get_viewport().get_mouse_position())
 	return get_plane().intersects_ray(from, to)
