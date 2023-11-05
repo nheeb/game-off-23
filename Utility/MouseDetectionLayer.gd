@@ -22,5 +22,5 @@ func calculate_mouse_position() -> Vector3:
 func _ready():
 	Game.mouse_layer = self
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	position_has_been_calculated_this_frame = false
