@@ -100,15 +100,16 @@ player = NodePath("../Player")
 environment = SubResource("Environment_05wpq")
 
 [node name="Fire" parent="." instance=ExtResource("4_rtv1e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.526914, -0.85481)
 
-[node name="hurt_area" type="Area3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.24095, 0, 0)
+[node name="hurt_area" type="Area3D" parent="Fire"]
 collision_layer = 256
 collision_mask = 256
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="hurt_area"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Fire/hurt_area"]
 shape = SubResource("BoxShape3D_i13y6")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="hurt_area"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Fire/hurt_area"]
+visible = false
 material_override = SubResource("StandardMaterial3D_4mgs5")
 mesh = SubResource("BoxMesh_aq6gc")

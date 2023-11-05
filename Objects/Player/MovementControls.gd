@@ -1,6 +1,6 @@
 class_name MovementControls extends Node3D
 
-@onready var player: CharacterBody3D = $"../.."
+@onready var player: Player = $"../.."
 @onready var animation_tree: AnimationTree = $"../../animations"
 
 @export var move_speed = 5.0
@@ -18,16 +18,19 @@ func _physics_process(delta):
 
 func handle_movement_intent(delta):
 	var input_direction = Input.get_vector("movement_left", "movement_right", "movement_forwards", "movement_backwards")
-	var movement_velocity = Vector3(input_direction.x, 0, input_direction.y)
-	if movement_velocity.length() > 0:
-		var targetRotation = player.global_transform.looking_at(player.global_position + movement_velocity).basis.get_rotation_quaternion()
+	var movement_direction = Vector3(input_direction.x, 0, input_direction.y)
+	if player.is_dead():
+		movement_direction = Vector3.ZERO
+	
+	if movement_direction.length() > 0:
+		var targetRotation = player.global_transform.looking_at(player.global_position + movement_direction).basis.get_rotation_quaternion()
 		player.quaternion = player.quaternion.slerp(targetRotation, turn_sensitivity * delta)
-	movement_velocity *= get_movement_speed()
+	var movement_velocity = movement_direction * get_movement_speed()
 	movement_velocity.y = player.velocity.y
 	player.velocity = movement_velocity
 	
-	animation_tree.set("parameters/IdleAndMovement/blend_position", input_direction)
-	animation_tree.set("parameters/Dodge/blend_position", input_direction)
+	animation_tree.set("parameters/Core/IdleAndMovement/blend_position", input_direction)
+	animation_tree.set("parameters/Core/Dodge/blend_position", input_direction)
 	
 func handle_gravity(delta):
 	if not player.is_on_floor():

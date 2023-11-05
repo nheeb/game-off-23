@@ -1,6 +1,6 @@
 class_name AttackControls extends Node
 
-@onready var player: CharacterBody3D = $"../.."
+@onready var player: Player = $"../.."
 @onready var animation_tree: AnimationTree = $"../../animations"
 @onready var movement_controls: MovementControls = $"../MovementControls"
 @onready var mouse_detection_layer: MouseDetectionLayer = $"../../MouseDetectionLayer"
@@ -12,6 +12,8 @@ var charge = 0.0
 var projectile_scene = preload("res://Objects/Projectiles/PlayerArrow.tscn")
 
 func _process(delta):
+	if player.is_dead():
+		return
 	if is_charging:
 		charge += delta
 		charge = min(charge, max_charge)
@@ -33,21 +35,21 @@ func reset_charge():
 	movement_controls.range_attack_speed_coefficient = 1.0
 
 func start_shoot():
-	animation_tree.set("parameters/conditions/performing_melee", false)
-	animation_tree.set("parameters/conditions/has_released_shot", false)
-	animation_tree.set("parameters/conditions/is_aiming", true)
+	animation_tree.set("parameters/Core/conditions/performing_melee", false)
+	animation_tree.set("parameters/Core/conditions/has_released_shot", false)
+	animation_tree.set("parameters/Core/conditions/is_aiming", true)
 	is_charging = true
 	charge = 0.0
 	
 func perform_shoot():
-	animation_tree.set("parameters/conditions/is_aiming", false)
-	animation_tree.set("parameters/conditions/has_released_shot", true)
+	animation_tree.set("parameters/Core/conditions/is_aiming", false)
+	animation_tree.set("parameters/Core/conditions/has_released_shot", true)
 	create_projectile()
 	reset_charge()
 
 func perform_melee():
-	animation_tree.set("parameters/conditions/is_aiming", false)
-	animation_tree.set("parameters/conditions/performing_melee", true)
+	animation_tree.set("parameters/Core/conditions/is_aiming", false)
+	animation_tree.set("parameters/Core/conditions/performing_melee", true)
 	reset_charge()
 	
 func create_projectile():
