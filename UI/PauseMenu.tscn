@@ -1,0 +1,138 @@
+[gd_scene load_steps=2 format=3 uid="uid://dt7scj7mvrltj"]
+
+[ext_resource type="Script" path="res://UI/PauseMenu.gd" id="1_oj5v0"]
+
+[node name="PauseMenu" type="CanvasLayer"]
+layer = 99
+
+[node name="PauseMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("1_oj5v0")
+
+[node name="MarginContainer" type="MarginContainer" parent="PauseMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 500
+theme_override_constants/margin_top = 200
+theme_override_constants/margin_right = 500
+theme_override_constants/margin_bottom = 300
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/MarginContainer"]
+layout_mode = 2
+
+[node name="lb_GamePaused" type="Label" parent="PauseMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Game Paused"
+horizontal_alignment = 1
+
+[node name="bt_Resume" type="Button" parent="PauseMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Resume"
+
+[node name="bt_Settings" type="Button" parent="PauseMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Settings"
+
+[node name="bt_Exit" type="Button" parent="PauseMenu/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Exit"
+
+[node name="Settings" type="Control" parent="PauseMenu"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="PauseMenu/Settings"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.223529, 0.223529, 0.223529, 1)
+
+[node name="TabContainer" type="TabContainer" parent="PauseMenu/Settings"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+tab_alignment = 1
+
+[node name="Sound" type="TabBar" parent="PauseMenu/Settings/TabContainer"]
+layout_mode = 2
+tab_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="PauseMenu/Settings/TabContainer/Sound"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 300
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 300
+theme_override_constants/margin_bottom = 300
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PauseMenu/Settings/TabContainer/Sound/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="HBMusic" type="HBoxContainer" parent="PauseMenu/Settings/TabContainer/Sound/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="PauseMenu/Settings/TabContainer/Sound/MarginContainer/VBoxContainer/HBMusic"]
+layout_mode = 2
+text = "Music"
+
+[node name="HSMusic" type="HSlider" parent="PauseMenu/Settings/TabContainer/Sound/MarginContainer/VBoxContainer/HBMusic"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="MusicValue" type="Label" parent="PauseMenu/Settings/TabContainer/Sound/MarginContainer/VBoxContainer/HBMusic"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HBMusic2" type="HBoxContainer" parent="PauseMenu/Settings/TabContainer/Sound/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="Label" type="Label" parent="PauseMenu/Settings/TabContainer/Sound/MarginContainer/VBoxContainer/HBMusic2"]
+layout_mode = 2
+text = "Sound FX"
+
+[node name="HSSFX" type="HSlider" parent="PauseMenu/Settings/TabContainer/Sound/MarginContainer/VBoxContainer/HBMusic2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SFXValue" type="Label" parent="PauseMenu/Settings/TabContainer/Sound/MarginContainer/VBoxContainer/HBMusic2"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Controls" type="TabBar" parent="PauseMenu/Settings/TabContainer"]
+visible = false
+layout_mode = 2
+tab_alignment = 1
+
+[connection signal="pressed" from="PauseMenu/MarginContainer/VBoxContainer/bt_Resume" to="PauseMenu" method="_on_bt_resume_pressed"]
+[connection signal="pressed" from="PauseMenu/MarginContainer/VBoxContainer/bt_Settings" to="PauseMenu" method="_on_bt_settings_pressed"]
+[connection signal="pressed" from="PauseMenu/MarginContainer/VBoxContainer/bt_Exit" to="PauseMenu" method="_on_bt_exit_pressed"]
+[connection signal="value_changed" from="PauseMenu/Settings/TabContainer/Sound/MarginContainer/VBoxContainer/HBMusic/HSMusic" to="PauseMenu" method="_on_hs_music_value_changed"]
+[connection signal="value_changed" from="PauseMenu/Settings/TabContainer/Sound/MarginContainer/VBoxContainer/HBMusic2/HSSFX" to="PauseMenu" method="_on_hssfx_value_changed"]
