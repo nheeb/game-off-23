@@ -4,7 +4,7 @@ class_name AttackControls extends Node
 @onready var animation_tree: AnimationTree = $"../../animations"
 @onready var player_motion: PlayerMotion = $"../PlayerMotion"
 @onready var mouse_detection_layer: MouseDetectionLayer = $"../../MouseDetectionLayer"
-@export var max_charge = 3.0
+@export var max_charge = 2.0
 
 var is_charging = false
 var is_range_charging = false
@@ -54,11 +54,18 @@ func perform_melee():
 	
 func create_projectile():
 	var target_position = mouse_detection_layer.get_global_layer_mouse_position()
+	var distance = (target_position - player.global_position).length()
 	var direction = (target_position - player.global_position).normalized()
 	var projectile: Projectile = projectile_scene.instantiate()
-	projectile.position = player.global_position
-	projectile.velocity = direction * get_projectile_speed()
+	projectile.source_position = player.global_position
+	projectile.target_position = target_position
+	var mid_point = (player.global_position + target_position) / 2.0
+	print((charge / max_charge))
+	var control_point_displace = distance * 0.05 * (1.5 + (charge / max_charge) * 8.0)
+	projectile.control_point = mid_point + control_point_displace * player.global_transform.basis.x
+	projectile.control_point_return = mid_point - control_point_displace * player.global_transform.basis.x
+	projectile.path_time = distance * 0.15 * (1.0 - (charge / max_charge) * 0.5)
 	get_tree().root.add_child(projectile)
 
 func get_projectile_speed():
-	return 8.0 + (charge * 5.0)
+	return 15.0 + (charge * 15.0)
