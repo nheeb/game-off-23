@@ -1,0 +1,69 @@
+[gd_scene load_steps=3 format=3 uid="uid://burdsuunncfk7"]
+
+[ext_resource type="PackedScene" uid="uid://b4t0wig6a1sm1" path="res://UI/DragonHealthBar.tscn" id="1_lrman"]
+[ext_resource type="Script" path="res://Worlds/DebugDragonHealthbar.gd" id="1_wa7ir"]
+
+[node name="DebugDragonHealthbar" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wa7ir")
+
+[node name="DragonHealthBar" parent="." instance=ExtResource("1_lrman")]
+
+[node name="health" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 277.0
+offset_top = 148.0
+offset_right = 354.0
+offset_bottom = 185.0
+text = "100"
+
+[node name="stage" type="TextEdit" parent="."]
+layout_mode = 0
+offset_left = 199.0
+offset_top = 146.0
+offset_right = 265.0
+offset_bottom = 188.0
+text = "1"
+
+[node name="damage3" type="Button" parent="."]
+layout_mode = 0
+offset_left = 358.0
+offset_top = 240.0
+offset_right = 488.0
+offset_bottom = 280.0
+text = "damage 10"
+
+[node name="damage2" type="Button" parent="."]
+layout_mode = 0
+offset_left = 359.0
+offset_top = 193.0
+offset_right = 489.0
+offset_bottom = 233.0
+text = "damage 5"
+
+[node name="damage" type="Button" parent="."]
+layout_mode = 0
+offset_left = 360.0
+offset_top = 146.0
+offset_right = 461.0
+offset_bottom = 186.0
+text = "damage dragon"
+
+[node name="reset" type="Button" parent="."]
+layout_mode = 0
+offset_left = 509.0
+offset_top = 150.0
+offset_right = 611.0
+offset_bottom = 186.0
+text = "reset health"
+
+[connection signal="text_changed" from="health" to="." method="_on_health_text_changed"]
+[connection signal="pressed" from="damage3" to="." method="damage" binds= [10]]
+[connection signal="pressed" from="damage2" to="." method="damage" binds= [5]]
+[connection signal="pressed" from="damage" to="." method="damage" binds= [1]]
+[connection signal="pressed" from="reset" to="." method="_on_reset_pressed"]
