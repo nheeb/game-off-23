@@ -18,7 +18,7 @@ func _process(delta):
 		charge += delta
 		charge = min(charge, max_charge)
 		if not is_range_charging and charge > 0.2:
-			player_motion.range_attack_speed_coefficient = 0.0
+			player_motion.range_attack_speed_coefficient = 0.5
 			is_range_charging = true
 	if is_charging and Input.is_action_just_released("melee"):
 		if charge < 0.2:

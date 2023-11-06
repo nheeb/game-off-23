@@ -1,5 +1,6 @@
 class_name PlayerCamera extends Camera3D
 
+@export var target_distance_from_player = 15.0
 @export var responsivity = 2.0
 @export var player: Node3D
 
@@ -12,4 +13,4 @@ func _process(delta):
 	
 func getTargetPosition():
 	var camera_backwards = global_transform.basis.z
-	return player.global_position + 200 * camera_backwards
+	return player.global_position + target_distance_from_player * camera_backwards

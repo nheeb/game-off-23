@@ -15,7 +15,7 @@ var items = {
 		'texture': load("res://Assets/Sprites/placeholder/weapon_firesword.png"),
 	},
 	'slasher': {
-		'price': 70,
+		'price': 1,
 		'tooltip': '',
 		'stats': {'damage': 3, 'speed': 5, 'armor': 0},
 		'texture': load("res://Assets/Sprites/placeholder/weapon_Slasher.png"),

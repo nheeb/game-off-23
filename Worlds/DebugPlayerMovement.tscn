@@ -92,6 +92,7 @@ mesh = SubResource("PrismMesh_dwj8a")
 material = SubResource("StandardMaterial3D_430y5")
 
 [node name="PlayerCamera" parent="." node_paths=PackedStringArray("player") instance=ExtResource("1_1fblo")]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 1.29076, 0)
 player = NodePath("../Player")
 
 [node name="Player" parent="." instance=ExtResource("2_70wu6")]
