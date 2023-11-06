@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4t0wig6a1sm1"]
+
+[ext_resource type="Script" path="res://UI/DragonHealthBar.gd" id="1_cwyu0"]
+
+[node name="DragonHealthBar" type="Node2D"]
+script = ExtResource("1_cwyu0")
