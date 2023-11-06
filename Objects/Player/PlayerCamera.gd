@@ -7,7 +7,6 @@ class_name PlayerCamera extends Camera3D
 func _ready():
 	global_position = getTargetPosition()
 
-
 func _process(delta):
 	global_position = lerp(global_position, getTargetPosition(), delta * responsivity)
 	

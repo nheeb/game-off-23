@@ -4,3 +4,6 @@ class_name Player extends CharacterBody3D
 
 func is_dead():
 	return animation_tree.get("parameters/conditions/is_dead")
+
+func _ready():
+	Game.player = self
