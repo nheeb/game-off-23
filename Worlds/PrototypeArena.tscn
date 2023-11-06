@@ -1,0 +1,35 @@
+[gd_scene load_steps=7 format=3 uid="uid://r6ae26ljbfrt"]
+
+[ext_resource type="PackedScene" uid="uid://q0ul6kun0gv4" path="res://Objects/Player/PlayerCamera.tscn" id="1_bmttx"]
+[ext_resource type="PackedScene" uid="uid://d1t8v3yidk6mp" path="res://Objects/Player/Player.tscn" id="2_khuxf"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0jf7f"]
+
+[sub_resource type="Sky" id="Sky_5ccci"]
+sky_material = SubResource("ProceduralSkyMaterial_0jf7f")
+
+[sub_resource type="Environment" id="Environment_fj5x2"]
+background_mode = 3
+sky = SubResource("Sky_5ccci")
+ambient_light_source = 3
+glow_hdr_threshold = 0.1
+glow_hdr_scale = 2.67
+volumetric_fog_density = 0.02
+
+[sub_resource type="BoxMesh" id="BoxMesh_q0048"]
+
+[node name="PrototypeArena" type="Node3D"]
+
+[node name="PlayerCamera" parent="." node_paths=PackedStringArray("player") instance=ExtResource("1_bmttx")]
+player = NodePath("")
+
+[node name="Player" parent="." instance=ExtResource("2_khuxf")]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_fj5x2")
+
+[node name="World" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="World"]
+transform = Transform3D(83.4511, 0, 0, 0, 1, 0, 0, 0, 60.2042, 0, 0, 0)
+mesh = SubResource("BoxMesh_q0048")

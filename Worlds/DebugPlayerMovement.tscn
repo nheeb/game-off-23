@@ -31,12 +31,12 @@ albedo_color = Color(0.321569, 0.329412, 0.321569, 1)
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_y4exb"]
 
-[sub_resource type="Sky" id="Sky_5ccci"]
+[sub_resource type="Sky" id="Sky_51yu5"]
 sky_material = SubResource("ProceduralSkyMaterial_y4exb")
 
 [sub_resource type="Environment" id="Environment_05wpq"]
 background_mode = 3
-sky = SubResource("Sky_5ccci")
+sky = SubResource("Sky_51yu5")
 ambient_light_source = 3
 glow_hdr_threshold = 0.1
 glow_hdr_scale = 2.67
