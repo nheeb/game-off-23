@@ -420,3 +420,29 @@ skeleton = NodePath("")
 [node name="Idle" type="Node" parent="States"]
 
 [node name="Strife" type="Node" parent="States"]
+
+[node name="Wander" type="Node" parent="States"]
+
+[node name="Bite" type="Node" parent="States"]
+
+[node name="Approach" type="Node" parent="States"]
+
+[node name="TailSwing" type="Node" parent="States"]
+
+[node name="FireBall" type="Node" parent="States"]
+
+[node name="FireCone" type="Node" parent="States"]
+
+[node name="Roar" type="Node" parent="States"]
+
+[node name="Rise" type="Node" parent="States"]
+
+[node name="AirGrab" type="Node" parent="States"]
+
+[node name="AirFire" type="Node" parent="States"]
+
+[node name="AirWander" type="Node" parent="States"]
+
+[node name="Landing" type="Node" parent="States"]
+
+[node name="HurtCry" type="Node" parent="States"]
