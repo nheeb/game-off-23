@@ -20,6 +20,10 @@ config/icon="res://icon.svg"
 Game="*res://Utility/Game.tscn"
 PauseMenu="*res://UI/PauseMenu.tscn"
 
+[display]
+
+window/stretch/mode="viewport"
+
 [dotnet]
 
 project/assembly_name="GameOff23"
