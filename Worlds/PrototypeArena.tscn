@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://r6ae26ljbfrt"]
+[gd_scene load_steps=9 format=3 uid="uid://r6ae26ljbfrt"]
 
 [ext_resource type="PackedScene" uid="uid://q0ul6kun0gv4" path="res://Objects/Player/PlayerCamera.tscn" id="1_bmttx"]
 [ext_resource type="PackedScene" uid="uid://d1t8v3yidk6mp" path="res://Objects/Player/Player.tscn" id="2_khuxf"]
+[ext_resource type="PackedScene" uid="uid://cu0j2oc2nfkvl" path="res://Objects/Dragon/Dragon.tscn" id="3_evqoh"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0jf7f"]
 
@@ -118,3 +119,6 @@ mesh = SubResource("BoxMesh_q0048")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="World/MeshInstance3D3/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_fbm8o")
+
+[node name="Dragon" parent="." instance=ExtResource("3_evqoh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.630087, 0, -21.6246)

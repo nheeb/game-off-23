@@ -414,3 +414,9 @@ transform = Transform3D(0.52487, 0, 0, 0, 0.508277, 0.130928, 0, -0.130928, 0.50
 transform = Transform3D(0.0173188, 0.0400298, 0.0578776, -0.06377, 0.0341329, -0.00452532, -0.0297589, -0.0498468, 0.0433802, 0.564616, 0.259235, -0.382793)
 mesh = SubResource("ArrayMesh_2ch5q")
 skeleton = NodePath("")
+
+[node name="States" type="Node" parent="."]
+
+[node name="Idle" type="Node" parent="States"]
+
+[node name="Strife" type="Node" parent="States"]
