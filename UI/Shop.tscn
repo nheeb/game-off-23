@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://bkjep3xq6tfxs"]
+[gd_scene load_steps=21 format=3 uid="uid://bkjep3xq6tfxs"]
 
 [ext_resource type="Texture2D" uid="uid://bgxfs4owgftqh" path="res://Assets/Sprites/placeholder/Stand.png" id="1_dbt80"]
 [ext_resource type="Script" path="res://UI/Shop.gd" id="1_hwity"]
@@ -83,18 +83,14 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_qa5ft"]
-size = Vector2(69, 660)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_73a3m"]
-size = Vector2(1164, 41)
-
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ce5ek"]
 size = Vector2(37, 145)
 
 [node name="Shop" type="Node2D"]
 script = ExtResource("1_hwity")
-scale_count_yellow = 50
+scale_count_yellow = 20
+scale_count_red = 10
+scale_count_black = 5
 
 [node name="Scale" type="Node2D" parent="."]
 position = Vector2(276, 247)
@@ -182,25 +178,13 @@ position = Vector2(35.2857, 1.78571)
 [node name="StaticBody2D" type="StaticBody2D" parent="Boundary"]
 position = Vector2(364, 473)
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Boundary/StaticBody2D"]
-position = Vector2(-387.5, -147)
-shape = SubResource("RectangleShape2D_qa5ft")
-
-[node name="CollisionShape2D4" type="CollisionShape2D" parent="Boundary/StaticBody2D"]
-position = Vector2(814, -147)
-shape = SubResource("RectangleShape2D_qa5ft")
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Boundary/StaticBody2D"]
-position = Vector2(208, 183.5)
-shape = SubResource("RectangleShape2D_73a3m")
-
-[node name="CollisionShape2D5" type="CollisionShape2D" parent="Boundary/StaticBody2D"]
-position = Vector2(208, -488)
-shape = SubResource("RectangleShape2D_73a3m")
-
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Boundary/StaticBody2D"]
 position = Vector2(-102, 107.5)
 shape = SubResource("RectangleShape2D_ce5ek")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Boundary/StaticBody2D"]
+position = Vector2(-360, -470)
+polygon = PackedVector2Array(-4, -3, -6, 646, 1148, 645, 1148, -3, 277, -3, 277, -435, 149.769, -434.101, 150, -462, 327, -489, 333, -82, 1228, -88, 1225, 733, -63, 740, -49, -461, 150, -461, 148, -433, -6, -433)
 
 [node name="Label" type="Label" parent="."]
 offset_right = 40.0
@@ -246,5 +230,8 @@ stretch_mode = 0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(583, 328)
+
+[node name="scale_spawn_point" type="Node2D" parent="."]
+position = Vector2(140, -258)
 
 [connection signal="pressed" from="Control/Buy" to="." method="_on_buy_pressed"]
