@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://dbecnm0hqqsap"]
+[gd_scene load_steps=3 format=3 uid="uid://dbecnm0hqqsap"]
 
 [ext_resource type="PackedScene" uid="uid://b4t0wig6a1sm1" path="res://UI/DragonHealthBar.tscn" id="1_dttwr"]
+[ext_resource type="Script" path="res://UI/PlayerUI.gd" id="1_mh6lv"]
 
 [node name="PlayerUI" type="CanvasLayer"]
 layer = 2
@@ -13,5 +14,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
+script = ExtResource("1_mh6lv")
+
+[node name="HBHealth" type="HBoxContainer" parent="PlayerUI"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.678819
+anchor_top = 0.865741
+anchor_right = 0.953125
+anchor_bottom = 0.949074
+metadata/_edit_use_anchors_ = true
 
 [node name="DragonHealthBar" parent="PlayerUI" instance=ExtResource("1_dttwr")]
