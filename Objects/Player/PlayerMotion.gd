@@ -31,8 +31,9 @@ func handle_movement_intent(delta):
 	movement_velocity.y = player.velocity.y
 	player.velocity = movement_velocity
 	
-	animation_tree.set("parameters/Core/IdleAndMovement/blend_position", movement_intent)
-	animation_tree.set("parameters/Core/Dodge/blend_position", movement_intent)
+	var movement_intent_2d = Vector2(movement_intent.x, movement_intent.z)
+	animation_tree.set("parameters/Core/IdleAndMovement/blend_position", movement_intent_2d)
+	animation_tree.set("parameters/Core/Dodge/blend_position", movement_intent_2d)
 
 func handle_knockback(delta):
 	player.velocity += knockback_value
