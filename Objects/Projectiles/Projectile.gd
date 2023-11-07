@@ -11,6 +11,8 @@ var progress: float = 0.0
 var path_time: float = 1.0
 var is_returning: bool = false
 
+var projectile_scene = preload("res://Objects/Pickups/ThrownSwordPickup.tscn")
+
 func _process(delta):
 	rotation_point.rotation.y += delta * PI * 3
 
@@ -21,7 +23,7 @@ func _physics_process(delta):
 		if not is_returning:
 			start_return()
 		else:
-			queue_free()
+			drop()
 			return
 	
 	var target_position_for_tick = quadratic_bezier(source_position, control_point, target_position, progress)
@@ -31,9 +33,19 @@ func _physics_process(delta):
 		var query = PhysicsRayQueryParameters3D.create(global_position, target_position_for_tick)
 		var result = space_state.intersect_ray(query)
 		if result:
-			queue_free()
+			drop(target_position_for_tick - global_position)
 			return
 	global_position = target_position_for_tick
+	
+func drop(direction: Vector3 = Vector3.ZERO):
+	var pickup = projectile_scene.instantiate()
+	pickup.position = global_position
+	get_tree().root.add_child(pickup)
+	if direction != Vector3.ZERO:
+		pickup.look_at(global_position + direction)
+	else:
+		pickup.rotation_degrees.x = -90
+	queue_free()
 
 func start_return():
 	var tmp = source_position

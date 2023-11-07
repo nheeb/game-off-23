@@ -89,3 +89,4 @@ toggle_debug={
 3d_physics/layer_3="PlayerHitbox"
 3d_physics/layer_4="PlayerHurtbox"
 3d_physics/layer_5="Dragon"
+3d_physics/layer_17="Player"
