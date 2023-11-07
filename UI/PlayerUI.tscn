@@ -1,0 +1,17 @@
+[gd_scene load_steps=2 format=3 uid="uid://dbecnm0hqqsap"]
+
+[ext_resource type="PackedScene" uid="uid://b4t0wig6a1sm1" path="res://UI/DragonHealthBar.tscn" id="1_dttwr"]
+
+[node name="PlayerUI" type="CanvasLayer"]
+layer = 2
+
+[node name="PlayerUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="DragonHealthBar" parent="PlayerUI" instance=ExtResource("1_dttwr")]
