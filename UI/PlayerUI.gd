@@ -32,6 +32,7 @@ func create_heart() -> ColorRect:
 
 func set_health_system(health_system:HealthSystem) -> void:
 	player_health_system = health_system
+	player_health_system.connect("damage_taken", update_health)
 
 	var max_health : float = player_health_system.max_health
 	for i in max_health:

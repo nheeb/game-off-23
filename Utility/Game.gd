@@ -13,3 +13,6 @@ var player_health_system : HealthSystem :
 	
 var player_ui : Control
 var dragon: Dragon
+
+var  active_graphics_settings : int
+enum GRAPHICS { Potatoe = 0, Low = 1, Medium = 2, High = 3, Ultra = 4}
