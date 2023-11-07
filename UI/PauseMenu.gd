@@ -58,7 +58,7 @@ func convert_graphics_to_string(value:int) -> String:
 	if (value > 4): value = 4
 	if (value < 0): value = 0
 	match(value):
-		Game.GRAPHICS.Potatoe: return "Very Low"
+		Game.GRAPHICS.Potato: return "Very Low"
 		Game.GRAPHICS.Low: return "Low"
 		Game.GRAPHICS.Medium: return "Medium"
 		Game.GRAPHICS.High: return "High"
