@@ -4,3 +4,4 @@
 
 [node name="Game" type="Node"]
 script = ExtResource("1_ysjqd")
+scene_path = "res://Worlds/DebugPlayerMovement.tscn"

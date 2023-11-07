@@ -1,6 +1,5 @@
 extends Control
 
-@export var scene_path : String
 @export var ui_path : String
 
 func _ready():
@@ -13,7 +12,7 @@ func _ready():
 
 func _on_bt_start_pressed():
 	visible = false
-	get_tree().change_scene_to_file(scene_path)
+	get_tree().change_scene_to_file(Game.scene_path)
 	get_tree().root.add_child(load(ui_path).instantiate())
 	
 

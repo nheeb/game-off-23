@@ -10,7 +10,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ghfb6")
-scene_path = "res://Worlds/DebugPlayerMovement.tscn"
 ui_path = "res://UI/PlayerUI.tscn"
 
 [node name="bt_Start" type="Button" parent="."]
