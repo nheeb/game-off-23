@@ -1,0 +1,40 @@
+extends Node
+
+@onready var state_name = self.name
+@onready var dragon : Dragon = get_parent().get_parent()
+
+func get_probability() -> float:
+	return 0.0
+
+var max_duration := 0.0
+var timer := 0.0
+
+const DISTANCE_TO_WALL = 1.5
+const MIN_DIST = 2.5
+
+func effect_start():
+	max_duration = 3.0 + randf() * 2.0
+	timer = max_duration
+	for i in range(10):
+		var random_direction = Vector3.FORWARD.rotated(Vector3.UP, randf() * PI * 2.0)
+		var collision_point = dragon.get_nearest_collision(random_direction)
+		var target = collision_point - random_direction * DISTANCE_TO_WALL
+		if Functions.y_plane_dist(dragon.global_position, target) > MIN_DIST:
+			dragon.movement_target_position = target
+			dragon.movement_type = Dragon.MovementType.DIRECTIONAL
+			return
+
+func effect_process(delta):
+	timer -= delta
+	if timer <= delta or dragon.movement_type == Dragon.MovementType.STANDING:
+		next_state = "Idle"
+
+var next_state = ""
+func get_next_state():
+	var value = next_state
+	next_state = ""
+	return next_state
+
+func is_active():
+	return dragon.current_state_object == self
+

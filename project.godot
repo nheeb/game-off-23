@@ -19,6 +19,8 @@ config/icon="res://icon.svg"
 
 Game="*res://Utility/Game.tscn"
 PauseMenu="*res://UI/PauseMenu.tscn"
+DebugInfo="*res://Utility/DebugInfo.tscn"
+Functions="*res://Utility/Functions.tscn"
 
 [display]
 
@@ -74,3 +76,16 @@ PauseGame={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194305,"key_label":0,"unicode":0,"echo":false,"script":null)
 ]
 }
+toggle_debug={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":72,"key_label":0,"unicode":104,"echo":false,"script":null)
+]
+}
+
+[layer_names]
+
+3d_physics/layer_1="MassiveCollision"
+3d_physics/layer_2="MinorCollision"
+3d_physics/layer_3="PlayerHitbox"
+3d_physics/layer_4="PlayerHurtbox"
+3d_physics/layer_5="Dragon"

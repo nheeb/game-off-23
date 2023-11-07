@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfw4se6ttoft7"]
+
+[ext_resource type="Script" path="res://Utility/PlayerDamageArea.gd" id="1_cjtmc"]
+
+[node name="PlayerDamageArea" type="Area3D"]
+collision_layer = 0
+collision_mask = 8
+script = ExtResource("1_cjtmc")
+
+[node name="KnockbackOrigin" type="Node3D" parent="."]
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
