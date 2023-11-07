@@ -54,4 +54,20 @@ func change_volume(sound_type,value):
 	return
 
 
+func convert_graphics_to_string(value:int) -> String:
+	if (value > 4): value = 4
+	if (value < 0): value = 0
+	match(value):
+		Game.GRAPHICS.Potatoe: return "Very Low"
+		Game.GRAPHICS.Low: return "Low"
+		Game.GRAPHICS.Medium: return "Medium"
+		Game.GRAPHICS.High: return "High"
+		Game.GRAPHICS.Ultra: return "Ultra"
+	return "ERR_UNAVAILABLE"
 
+
+func _on_hs_graphic_quality_value_changed(value):
+	value = int(value)
+	Game.active_graphics_settings = value
+	%LBGraphicsSettings.text = convert_graphics_to_string(value)
+	
