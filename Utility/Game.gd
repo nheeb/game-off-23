@@ -6,3 +6,4 @@ var main_cam: Camera3D
 var mouse_layer: MouseDetectionLayer
 var player: Player
 var dragon: Dragon
+var world: Node3D

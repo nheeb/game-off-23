@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cu0j2oc2nfkvl"]
+[gd_scene load_steps=26 format=3 uid="uid://cu0j2oc2nfkvl"]
 
 [ext_resource type="Script" path="res://Objects/Dragon/Dragon.gd" id="1_b10y7"]
 [ext_resource type="Script" path="res://Objects/Dragon/Idle.gd" id="2_3qwwn"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://bfw4se6ttoft7" path="res://Utility/PlayerDamageArea.tscn" id="6_qsmee"]
 [ext_resource type="Script" path="res://Objects/Dragon/Approach.gd" id="7_3xdce"]
 [ext_resource type="Script" path="res://Objects/Dragon/TailSwing.gd" id="8_u8nhm"]
+[ext_resource type="Script" path="res://Objects/Dragon/SpitFireBall.gd" id="9_ev16w"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p3von"]
 resource_name = "dragonskin_01"
@@ -459,9 +460,10 @@ script = ExtResource("7_3xdce")
 [node name="TailSwing" type="Node" parent="States"]
 script = ExtResource("8_u8nhm")
 
-[node name="FireBall" type="Node" parent="States"]
+[node name="SpitFireBall" type="Node" parent="States"]
+script = ExtResource("9_ev16w")
 
-[node name="FireCone" type="Node" parent="States"]
+[node name="SpitFireCone" type="Node" parent="States"]
 
 [node name="Roar" type="Node" parent="States"]
 
@@ -525,6 +527,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.101023, 1.28531)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DamageAreas/TailArea"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.0584453, 1.18611, 3.97323)
 shape = SubResource("CapsuleShape3D_yh2b4")
+
+[node name="Positions" type="Node3D" parent="."]
+
+[node name="HeadPosition" type="Node3D" parent="Positions"]
+unique_name_in_owner = true
 
 [editable path="DamageAreas/BiteArea"]
 [editable path="DamageAreas/TailArea"]

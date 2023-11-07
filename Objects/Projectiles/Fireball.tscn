@@ -1,0 +1,39 @@
+[gd_scene load_steps=7 format=3 uid="uid://dk6mdnb2xassm"]
+
+[ext_resource type="PackedScene" uid="uid://c6fi4uotdsqog" path="res://Objects/Effects/Fire.tscn" id="1_4x7ou"]
+[ext_resource type="Script" path="res://Objects/Projectiles/Fireball.gd" id="1_6kba4"]
+
+[sub_resource type="Curve" id="Curve_i2kxs"]
+_data = [Vector2(0, 0), 0.0, 4.33684, 0, 0, Vector2(0.504854, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), -4.62597, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3hgmd"]
+shading_mode = 0
+albedo_color = Color(1, 0.384314, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_f5p2p"]
+material = SubResource("StandardMaterial3D_3hgmd")
+radial_segments = 8
+rings = 8
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_f7o0k"]
+radius = 0.382794
+
+[node name="Fireball" type="Node3D"]
+script = ExtResource("1_6kba4")
+fly_curve = SubResource("Curve_i2kxs")
+
+[node name="Model" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Model"]
+transform = Transform3D(0.732605, 0, 0, 0, 0.732605, 0, 0, 0, 0.732605, 0, 0, 0)
+mesh = SubResource("SphereMesh_f5p2p")
+
+[node name="Fire" parent="Model" instance=ExtResource("1_4x7ou")]
+transform = Transform3D(1.83132, 0, 0, 0, 1.83132, 0, 0, 0, 1.83132, 0, 0, 0)
+
+[node name="CollisionDetector" type="Area3D" parent="."]
+collision_layer = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CollisionDetector"]
+shape = SubResource("SphereShape3D_f7o0k")

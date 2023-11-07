@@ -1,0 +1,131 @@
+[gd_scene load_steps=16 format=3 uid="uid://dmsfcv2i7w08x"]
+
+[ext_resource type="Script" path="res://Objects/Effects/Explosion.gd" id="1"]
+[ext_resource type="PackedScene" uid="uid://bfw4se6ttoft7" path="res://Utility/PlayerDamageArea.tscn" id="2_jvoci"]
+
+[sub_resource type="Gradient" id="8"]
+offsets = PackedFloat32Array(0, 0.318059, 0.390836, 0.625337, 1)
+colors = PackedColorArray(1, 0.0352941, 0.0352941, 0.0431373, 0.996078, 0.662745, 0.0784314, 0.180392, 0.996078, 0.698039, 0.0862745, 0.152941, 1, 0.756863, 0.0980392, 0, 1, 0.758553, 0.0976563, 0)
+
+[sub_resource type="GradientTexture1D" id="4"]
+gradient = SubResource("8")
+
+[sub_resource type="ParticleProcessMaterial" id="5"]
+emission_shape = 1
+emission_sphere_radius = 0.4
+direction = Vector3(0, 0, 0)
+spread = 180.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 0.4
+initial_velocity_max = 0.8
+color_ramp = SubResource("4")
+
+[sub_resource type="StandardMaterial3D" id="6"]
+transparency = 1
+vertex_color_use_as_albedo = true
+emission_enabled = true
+emission = Color(1, 0.756863, 0.196078, 1)
+
+[sub_resource type="SphereMesh" id="7"]
+material = SubResource("6")
+radial_segments = 8
+rings = 8
+
+[sub_resource type="StandardMaterial3D" id="14"]
+transparency = 1
+vertex_color_use_as_albedo = true
+emission_enabled = true
+emission = Color(1, 0.913725, 0.713726, 1)
+emission_energy_multiplier = 2.0
+
+[sub_resource type="SphereMesh" id="15"]
+material = SubResource("14")
+radial_segments = 8
+rings = 8
+
+[sub_resource type="Gradient" id="9"]
+colors = PackedColorArray(0, 0, 0, 0.8, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="10"]
+gradient = SubResource("9")
+
+[sub_resource type="ParticleProcessMaterial" id="11"]
+emission_shape = 1
+emission_sphere_radius = 0.4
+direction = Vector3(0, 0, 0)
+spread = 180.0
+flatness = 0.9
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 1.0
+damping_min = 0.1
+damping_max = 0.4
+color_ramp = SubResource("10")
+
+[sub_resource type="StandardMaterial3D" id="12"]
+transparency = 1
+shading_mode = 0
+vertex_color_use_as_albedo = true
+
+[sub_resource type="SphereMesh" id="13"]
+material = SubResource("12")
+radius = 0.2
+height = 0.4
+radial_segments = 8
+rings = 8
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_kuuvn"]
+radius = 1.13768
+
+[node name="Explosion" type="Node3D"]
+script = ExtResource("1")
+
+[node name="Particles" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.829882, 0)
+emitting = false
+amount = 40
+lifetime = 2.0
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+process_material = SubResource("5")
+draw_pass_1 = SubResource("7")
+
+[node name="Particles3" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.593543, 0, 0, 0, 0.593543, 0, 0, 0, 0.593543, 0, 0.829882, 0)
+emitting = false
+amount = 40
+lifetime = 2.0
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+process_material = SubResource("5")
+draw_pass_1 = SubResource("15")
+
+[node name="Particles2" type="GPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0647274, 0)
+emitting = false
+amount = 60
+lifetime = 2.0
+one_shot = true
+speed_scale = 2.0
+explosiveness = 1.0
+process_material = SubResource("11")
+draw_pass_1 = SubResource("13")
+
+[node name="OmniLight" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02012, 0)
+light_color = Color(1, 0.945098, 0.494118, 1)
+light_energy = 10.0
+omni_range = 7.51348
+
+[node name="PlayerDamageArea" parent="." instance=ExtResource("2_jvoci")]
+damage = 2
+knockback_force = 1.5
+active = true
+delete_on_perish = true
+delete_on_player_hit = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDamageArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.504786, 0)
+shape = SubResource("SphereShape3D_kuuvn")

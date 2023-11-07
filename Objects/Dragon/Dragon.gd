@@ -3,9 +3,10 @@ class_name Dragon extends Node3D
 var hp: int
 var stage := 1
 
-# Areas
+# Areas & Positions
 @onready var bite_area : PlayerDamageArea = %BiteArea
 @onready var tail_area : PlayerDamageArea = %TailArea
+@onready var head_position : Node3D = %HeadPosition
 
 # State Machine
 var current_state := "":

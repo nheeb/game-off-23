@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://r6ae26ljbfrt"]
+[gd_scene load_steps=10 format=3 uid="uid://r6ae26ljbfrt"]
 
 [ext_resource type="PackedScene" uid="uid://q0ul6kun0gv4" path="res://Objects/Player/PlayerCamera.tscn" id="1_bmttx"]
+[ext_resource type="Script" path="res://Worlds/PrototypeArena.gd" id="1_xl6ky"]
 [ext_resource type="PackedScene" uid="uid://d1t8v3yidk6mp" path="res://Objects/Player/Player.tscn" id="2_khuxf"]
 [ext_resource type="PackedScene" uid="uid://cu0j2oc2nfkvl" path="res://Objects/Dragon/Dragon.tscn" id="3_evqoh"]
 
@@ -23,6 +24,7 @@ volumetric_fog_density = 0.02
 data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
 
 [node name="PrototypeArena" type="Node3D"]
+script = ExtResource("1_xl6ky")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.639546, 0.606149, 0.472826, 0, -0.615056, 0.788483, 0.768753, -0.504272, -0.393357, 0, 14.5074, 0)
