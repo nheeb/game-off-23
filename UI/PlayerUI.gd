@@ -9,10 +9,10 @@ func _ready():
 
 func _process(delta):
 	if (player_health_system != null):
-		update_health()
+		update_health(null)
 
 
-func update_health() -> void:
+func update_health(_source) -> void:
 	var health : float = player_health_system.health
 	
 	for h in %HBHealth.get_children(): 

@@ -5,7 +5,9 @@ class_name AttackControls extends Node
 @onready var player_motion: PlayerMotion = $"../PlayerMotion"
 @onready var mouse_detection_layer: MouseDetectionLayer = $"../../MouseDetectionLayer"
 @export var max_charge = 2.0
+@export var sword_model: MeshInstance3D
 
+var sword_count = 1
 var is_charging = false
 var is_range_charging = false
 var charge = 0.0
@@ -13,6 +15,8 @@ var projectile_scene = preload("res://Objects/Projectiles/PlayerArrow.tscn")
 
 func _process(delta):
 	if player.is_dead():
+		return
+	if sword_count < 1:
 		return
 	if is_charging:
 		charge += delta
@@ -46,6 +50,7 @@ func perform_shoot():
 	animation_tree.set("parameters/Core/conditions/has_released_shot", true)
 	create_projectile()
 	reset_charge()
+	sword_thrown()
 
 func perform_melee():
 	animation_tree.set("parameters/Core/conditions/is_aiming", false)
@@ -60,7 +65,6 @@ func create_projectile():
 	projectile.source_position = player.global_position
 	projectile.target_position = target_position
 	var mid_point = (player.global_position + target_position) / 2.0
-	print((charge / max_charge))
 	var control_point_displace = distance * 0.05 * (1.5 + (charge / max_charge) * 8.0)
 	projectile.control_point = mid_point + control_point_displace * player.global_transform.basis.x
 	projectile.control_point_return = mid_point - control_point_displace * player.global_transform.basis.x
@@ -69,3 +73,13 @@ func create_projectile():
 
 func get_projectile_speed():
 	return 15.0 + (charge * 15.0)
+	
+func sword_thrown():
+	sword_count -= 1
+	if sword_count < 1:
+		sword_model.visible = false
+	
+func sword_retreived():
+	sword_count += 1
+	if sword_count > 0:
+		sword_model.visible = true
