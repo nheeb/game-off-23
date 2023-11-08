@@ -1,0 +1,53 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvp3kawmlgko8"]
+
+[ext_resource type="Script" path="res://Objects/Effects/AttackHintFallingDebris.gd" id="1_vtyqo"]
+
+[sub_resource type="Shader" id="Shader_jbk6p"]
+code = "shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx,unshaded;
+uniform vec3 inner_color : source_color;
+uniform vec3 outer_color : source_color;
+uniform float point_size : hint_range(0,128);
+uniform float roughness : hint_range(0,1);
+uniform float specular;
+uniform float metallic;
+uniform float inner_circle_radius: hint_range(0,1);
+uniform float transparency_radius: hint_range(0,1);
+uniform float progress : hint_range(0,1);
+
+void fragment() {
+	METALLIC = metallic;
+	ROUGHNESS = roughness;
+	SPECULAR = specular;
+	
+	float beat = sin(TIME*2.0);
+	float radius = 0.75 + beat/8.0;
+	vec2 center_uv = UV - 0.5;
+	float d = distance(center_uv, vec2(0, 0));
+	float a = clamp(radius - d*2.0, 0.0, 1.0);
+	float a_clip = step(transparency_radius, a);
+	ALPHA = (a_clip + (1.0-a_clip) * a) * 1.0-step(progress/2.0, d);
+	float inner = 1.0-a_clip;
+	ALBEDO = outer_color*inner + inner_color*(1.0-inner);
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_su0ji"]
+render_priority = 0
+shader = SubResource("Shader_jbk6p")
+shader_parameter/inner_color = Color(0.698039, 0, 0, 1)
+shader_parameter/outer_color = Color(1, 0.172549, 0.12549, 1)
+shader_parameter/point_size = 1.0
+shader_parameter/roughness = 1.0
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/inner_circle_radius = 0.25
+shader_parameter/transparency_radius = 0.5
+shader_parameter/progress = 1.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_w1wux"]
+
+[node name="AttackHintFallingDebris" type="MeshInstance3D"]
+material_override = SubResource("ShaderMaterial_su0ji")
+mesh = SubResource("PlaneMesh_w1wux")
+script = ExtResource("1_vtyqo")
