@@ -22,6 +22,16 @@ uniform float wave_curvature;
 uniform float wave_speed;
 uniform float wave_thickness;
 
+float random (vec2 uv) {
+    return fract(sin(dot(uv.xy,
+        vec2(12.9898,78.233))) * 43758.5453123);
+}
+
+float clamp_and_map(float value, float istart, float istop, float ostart, float ostop) {
+    value = clamp(value, istart, istop);
+    return ostart + (ostop - ostart) * ((value - istart) / (istop - istart));
+}
+
 void fragment() {
 	METALLIC = metallic;
 	ROUGHNESS = roughness;
@@ -33,6 +43,7 @@ void fragment() {
 	ALBEDO = v2>v ? color_wave.rgb * v : color_highlight.rgb*v2;
 	ALPHA = float(distance(UV.x,0.5) < (1.0- UV.y) * .5 && (1.0-UV.y) < progress);
 	ALPHA = min(transparency_cap, ALPHA * min(v, v2));
+	//ALPHA = ALPHA*clamp_and_map(distance(UV, vec2(.5, 1.0)), .8, .9, 1.0, 0.0);
 }
 "
 
@@ -54,8 +65,10 @@ shader_parameter/wave_thickness = 0.2
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_564pe"]
 
-[node name="AttackHintFireCone" type="MeshInstance3D"]
-transform = Transform3D(4.5, 0, 0, 0, 1, 0, 0, 0, 8, 0, 0, 0)
+[node name="AttackHintFireCone" type="Node3D"]
+script = ExtResource("1_x3vfm")
+
+[node name="AttackHintFireCone" type="MeshInstance3D" parent="."]
+transform = Transform3D(4.5, 0, 0, 0, 1, 0, 0, 0, 8, 0, 0, -8)
 material_override = SubResource("ShaderMaterial_ywtm8")
 mesh = SubResource("PlaneMesh_564pe")
-script = ExtResource("1_x3vfm")

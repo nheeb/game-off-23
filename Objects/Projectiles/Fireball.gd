@@ -1,5 +1,7 @@
 extends Node3D
 
+signal fireball_explode
+
 var origin_pos : Vector3
 var target_pos : Vector3
 var fly_time := 2.0
@@ -28,6 +30,7 @@ func _physics_process(delta):
 		global_position = lerp(origin_pos, target_pos, progress_normalized) + Vector3.UP * fly_curve.sample_baked(progress_normalized) * curve_height
 
 func explode():
+	emit_signal("fireball_explode")
 	var explosion = EXPLOSION.instantiate()
 	Game.world.add_child(explosion)
 	explosion.global_position = global_position

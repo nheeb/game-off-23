@@ -16,7 +16,7 @@ func get_probabilty_modifier_from_tags() -> float:
 	modifier *= float(air_state == dragon.is_flying)
 	modifier *= float(stage_flags[dragon.stage-1])
 	if repeat_malus:
-		modifier *= ease(dragon.get_state_history_index(state_name) / float(repeat_malus_range), repeat_malus_ease_curve)
+		modifier *= ease(dragon.get_state_history_index(state_name) + 1 / float(repeat_malus_range), repeat_malus_ease_curve)
 	return modifier
 
 func get_probability() -> float:

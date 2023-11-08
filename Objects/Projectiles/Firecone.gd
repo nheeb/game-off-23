@@ -1,5 +1,7 @@
 extends Node3D
 
+signal hint_can_fade
+
 func _ready():
 	$MeshInstance3D.material_override.set("shader_parameter/progress", 0.0)
 	$MeshInstance3D.visible = true
@@ -9,6 +11,8 @@ func _ready():
 	tween.tween_method(set_collision_polygon_end, 0.0, 1.0, .8)
 	tween.chain().tween_interval(1.1)
 	tween.chain().tween_callback(queue_free)
+	await get_tree().create_timer(.3).timeout
+	emit_signal("hint_can_fade")
 
 const SIZE_X = 4.0
 const SIZE_Y = 16.0

@@ -2,9 +2,10 @@ extends DragonState
 
 const MIN_DIST = 10.0
 const FIRE_BALL = preload("res://Objects/Projectiles/Fireball.tscn")
+const ATTACK_HINT_BALL = preload("res://Objects/Effects/AttackHintFallingDebris.tscn")
 
 func get_probability() -> float:
-	return 0.25 if dragon.player_distance >= MIN_DIST else 0.0
+	return 0.25 if dragon.player_distance >= MIN_DIST and dragon.player_in_sight else 0.0
 
 func effect_start(index):
 	dragon.turn_type = Dragon.TurnType.TURN
@@ -14,6 +15,13 @@ func effect_start(index):
 	var fire_ball = FIRE_BALL.instantiate()
 	Game.world.add_child(fire_ball)
 	fire_ball.start(dragon.head_position.global_position, Game.player.global_position)
+	var hint = ATTACK_HINT_BALL.instantiate()
+	Game.world.add_child(hint)
+	hint.size = 2.5
+	hint.global_position = Functions.get_nearest_ground(Game.player.global_position)
+	var hint_normal = Functions.get_nearest_ground_normal(Game.player.global_position)
+	Functions.align_node(hint, Vector3.UP, hint_normal)
+	fire_ball.fireball_explode.connect(hint.queue_free)
 	await get_tree().create_timer(2.0).timeout
 	if is_active(): next_state = "Idle"
 

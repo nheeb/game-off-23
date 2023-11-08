@@ -4,3 +4,5 @@
 
 [node name="Functions" type="Node"]
 script = ExtResource("1_d5ig5")
+
+[node name="GroundFeeler" type="RayCast3D" parent="."]

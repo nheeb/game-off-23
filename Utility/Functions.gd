@@ -14,5 +14,24 @@ func clamp_map(value: float, istart: float, istop: float, ostart: float, ostop: 
 	value = clamp(value, istart, istop)
 	return ostart + (ostop - ostart) * ((value - istart) / (istop - istart))
 
+func get_nearest_ground(pos: Vector3, padding: float = .05) -> Vector3:
+	$GroundFeeler.global_position = pos
+	$GroundFeeler.target_position = Vector3.DOWN * 100.0
+	$GroundFeeler.force_raycast_update()
+	return $GroundFeeler.get_collision_point() + Vector3.UP * padding
+
+func get_nearest_ground_normal(pos: Vector3) -> Vector3:
+	$GroundFeeler.global_position = pos
+	$GroundFeeler.target_position = Vector3.DOWN * 100.0
+	$GroundFeeler.force_raycast_update()
+	return $GroundFeeler.get_collision_normal()
+
+func align_node(node: Node3D, local_direction: Vector3, target_global_direction: Vector3):
+	var current_global_direction := node.global_position.direction_to(node.to_global(local_direction))
+	var cross_direction := current_global_direction.cross(target_global_direction).normalized()
+	if cross_direction.is_normalized():
+		var rotation_angle := current_global_direction.signed_angle_to(target_global_direction, cross_direction)
+		node.rotate(cross_direction, rotation_angle)
+
 func _ready():
 	pass

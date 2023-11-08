@@ -40,4 +40,4 @@ func activate():
 		lifetime = default_lifetime
 
 func do_damage():
-	pass
+	pass # TODO Connect with player

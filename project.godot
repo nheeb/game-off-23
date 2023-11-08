@@ -24,6 +24,7 @@ Functions="*res://Utility/Functions.tscn"
 
 [debug]
 
+gdscript/warnings/unused_variable=0
 gdscript/warnings/unused_parameter=0
 
 [display]
