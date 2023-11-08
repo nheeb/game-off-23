@@ -14,3 +14,5 @@ func clamp_map(value: float, istart: float, istop: float, ostart: float, ostop: 
 	value = clamp(value, istart, istop)
 	return ostart + (ostop - ostart) * ((value - istart) / (istop - istart))
 
+func _ready():
+	pass

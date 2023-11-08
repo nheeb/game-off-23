@@ -22,7 +22,7 @@ active = true
 
 [node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="PlayerDamageArea"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
-polygon = PackedVector2Array(0, 0, 0, 0, 0, 0)
+polygon = PackedVector2Array(0, 0, 0.1, 0.1, -0.1, 0.1)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(4.5, 0, 0, 0, 1, 0, 0, 0, 8, 0, 0, -8)

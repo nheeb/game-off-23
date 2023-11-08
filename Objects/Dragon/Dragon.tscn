@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://cu0j2oc2nfkvl"]
+[gd_scene load_steps=31 format=3 uid="uid://cu0j2oc2nfkvl"]
 
 [ext_resource type="Script" path="res://Objects/Dragon/Dragon.gd" id="1_b10y7"]
 [ext_resource type="Script" path="res://Objects/Dragon/Idle.gd" id="2_3qwwn"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://Objects/Dragon/SpitFireBall.gd" id="9_ev16w"]
 [ext_resource type="Script" path="res://Objects/Dragon/SpitFireCone.gd" id="10_b6fvh"]
 [ext_resource type="Script" path="res://Objects/Dragon/Roar.gd" id="11_5ddqa"]
+[ext_resource type="Script" path="res://Objects/Dragon/Rise.gd" id="12_h5ryw"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p3von"]
 resource_name = "dragonskin_01"
@@ -283,6 +284,15 @@ height = 5.60666
 radius = 1.0446
 height = 4.37482
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4ayag"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 0.129412)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_31bqf"]
+radial_segments = 8
+rings = 4
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yh2b4"]
 radius = 2.77803
 height = 7.6376
@@ -472,6 +482,7 @@ script = ExtResource("10_b6fvh")
 script = ExtResource("11_5ddqa")
 
 [node name="Rise" type="Node" parent="States"]
+script = ExtResource("12_h5ryw")
 
 [node name="AirGrab" type="Node" parent="States"]
 
@@ -498,6 +509,7 @@ shape = SubResource("CapsuleShape3D_8k4dv")
 [node name="DebugStateLabel" type="Label3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5.99256, 0)
+visible = false
 billboard = 1
 text = "IDLE"
 font_size = 384
@@ -518,6 +530,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.101023, 1.28531)
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.0584455, 1.18611, 4.56705)
 shape = SubResource("CapsuleShape3D_youbw")
 
+[node name="VisualIndicator" type="MeshInstance3D" parent="DamageAreas/BiteArea"]
+transform = Transform3D(-9.79112e-08, 2.23995, -1.95822e-07, -2.23995, -9.79112e-08, -1.95822e-07, -1.95822e-07, 1.95822e-07, 2.23995, -0.072575, 1.12575, 4.55802)
+material_override = SubResource("StandardMaterial3D_4ayag")
+mesh = SubResource("CapsuleMesh_31bqf")
+
 [node name="TailArea" parent="DamageAreas" instance=ExtResource("6_qsmee")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 0, 0)
@@ -526,6 +543,12 @@ knockback_force = 3.0
 
 [node name="KnockbackOrigin" parent="DamageAreas/TailArea" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.101023, 1.28531)
+
+[node name="VisualIndicator" type="MeshInstance3D" parent="DamageAreas/TailArea"]
+transform = Transform3D(2.16201e-07, -3.91998, 8.7643e-07, -4.94611, -1.71348e-07, -4.38214e-07, 4.32403e-07, -6.85392e-07, -5.01258, 0.0725739, 1.12575, 4.28627)
+material_override = SubResource("StandardMaterial3D_4ayag")
+mesh = SubResource("CapsuleMesh_31bqf")
+skeleton = NodePath("../../BiteArea")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DamageAreas/TailArea"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.0584453, 1.18611, 3.97323)

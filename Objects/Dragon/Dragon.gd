@@ -2,6 +2,7 @@ class_name Dragon extends Node3D
 
 var hp: int
 var stage := 1
+var is_flying := false
 
 # Signals
 signal turn_done
@@ -11,6 +12,7 @@ signal movement_done
 @onready var bite_area : PlayerDamageArea = %BiteArea
 @onready var tail_area : PlayerDamageArea = %TailArea
 @onready var head_position : Node3D = %HeadPosition
+@onready var model : Node3D = $Model
 
 # State Machine
 var current_state := "":
@@ -19,6 +21,7 @@ var current_state := "":
 		%DebugStateLabel.text = value
 var new_state := "Idle"
 var current_state_object: Node
+var state_history := []
 
 # Battlefield analysis
 var player_in_sight : bool
@@ -47,6 +50,7 @@ const MOVEMENT_TARGET_RANGE = 1.5
 
 func _ready():
 	Game.dragon = self
+	$DebugStateLabel.visible = DebugInfo.debug_visible
 	DebugInfo.visibility_changed.connect(func (): $DebugStateLabel.visible = not $DebugStateLabel.visible)
 
 func _physics_process(delta):
@@ -90,23 +94,36 @@ func analyse_battlefield():
 	player_direction_clean = player_direction_clean.normalized()
 	var own_direction_clean = Functions.no_y_normalized(to_global(Vector3.FORWARD) - global_position)
 	player_face_angle = rad_to_deg(abs(own_direction_clean.signed_angle_to(player_direction_clean, Vector3.UP)))
+	if DebugInfo.debug_visible:
+		DebugInfo.refresh_info("Player Dist", player_distance)
+		DebugInfo.refresh_info("Player Angle", player_face_angle)
 
 func choose_action():
 	var running_total := 0.0
 	var cumulative_chances := []
+	var flat_chances := []
 	var state_names := []
 	for state in $States.get_children():
 		if state.has_method("get_probability"):
-			var prob = state.get_probability()
+			var prob = state.get_probability() * state.get_probabilty_modifier_from_tags()
 			if prob != 0.0:
 				running_total += prob
 				cumulative_chances.append(running_total)
+				flat_chances.append(prob)
 				state_names.append(state.name)
 	var random_choice := randf() * running_total
 	for i in range(len(cumulative_chances)):
 		if random_choice <= cumulative_chances[i]:
 			new_state = state_names[i]
 			break
+	if DebugInfo.debug_visible:
+		var sorted_index = range(len(state_names))
+		sorted_index.sort_custom(func(a,b): return flat_chances[a] > flat_chances[b])
+		var debug_states_chances_string := ""
+		for index in sorted_index:
+			debug_states_chances_string = debug_states_chances_string + str(state_names[index]) + ": " + "%.2f" % (flat_chances[index] / running_total * 100.0) + "%\n"
+		DebugInfo.refresh_info("State Chances", debug_states_chances_string)
+		print(debug_states_chances_string)
 
 var last_movement_vector : Vector3
 func movement_process(delta: float):
@@ -162,3 +179,7 @@ func turning_process(delta: float):
 func get_nearest_collision(direction: Vector3) -> Vector3:
 	%PlayerRay.target_position = direction.normalized() * 1000.0
 	return %PlayerRay.get_collision_point()
+
+func get_state_history_index(state_name):
+	var index = state_history.find(state_name)
+	return 100 if index == -1 else index

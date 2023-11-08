@@ -10,9 +10,7 @@ func get_probability() -> float:
 func effect_start(index):
 	dragon.turn_type = Dragon.TurnType.TURN
 	dragon.body_direction_target_position = Game.player.global_position
-	print("waiting for turn")
 	await dragon.turn_done
-	print("turn done")
 	await get_tree().create_timer(1.0).timeout
 	var fire_cone = FIRE_CONE.instantiate()
 	Game.world.add_child(fire_cone)
