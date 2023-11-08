@@ -7,7 +7,7 @@ var transition_step : float = 0.0 : set=set_transition_step
 
 func set_transition_step(s):
 	transition_step = s
-	self.material_override.set_shader_parameter("progress", transition_step)
+	self.material_override.set_shader_parameter("transparency_cap", transition_step)
 
 func change_size(s):
 	size = s

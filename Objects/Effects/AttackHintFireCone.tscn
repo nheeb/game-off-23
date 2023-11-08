@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=3 uid="uid://g6rdyf5htd3s"]
+
+[ext_resource type="Script" path="res://Objects/Effects/AttackHintFireCone.gd" id="1_x3vfm"]
+
+[sub_resource type="Shader" id="Shader_27l8a"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.1.2.stable's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx,unshaded;
+uniform float roughness : hint_range(0,1);
+uniform float specular;
+uniform float metallic;
+uniform float progress  : hint_range(0,1);
+uniform float transparency_cap: hint_range(0,1);
+
+uniform vec4 color_main : source_color;
+uniform vec4 color_wave : source_color;
+uniform vec4 color_highlight : source_color;
+
+uniform float wave_frequency;
+uniform float wave_curvature;
+uniform float wave_speed;
+uniform float wave_thickness;
+
+void fragment() {
+	METALLIC = metallic;
+	ROUGHNESS = roughness;
+	SPECULAR = specular;
+	
+	float c = UV.y*wave_frequency + TIME*wave_speed - abs(pow((UV.x-0.5), 2)*5.0)*wave_curvature;
+	float v = sin(c)+wave_thickness;
+	float v2 = sin(c+1.0)+wave_thickness;
+	ALBEDO = v2>v ? color_wave.rgb * v : color_highlight.rgb*v2;
+	ALPHA = float(distance(UV.x,0.5) < (1.0- UV.y) * .5 && (1.0-UV.y) < progress);
+	ALPHA = min(transparency_cap, ALPHA * min(v, v2));
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ywtm8"]
+render_priority = 0
+shader = SubResource("Shader_27l8a")
+shader_parameter/roughness = 1.0
+shader_parameter/specular = 0.5
+shader_parameter/metallic = 0.0
+shader_parameter/progress = 1.0
+shader_parameter/transparency_cap = 1.0
+shader_parameter/color_main = Color(0.705882, 0, 0, 1)
+shader_parameter/color_wave = Color(0.666667, 0.196078, 0, 1)
+shader_parameter/color_highlight = Color(1, 0, 0, 1)
+shader_parameter/wave_frequency = 50.0
+shader_parameter/wave_curvature = 10.0
+shader_parameter/wave_speed = 5.0
+shader_parameter/wave_thickness = 0.2
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_564pe"]
+
+[node name="AttackHintFireCone" type="MeshInstance3D"]
+transform = Transform3D(4.5, 0, 0, 0, 1, 0, 0, 0, 8, 0, 0, 0)
+material_override = SubResource("ShaderMaterial_ywtm8")
+mesh = SubResource("PlaneMesh_564pe")
+script = ExtResource("1_x3vfm")

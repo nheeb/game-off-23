@@ -11,17 +11,9 @@ uniform float point_size : hint_range(0,128);
 uniform float roughness : hint_range(0,1);
 uniform float specular;
 uniform float metallic;
-uniform vec3 uv1_scale;
-uniform vec3 uv1_offset;
-uniform vec3 uv2_scale;
-uniform vec3 uv2_offset;
-uniform float inner_circle_radius;
-uniform float transparency_radius;
-uniform float anim_clip;
-
-void vertex() {
-	UV=UV*uv1_scale.xy+uv1_offset.xy;
-}
+uniform float inner_circle_radius: hint_range(0,1);
+uniform float transparency_radius: hint_range(0,1);
+uniform float progress : hint_range(0,1);
 
 void fragment() {
 	METALLIC = metallic;
@@ -34,7 +26,7 @@ void fragment() {
 	float d = distance(center_uv, vec2(0, 0));
 	float a = clamp(radius - d*2.0, 0.0, 1.0);
 	float a_clip = step(transparency_radius, a);
-	ALPHA = (a_clip + (1.0-a_clip) * a) * 1.0-step(anim_clip/2.0, d);
+	ALPHA = (a_clip + (1.0-a_clip) * a) * 1.0-step(progress/2.0, d);
 	float inner = 1.0-a_clip;
 	ALBEDO = outer_color*inner + inner_color*(1.0-inner);
 }
@@ -49,13 +41,9 @@ shader_parameter/point_size = 1.0
 shader_parameter/roughness = 1.0
 shader_parameter/specular = 0.5
 shader_parameter/metallic = 0.0
-shader_parameter/uv1_scale = Vector3(1, 1, 1)
-shader_parameter/uv1_offset = Vector3(0, 0, 0)
-shader_parameter/uv2_scale = Vector3(1, 1, 1)
-shader_parameter/uv2_offset = Vector3(0, 0, 0)
 shader_parameter/inner_circle_radius = 0.25
 shader_parameter/transparency_radius = 0.5
-shader_parameter/anim_clip = 1.0
+shader_parameter/progress = 1.0
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_w1wux"]
 
