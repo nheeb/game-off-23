@@ -37,6 +37,8 @@ func random_throw_direction():
 		rng.randi_range(0, 1)* Vector3.UP +
 		rng.randi_range(0, 1)* Vector3.FORWARD
 	).normalized()
+	if rotation_axis == Vector3(0,0,0):
+		rotation_axis = Vector3.RIGHT
 	return v
 
 func _physics_process(delta):
