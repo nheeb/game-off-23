@@ -22,6 +22,10 @@ PauseMenu="*res://UI/PauseMenu.tscn"
 DebugInfo="*res://Utility/DebugInfo.tscn"
 Functions="*res://Utility/Functions.tscn"
 
+[debug]
+
+gdscript/warnings/unused_parameter=0
+
 [display]
 
 window/stretch/mode="viewport"

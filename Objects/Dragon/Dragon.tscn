@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cu0j2oc2nfkvl"]
+[gd_scene load_steps=28 format=3 uid="uid://cu0j2oc2nfkvl"]
 
 [ext_resource type="Script" path="res://Objects/Dragon/Dragon.gd" id="1_b10y7"]
 [ext_resource type="Script" path="res://Objects/Dragon/Idle.gd" id="2_3qwwn"]
@@ -10,6 +10,8 @@
 [ext_resource type="Script" path="res://Objects/Dragon/Approach.gd" id="7_3xdce"]
 [ext_resource type="Script" path="res://Objects/Dragon/TailSwing.gd" id="8_u8nhm"]
 [ext_resource type="Script" path="res://Objects/Dragon/SpitFireBall.gd" id="9_ev16w"]
+[ext_resource type="Script" path="res://Objects/Dragon/SpitFireCone.gd" id="10_b6fvh"]
+[ext_resource type="Script" path="res://Objects/Dragon/Roar.gd" id="11_5ddqa"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p3von"]
 resource_name = "dragonskin_01"
@@ -464,8 +466,10 @@ script = ExtResource("8_u8nhm")
 script = ExtResource("9_ev16w")
 
 [node name="SpitFireCone" type="Node" parent="States"]
+script = ExtResource("10_b6fvh")
 
 [node name="Roar" type="Node" parent="States"]
+script = ExtResource("11_5ddqa")
 
 [node name="Rise" type="Node" parent="States"]
 
@@ -532,6 +536,7 @@ shape = SubResource("CapsuleShape3D_yh2b4")
 
 [node name="HeadPosition" type="Node3D" parent="Positions"]
 unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.07424, -4.16082)
 
 [editable path="DamageAreas/BiteArea"]
 [editable path="DamageAreas/TailArea"]

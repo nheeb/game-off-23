@@ -1,7 +1,4 @@
-extends Node
-
-@onready var state_name = self.name
-@onready var dragon : Dragon = get_parent().get_parent()
+extends DragonState
 
 func get_probability() -> float:
 	if dragon.player_distance <= 4.2 and dragon.player_face_angle < 40.0:
@@ -9,7 +6,7 @@ func get_probability() -> float:
 	else:
 		return 0.0
 
-func effect_start():
+func effect_start(index):
 	await get_tree().create_timer(1.0).timeout
 	dragon.bite_area.activate()
 	await get_tree().create_timer(.8).timeout
@@ -22,13 +19,3 @@ func effect_start():
 
 func effect_process(delta):
 	pass
-
-var next_state = ""
-func get_next_state():
-	var value = next_state
-	next_state = ""
-	return next_state
-
-func is_active():
-	return dragon.current_state_object == self
-

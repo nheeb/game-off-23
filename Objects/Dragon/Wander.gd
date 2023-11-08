@@ -1,7 +1,4 @@
-extends Node
-
-@onready var state_name = self.name
-@onready var dragon : Dragon = get_parent().get_parent()
+extends DragonState
 
 func get_probability() -> float:
 	return 0.0
@@ -12,7 +9,7 @@ var timer := 0.0
 const DISTANCE_TO_WALL = 1.5
 const MIN_DIST = 2.5
 
-func effect_start():
+func effect_start(index):
 	max_duration = 3.0 + randf() * 2.0
 	timer = max_duration
 	for i in range(10):
@@ -28,13 +25,4 @@ func effect_process(delta):
 	timer -= delta
 	if timer <= delta or dragon.movement_type == Dragon.MovementType.STANDING:
 		next_state = "Idle"
-
-var next_state = ""
-func get_next_state():
-	var value = next_state
-	next_state = ""
-	return next_state
-
-func is_active():
-	return dragon.current_state_object == self
 

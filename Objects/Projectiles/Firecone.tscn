@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://b88xm1bnqg3hf"]
+
+[ext_resource type="PackedScene" uid="uid://bfw4se6ttoft7" path="res://Utility/PlayerDamageArea.tscn" id="1_0d1ls"]
+[ext_resource type="Script" path="res://Objects/Projectiles/Firecone.gd" id="1_4vrij"]
+[ext_resource type="Shader" path="res://Shaders/PlaceholderFirecone.gdshader" id="2_85nqt"]
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_sfph7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cfi0y"]
+render_priority = 0
+shader = ExtResource("2_85nqt")
+shader_parameter/albedo = Color(1, 0.372549, 0, 1)
+shader_parameter/progress = 1.0
+
+[node name="Firecone" type="Node3D"]
+script = ExtResource("1_4vrij")
+
+[node name="PlayerDamageArea" parent="." instance=ExtResource("1_0d1ls")]
+damage = 1
+knockback_force = 0.5
+active = true
+
+[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="PlayerDamageArea"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+polygon = PackedVector2Array(0, 0, 0, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 5, 0, 0, -5)
+mesh = SubResource("PlaneMesh_sfph7")
+surface_material_override/0 = SubResource("ShaderMaterial_cfi0y")

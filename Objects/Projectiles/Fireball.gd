@@ -25,9 +25,10 @@ func _physics_process(delta):
 		explode()
 	else:
 		var progress_normalized : float = clamp(timer / fly_time, 0.0, 1.0)
-		global_position = lerp(origin_pos, target_pos, progress_normalized) + fly_curve.sample_baked(progress_normalized) * curve_height
+		global_position = lerp(origin_pos, target_pos, progress_normalized) + Vector3.UP * fly_curve.sample_baked(progress_normalized) * curve_height
 
 func explode():
 	var explosion = EXPLOSION.instantiate()
+	Game.world.add_child(explosion)
 	explosion.global_position = global_position
 	queue_free()

@@ -123,4 +123,4 @@ mesh = SubResource("BoxMesh_q0048")
 shape = SubResource("ConcavePolygonShape3D_fbm8o")
 
 [node name="Dragon" parent="." instance=ExtResource("3_evqoh")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.630087, 0, -21.6246)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.03567, 0, -21.6246)
