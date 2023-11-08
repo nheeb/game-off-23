@@ -5,6 +5,7 @@ var stage := 1
 
 # Signals
 signal turn_done
+signal movement_done
 
 # Areas & Positions
 @onready var bite_area : PlayerDamageArea = %BiteArea
@@ -41,7 +42,7 @@ var head_direction_target: Node3D
 
 # Constanst
 const DEFAULT_MOVEMENT_SPEED = 4.0
-const DEFAULT_ANGULAR_SPEED = 0.7
+const DEFAULT_ANGULAR_SPEED = 1.1
 const MOVEMENT_TARGET_RANGE = 1.5
 
 func _ready():
@@ -66,7 +67,6 @@ func statemachine_process(delta: float):
 			new_state = current_state_object.get_next_state()
 			if new_state != "":
 				pass
-				print("Next state: " + new_state)
 
 func force_state_change(_new_state: String):
 	new_state = _new_state
@@ -85,10 +85,11 @@ func analyse_battlefield():
 	%PlayerRay.target_position = to_local(Game.player.global_position)
 	player_in_sight = not %PlayerRay.is_colliding()
 	player_distance = global_position.distance_to(Game.player.global_position)
-	player_direction_clean = global_position.direction_to(Game.player.global_position)
+	player_direction_clean = Game.player.global_position - global_position
 	player_direction_clean.y = 0.0
 	player_direction_clean = player_direction_clean.normalized()
-	player_face_angle = rad_to_deg(player_direction_clean.angle_to(to_global(Vector3.FORWARD)))
+	var own_direction_clean = Functions.no_y_normalized(to_global(Vector3.FORWARD) - global_position)
+	player_face_angle = rad_to_deg(abs(own_direction_clean.signed_angle_to(player_direction_clean, Vector3.UP)))
 
 func choose_action():
 	var running_total := 0.0
@@ -116,6 +117,7 @@ func movement_process(delta: float):
 			var clean_distance = Functions.remove_y_value(global_position).distance_to(Functions.remove_y_value(movement_target_position))
 			if clean_distance <= MOVEMENT_TARGET_RANGE:
 				movement_type = MovementType.STANDING
+				emit_signal("movement_done")
 			var clean_direction := global_position.direction_to(movement_target_position)
 			clean_direction.y = 0.0
 			move_vector = clean_direction.normalized() * movement_speed
@@ -124,7 +126,7 @@ func movement_process(delta: float):
 		MovementType.CURVED_COUNTERCLOCKWISE:
 			move_vector = global_position.direction_to(movement_pivot_position).cross(Vector3.UP).normalized() * movement_speed
 		MovementType.STANDING:
-			return
+			move_vector = Vector3.ZERO
 	$CollisionBody.velocity = move_vector
 	$CollisionBody.move_and_slide()
 	
@@ -136,15 +138,12 @@ func movement_process(delta: float):
 func turning_process(delta: float):
 	if turn_type == TurnType.NO_TURN and movement_type == MovementType.DIRECTIONAL:
 		turn_type = TurnType.WITH_MOVEMENT
-	var clean_current_direction: Vector3 = Functions.no_y_normalized(to_global(Vector3.FORWARD))
+	var clean_current_direction: Vector3 = Functions.no_y_normalized(to_global(Vector3.FORWARD) - global_position)
 	var target_direction: Vector3
 	var turning_success := false
 	match turn_type:
 		TurnType.TURN:
 			target_direction = Functions.no_y_normalized(body_direction_target_position - global_position)
-			print( "!")
-			print(clean_current_direction)
-			print(target_direction)
 		TurnType.FOLLOW:
 			target_direction = Functions.no_y_normalized(body_direction_target_node.global_position - global_position)
 		TurnType.WITH_MOVEMENT:
@@ -153,8 +152,6 @@ func turning_process(delta: float):
 			return
 	var angle_diff := clean_current_direction.signed_angle_to(target_direction, Vector3.UP)
 	var angle_dist : float = angular_speed * delta * sign(angle_diff)
-	print(angle_diff)
-	print(angle_dist)
 	if abs(angle_dist) > abs(angle_diff):
 		angle_dist = angle_diff
 		turning_success = true

@@ -1,11 +1,11 @@
 extends DragonState
 
-const MIN_DIST = 4.0
+const MIN_DIST = 5.0
+const MAX_DIST = 17.0
 const FIRE_CONE = preload("res://Objects/Projectiles/Firecone.tscn")
 
 func get_probability() -> float:
-	return 10.0
-	return 0.2 if dragon.player_distance >= MIN_DIST else 0.0
+	return 0.2 if dragon.player_distance >= MIN_DIST and dragon.player_distance <= MAX_DIST else 0.0
 
 func effect_start(index):
 	dragon.turn_type = Dragon.TurnType.TURN

@@ -1,7 +1,7 @@
 extends DragonState
 
 func get_probability() -> float:
-	return 0.15
+	return 0.2 if dragon.player_face_angle < 30.0 else 0.05
 
 var last_y_pos: float
 func effect_start(index):
