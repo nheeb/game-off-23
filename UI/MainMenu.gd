@@ -4,6 +4,7 @@ extends Control
 
 func _ready():
 	%Settings.visible = false
+	PlayerUI.visible = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -13,7 +14,8 @@ func _ready():
 func _on_bt_start_pressed():
 	visible = false
 	get_tree().change_scene_to_file(Game.scene_path)
-	get_tree().root.add_child(load(ui_path).instantiate())
+	PlayerUI.visible = true
+#	get_tree().root.add_child(load(ui_path).instantiate())
 #	if (Game.debug):
 #		get_node("/root/DebugInfo")
 #		get_tree().root.add_child(load("res://Utility/DebugInfo.tscn").instantiate())

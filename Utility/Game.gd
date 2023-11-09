@@ -8,10 +8,9 @@ var player: Player
 var player_health_system : HealthSystem :
 	set(system):
 		player_health_system = system
-		if (player_ui != null):
-			player_ui.set_health_system(system)
+		PlayerUI.set_health_system(system)
 	
-var player_ui : Control
+var player_ui : CanvasLayer
 var dragon: Dragon
 var world: Node3D
 
