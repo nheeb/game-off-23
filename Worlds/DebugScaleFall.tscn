@@ -287,86 +287,60 @@ shadow_mesh = SubResource("ArrayMesh_6k0av")
 code = "shader_type canvas_item;
 uniform sampler2D screen_texture : hint_screen_texture, filter_linear_mipmap;
 
-uniform float vein_thickness: hint_range(0.0,1.0);
 uniform float damage_level : hint_range(0.0, 1.0);
 uniform vec4 overlay_color_base : source_color;
 uniform vec4 overlay_color_highlight : source_color;
+uniform float animation_speed: hint_range(0.0, 1.0);
+uniform float overlay_transparency: hint_range(0.0, 1.0);
 
-#include \"res://Shaders/functions.gdshaderinc\"
-
-vec2 rotate(vec2 v, float a) {
-    float s = sin(a);
-    float c = cos(a);
-    mat2 m = mat2(vec2(c, -s), vec2(s, c));
-    return m * v;
+// https://en.wikipedia.org/wiki/Triangle_wave
+float triangleWave(float t, float period) {
+    return 2. * abs(t/period - floor(t/period + .5));
 }
 
-float rand_v(vec2 n) { 
-    return fract(sin(dot(n, vec2(12.9898, 4.1414))) * 43758.5453);
-}
-
-float rand_f(float n){return fract(sin(n) * 43758.5453123);}
-
-float noise_f(float p){
-    float fl = floor(p);
-    float fc = fract(p);
-    return mix(rand_f(fl), rand_f(fl + 1.0), fc);
-}
-
-float noise_v(vec2 n) {
-    const vec2 d = vec2(0.0, 1.0);
-    vec2 b = floor(n), f = smoothstep(vec2(0.0), vec2(1.0), fract(n));
-    return mix(mix(rand_v(b), rand_v(b + d.yx), f.x), mix(rand_v(b + d.xy), rand_v(b + d.yy), f.x), f.y);
-}
-
-float getLine(vec2 uv, vec2 offset, float rot)
-{
-    //rot = radians(rot);
-    uv = rotate(uv, radians(rot));
-    uv *= 20.;
-    uv += offset;
-    float n = noise_v(uv*vec2(.9, .4));
-    uv.y += n - .4;
-
-    float col = smoothstep(vein_thickness, -.15, abs(uv.y));
-        
-    return col;
-}
-
-float getVein(vec2 uv)
-{
-    float rot =TIME * 2.0;
+float edgeEffect(float x, float y, float scale, float iTime) {
     
-    float f = 0.;
+    // Make these shader uniforms and use game logic to manipulate the effect
+    float period = .07;
+    float amplitude = .07;
+    float border = mix(.0, .1, sin(iTime)*.5+.5);
+	border -= (1.0-damage_level)*0.3;
+    float wave = mix(.0, .06, sin(x*scale*15.+iTime*10.)*.5+.5);
+    float shift = -iTime*.3;
     
-    for(float i = 0.; i < 65.; i += 0.9)
-    {
-        f += getLine(uv, vec2(.5 + i, noise_f(i) * 35. - 25.), rot + (i*15.9)/1.43);
-    }
+    float ty = triangleWave(scale*(x+shift), period);
     
-    f = min(f, 1.);
-    
-    return f;
+    return step(1.-abs(y), scale*(ty*amplitude+border+wave));
 }
+
 
 void fragment() {
-	vec3 c = textureLod(screen_texture, SCREEN_UV, 0.0).rgb;
-	
-	vec2 center = SCREEN_UV - vec2(0.5);
-	float clip = 1.0 - clamp_and_map(damage_level, 0.0, 1.0, 0.28, 0.6);
+    vec2 uv = SCREEN_UV*2.0 - vec2(1.0);
+    float aspectRatio = 9.0/16.0;
     
-	float is_vein = getVein(SCREEN_UV);
-    vec3 veins = mix(c, overlay_color_highlight.rgb * 1.4, is_vein);
-	COLOR.rgb = distance(center, vec2(0)) > clip && veins != vec3(0) ? veins : c;
+    vec3 col = vec3(0);
+    vec3 rainbow = mix(overlay_color_base.rgb, overlay_color_highlight.rgb, damage_level);
+    
+    // top/bottom
+    col = mix(col, rainbow, edgeEffect(uv.x, uv.y, 1., TIME*animation_speed));
+    // left/right
+    col = mix(col, rainbow, edgeEffect(uv.y, uv.x, aspectRatio, TIME*animation_speed));
+
+    // Gamma correction
+    col = pow(max(col,0.), vec3(1./2.2));
+	
+	vec3 c = textureLod(screen_texture, SCREEN_UV, 0.0).rgb;
+	COLOR.rgb = col != vec3(0) ? col*(1.0-overlay_transparency)+c*overlay_transparency : c;
 }
 "
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_b55fq"]
 shader = SubResource("Shader_1lgj2")
-shader_parameter/vein_thickness = 0.3
-shader_parameter/damage_level = 0.915
+shader_parameter/damage_level = 1.0
 shader_parameter/overlay_color_base = Color(0.360784, 0, 0, 1)
 shader_parameter/overlay_color_highlight = Color(0.72549, 0, 0, 1)
+shader_parameter/animation_speed = 0.166
+shader_parameter/overlay_transparency = 0.311
 
 [node name="Node" type="Node"]
 
