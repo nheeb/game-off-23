@@ -1,8 +1,10 @@
 class_name Dragon extends Node3D
 
-var hp: int
+# Dragon Stats
 var stage := 1
 var is_flying := false
+var hp : int
+var scale_areas: Array[DragonScaleArea]
 
 # Signals
 signal turn_done
@@ -52,6 +54,18 @@ func _ready():
 	Game.dragon = self
 	$DebugStateLabel.visible = DebugInfo.debug_visible
 	DebugInfo.visibility_changed.connect(func (): $DebugStateLabel.visible = not $DebugStateLabel.visible)
+	scale_areas = $ScaleAreas.get_children().filter(func (x): return x)
+	for scale_area in scale_areas:
+		scale_area.scale_area_damage.connect(refresh_hp)
+		scale_area.scale_area_dead.connect(scale_area_destroyed)
+
+func refresh_hp():
+	hp = scale_areas.reduce(func (x,y): return x+y.hp, 0)
+	#TODO hook to UI
+
+func scale_area_destroyed():
+	pass
+	#TODO Hurt cry or stun
 
 func _physics_process(delta):
 	statemachine_process(delta)

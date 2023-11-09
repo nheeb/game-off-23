@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://cu0j2oc2nfkvl"]
+[gd_scene load_steps=33 format=3 uid="uid://cu0j2oc2nfkvl"]
 
 [ext_resource type="Script" path="res://Objects/Dragon/Dragon.gd" id="1_b10y7"]
 [ext_resource type="Script" path="res://Objects/Dragon/Idle.gd" id="2_3qwwn"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://Objects/Dragon/Roar.gd" id="11_5ddqa"]
 [ext_resource type="Script" path="res://Objects/Dragon/Rise.gd" id="12_h5ryw"]
 [ext_resource type="Script" path="res://Objects/Dragon/AirGrab.gd" id="13_3xwwt"]
+[ext_resource type="PackedScene" uid="uid://b5w8emdajy8hq" path="res://Objects/Dragon/DragonScaleArea.tscn" id="15_0h3lm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p3von"]
 resource_name = "dragonskin_01"
@@ -502,10 +503,18 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.84416, 0)
 
 [node name="CollisionBody" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.98735, -0.158554, 0, 0.158554, 0.98735, 0, 0, -0.359846)
-collision_layer = 16
+collision_layer = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CollisionBody"]
 transform = Transform3D(1, 0, 0, 0, -0.106542, 0.994308, 0, -0.994308, -0.106542, 0, 1.43509, 0.227024)
+shape = SubResource("CapsuleShape3D_8k4dv")
+
+[node name="StaticBody" type="StaticBody3D" parent="."]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody"]
+transform = Transform3D(1, 0, 0, 0, 0.0524573, 0.998623, 0, -0.998623, 0.0524573, 0, 1.38094, 0.0918454)
 shape = SubResource("CapsuleShape3D_8k4dv")
 
 [node name="DebugStateLabel" type="Label3D" parent="."]
@@ -561,6 +570,27 @@ shape = SubResource("CapsuleShape3D_yh2b4")
 [node name="HeadPosition" type="Node3D" parent="Positions"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.07424, -4.16082)
+
+[node name="ScaleAreas" type="Node3D" parent="."]
+transform = Transform3D(-0.577418, -0.811137, -0.0929763, -0.0458434, 0.14591, -0.988235, 0.815161, -0.566363, -0.121437, -1.66002, 1.23573, -1.58022)
+
+[node name="DragonScaleArea" parent="ScaleAreas" instance=ExtResource("15_0h3lm")]
+transform = Transform3D(1, 1.49012e-07, 0, -2.98023e-08, 1, 0, -7.45058e-09, -7.45058e-09, 1, -0.150712, 0.0676742, 0.0709946)
+
+[node name="DragonScaleArea2" parent="ScaleAreas" instance=ExtResource("15_0h3lm")]
+transform = Transform3D(0.136134, -0.985071, -0.105369, 0.97349, 0.152745, -0.170254, 0.183807, -0.0793984, 0.97975, -1.93865, -2.30025, -0.195682)
+
+[node name="DragonScaleArea3" parent="ScaleAreas" instance=ExtResource("15_0h3lm")]
+transform = Transform3D(-0.91052, -0.412535, 0.0277176, 0.386923, -0.873784, -0.294608, 0.145756, -0.257522, 0.955217, 1.37805, -3.99528, -0.599809)
+
+[node name="DragonScaleArea5" parent="ScaleAreas" instance=ExtResource("15_0h3lm")]
+transform = Transform3D(-0.753894, -0.656811, -0.0156148, 0.633299, -0.72017, -0.283357, 0.174867, -0.22351, 0.958889, -0.34822, -3.01583, -0.776205)
+
+[node name="DragonScaleArea4" parent="ScaleAreas" instance=ExtResource("15_0h3lm")]
+transform = Transform3D(0.599518, 0.788886, 0.135055, -0.794255, 0.607219, -0.0211487, -0.0986915, -0.094589, 0.990614, 2.24033, -2.59639, -0.433267)
+
+[node name="DragonScaleArea6" parent="ScaleAreas" instance=ExtResource("15_0h3lm")]
+transform = Transform3D(0.719676, 0.684868, 0.114123, -0.688627, 0.725066, -0.00864884, -0.0886698, -0.0723639, 0.993432, 0.632112, -1.40507, -0.838849)
 
 [editable path="DamageAreas/BiteArea"]
 [editable path="DamageAreas/TailArea"]

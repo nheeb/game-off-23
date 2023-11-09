@@ -1,0 +1,38 @@
+[gd_scene load_steps=4 format=3 uid="uid://b5w8emdajy8hq"]
+
+[ext_resource type="Script" path="res://Objects/Dragon/DragonScaleArea.gd" id="1_e5gfn"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xeedl"]
+size = Vector3(1.2463, 0.0770657, 1.45145)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0m6wy"]
+albedo_color = Color(1, 1, 0, 1)
+
+[node name="DragonScaleArea" type="Node3D"]
+script = ExtResource("1_e5gfn")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_xeedl")
+
+[node name="PlaceholderScales" type="Node3D" parent="."]
+
+[node name="scale" type="CSGBox3D" parent="PlaceholderScales"]
+transform = Transform3D(0.52164, 0, 0, 0, 1, 0, 0, 0, 0.549494, -0.217999, 2.98023e-08, -0.221491)
+size = Vector3(0.3, 0.01, 0.476372)
+material = SubResource("StandardMaterial3D_0m6wy")
+
+[node name="scale2" type="CSGBox3D" parent="PlaceholderScales"]
+transform = Transform3D(0.52164, 0, 0, 0, 1, 0, 0, 0, 0.549494, 0.211035, 5.96046e-08, -0.090088)
+size = Vector3(0.3, 0.01, 0.476372)
+material = SubResource("StandardMaterial3D_0m6wy")
+
+[node name="scale3" type="CSGBox3D" parent="PlaceholderScales"]
+transform = Transform3D(0.52164, 0, 0, 0, 1, 0, 0, 0, 0.549494, -0.0935719, 5.96046e-08, 0.260825)
+size = Vector3(0.3, 0.01, 0.476372)
+material = SubResource("StandardMaterial3D_0m6wy")
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
