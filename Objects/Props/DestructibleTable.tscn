@@ -8,3 +8,5 @@ script = ExtResource("1_77deo")
 
 [node name="model" parent="." instance=ExtResource("2_2nkqr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.363765, 0, 0.559827)
+
+[editable path="model"]

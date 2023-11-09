@@ -579,7 +579,7 @@ mesh = SubResource("ArrayMesh_swjmn")
 skeleton = NodePath("")
 
 [node name="DestructibleTable" parent="SubViewportContainer/SubViewport/DebugScaleFall/World" instance=ExtResource("3_08pw0")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8.24522)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.05114, -8.24522)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
