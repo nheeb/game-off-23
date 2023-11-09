@@ -105,8 +105,8 @@ environment = SubResource("Environment_05wpq")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3, 0.526914, -0.85481)
 
 [node name="hurt_area" type="Area3D" parent="Fire"]
-collision_layer = 256
-collision_mask = 256
+collision_layer = 8
+collision_mask = 0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Fire/hurt_area"]
 shape = SubResource("BoxShape3D_i13y6")

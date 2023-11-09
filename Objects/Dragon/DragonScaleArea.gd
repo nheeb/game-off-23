@@ -13,6 +13,7 @@ func _ready():
 func _on_area_3d_area_entered(area):
 	if dead: return
 	take_damage(1)
+	print('take damage')
 
 const FALLEN_SCALE = preload("res://Objects/Projectiles/FallenScale.tscn")
 func take_damage(damage: int = 1):

@@ -10,4 +10,5 @@ func _physics_process(delta):
 		movement_direction = Vector3.ZERO
 	if Game.main_cam:
 		movement_direction = Game.main_cam.basis * movement_direction
+	movement_direction.y = 0
 	player_motion.movement_intent = movement_direction

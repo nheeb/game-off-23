@@ -12,8 +12,6 @@ func _ready():
 	Game.main_cam = self
 
 func _process(delta):
-	if boss_focus == null:
-		return
 	global_position = lerp(global_position, getTargetCameraPosition(), delta * responsivity)
 	quaternion = quaternion.slerp(getTargetCameraRotation(), delta * rotation_responsivity)
 	
@@ -23,9 +21,9 @@ func getFocusPosition():
 	return player.global_position
 
 func getTargetCameraPosition():
-	var boss_to_player = Functions.no_y_normalized(player.global_position - boss_focus.global_position)
+	var camera_backward = get_camera_backward()
 	return getFocusPosition() \
-		+ boss_to_player * target_distance_from_player \
+		+ camera_backward * target_distance_from_player \
 		+ Vector3.UP * height
 
 func getTargetCameraRotation():
@@ -39,3 +37,7 @@ func getTargetCameraRotationTransform():
 	return Transform3D(Basis(), Functions.remove_y_value(player.global_position)) \
 		.looking_at(Functions.remove_y_value(boss_focus.global_position))
 	
+func get_camera_backward():
+	if boss_focus != null:
+		return Functions.no_y_normalized(player.global_position - boss_focus.global_position)
+	return Functions.no_y_normalized(global_transform.basis.z)

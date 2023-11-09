@@ -6,6 +6,7 @@ class_name AttackControls extends Node
 @onready var mouse_detection_layer: MouseDetectionLayer = $"../../MouseDetectionLayer"
 @export var max_charge = 2.0
 @export var sword_model: MeshInstance3D
+@export var hurt_box: Area3D
 
 var sword_count = 1
 var is_charging = false
@@ -56,6 +57,10 @@ func perform_melee():
 	animation_tree.set("parameters/Core/conditions/is_aiming", false)
 	animation_tree.set("parameters/Core/conditions/performing_melee", true)
 	reset_charge()
+	await get_tree().create_timer(.1).timeout
+	hurt_box.monitorable = true
+	await get_tree().create_timer(.5).timeout
+	hurt_box.monitorable = true
 	
 func create_projectile():
 	var target_position = mouse_detection_layer.get_global_layer_mouse_position()
