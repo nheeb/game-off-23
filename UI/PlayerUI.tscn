@@ -5,6 +5,7 @@
 
 [node name="PlayerUI" type="CanvasLayer"]
 layer = 2
+script = ExtResource("1_mh6lv")
 
 [node name="PlayerUI" type="Control" parent="."]
 layout_mode = 3
@@ -14,7 +15,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
-script = ExtResource("1_mh6lv")
 
 [node name="HBHealth" type="HBoxContainer" parent="PlayerUI"]
 unique_name_in_owner = true

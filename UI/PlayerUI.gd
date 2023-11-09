@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 
 
 var player_health_system : HealthSystem

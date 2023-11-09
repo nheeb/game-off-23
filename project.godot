@@ -18,6 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 Game="*res://Utility/Game.tscn"
+PlayerUI="*res://UI/PlayerUI.tscn"
 PauseMenu="*res://UI/PauseMenu.tscn"
 DebugInfo="*res://Utility/DebugInfo.tscn"
 Functions="*res://Utility/Functions.tscn"
