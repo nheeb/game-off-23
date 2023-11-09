@@ -3,7 +3,7 @@ extends Control
 @export var ui_path : String
 
 func _ready():
-	pass # Replace with function body.
+	%Settings.visible = false
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -14,5 +14,12 @@ func _on_bt_start_pressed():
 	visible = false
 	get_tree().change_scene_to_file(Game.scene_path)
 	get_tree().root.add_child(load(ui_path).instantiate())
+#	if (Game.debug):
+#		get_node("/root/DebugInfo")
+#		get_tree().root.add_child(load("res://Utility/DebugInfo.tscn").instantiate())
 	
 
+
+
+func _on_bt_settings_pressed():
+	%Settings.visible = true

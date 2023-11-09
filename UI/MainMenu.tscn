@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://kkmyxihk8giq"]
+[gd_scene load_steps=3 format=3 uid="uid://kkmyxihk8giq"]
 
 [ext_resource type="Script" path="res://UI/MainMenu.gd" id="1_ghfb6"]
+[ext_resource type="PackedScene" uid="uid://b3gt4bse7nko4" path="res://UI/Settings.tscn" id="2_1s258"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -12,16 +13,35 @@ grow_vertical = 2
 script = ExtResource("1_ghfb6")
 ui_path = "res://UI/PlayerUI.tscn"
 
-[node name="bt_Start" type="Button" parent="."]
+[node name="MCMenuSelection" type="MarginContainer" parent="."]
+unique_name_in_owner = true
 layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.306424
-anchor_top = 0.427469
-anchor_right = 0.664063
-anchor_bottom = 0.53858
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 400
+theme_override_constants/margin_top = 200
+theme_override_constants/margin_right = 400
+theme_override_constants/margin_bottom = 200
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MCMenuSelection"]
+layout_mode = 2
+
+[node name="bt_Start" type="Button" parent="MCMenuSelection/VBoxContainer"]
+layout_mode = 2
 text = "Start"
 metadata/_edit_use_anchors_ = true
 
-[connection signal="pressed" from="bt_Start" to="." method="_on_bt_start_pressed"]
+[node name="bt_Settings" type="Button" parent="MCMenuSelection/VBoxContainer"]
+layout_mode = 2
+text = "Settings"
+
+[node name="Settings" parent="." instance=ExtResource("2_1s258")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 1
+
+[connection signal="pressed" from="MCMenuSelection/VBoxContainer/bt_Start" to="." method="_on_bt_start_pressed"]
+[connection signal="pressed" from="MCMenuSelection/VBoxContainer/bt_Settings" to="." method="_on_bt_settings_pressed"]
