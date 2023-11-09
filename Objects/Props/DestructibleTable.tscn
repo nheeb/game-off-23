@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://djeywtb8wrrwm"]
+
+[ext_resource type="Script" path="res://Objects/Props/DestructibleTable.gd" id="1_77deo"]
+[ext_resource type="PackedScene" uid="uid://rgose3jqcn6j" path="res://Assets/Models/Placeholders/table.blend" id="2_2nkqr"]
+
+[node name="DestructibleTable" type="Node3D"]
+script = ExtResource("1_77deo")
+
+[node name="model" parent="." instance=ExtResource("2_2nkqr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.363765, 0, 0.559827)
