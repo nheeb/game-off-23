@@ -14,7 +14,7 @@
 [ext_resource type="Script" path="res://Objects/Dragon/Roar.gd" id="11_5ddqa"]
 [ext_resource type="Script" path="res://Objects/Dragon/Rise.gd" id="12_h5ryw"]
 [ext_resource type="Script" path="res://Objects/Dragon/AirGrab.gd" id="13_3xwwt"]
-[ext_resource type="PackedScene" uid="uid://b5w8emdajy8hq" path="res://Objects/Dragon/DragonScaleArea.tscn" id="15_0h3lm"]
+[ext_resource type="PackedScene" path="res://Objects/Dragon/DragonScaleArea.tscn" id="15_0h3lm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p3von"]
 resource_name = "dragonskin_01"

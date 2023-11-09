@@ -2,7 +2,7 @@ extends Node
 
 @export var scene_path : String
 
-var main_cam: Camera3D
+var main_cam: PlayerCamera
 var mouse_layer: MouseDetectionLayer
 var player: Player
 var player_health_system : HealthSystem :

@@ -70,6 +70,7 @@ func create_projectile():
 	projectile.control_point_return = mid_point - control_point_displace * player.global_transform.basis.x
 	projectile.path_time = distance * 0.15 * (1.0 - (charge / max_charge) * 0.5)
 	get_tree().root.add_child(projectile)
+	Game.main_cam.projectile_focus = projectile
 
 func get_projectile_speed():
 	return 15.0 + (charge * 15.0)

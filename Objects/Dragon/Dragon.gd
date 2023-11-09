@@ -52,6 +52,7 @@ const MOVEMENT_TARGET_RANGE = 1.5
 
 func _ready():
 	Game.dragon = self
+	Game.main_cam.boss_focus = self
 	$DebugStateLabel.visible = DebugInfo.debug_visible
 	DebugInfo.visibility_changed.connect(func (): $DebugStateLabel.visible = not $DebugStateLabel.visible)
 	scale_areas = $ScaleAreas.get_children().filter(func (x): return x)

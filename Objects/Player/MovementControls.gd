@@ -8,4 +8,6 @@ func _physics_process(delta):
 	var movement_direction = Vector3(input_direction.x, 0, input_direction.y)
 	if player.is_dead():
 		movement_direction = Vector3.ZERO
+	if Game.main_cam:
+		movement_direction = Game.main_cam.basis * movement_direction
 	player_motion.movement_intent = movement_direction
