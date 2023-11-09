@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://cu0j2oc2nfkvl"]
+[gd_scene load_steps=37 format=3 uid="uid://cu0j2oc2nfkvl"]
 
 [ext_resource type="Script" path="res://Objects/Dragon/Dragon.gd" id="1_b10y7"]
 [ext_resource type="Script" path="res://Objects/Dragon/Idle.gd" id="2_3qwwn"]
@@ -14,7 +14,9 @@
 [ext_resource type="Script" path="res://Objects/Dragon/Roar.gd" id="11_5ddqa"]
 [ext_resource type="Script" path="res://Objects/Dragon/Rise.gd" id="12_h5ryw"]
 [ext_resource type="Script" path="res://Objects/Dragon/AirGrab.gd" id="13_3xwwt"]
+[ext_resource type="Script" path="res://Objects/Dragon/Dead.gd" id="14_8ti8k"]
 [ext_resource type="PackedScene" uid="uid://b5w8emdajy8hq" path="res://Objects/Dragon/DragonScaleArea.tscn" id="15_0h3lm"]
+[ext_resource type="Material" uid="uid://se0l8mkv0wwa" path="res://Assets/Materials/DamageIndicator.tres" id="16_yafp0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p3von"]
 resource_name = "dragonskin_01"
@@ -286,11 +288,6 @@ height = 5.60666
 radius = 1.0446
 height = 4.37482
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4ayag"]
-transparency = 1
-shading_mode = 0
-albedo_color = Color(1, 0, 0, 0.129412)
-
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_31bqf"]
 radial_segments = 8
 rings = 4
@@ -298,6 +295,18 @@ rings = 4
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yh2b4"]
 radius = 2.77803
 height = 7.6376
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_fi5rd"]
+height = 3.10338
+radius = 3.08889
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ic1fu"]
+radial_segments = 12
+rings = 2
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_sbexe"]
+height = 3.10338
+radius = 7.77653
 
 [node name="Dragon" type="Node3D"]
 script = ExtResource("1_b10y7")
@@ -483,6 +492,10 @@ script = ExtResource("10_b6fvh")
 [node name="Roar" type="Node" parent="States"]
 script = ExtResource("11_5ddqa")
 
+[node name="QuickTurn" type="Node" parent="States"]
+
+[node name="JumpAttack" type="Node" parent="States"]
+
 [node name="Rise" type="Node" parent="States"]
 script = ExtResource("12_h5ryw")
 
@@ -493,9 +506,14 @@ script = ExtResource("13_3xwwt")
 
 [node name="AirWander" type="Node" parent="States"]
 
-[node name="Landing" type="Node" parent="States"]
+[node name="LandingAttack" type="Node" parent="States"]
+
+[node name="SlowLanding" type="Node" parent="States"]
 
 [node name="HurtCry" type="Node" parent="States"]
+
+[node name="Dead" type="Node" parent="States"]
+script = ExtResource("14_8ti8k")
 
 [node name="PlayerRay" type="RayCast3D" parent="."]
 unique_name_in_owner = true
@@ -531,6 +549,7 @@ outline_size = 64
 [node name="BiteArea" parent="DamageAreas" instance=ExtResource("6_qsmee")]
 unique_name_in_owner = true
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+visible = false
 damage = 1
 knockback_force = 1.0
 
@@ -543,12 +562,13 @@ shape = SubResource("CapsuleShape3D_youbw")
 
 [node name="VisualIndicator" type="MeshInstance3D" parent="DamageAreas/BiteArea"]
 transform = Transform3D(-9.79112e-08, 2.23995, -1.95822e-07, -2.23995, -9.79112e-08, -1.95822e-07, -1.95822e-07, 1.95822e-07, 2.23995, -0.072575, 1.12575, 4.55802)
-material_override = SubResource("StandardMaterial3D_4ayag")
+material_override = ExtResource("16_yafp0")
 mesh = SubResource("CapsuleMesh_31bqf")
 
 [node name="TailArea" parent="DamageAreas" instance=ExtResource("6_qsmee")]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 1.74846e-07, 0, 1, 0, -1.74846e-07, 0, 1, 0, 0, 0)
+visible = false
 damage = 1
 knockback_force = 3.0
 
@@ -557,13 +577,43 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.101023, 1.28531)
 
 [node name="VisualIndicator" type="MeshInstance3D" parent="DamageAreas/TailArea"]
 transform = Transform3D(2.16201e-07, -3.91998, 8.7643e-07, -4.94611, -1.71348e-07, -4.38214e-07, 4.32403e-07, -6.85392e-07, -5.01258, 0.0725739, 1.12575, 4.28627)
-material_override = SubResource("StandardMaterial3D_4ayag")
+material_override = ExtResource("16_yafp0")
 mesh = SubResource("CapsuleMesh_31bqf")
 skeleton = NodePath("../../BiteArea")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DamageAreas/TailArea"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.0584453, 1.18611, 3.97323)
 shape = SubResource("CapsuleShape3D_yh2b4")
+
+[node name="BodyArea" parent="DamageAreas" instance=ExtResource("6_qsmee")]
+unique_name_in_owner = true
+visible = false
+damage = 1
+knockback_force = 2.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageAreas/BodyArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.06769, 0)
+shape = SubResource("CylinderShape3D_fi5rd")
+
+[node name="VisualIndicator" type="MeshInstance3D" parent="DamageAreas/BodyArea"]
+transform = Transform3D(6.14745, 0, 0, 0, 1.19744, 0, 0, 0, 6.14744, 0, 0.770042, 0)
+material_override = ExtResource("16_yafp0")
+mesh = SubResource("CylinderMesh_ic1fu")
+
+[node name="AirKnockbackArea" parent="DamageAreas" instance=ExtResource("6_qsmee")]
+unique_name_in_owner = true
+visible = false
+knockback_force = 2.0
+default_lifetime = 2.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageAreas/AirKnockbackArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.06769, 0)
+shape = SubResource("CylinderShape3D_sbexe")
+
+[node name="VisualIndicator" type="MeshInstance3D" parent="DamageAreas/AirKnockbackArea"]
+transform = Transform3D(15.9834, 0, 0, 0, 1.19744, 0, 0, 0, 15.9833, 0, 0.770042, 0)
+material_override = ExtResource("16_yafp0")
+mesh = SubResource("CylinderMesh_ic1fu")
 
 [node name="Positions" type="Node3D" parent="."]
 
@@ -594,3 +644,5 @@ transform = Transform3D(0.719676, 0.684868, 0.114123, -0.688627, 0.725066, -0.00
 
 [editable path="DamageAreas/BiteArea"]
 [editable path="DamageAreas/TailArea"]
+[editable path="DamageAreas/BodyArea"]
+[editable path="DamageAreas/AirKnockbackArea"]
