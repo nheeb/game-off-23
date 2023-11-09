@@ -9,20 +9,24 @@ var scale_areas: Array[DragonScaleArea]
 # Signals
 signal turn_done
 signal movement_done
+signal stage_defeated
 
 # Areas & Positions
 @onready var bite_area : PlayerDamageArea = %BiteArea
 @onready var tail_area : PlayerDamageArea = %TailArea
+@onready var body_area : PlayerDamageArea = %BodyArea
+@onready var air_knockback_area : PlayerDamageArea = %AirKnockbackArea
 @onready var head_position : Node3D = %HeadPosition
 @onready var model : Node3D = $Model
 
 # State Machine
+var states : Array[DragonState]# = ($States.get_children().filter(func (x): return x is DragonState)) as Array[DragonState]
 var current_state := "":
 	set(value):
 		current_state = value
 		%DebugStateLabel.text = value
 var new_state := "Idle"
-var current_state_object: Node
+var current_state_object: DragonState
 var state_history := []
 
 # Battlefield analysis
@@ -54,14 +58,23 @@ func _ready():
 	Game.dragon = self
 	$DebugStateLabel.visible = DebugInfo.debug_visible
 	DebugInfo.visibility_changed.connect(func (): $DebugStateLabel.visible = not $DebugStateLabel.visible)
-	scale_areas = $ScaleAreas.get_children().filter(func (x): return x)
+	scale_areas = []
+	scale_areas.append_array($ScaleAreas.get_children())
 	for scale_area in scale_areas:
 		scale_area.scale_area_damage.connect(refresh_hp)
 		scale_area.scale_area_dead.connect(scale_area_destroyed)
+	for area in $DamageAreas.get_children():
+		area.visible = true
+	states = []
+	states.append_array($States.get_children().filter(func (x): return x is DragonState))
+	
 
 func refresh_hp():
 	hp = scale_areas.reduce(func (x,y): return x+y.hp, 0)
 	#TODO hook to UI
+	if hp <= 0:
+		force_state_change("Dead", true)
+		stage_defeated.emit()
 
 func scale_area_destroyed():
 	pass
@@ -86,8 +99,10 @@ func statemachine_process(delta: float):
 			if new_state != "":
 				pass
 
-func force_state_change(_new_state: String):
-	new_state = _new_state
+func force_state_change(_new_state: String, force := false, restart := false):
+	if current_state != _new_state or restart:
+		if force or new_state == "":
+			new_state = _new_state
 
 func reset_behaviour():
 	movement_type = MovementType.STANDING
@@ -101,6 +116,7 @@ func reset_behaviour():
 
 func analyse_battlefield():
 	%PlayerRay.target_position = to_local(Game.player.global_position)
+	%PlayerRay.force_raycast_update()
 	player_in_sight = not %PlayerRay.is_colliding()
 	player_distance = global_position.distance_to(Game.player.global_position)
 	player_direction_clean = Game.player.global_position - global_position
@@ -117,7 +133,7 @@ func choose_action():
 	var cumulative_chances := []
 	var flat_chances := []
 	var state_names := []
-	for state in $States.get_children():
+	for state in states:
 		if state.has_method("get_probability"):
 			var prob = state.get_probability() * state.get_probabilty_modifier_from_tags()
 			if prob != 0.0:
