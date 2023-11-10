@@ -15,7 +15,7 @@
 [ext_resource type="Script" path="res://Objects/Dragon/Rise.gd" id="12_h5ryw"]
 [ext_resource type="Script" path="res://Objects/Dragon/AirGrab.gd" id="13_3xwwt"]
 [ext_resource type="Script" path="res://Objects/Dragon/Dead.gd" id="14_8ti8k"]
-[ext_resource type="PackedScene" uid="uid://b5w8emdajy8hq" path="res://Objects/Dragon/DragonScaleArea.tscn" id="15_0h3lm"]
+[ext_resource type="PackedScene" uid="uid://dh2syk58pnldt" path="res://Objects/Dragon/DragonScaleArea.tscn" id="15_0h3lm"]
 [ext_resource type="Material" uid="uid://se0l8mkv0wwa" path="res://Assets/Materials/DamageIndicator.tres" id="16_yafp0"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p3von"]

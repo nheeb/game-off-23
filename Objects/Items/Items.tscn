@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://bfj13h30f3jol"]
+
+[ext_resource type="Script" path="res://Objects/Items/Items.gd" id="1_g1uul"]
+[ext_resource type="Script" path="res://Objects/Items/TrashSword.gd" id="2_6k677"]
+
+[node name="Items" type="Node"]
+script = ExtResource("1_g1uul")
+
+[node name="TrashSword" type="Node" parent="."]
+script = ExtResource("2_6k677")
+price = 3

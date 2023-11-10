@@ -22,6 +22,8 @@ PlayerUI="*res://UI/PlayerUI.tscn"
 PauseMenu="*res://UI/PauseMenu.tscn"
 DebugInfo="*res://Utility/DebugInfo.tscn"
 Functions="*res://Utility/Functions.tscn"
+Items="*res://Objects/Items/Items.tscn"
+PlayerStats="*res://Objects/Player/PlayerStats.tscn"
 
 [debug]
 
