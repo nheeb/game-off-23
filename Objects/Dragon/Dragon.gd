@@ -16,6 +16,7 @@ signal stage_defeated
 @onready var tail_area : PlayerDamageArea = %TailArea
 @onready var body_area : PlayerDamageArea = %BodyArea
 @onready var air_knockback_area : PlayerDamageArea = %AirKnockbackArea
+@onready var jump_landing_area : PlayerDamageArea = %JumpLandingArea
 @onready var head_position : Node3D = %HeadPosition
 @onready var model : Node3D = %Model
 
@@ -68,6 +69,7 @@ func _ready():
 	Game.dragon = self
 	Game.main_cam.boss_focus = self
 	$DebugStateLabel.visible = DebugInfo.debug_visible
+	fly_wave_curve.bake()
 	DebugInfo.visibility_changed.connect(func (): $DebugStateLabel.visible = not $DebugStateLabel.visible)
 	scale_areas = []
 	scale_areas.append_array($ScaleAreas.get_children())
@@ -212,6 +214,8 @@ func turning_process(delta: float):
 		TurnType.TURN:
 			target_direction = Functions.no_y_normalized(body_direction_target_position - global_position)
 		TurnType.FOLLOW:
+			if body_direction_target_node == null:
+				body_direction_target_node = Game.player
 			target_direction = Functions.no_y_normalized(body_direction_target_node.global_position - global_position)
 		TurnType.WITH_MOVEMENT:
 			target_direction = Functions.no_y_normalized(last_movement_vector)

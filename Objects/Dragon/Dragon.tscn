@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://cu0j2oc2nfkvl"]
+[gd_scene load_steps=44 format=3 uid="uid://cu0j2oc2nfkvl"]
 
 [ext_resource type="Script" path="res://Objects/Dragon/Dragon.gd" id="1_b10y7"]
 [ext_resource type="Script" path="res://Objects/Dragon/Idle.gd" id="2_3qwwn"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" path="res://Objects/Dragon/Rise.gd" id="12_h5ryw"]
 [ext_resource type="Script" path="res://Objects/Dragon/QuickTurn.gd" id="12_kl28g"]
 [ext_resource type="Script" path="res://Objects/Dragon/AirGrab.gd" id="13_3xwwt"]
+[ext_resource type="Script" path="res://Objects/Dragon/JumpAttack.gd" id="13_jpjs2"]
 [ext_resource type="Script" path="res://Objects/Dragon/Dead.gd" id="14_8ti8k"]
 [ext_resource type="Script" path="res://Objects/Dragon/SlowLanding.gd" id="14_bvvsy"]
 [ext_resource type="Script" path="res://Objects/Dragon/AirWander.gd" id="14_im864"]
@@ -287,6 +288,10 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_6k0av")
 
+[sub_resource type="Curve" id="Curve_jvhla"]
+_data = [Vector2(0, 0), 0.0, 4.21818, 0, 0, Vector2(0.5, 0.989474), 0.0, 0.0, 0, 0, Vector2(1, 0), -4.01203, 0.0, 0, 0]
+point_count = 3
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8k4dv"]
 radius = 1.35457
 height = 5.60666
@@ -298,6 +303,10 @@ height = 4.37482
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_31bqf"]
 radial_segments = 8
 rings = 4
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_thx3e"]
+radius = 2.55289
+height = 8.08714
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yh2b4"]
 radius = 2.77803
@@ -321,7 +330,7 @@ fly_wave_curve = SubResource("Curve_hfnbm")
 
 [node name="Model" type="Node3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 
 [node name="FlyWavePivot" type="Node3D" parent="Model"]
 unique_name_in_owner = true
@@ -509,6 +518,8 @@ script = ExtResource("11_5ddqa")
 script = ExtResource("12_kl28g")
 
 [node name="JumpAttack" type="Node" parent="States"]
+script = ExtResource("13_jpjs2")
+jump_curve = SubResource("Curve_jvhla")
 
 [node name="Rise" type="Node" parent="States"]
 script = ExtResource("12_h5ryw")
@@ -580,6 +591,25 @@ shape = SubResource("CapsuleShape3D_youbw")
 
 [node name="VisualIndicator" type="MeshInstance3D" parent="DamageAreas/BiteArea"]
 transform = Transform3D(-9.79112e-08, 2.23995, -1.95822e-07, -2.23995, -9.79112e-08, -1.95822e-07, -1.95822e-07, 1.95822e-07, 2.23995, -0.072575, 1.12575, 4.55802)
+material_override = ExtResource("16_yafp0")
+mesh = SubResource("CapsuleMesh_31bqf")
+
+[node name="JumpLandingArea" parent="DamageAreas" instance=ExtResource("6_qsmee")]
+unique_name_in_owner = true
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+visible = false
+damage = 1
+knockback_force = 1.0
+
+[node name="KnockbackOrigin" parent="DamageAreas/JumpLandingArea" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.101023, 1.28531)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageAreas/JumpLandingArea"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.0584454, 1.18611, 3.60953)
+shape = SubResource("CapsuleShape3D_thx3e")
+
+[node name="VisualIndicator" type="MeshInstance3D" parent="DamageAreas/JumpLandingArea"]
+transform = Transform3D(-1.80843e-07, 4.13722, -3.61686e-07, -4.13722, -1.80843e-07, -3.61686e-07, -3.61686e-07, 3.61686e-07, 4.13722, -0.0725749, 1.12575, 3.55802)
 material_override = ExtResource("16_yafp0")
 mesh = SubResource("CapsuleMesh_31bqf")
 
@@ -661,6 +691,7 @@ transform = Transform3D(0.599518, 0.788886, 0.135055, -0.794255, 0.607219, -0.02
 transform = Transform3D(0.719676, 0.684868, 0.114123, -0.688627, 0.725066, -0.00864884, -0.0886698, -0.0723639, 0.993432, 0.632112, -1.40507, -0.838849)
 
 [editable path="DamageAreas/BiteArea"]
+[editable path="DamageAreas/JumpLandingArea"]
 [editable path="DamageAreas/TailArea"]
 [editable path="DamageAreas/BodyArea"]
 [editable path="DamageAreas/AirKnockbackArea"]
