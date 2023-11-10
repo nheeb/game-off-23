@@ -10,7 +10,7 @@ func effect_start(index):
 	if randi() % 2 == 0:
 		dragon.turn_type = Dragon.TurnType.TURN
 		dragon.body_direction_target_position = Game.player.global_position
-	duration = [0.8, 2.0, 3.5].pick_random()
+	duration = [0.8, 1.2, 1.5].pick_random()
 	timer = duration
 
 func effect_process(delta):

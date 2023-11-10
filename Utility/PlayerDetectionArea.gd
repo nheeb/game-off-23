@@ -1,7 +1,7 @@
-class_name PlayerDamageArea extends Area3D
+class_name PlayerDetectionArea extends Area3D
 
-@export var damage := 0
-@export var knockback_force := 0.0
+signal player_detected
+
 @export var active := false:
 	set(value):
 		active = value
@@ -12,8 +12,6 @@ class_name PlayerDamageArea extends Area3D
 @export var default_lifetime := .3
 @export var delete_on_perish := false
 @export var delete_on_player_hit := false
-
-@onready var knockback_origin : Node3D = $KnockbackOrigin
 
 func _ready():
 	if has_node("VisualIndicator"):
@@ -30,7 +28,7 @@ func _physics_process(delta):
 
 func _on_area_entered(area):
 	if active:
-		do_damage()
+		player_detected.emit()
 		if delete_on_player_hit:
 			queue_free()
 
@@ -42,5 +40,3 @@ func activate(_lifetime := 0.0):
 		else:
 			lifetime = _lifetime
 
-func do_damage():
-	pass # TODO Connect with player

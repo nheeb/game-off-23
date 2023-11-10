@@ -2,7 +2,7 @@ extends DragonState
 
 func get_probability() -> float:
 	if dragon.player_distance <= 6.2 and dragon.player_face_angle > 120.0:
-		return .6
+		return .4
 	else:
 		return 0.0
 

@@ -17,7 +17,7 @@ signal stage_defeated
 @onready var body_area : PlayerDamageArea = %BodyArea
 @onready var air_knockback_area : PlayerDamageArea = %AirKnockbackArea
 @onready var head_position : Node3D = %HeadPosition
-@onready var model : Node3D = $Model
+@onready var model : Node3D = %Model
 
 # State Machine
 var states : Array[DragonState]# = ($States.get_children().filter(func (x): return x is DragonState)) as Array[DragonState]
@@ -34,10 +34,11 @@ var player_in_sight : bool
 var player_distance : float
 var player_direction_clean: Vector3
 var player_face_angle: float
+var player_face_angle_signed_rad: float
 
 # Behaviour
 enum MovementType {STANDING, DIRECTIONAL, CURVED_CLOCKWISE, CURVED_COUNTERCLOCKWISE}
-enum TurnType {NO_TURN, FOLLOW, TURN, WITH_MOVEMENT}
+enum TurnType {NO_TURN, FOLLOW, TURN, WITH_MOVEMENT, SPIN}
 
 var movement_type: MovementType
 var movement_target_position: Vector3
@@ -46,13 +47,22 @@ var movement_speed: float
 var turn_type: TurnType
 var body_direction_target_node: Node3D
 var body_direction_target_position: Vector3
+var body_direction_target_direction: Vector3
 var angular_speed: float
 var head_direction_target: Node3D
+
+# Fly Wave Animation
+var fly_wave_tween: Tween
+@export var fly_wave_curve: Curve
+@export var fly_wave_height := .7
+@export var fly_wave_duration := .95
+@onready var fly_wave_pivot: Node3D = %FlyWavePivot
 
 # Constanst
 const DEFAULT_MOVEMENT_SPEED = 4.0
 const DEFAULT_ANGULAR_SPEED = 1.1
 const MOVEMENT_TARGET_RANGE = 1.5
+const FLY_HEIGHT = 3.6
 
 func _ready():
 	Game.dragon = self
@@ -124,7 +134,8 @@ func analyse_battlefield():
 	player_direction_clean.y = 0.0
 	player_direction_clean = player_direction_clean.normalized()
 	var own_direction_clean = Functions.no_y_normalized(to_global(Vector3.FORWARD) - global_position)
-	player_face_angle = rad_to_deg(abs(own_direction_clean.signed_angle_to(player_direction_clean, Vector3.UP)))
+	player_face_angle_signed_rad = own_direction_clean.signed_angle_to(player_direction_clean, Vector3.UP)
+	player_face_angle = rad_to_deg(abs(player_face_angle_signed_rad))
 	if DebugInfo.debug_visible:
 		DebugInfo.refresh_info("Player Dist", player_distance)
 		DebugInfo.refresh_info("Player Angle", player_face_angle)
@@ -147,6 +158,8 @@ func choose_action():
 		if random_choice <= cumulative_chances[i]:
 			new_state = state_names[i]
 			break
+	if new_state == "":
+		printerr("No state was chosen")
 	if DebugInfo.debug_visible:
 		var sorted_index = range(len(state_names))
 		sorted_index.sort_custom(func(a,b): return flat_chances[a] > flat_chances[b])
@@ -182,6 +195,12 @@ func movement_process(delta: float):
 	$CollisionBody.position = Vector3.ZERO
 	
 	last_movement_vector = global_position - old_pos
+	
+	# Fly height animation
+	if is_flying:
+		if fly_wave_tween == null or (not fly_wave_tween.is_running()):
+			fly_wave_tween = get_tree().create_tween()
+			fly_wave_tween.tween_method(func(progress): fly_wave_pivot.position.y = fly_wave_curve.sample_baked(progress), 0.0, 1.0, fly_wave_duration)
 
 func turning_process(delta: float):
 	if turn_type == TurnType.NO_TURN and movement_type == MovementType.DIRECTIONAL:
@@ -196,6 +215,8 @@ func turning_process(delta: float):
 			target_direction = Functions.no_y_normalized(body_direction_target_node.global_position - global_position)
 		TurnType.WITH_MOVEMENT:
 			target_direction = Functions.no_y_normalized(last_movement_vector)
+		TurnType.SPIN:
+			target_direction = Functions.no_y_normalized(body_direction_target_direction)
 		TurnType.NO_TURN:
 			return
 	var angle_diff := clean_current_direction.signed_angle_to(target_direction, Vector3.UP)
@@ -212,5 +233,5 @@ func get_nearest_collision(direction: Vector3) -> Vector3:
 	return %PlayerRay.get_collision_point()
 
 func get_state_history_index(state_name):
-	var index = state_history.find(state_name)
-	return 100 if index == -1 else index
+	var index = state_history.slice(-1, -20, -1).find(state_name)
+	return 20 if index == -1 else index

@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://cu0j2oc2nfkvl"]
+[gd_scene load_steps=41 format=3 uid="uid://cu0j2oc2nfkvl"]
 
 [ext_resource type="Script" path="res://Objects/Dragon/Dragon.gd" id="1_b10y7"]
 [ext_resource type="Script" path="res://Objects/Dragon/Idle.gd" id="2_3qwwn"]
@@ -13,10 +13,17 @@
 [ext_resource type="Script" path="res://Objects/Dragon/SpitFireCone.gd" id="10_b6fvh"]
 [ext_resource type="Script" path="res://Objects/Dragon/Roar.gd" id="11_5ddqa"]
 [ext_resource type="Script" path="res://Objects/Dragon/Rise.gd" id="12_h5ryw"]
+[ext_resource type="Script" path="res://Objects/Dragon/QuickTurn.gd" id="12_kl28g"]
 [ext_resource type="Script" path="res://Objects/Dragon/AirGrab.gd" id="13_3xwwt"]
 [ext_resource type="Script" path="res://Objects/Dragon/Dead.gd" id="14_8ti8k"]
+[ext_resource type="Script" path="res://Objects/Dragon/SlowLanding.gd" id="14_bvvsy"]
+[ext_resource type="Script" path="res://Objects/Dragon/AirWander.gd" id="14_im864"]
 [ext_resource type="PackedScene" uid="uid://dh2syk58pnldt" path="res://Objects/Dragon/DragonScaleArea.tscn" id="15_0h3lm"]
 [ext_resource type="Material" uid="uid://se0l8mkv0wwa" path="res://Assets/Materials/DamageIndicator.tres" id="16_yafp0"]
+
+[sub_resource type="Curve" id="Curve_hfnbm"]
+_data = [Vector2(0, 0), 0.0, 3.7213, 0, 0, Vector2(0.284483, 1), 4.60243, 0.0, 0, 0, Vector2(1, 0), -2.10909, 0.0, 0, 0]
+point_count = 3
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p3von"]
 resource_name = "dragonskin_01"
@@ -310,17 +317,23 @@ radius = 7.77653
 
 [node name="Dragon" type="Node3D"]
 script = ExtResource("1_b10y7")
+fly_wave_curve = SubResource("Curve_hfnbm")
 
 [node name="Model" type="Node3D" parent="."]
+unique_name_in_owner = true
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
-[node name="dragon_rig" type="Node3D" parent="Model"]
-transform = Transform3D(0.345045, 0, 0, 0, 0.171191, -0.299582, 0, 0.299582, 0.171191, 0, 2.39727, -1.29748)
+[node name="FlyWavePivot" type="Node3D" parent="Model"]
+unique_name_in_owner = true
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0, 0, 0)
 
-[node name="bones_hindleg_r" type="Node3D" parent="Model/dragon_rig"]
+[node name="dragon_rig" type="Node3D" parent="Model/FlyWavePivot"]
+transform = Transform3D(-0.345045, -2.61903e-08, -1.4966e-08, 0, 0.171191, -0.299582, 3.01648e-08, -0.299582, -0.171191, 1.13429e-07, 2.39727, 1.29748)
+
+[node name="bones_hindleg_r" type="Node3D" parent="Model/FlyWavePivot/dragon_rig"]
 transform = Transform3D(-5.62705, 0.144859, 0.674072, 0.206565, -4.93377, 2.78465, -0.65779, -2.78854, -4.89187, 1.05722, 0.531118, 0.494339)
 
-[node name="Skeleton3D" type="Skeleton3D" parent="Model/dragon_rig/bones_hindleg_r"]
+[node name="Skeleton3D" type="Skeleton3D" parent="Model/FlyWavePivot/dragon_rig/bones_hindleg_r"]
 transform = Transform3D(-0.779645, 0.00975031, 0.0598988, 0.0241265, 0.760663, 0.186485, 0.0564364, -0.190486, 0.747754, 0.23766, -0.060424, -0.46976)
 bones/0/name = "bone_hindleg_up.r"
 bones/0/parent = -1
@@ -442,20 +455,20 @@ bones/16/position = Vector3(-2.98023e-08, 0.143849, -9.35979e-08)
 bones/16/rotation = Quaternion(-0.0171414, -0.00763878, -0.0164805, 0.999688)
 bones/16/scale = Vector3(1, 1, 1)
 
-[node name="dragonarm_001" type="MeshInstance3D" parent="Model/dragon_rig/bones_hindleg_r/Skeleton3D"]
+[node name="dragonarm_001" type="MeshInstance3D" parent="Model/FlyWavePivot/dragon_rig/bones_hindleg_r/Skeleton3D"]
 transform = Transform3D(1, -1.86265e-09, -7.45058e-09, -2.79397e-09, 1, 0, -3.72529e-09, -2.98023e-08, 1, 0.000561535, -0.00393975, -0.0143023)
 mesh = SubResource("ArrayMesh_52u16")
 skin = SubResource("Skin_ruchw")
 
-[node name="dragonmesh" type="MeshInstance3D" parent="Model/dragon_rig"]
+[node name="dragonmesh" type="MeshInstance3D" parent="Model/FlyWavePivot/dragon_rig"]
 transform = Transform3D(1, 0, 0, 0, 0.602226, 0.798326, 0, -0.798326, 0.602226, 0.000831902, 2.52881, 2.44337)
 mesh = SubResource("ArrayMesh_ien5s")
 skeleton = NodePath("")
 
-[node name="Empty" type="Node3D" parent="Model/dragon_rig/dragonmesh"]
+[node name="Empty" type="Node3D" parent="Model/FlyWavePivot/dragon_rig/dragonmesh"]
 transform = Transform3D(0.52487, 0, 0, 0, 0.508277, 0.130928, 0, -0.130928, 0.508277, 4.25657, -3.33722, 5.60043)
 
-[node name="scale_group_fronleg01_r" type="MeshInstance3D" parent="Model/dragon_rig/dragonmesh/Empty"]
+[node name="scale_group_fronleg01_r" type="MeshInstance3D" parent="Model/FlyWavePivot/dragon_rig/dragonmesh/Empty"]
 transform = Transform3D(0.0173188, 0.0400298, 0.0578776, -0.06377, 0.0341329, -0.00452532, -0.0297589, -0.0498468, 0.0433802, 0.564616, 0.259235, -0.382793)
 mesh = SubResource("ArrayMesh_2ch5q")
 skeleton = NodePath("")
@@ -493,6 +506,7 @@ script = ExtResource("10_b6fvh")
 script = ExtResource("11_5ddqa")
 
 [node name="QuickTurn" type="Node" parent="States"]
+script = ExtResource("12_kl28g")
 
 [node name="JumpAttack" type="Node" parent="States"]
 
@@ -505,10 +519,14 @@ script = ExtResource("13_3xwwt")
 [node name="AirFire" type="Node" parent="States"]
 
 [node name="AirWander" type="Node" parent="States"]
+script = ExtResource("14_im864")
+air_state = true
 
 [node name="LandingAttack" type="Node" parent="States"]
 
 [node name="SlowLanding" type="Node" parent="States"]
+script = ExtResource("14_bvvsy")
+air_state = true
 
 [node name="HurtCry" type="Node" parent="States"]
 

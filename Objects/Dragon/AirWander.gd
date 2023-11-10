@@ -1,13 +1,13 @@
 extends DragonState
 
 func get_probability() -> float:
-	return 0.06
+	return 0.1
 
-var max_duration : float
-var timer : float
+var max_duration := 0.0
+var timer := 0.0
 
 const DISTANCE_TO_WALL = 1.5
-const MIN_DIST = 5.5
+const MIN_DIST = 2.5
 
 func effect_start(index):
 	max_duration = 3.0 + randf() * 2.0

@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://y3p7tx5w342o"]
+
+[ext_resource type="Script" path="res://Utility/PlayerDetectionArea.gd" id="1_5oar8"]
+
+[node name="PlayerDetectionArea" type="Area3D"]
+script = ExtResource("1_5oar8")
