@@ -43,4 +43,6 @@ func activate(_lifetime := 0.0):
 			lifetime = _lifetime
 
 func do_damage():
-	pass # TODO Connect with player
+	var health_system = Game.player.get_health_system()
+	if health_system.can_take_damage():
+		health_system.take_damage(self, damage)

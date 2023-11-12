@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://b88xm1bnqg3hf"]
+[gd_scene load_steps=6 format=3 uid="uid://c38hoie1etfii"]
 
 [ext_resource type="PackedScene" uid="uid://bfw4se6ttoft7" path="res://Utility/PlayerDamageArea.tscn" id="1_0d1ls"]
 [ext_resource type="Script" path="res://Objects/Projectiles/Firecone.gd" id="1_4vrij"]
