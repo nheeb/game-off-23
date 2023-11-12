@@ -64,10 +64,8 @@ func perform_melee():
 	is_performing_melee = true
 	await get_tree().create_timer(.1).timeout
 	hurt_box.monitorable = true
-	player_motion.dodge_boost_speed = .4
 	await get_tree().create_timer(.7).timeout
 	hurt_box.monitorable = false
-	player_motion.dodge_boost_speed = 0.0
 	is_performing_melee = false
 	
 func create_projectile():
