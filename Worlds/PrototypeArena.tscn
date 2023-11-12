@@ -33,6 +33,7 @@ shadow_enabled = true
 [node name="Player" parent="." instance=ExtResource("2_khuxf")]
 
 [node name="PlayerCamera" parent="." node_paths=PackedStringArray("player") instance=ExtResource("1_bmttx")]
+target_distance_from_player = 6.0
 player = NodePath("../Player")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]

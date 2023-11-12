@@ -9,6 +9,8 @@ func _physics_process(delta):
 	if player.is_dead():
 		movement_direction = Vector3.ZERO
 	if Game.main_cam:
-		movement_direction = Game.main_cam.basis * movement_direction
+		var angles = Game.main_cam.basis.get_euler()
+		var control_basis = Basis(Vector3.UP, angles.y)
+		movement_direction = control_basis * movement_direction
 	movement_direction.y = 0
 	player_motion.movement_intent = movement_direction

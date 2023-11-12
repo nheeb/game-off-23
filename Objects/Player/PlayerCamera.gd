@@ -1,7 +1,7 @@
 class_name PlayerCamera extends Camera3D
 
-@export var height = 4.0
-@export var target_distance_from_player = 10.0
+@export var height = 10.0
+@export var target_distance_from_player = 4.0
 @export var responsivity = 2.0
 @export var rotation_responsivity = 1.0
 @export var player: Node3D
@@ -34,8 +34,8 @@ func getTargetCameraRotation():
 	return getTargetCameraRotationTransform().basis.get_rotation_quaternion()
 	
 func getTargetCameraRotationTransform():
-	return Transform3D(Basis(), Functions.remove_y_value(player.global_position)) \
-		.looking_at(Functions.remove_y_value(boss_focus.global_position))
+	return Transform3D(Basis(), global_position) \
+		.looking_at(Functions.remove_y_value(player.global_position))
 	
 func get_camera_backward():
 	if boss_focus != null:

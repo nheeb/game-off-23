@@ -59,8 +59,10 @@ func perform_melee():
 	reset_charge()
 	await get_tree().create_timer(.1).timeout
 	hurt_box.monitorable = true
+	player_motion.dodge_boost_speed = 8.0
 	await get_tree().create_timer(.5).timeout
-	hurt_box.monitorable = true
+	hurt_box.monitorable = false
+	player_motion.dodge_boost_speed = 0.0
 	
 func create_projectile():
 	var target_position = mouse_detection_layer.get_global_layer_mouse_position()
