@@ -18,7 +18,7 @@ func effect_start(index):
 	await dragon.turn_done
 	dragon.body_direction_target_direction = (-dragon.global_transform.basis.z).rotated(Vector3.UP, turn_sign * deg_to_rad(170.0))
 	await dragon.turn_done
-	await get_tree().create_timer(.3)
+	await get_tree().create_timer(.3).timeout
 	next_state = "Idle"
 
 func effect_process(delta):

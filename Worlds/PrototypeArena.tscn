@@ -1,22 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://r6ae26ljbfrt"]
+[gd_scene load_steps=8 format=3 uid="uid://r6ae26ljbfrt"]
 
 [ext_resource type="PackedScene" uid="uid://q0ul6kun0gv4" path="res://Objects/Player/PlayerCamera.tscn" id="1_bmttx"]
 [ext_resource type="Script" path="res://Worlds/PrototypeArena.gd" id="1_xl6ky"]
 [ext_resource type="PackedScene" uid="uid://d1t8v3yidk6mp" path="res://Objects/Player/Player.tscn" id="2_khuxf"]
 [ext_resource type="PackedScene" uid="uid://cu0j2oc2nfkvl" path="res://Objects/Dragon/Dragon.tscn" id="3_evqoh"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_0jf7f"]
-
-[sub_resource type="Sky" id="Sky_5ccci"]
-sky_material = SubResource("ProceduralSkyMaterial_0jf7f")
-
-[sub_resource type="Environment" id="Environment_fj5x2"]
-background_mode = 3
-sky = SubResource("Sky_5ccci")
-ambient_light_source = 3
-glow_hdr_threshold = 0.1
-glow_hdr_scale = 2.67
-volumetric_fog_density = 0.02
+[ext_resource type="Environment" uid="uid://bagmablituwcd" path="res://Assets/WorldEnv/PrototypeArena.tres" id="4_1gto5"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_q0048"]
 
@@ -37,7 +25,7 @@ target_distance_from_player = 6.0
 player = NodePath("../Player")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_fj5x2")
+environment = ExtResource("4_1gto5")
 
 [node name="World" type="Node3D" parent="."]
 

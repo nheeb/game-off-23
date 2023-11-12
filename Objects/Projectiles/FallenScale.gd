@@ -1,8 +1,8 @@
 extends Node3D
 
 const FLOAT_EPSILON = 0.00001
-@onready var initial_velocity: Vector3 = random_throw_direction()
-@export var gravity_speed : float = 2.0
+var initial_velocity: Vector3# = random_throw_direction()
+@export var gravity_speed : float = 4.0
 @export var friction : float = 0.3
 @export var ground_level : float = 0.6
 @export var throw_speed_variation : float = 3.0
@@ -11,7 +11,7 @@ const FLOAT_EPSILON = 0.00001
 @export var rotation_speed_variation: float = 2.0
 @export var rotation_axis : Vector3 = Vector3.RIGHT
 @export var random_velocity_variation : float = 0.3
-@onready var final_basis = transform.basis
+@onready var final_basis = transform.basis.rotated(Vector3.UP, PI * 2 * randf())
 
 func random_throw_direction():
 	var rng = RandomNumberGenerator.new()
@@ -40,6 +40,18 @@ func random_throw_direction():
 	if rotation_axis == Vector3(0,0,0):
 		rotation_axis = Vector3.RIGHT
 	return v
+
+func activate(direction: Vector3) -> void:
+	initial_velocity = direction
+	var rng = RandomNumberGenerator.new()
+	rotation_speed = rotation_speed+rng.randf_range(-rotation_speed_variation, rotation_speed_variation)
+	rotation_axis = (
+		rng.randi_range(0, 1)* Vector3.RIGHT +
+		rng.randi_range(0, 1)* Vector3.UP +
+		rng.randi_range(0, 1)* Vector3.FORWARD
+	).normalized()
+	if rotation_axis == Vector3(0,0,0):
+		rotation_axis = Vector3.RIGHT
 
 func _physics_process(delta):
 	if transform.origin.y > ground_level + FLOAT_EPSILON:

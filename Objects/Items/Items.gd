@@ -21,7 +21,7 @@ func get_obtained_items() -> Array[ItemData]:
 
 func get_equiped_items() -> Array[ItemData]:
 	var item_array: Array[ItemData] = []
-	item_array.append_array(equipment.values().filter(func (x): x != null))
+	item_array.append_array(equipment.values().filter(func (x): return x != null))
 	return item_array
 
 func equip_item(item: ItemData):

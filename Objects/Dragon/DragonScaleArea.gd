@@ -25,9 +25,14 @@ func take_damage(damage: int = 1):
 			visible_scales.pick_random().visible = false
 			
 	# Throw fallen scales
-	var direction = global_transform.basis.y + .8 * Vector3.UP + (randf()-.5) * global_transform.basis.x
-	direction = direction.normalized()
-	#TODO spawn the Fallen Scale
+	for i in range(3):
+		var direction = global_transform.basis.y + .7 * Vector3.UP + 2.0 * (randf()-.5) * global_transform.basis.x
+		direction = direction.normalized() * randf_range(2.5, 4.5)
+		#TODO spawn the Fallen Scale
+		var fallen_scale = FALLEN_SCALE.instantiate()
+		Game.world.add_child(fallen_scale)
+		fallen_scale.global_position = self.global_position + randf_range(-.2, .6) * Vector3.UP
+		fallen_scale.activate(direction)
 	
 	# Process damage
 	hp -= damage

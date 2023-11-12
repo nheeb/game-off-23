@@ -179,7 +179,8 @@ graph_offset = Vector2(-56, -127)
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.55645, 0)
-collision_layer = 65537
+collision_layer = 65536
+collision_mask = 19
 script = ExtResource("1_5pkqn")
 
 [node name="Knight" parent="." instance=ExtResource("1_ox3sj")]
@@ -231,30 +232,37 @@ bones/49/position = Vector3(-0.00510848, 0.00788411, 0.000598494)
 bones/49/rotation = Quaternion(0.758725, -0.000817051, -0.651411, 0.000126271)
 
 [node name="Knight_Cape" parent="Knight/RootNode/Rig/Skeleton3D" index="0"]
-transform = Transform3D(0.996246, 7.9952e-05, 0.0865695, 3.29068e-06, 1, -0.000961427, -0.0865695, 0.000958103, 0.996245, 6.58523e-07, 0.0120246, 6.00817e-06)
+transform = Transform3D(0.996246, 7.99518e-05, 0.0865694, 3.29075e-06, 1, -0.000961426, -0.0865695, 0.000958102, 0.996245, 6.58522e-07, 0.0120246, 6.00817e-06)
+bone_idx = 4
 
 [node name="Rectangle_Shield" parent="Knight/RootNode/Rig/Skeleton3D" index="1"]
-transform = Transform3D(-0.000675161, 0.263157, 0.964752, 0.999876, -0.014991, 0.0047893, 0.0157232, 0.964637, -0.263113, 0.0066241, 0.00628064, -0.00044379)
+transform = Transform3D(-0.000674916, 0.263157, 0.964752, 0.999876, -0.014991, 0.00478903, 0.0157232, 0.964637, -0.263114, 0.0066241, 0.00628064, -0.000443792)
 visible = false
+bone_idx = 10
 
 [node name="Round_Shield" parent="Knight/RootNode/Rig/Skeleton3D" index="2"]
-transform = Transform3D(-0.000675161, 0.263157, 0.964752, 0.999876, -0.014991, 0.0047893, 0.0157232, 0.964637, -0.263113, 0.0066241, 0.00628064, -0.00044379)
+transform = Transform3D(-0.000674916, 0.263157, 0.964752, 0.999876, -0.014991, 0.00478903, 0.0157232, 0.964637, -0.263114, 0.0066241, 0.00628064, -0.000443792)
 visible = false
+bone_idx = 11
 
 [node name="Spike_Shield" parent="Knight/RootNode/Rig/Skeleton3D" index="3"]
-transform = Transform3D(-0.000675161, 0.263157, 0.964752, 0.999876, -0.014991, 0.0047893, 0.0157232, 0.964637, -0.263113, 0.0066241, 0.00628064, -0.00044379)
+transform = Transform3D(-0.000674916, 0.263157, 0.964752, 0.999876, -0.014991, 0.00478903, 0.0157232, 0.964637, -0.263114, 0.0066241, 0.00628064, -0.000443792)
 visible = false
+bone_idx = 12
 
 [node name="Badge_Shield" parent="Knight/RootNode/Rig/Skeleton3D" index="4"]
-transform = Transform3D(-0.000675161, 0.263157, 0.964752, 0.999876, -0.014991, 0.0047893, 0.0157232, 0.964637, -0.263113, 0.0066241, 0.00628064, -0.00044379)
+transform = Transform3D(-0.000674916, 0.263157, 0.964752, 0.999876, -0.014991, 0.00478903, 0.0157232, 0.964637, -0.263114, 0.0066241, 0.00628064, -0.000443792)
 visible = false
+bone_idx = 13
 
 [node name="1H_Sword_Offhand" parent="Knight/RootNode/Rig/Skeleton3D" index="5"]
-transform = Transform3D(-0.000675161, 0.263157, 0.964752, 0.999876, -0.014991, 0.0047893, 0.0157232, 0.964637, -0.263113, 0.00512019, 0.00627318, -3.36351e-05)
+transform = Transform3D(-0.000674916, 0.263157, 0.964752, 0.999876, -0.014991, 0.00478903, 0.0157232, 0.964637, -0.263114, 0.00512019, 0.00627317, -3.36359e-05)
 visible = false
+bone_idx = 14
 
 [node name="2H_Sword" parent="Knight/RootNode/Rig/Skeleton3D" index="6"]
-transform = Transform3D(0.00150351, -0.16394, -0.986469, -0.999976, -0.0069257, -0.000372551, -0.00677111, 0.986446, -0.163946, -0.00496831, 0.0063145, 0.00137702)
+transform = Transform3D(0.00150357, -0.163939, -0.986469, -0.999976, -0.00692543, -0.000372637, -0.0067709, 0.986446, -0.163945, -0.00496831, 0.00631449, 0.00137702)
+bone_idx = 20
 
 [node name="2H_Sword" parent="Knight/RootNode/Rig/Skeleton3D/2H_Sword" index="0"]
 material_override = SubResource("StandardMaterial3D_g2uwq")
@@ -271,11 +279,13 @@ transform = Transform3D(0.999991, -0.0041519, 6.33146e-05, 0.00415159, 0.999986,
 shape = SubResource("CylinderShape3D_e15pv")
 
 [node name="1H_Sword" parent="Knight/RootNode/Rig/Skeleton3D" index="7"]
-transform = Transform3D(0.00150351, -0.16394, -0.986469, -0.999976, -0.0069257, -0.000372551, -0.00677111, 0.986446, -0.163946, -0.00496831, 0.0063145, 0.00137702)
+transform = Transform3D(0.00150357, -0.163939, -0.986469, -0.999976, -0.00692543, -0.000372637, -0.0067709, 0.986446, -0.163945, -0.00496831, 0.00631449, 0.00137702)
 visible = false
+bone_idx = 21
 
 [node name="Knight_Helmet" parent="Knight/RootNode/Rig/Skeleton3D" index="8"]
-transform = Transform3D(0.999721, 3.92673e-05, 0.0236316, -2.83874e-05, 1, -0.00046073, -0.0236316, 0.000459931, 0.999721, 6.73774e-07, 0.0120246, 6.13558e-06)
+transform = Transform3D(0.999721, 3.92671e-05, 0.0236315, -2.83873e-05, 1, -0.000460729, -0.0236315, 0.000459929, 0.999721, 6.73773e-07, 0.0120246, 6.13557e-06)
+bone_idx = 23
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_tsyot")
