@@ -11,6 +11,7 @@ class_name AttackControls extends Node
 var sword_count = 1
 var is_charging = false
 var is_range_charging = false
+var is_performing_melee = false
 var charge = 0.0
 var projectile_scene = preload("res://Objects/Projectiles/PlayerArrow.tscn")
 
@@ -54,15 +55,20 @@ func perform_shoot():
 	sword_thrown()
 
 func perform_melee():
+	if is_performing_melee:
+		return
+	
 	animation_tree.set("parameters/Core/conditions/is_aiming", false)
 	animation_tree.set("parameters/Core/conditions/performing_melee", true)
 	reset_charge()
+	is_performing_melee = true
 	await get_tree().create_timer(.1).timeout
 	hurt_box.monitorable = true
-	player_motion.dodge_boost_speed = 8.0
-	await get_tree().create_timer(.5).timeout
+	player_motion.dodge_boost_speed = .4
+	await get_tree().create_timer(.7).timeout
 	hurt_box.monitorable = false
 	player_motion.dodge_boost_speed = 0.0
+	is_performing_melee = false
 	
 func create_projectile():
 	var target_position = mouse_detection_layer.get_global_layer_mouse_position()
@@ -72,10 +78,10 @@ func create_projectile():
 	projectile.source_position = player.global_position
 	projectile.target_position = target_position
 	var mid_point = (player.global_position + target_position) / 2.0
-	var control_point_displace = distance * 0.05 * (1.5 + (charge / max_charge) * 8.0)
+	var control_point_displace = distance * 0.05
 	projectile.control_point = mid_point + control_point_displace * player.global_transform.basis.x
 	projectile.control_point_return = mid_point - control_point_displace * player.global_transform.basis.x
-	projectile.path_time = distance * 0.15 * (1.0 - (charge / max_charge) * 0.5)
+	projectile.path_time = distance * 0.09 * (1.0 - (charge / max_charge) * 0.5)
 	get_tree().root.add_child(projectile)
 	Game.main_cam.projectile_focus = projectile
 
