@@ -1,8 +1,9 @@
 extends DragonState
 
-const MIN_DIST = 9.0
-const DIST_TO_PLAYER = 1.9
-const JUMP_HEIGHT = 2.0
+const MIN_DIST = 11.5
+const MAX_DIST = 50.0
+const DIST_TO_PLAYER = 2.3
+const JUMP_HEIGHT = 2.2
 
 @export var jump_curve : Curve
 
@@ -10,7 +11,7 @@ func _ready():
 	jump_curve.bake()
 
 func get_probability() -> float:
-	if dragon.player_in_sight and dragon.player_distance > MIN_DIST:
+	if dragon.player_in_sight and dragon.player_distance > MIN_DIST and dragon.player_distance < MAX_DIST:
 		return 0.1
 	else:
 		return 0.0

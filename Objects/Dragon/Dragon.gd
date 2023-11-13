@@ -51,6 +51,7 @@ var body_direction_target_position: Vector3
 var body_direction_target_direction: Vector3
 var angular_speed: float
 var head_direction_target: Node3D
+var has_gravity := true
 
 # Fly Wave Animation
 var fly_wave_tween: Tween
@@ -62,6 +63,7 @@ var fly_wave_tween: Tween
 # Constanst
 const DEFAULT_MOVEMENT_SPEED = 4.0
 const DEFAULT_ANGULAR_SPEED = 1.1
+const GRAVITY = 3.5
 const MOVEMENT_TARGET_RANGE = 1.5
 const FLY_HEIGHT = 3.6
 
@@ -191,6 +193,8 @@ func movement_process(delta: float):
 		MovementType.STANDING:
 			move_vector = Vector3.ZERO
 	$CollisionBody.velocity = move_vector
+	if has_gravity:
+		$CollisionBody.velocity.y -= GRAVITY
 	$CollisionBody.move_and_slide()
 	
 	global_position = $CollisionBody.global_position

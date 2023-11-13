@@ -7,13 +7,17 @@ var dead := false
 var max_hp := 3
 var hp : int
 
+const INVINC_TIME = .15
+
 func _ready():
 	hp = max_hp
 
 func _on_area_3d_area_entered(area):
 	if dead: return
-	take_damage(1)
-	print('take damage')
+	if $Timer.is_stopped():
+		take_damage(1)
+		$Timer.start(INVINC_TIME)
+	#print('take damage')
 
 const FALLEN_SCALE = preload("res://Objects/Projectiles/FallenScale.tscn")
 func take_damage(damage: int = 1):
