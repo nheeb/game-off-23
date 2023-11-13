@@ -28,7 +28,7 @@ var current_state := "":
 		%DebugStateLabel.text = value
 var new_state := "Idle"
 var current_state_object: DragonState
-var state_history := []
+var state_history := [""]
 
 # Battlefield analysis
 var player_in_sight : bool

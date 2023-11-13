@@ -525,6 +525,7 @@ jump_curve = SubResource("Curve_jvhla")
 
 [node name="Rise" type="Node" parent="States"]
 script = ExtResource("12_h5ryw")
+repeat_malus_range = 8
 
 [node name="AirGrab" type="Node" parent="States"]
 script = ExtResource("13_3xwwt")

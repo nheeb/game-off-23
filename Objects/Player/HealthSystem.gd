@@ -15,16 +15,16 @@ func _ready():
 func _physics_process(delta):
 	if invulnerable_time_remaining > 0.0:
 		invulnerable_time_remaining -= delta
-	
-func take_damage(source: Node3D, amount: float):
+
+func take_damage(source: Node3D, amount: int):
 	if not can_take_damage():
 		return
 	invulnerable_time_remaining = after_hit_invulnerability_duration
 	emit_signal("damage_taken", source)
-	health -= 1
+	health -= amount
 	health = max(0, health)
 	if health == 0:
 		emit_signal("death", source)
-	
+
 func can_take_damage():
 	return invulnerable_time_remaining <= 0.0
