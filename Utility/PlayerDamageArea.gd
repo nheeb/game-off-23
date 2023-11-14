@@ -27,12 +27,11 @@ func _physics_process(delta):
 				self.active = false
 				if delete_on_perish:
 					queue_free()
+		if has_overlapping_areas():
+			do_damage()
+			if delete_on_player_hit:
+				queue_free()
 
-func _on_area_entered(area):
-	if active:
-		do_damage()
-		if delete_on_player_hit:
-			queue_free()
 
 func activate(_lifetime := 0.0):
 	self.active = true

@@ -1,7 +1,9 @@
 extends DragonState
 
+const MIN_DIST = 8.0
+
 func get_probability() -> float:
-	return 0.2
+	return 0.14 if dragon.player_distance > MIN_DIST else 0.04
 
 var duration := 0.0
 var timer := 0.0

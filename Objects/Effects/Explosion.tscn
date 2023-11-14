@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dmsfcv2i7w08x"]
+[gd_scene load_steps=17 format=3 uid="uid://dmsfcv2i7w08x"]
 
 [ext_resource type="Script" path="res://Objects/Effects/Explosion.gd" id="1"]
 [ext_resource type="PackedScene" uid="uid://bfw4se6ttoft7" path="res://Utility/PlayerDamageArea.tscn" id="2_jvoci"]
@@ -75,7 +75,9 @@ radial_segments = 8
 rings = 8
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_kuuvn"]
-radius = 1.13768
+radius = 1.6844
+
+[sub_resource type="SphereMesh" id="SphereMesh_oju13"]
 
 [node name="Explosion" type="Node3D"]
 script = ExtResource("1")
@@ -123,9 +125,15 @@ omni_range = 7.51348
 damage = 2
 knockback_force = 1.5
 active = true
+default_lifetime = 0.4
 delete_on_perish = true
 delete_on_player_hit = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDamageArea"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.504786, 0)
 shape = SubResource("SphereShape3D_kuuvn")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerDamageArea"]
+transform = Transform3D(3.39046, 0, 0, 0, 3.39046, 0, 0, 0, 3.39046, 0, 0.578286, 0)
+visible = false
+mesh = SubResource("SphereMesh_oju13")

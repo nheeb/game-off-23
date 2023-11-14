@@ -32,11 +32,11 @@ func getTargetCameraRotation():
 	var transform = Transform3D(Basis(), Functions.remove_y_value(player.global_position)) \
 		.looking_at(Functions.remove_y_value(boss_focus.global_position))
 	return getTargetCameraRotationTransform().basis.get_rotation_quaternion()
-	
+
 func getTargetCameraRotationTransform():
 	return Transform3D(Basis(), global_position) \
 		.looking_at(Functions.remove_y_value(player.global_position))
-	
+
 func get_camera_backward():
 	if boss_focus != null:
 		return Functions.no_y_normalized(player.global_position - boss_focus.global_position)
