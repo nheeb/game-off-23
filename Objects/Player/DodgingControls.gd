@@ -17,7 +17,7 @@ func _physics_process(delta):
 		if dodge_remaining_time <= 0:
 			stop_dodge()
 	
-	if Input.is_action_just_pressed("jump") and player.is_on_floor():
+	if Input.is_action_just_pressed("dodge") and player.is_on_floor():
 		start_dodge()
 		
 func start_dodge():
@@ -26,10 +26,12 @@ func start_dodge():
 	animation_tree.set("parameters/Core/conditions/is_dodging", true)
 	player.velocity.y = jump_velocity
 	player_motion.dodge_boost_speed = 10.0
+	player_motion.dash_lock = true
 	
 func stop_dodge():
 	dodge_remaining_time = 0
 	animation_tree.set("parameters/Core/conditions/is_dodging", false)
 	animation_tree.set("parameters/Core/conditions/is_dodging_completed", true)
 	player_motion.dodge_boost_speed = 0.0
+	player_motion.dash_lock = false
 	

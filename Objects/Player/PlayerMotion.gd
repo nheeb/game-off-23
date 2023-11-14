@@ -5,6 +5,7 @@ class_name PlayerMotion extends Node
 
 var movement_intent: Vector3 = Vector3.ZERO
 
+var dash_lock: bool = false
 var dodge_boost_speed = 0.0
 var range_attack_speed_coefficient = 1.0
 var knockback_value: Vector3 = Vector3.ZERO
@@ -24,13 +25,11 @@ func _physics_process(delta):
 	player.move_and_slide()
 
 func get_player_intent_movement_direction():
-	if dodge_boost_speed > 0:
-		return -player.global_transform.basis.z
 	return movement_intent
 
 func handle_movement_intent(delta):
 	var current_movement_intent = get_player_intent_movement_direction()
-	if dodge_boost_speed <= 0 and current_movement_intent.length() > 0:
+	if not dash_lock && current_movement_intent.length() > 0:
 		var targetRotation = player.global_transform.looking_at(player.global_position + movement_intent).basis.get_rotation_quaternion()
 		player.quaternion = player.quaternion.slerp(targetRotation, turn_sensitivity * delta)
 	var movement_velocity = current_movement_intent * get_movement_speed()
