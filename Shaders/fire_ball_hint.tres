@@ -1,0 +1,41 @@
+[gd_resource type="Shader" format=3 uid="uid://cna3me7fd2pn7"]
+
+[resource]
+code = "shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx,unshaded;
+uniform vec3 inner_color : source_color;
+uniform vec3 outer_color : source_color;
+uniform float point_size : hint_range(0,128);
+uniform float roughness : hint_range(0,1);
+uniform float specular;
+uniform float metallic;
+uniform float inner_circle_radius: hint_range(0,1);
+uniform float transparency_radius: hint_range(0,1);
+uniform float progress : hint_range(0,1);
+
+float clamp_and_map(float value, float istart, float istop, float ostart, float ostop) {
+    value = clamp(value, istart, istop);
+    return ostart + (ostop - ostart) * ((value - istart) / (istop - istart));
+}
+
+void fragment() {
+	METALLIC = metallic;
+	ROUGHNESS = roughness;
+	SPECULAR = specular;
+	
+	float beat = sin(TIME*2.0);
+	float radius = 0.75 + beat/18.0;
+	vec2 center_uv = UV - 0.5;
+	float d = distance(center_uv, vec2(0, 0));
+	float a = clamp(radius - d*2.0, 0.0, 1.0);
+	float a_clip = step(transparency_radius, a);
+	ALPHA = (a_clip + (1.0-a_clip) * a) * 1.0-step(progress/2.0, d);
+	float inner = 1.0-a_clip;
+	ALBEDO = outer_color*inner + inner_color*(1.0-inner);
+	ALPHA = ALPHA * .4;
+	
+	float border = clamp_and_map(distance(.35,length(center_uv)), 0.005, 0.01, 1.0, 0.0);
+	border = border * float(mod(abs(acos(center_uv.x/length(center_uv)) + TIME * .3 * sign(center_uv.y)), PI / 6.0) < PI / 12.0);
+	ALPHA = max(ALPHA, border);
+}
+"

@@ -17,12 +17,13 @@ script = ExtResource("1_4vrij")
 
 [node name="PlayerDamageArea" parent="." instance=ExtResource("1_0d1ls")]
 damage = 1
-knockback_force = 0.5
+knockback_force = 0.7
 active = true
 perishable = false
 
 [node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="PlayerDamageArea"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+depth = 3.0
 polygon = PackedVector2Array(0, 0, 0.1, 0.1, -0.1, 0.1)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]

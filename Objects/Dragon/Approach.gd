@@ -3,8 +3,8 @@ extends DragonState
 const HIGH_DIST_MIN = 16.0
 const HIGH_DIST_MAX = 28.0
 
-const STOP_DIST = 4.0
-const MAX_DURATION = 5.0
+const STOP_DIST = 7.0
+const MAX_DURATION = 3.0
 
 var timer := 0.0
 

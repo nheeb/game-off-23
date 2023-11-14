@@ -33,5 +33,6 @@ func explode():
 	emit_signal("fireball_explode")
 	var explosion = EXPLOSION.instantiate()
 	Game.world.add_child(explosion)
+	explosion.scale = 1.85 * Vector3.ONE
 	explosion.global_position = global_position
 	queue_free()
