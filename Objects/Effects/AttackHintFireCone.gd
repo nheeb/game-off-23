@@ -10,11 +10,11 @@ func start_closing():
 
 func set_transition_step(s):
 	transition_step = s
-	$AttackHintFireCone.material_override.set_shader_parameter("transparency_cap", transition_step)
+	$Cone.material_override.set_shader_parameter("transparency_cap", transition_step)
 
 func change_size(s):
 	size = s
-	$AttackHintFireCone.scale = Vector3(s, s, s)
+	$Cone.scale = Vector3(s, s, s)
 
 func _physics_process(delta):
 	if is_closing:

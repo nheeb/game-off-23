@@ -54,21 +54,29 @@ shader_parameter/roughness = 1.0
 shader_parameter/specular = 0.5
 shader_parameter/metallic = 0.0
 shader_parameter/progress = 1.0
-shader_parameter/transparency_cap = 1.0
+shader_parameter/transparency_cap = 0.75
 shader_parameter/color_main = Color(0.705882, 0, 0, 1)
-shader_parameter/color_wave = Color(0.666667, 0.196078, 0, 1)
+shader_parameter/color_wave = Color(1, 0.878431, 0.0431373, 1)
 shader_parameter/color_highlight = Color(1, 0, 0, 1)
-shader_parameter/wave_frequency = 50.0
-shader_parameter/wave_curvature = 10.0
-shader_parameter/wave_speed = 5.0
-shader_parameter/wave_thickness = 0.2
+shader_parameter/wave_frequency = 100.0
+shader_parameter/wave_curvature = 0.0
+shader_parameter/wave_speed = -20.0
+shader_parameter/wave_thickness = 0.5
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_564pe"]
+[sub_resource type="CylinderMesh" id="CylinderMesh_0nmue"]
+top_radius = 0.0
+bottom_radius = 8.0
+height = 16.0
+radial_segments = 16
+rings = 8
+cap_top = false
+cap_bottom = false
 
 [node name="AttackHintFireCone" type="Node3D"]
 script = ExtResource("1_x3vfm")
 
-[node name="AttackHintFireCone" type="MeshInstance3D" parent="."]
-transform = Transform3D(4.5, 0, 0, 0, 1, 0, 0, 0, 8, 0, 0, -8)
+[node name="Cone" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.8, 0, 0, 0, -4.37114e-08, -0.8, 0, 1, -3.49691e-08, 0, 0, -8)
 material_override = SubResource("ShaderMaterial_ywtm8")
-mesh = SubResource("PlaneMesh_564pe")
+mesh = SubResource("CylinderMesh_0nmue")
+skeleton = NodePath("../..")

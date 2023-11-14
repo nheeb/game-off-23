@@ -1,16 +1,87 @@
-[gd_scene load_steps=6 format=3 uid="uid://c38hoie1etfii"]
+[gd_scene load_steps=13 format=3 uid="uid://c38hoie1etfii"]
 
 [ext_resource type="PackedScene" uid="uid://bfw4se6ttoft7" path="res://Utility/PlayerDamageArea.tscn" id="1_0d1ls"]
 [ext_resource type="Script" path="res://Objects/Projectiles/Firecone.gd" id="1_4vrij"]
-[ext_resource type="Shader" path="res://Shaders/PlaceholderFirecone.gdshader" id="2_85nqt"]
+[ext_resource type="Shader" path="res://Shaders/fire_mesh.gdshader" id="3_0n33x"]
+[ext_resource type="Texture2D" uid="uid://dbba40bmo0uc6" path="res://Assets/Textures/Voronoi01.png" id="4_5q44r"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_cfi0y"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_hasu5"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3nsb5"]
+width = 120
+height = 120
+seamless = true
+noise = SubResource("FastNoiseLite_hasu5")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qvxsq"]
 render_priority = 0
-shader = ExtResource("2_85nqt")
-shader_parameter/albedo = Color(1, 0.372549, 0, 1)
-shader_parameter/progress = 0.0
+shader = ExtResource("3_0n33x")
+shader_parameter/dissolve_power = 5.0
+shader_parameter/dissolve_amount = 0.95
+shader_parameter/dissolve_tiling = Vector2(1, 1)
+shader_parameter/dissolve_speed = Vector2(0, -0.5)
+shader_parameter/dissolve_tiling2 = Vector2(10, 10)
+shader_parameter/dissolve_speed2 = Vector2(0, -5)
+shader_parameter/color_a = Color(1, 0.466667, 0, 1)
+shader_parameter/color_b = Color(1, 0.129412, 0.101961, 1)
+shader_parameter/color_c = Color(1, 0.854902, 0, 1)
+shader_parameter/tex_dissolve = ExtResource("4_5q44r")
+shader_parameter/tex_displace = SubResource("NoiseTexture2D_3nsb5")
 
-[sub_resource type="PlaneMesh" id="PlaneMesh_sfph7"]
+[sub_resource type="CylinderMesh" id="CylinderMesh_fxt6h"]
+top_radius = 0.0
+bottom_radius = 8.0
+height = 16.0
+radial_segments = 16
+rings = 8
+cap_top = false
+cap_bottom = false
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_hkdlp"]
+top_radius = 8.0
+bottom_radius = 8.0
+height = 0.1
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_7bfy0"]
+height = 0.4
+radius = 0.369155
+
+[sub_resource type="Animation" id="Animation_wm15i"]
+resource_name = "main"
+length = 1.6
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("PlayerDamageArea/HitShape")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, 0.0060925, -0.112884, 1.4, 1, -0.00399208, 0.0476956, -15.9711)
+tracks/1/type = "position_3d"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerDamageArea/Cone")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = PackedFloat32Array(0, 1, 0, 0, -0.05, 1.4, 1, 0, 0, -8)
+tracks/2/type = "scale_3d"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("PlayerDamageArea/Cone")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = PackedFloat32Array(0, 1, 0.01, 0.01, 0.01, 1.4, 1, 0.8, 1, 0.8, 1.6, 1, 0.001, 1, 0.001)
+tracks/3/type = "scale_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PlayerDamageArea/HitShape")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0.2, 0.2, 0.2, 1.4, 1, 18, 1, 18, 1.6, 1, 0.2, 0.2, 0.2)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_auxnd"]
+_data = {
+"main": SubResource("Animation_wm15i")
+}
 
 [node name="Firecone" type="Node3D"]
 script = ExtResource("1_4vrij")
@@ -19,13 +90,25 @@ script = ExtResource("1_4vrij")
 damage = 1
 knockback_force = 0.5
 active = true
+perishable = false
 
-[node name="CollisionPolygon3D" type="CollisionPolygon3D" parent="PlayerDamageArea"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
-polygon = PackedVector2Array(0, 0, 0.1, 0.1, -0.1, 0.1)
+[node name="Cone" type="MeshInstance3D" parent="PlayerDamageArea"]
+transform = Transform3D(0.8, 0, 0, 0, -4.37114e-08, -0.8, 0, 1, -3.49691e-08, 0, 0, -8)
+material_override = SubResource("ShaderMaterial_qvxsq")
+mesh = SubResource("CylinderMesh_fxt6h")
+skeleton = NodePath("../..")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(4.5, 0, 0, 0, 1, 0, 0, 0, 8, 0, 0, -8)
-visible = false
-material_override = SubResource("ShaderMaterial_cfi0y")
-mesh = SubResource("PlaneMesh_sfph7")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerDamageArea/Cone"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8, 3.42727e-07)
+material_override = SubResource("ShaderMaterial_qvxsq")
+mesh = SubResource("CylinderMesh_hkdlp")
+
+[node name="HitShape" type="CollisionShape3D" parent="PlayerDamageArea"]
+transform = Transform3D(18, 0, 0, 0, -4.37114e-08, 18, 0, -1, -7.86805e-07, -0.00399208, 0.0476956, -15.9711)
+shape = SubResource("CylinderShape3D_7bfy0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "main"
+libraries = {
+"": SubResource("AnimationLibrary_auxnd")
+}
