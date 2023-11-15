@@ -12,6 +12,10 @@ uniform vec2 dissolve_speed2 = vec2(1., 1.);
 uniform vec3 color_a : source_color;
 uniform vec3 color_b : source_color;
 uniform vec3 color_c : source_color;
+uniform float displaceTimescale = 0.5;
+uniform float displaceScaleX = 1.0;
+uniform float displaceScaleY = 0.0;
+uniform float displaceScaleZ = 1.0;
 
 vec2 getDissolveUV(vec2 uv) {
 	vec2 t = uv * dissolve_tiling;
@@ -51,6 +55,6 @@ void fragment() {
 }
 
 void vertex() {
-	vec4 dissolve_value = texture(tex_dissolve, getDissolveUV(UV) * 0.5f);
-	VERTEX.xyz += dissolve_value.xyz * vec3(1.5, 0.0, 1.5);
+	vec4 dissolve_value = texture(tex_displace, getDissolveUV(vec2(VERTEX.x + VERTEX.y, VERTEX.y + VERTEX.z)) * displaceTimescale);
+	VERTEX.xyz += (dissolve_value.xyz - vec3(.5, .5, .5)) * vec3(displaceScaleX, displaceScaleY, displaceScaleZ);
 }

@@ -1,10 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://cqd3cixtqlfsr"]
+[gd_scene load_steps=19 format=3 uid="uid://cqd3cixtqlfsr"]
 
 [ext_resource type="PackedScene" uid="uid://q0ul6kun0gv4" path="res://Objects/Player/PlayerCamera.tscn" id="1_1fblo"]
 [ext_resource type="PackedScene" uid="uid://d1t8v3yidk6mp" path="res://Objects/Player/Player.tscn" id="2_70wu6"]
 [ext_resource type="PackedScene" uid="uid://bfw4se6ttoft7" path="res://Utility/PlayerDamageArea.tscn" id="4_3igib"]
 [ext_resource type="PackedScene" uid="uid://c38hoie1etfii" path="res://Objects/Projectiles/Firecone.tscn" id="4_p8mmi"]
 [ext_resource type="PackedScene" uid="uid://c6fi4uotdsqog" path="res://Objects/Effects/Fire.tscn" id="4_rtv1e"]
+[ext_resource type="PackedScene" uid="uid://b8iw6hr4ixvho" path="res://Objects/Projectiles/Shockwave.tscn" id="6_hdmhj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r1c6q"]
 albedo_color = Color(0.576471, 0.576471, 0.576471, 1)
@@ -111,3 +112,6 @@ shape = SubResource("SphereShape3D_4s1la")
 
 [node name="Firecone" parent="." instance=ExtResource("4_p8mmi")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01936, 15.2083)
+
+[node name="Firecone2" parent="." instance=ExtResource("6_hdmhj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.216, 2.5, -7.92538)

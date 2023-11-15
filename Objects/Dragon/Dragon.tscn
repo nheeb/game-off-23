@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://cu0j2oc2nfkvl"]
+[gd_scene load_steps=47 format=3 uid="uid://cu0j2oc2nfkvl"]
 
 [ext_resource type="Script" path="res://Objects/Dragon/Dragon.gd" id="1_b10y7"]
 [ext_resource type="Script" path="res://Objects/Dragon/Idle.gd" id="2_3qwwn"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://Objects/Dragon/SpitFireBall.gd" id="9_ev16w"]
 [ext_resource type="Script" path="res://Objects/Dragon/SpitFireCone.gd" id="10_b6fvh"]
 [ext_resource type="Script" path="res://Objects/Dragon/Roar.gd" id="11_5ddqa"]
+[ext_resource type="Script" path="res://Objects/Dragon/Shockwave.gd" id="11_dt8fd"]
 [ext_resource type="Script" path="res://Objects/Dragon/Rise.gd" id="12_h5ryw"]
 [ext_resource type="Script" path="res://Objects/Dragon/QuickTurn.gd" id="12_kl28g"]
 [ext_resource type="Script" path="res://Objects/Dragon/AirGrab.gd" id="13_3xwwt"]
@@ -512,6 +513,9 @@ script = ExtResource("9_ev16w")
 
 [node name="SpitFireCone" type="Node" parent="States"]
 script = ExtResource("10_b6fvh")
+
+[node name="Shockwave" type="Node" parent="States"]
+script = ExtResource("11_dt8fd")
 
 [node name="Roar" type="Node" parent="States"]
 script = ExtResource("11_5ddqa")

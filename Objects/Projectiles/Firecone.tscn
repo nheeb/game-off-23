@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://c38hoie1etfii"]
+[gd_scene load_steps=17 format=3 uid="uid://c38hoie1etfii"]
 
 [ext_resource type="PackedScene" uid="uid://bfw4se6ttoft7" path="res://Utility/PlayerDamageArea.tscn" id="1_0d1ls"]
 [ext_resource type="Script" path="res://Objects/Projectiles/Firecone.gd" id="1_4vrij"]
@@ -6,6 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://dbba40bmo0uc6" path="res://Assets/Textures/Voronoi01.png" id="4_5q44r"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_hasu5"]
+frequency = 0.1
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_3nsb5"]
 width = 120
@@ -25,6 +26,10 @@ shader_parameter/dissolve_speed2 = Vector2(0, -5)
 shader_parameter/color_a = Color(1, 0.466667, 0, 1)
 shader_parameter/color_b = Color(1, 0.129412, 0.101961, 1)
 shader_parameter/color_c = Color(1, 0.854902, 0, 1)
+shader_parameter/displaceTimescale = 0.5
+shader_parameter/displaceScaleX = 4.0
+shader_parameter/displaceScaleY = 0.0
+shader_parameter/displaceScaleZ = 4.0
 shader_parameter/tex_dissolve = ExtResource("4_5q44r")
 shader_parameter/tex_displace = SubResource("NoiseTexture2D_3nsb5")
 
@@ -36,6 +41,37 @@ radial_segments = 16
 rings = 8
 cap_top = false
 cap_bottom = false
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_knhgw"]
+frequency = 0.1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_i3lry"]
+width = 120
+height = 120
+seamless = true
+noise = SubResource("FastNoiseLite_knhgw")
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_l4ogc"]
+load_path = "res://.godot/imported/Voronoi01.png-ade02ef89ea57e3b4ae2c37168de9914.s3tc.ctex"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ev0qq"]
+render_priority = 0
+shader = ExtResource("3_0n33x")
+shader_parameter/dissolve_power = 5.0
+shader_parameter/dissolve_amount = 0.95
+shader_parameter/dissolve_tiling = Vector2(1, 1)
+shader_parameter/dissolve_speed = Vector2(0, -0.5)
+shader_parameter/dissolve_tiling2 = Vector2(10, 10)
+shader_parameter/dissolve_speed2 = Vector2(0, -5)
+shader_parameter/color_a = Color(1, 0.466667, 0, 1)
+shader_parameter/color_b = Color(1, 0.129412, 0.101961, 1)
+shader_parameter/color_c = Color(1, 0.854902, 0, 1)
+shader_parameter/displaceTimescale = 0.5
+shader_parameter/displaceScaleX = 0.0
+shader_parameter/displaceScaleY = -2.0
+shader_parameter/displaceScaleZ = 0.0
+shader_parameter/tex_dissolve = SubResource("CompressedTexture2D_l4ogc")
+shader_parameter/tex_displace = SubResource("NoiseTexture2D_i3lry")
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_hkdlp"]
 top_radius = 8.0
@@ -99,8 +135,8 @@ mesh = SubResource("CylinderMesh_fxt6h")
 skeleton = NodePath("../..")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="PlayerDamageArea/Cone"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -8, 3.42727e-07)
-material_override = SubResource("ShaderMaterial_qvxsq")
+transform = Transform3D(1, 0, 0, 0, 1, -3.55271e-15, 0, 0, 1, 0, -7.83435, 3.33676e-07)
+material_override = SubResource("ShaderMaterial_ev0qq")
 mesh = SubResource("CylinderMesh_hkdlp")
 
 [node name="HitShape" type="CollisionShape3D" parent="PlayerDamageArea"]
