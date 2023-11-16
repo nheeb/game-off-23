@@ -16,3 +16,10 @@ var world: Node3D
 
 var  active_graphics_settings : int
 enum GRAPHICS { Potato = 0, Low = 1, Medium = 2, High = 3, Ultra = 4}
+
+func hit_pause():
+	return
+#	var timer = get_tree().create_timer(.15)
+#	get_tree().paused = true
+#	await timer.timeout
+#	get_tree().paused = false

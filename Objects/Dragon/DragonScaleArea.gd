@@ -20,7 +20,15 @@ func _on_area_3d_area_entered(area):
 	#print('take damage')
 
 const FALLEN_SCALE = preload("res://Objects/Projectiles/FallenScale.tscn")
+const HIT_EFFECT = preload("res://Objects/Effects/HitEffect.tscn")
 func take_damage(damage: int = 1):
+	# Hit effect
+	var hit_effect = HIT_EFFECT.instantiate()
+	Game.world.add_child(hit_effect)
+	hit_effect.global_position = global_position
+	
+	Game.hit_pause()
+	
 	# Make scales invis
 	if $PlaceholderScales.visible:
 		for i in range(damage):
@@ -29,7 +37,7 @@ func take_damage(damage: int = 1):
 			visible_scales.pick_random().visible = false
 			
 	# Throw fallen scales
-	for i in range(3):
+	for i in range(randi_range(2,4)):
 		var direction = global_transform.basis.y + .7 * Vector3.UP + 2.0 * (randf()-.5) * global_transform.basis.x
 		direction = direction.normalized() * randf_range(2.5, 4.5)
 		#TODO spawn the Fallen Scale

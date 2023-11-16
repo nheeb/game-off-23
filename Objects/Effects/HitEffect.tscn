@@ -1,0 +1,183 @@
+[gd_scene load_steps=22 format=3 uid="uid://cjqrmxkllndkj"]
+
+[ext_resource type="Script" path="res://Objects/Effects/HitEffect.gd" id="1_b1yu0"]
+[ext_resource type="Texture2D" uid="uid://c20vewanmafb3" path="res://Assets/Sprites/Hit-White-small.png" id="1_p6aw5"]
+
+[sub_resource type="Shader" id="Shader_owjj1"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.1.1.stable's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx,unshaded;
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color,filter_linear_mipmap,repeat_enable;
+uniform float point_size : hint_range(0,128);
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+uniform float rotation;
+
+#include \"res://Shaders/lib.gdshaderinc\"
+
+void vertex() {
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+	MODELVIEW_MATRIX = VIEW_MATRIX * mat4(INV_VIEW_MATRIX[0], INV_VIEW_MATRIX[1], INV_VIEW_MATRIX[2], MODEL_MATRIX[3]) * mat4(rotation_matrix_z(rotation));
+	MODELVIEW_NORMAL_MATRIX = mat3(MODELVIEW_MATRIX);
+}
+
+void fragment() {
+	vec2 base_uv = UV;
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	ALPHA *= albedo.a * albedo_tex.a;
+}
+"
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uhm04"]
+atlas = ExtResource("1_p6aw5")
+region = Rect2(1024, 512, 512, 512)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0870s"]
+render_priority = 0
+shader = SubResource("Shader_owjj1")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/point_size = 1.0
+shader_parameter/uv1_scale = Vector3(1, 1, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/rotation = null
+shader_parameter/texture_albedo = SubResource("AtlasTexture_uhm04")
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3wbeg"]
+atlas = ExtResource("1_p6aw5")
+region = Rect2(0, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8v2qi"]
+atlas = ExtResource("1_p6aw5")
+region = Rect2(512, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tumbh"]
+atlas = ExtResource("1_p6aw5")
+region = Rect2(1024, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2qfk4"]
+atlas = ExtResource("1_p6aw5")
+region = Rect2(1536, 0, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mbign"]
+atlas = ExtResource("1_p6aw5")
+region = Rect2(0, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_eu3rr"]
+atlas = ExtResource("1_p6aw5")
+region = Rect2(512, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_72x4r"]
+atlas = ExtResource("1_p6aw5")
+region = Rect2(1536, 512, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xmaob"]
+atlas = ExtResource("1_p6aw5")
+region = Rect2(0, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_num4m"]
+atlas = ExtResource("1_p6aw5")
+region = Rect2(512, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ike11"]
+atlas = ExtResource("1_p6aw5")
+region = Rect2(1024, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nlx4f"]
+atlas = ExtResource("1_p6aw5")
+region = Rect2(1536, 1024, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xgwjd"]
+atlas = ExtResource("1_p6aw5")
+region = Rect2(0, 1536, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_445mq"]
+atlas = ExtResource("1_p6aw5")
+region = Rect2(512, 1536, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_aja1a"]
+atlas = ExtResource("1_p6aw5")
+region = Rect2(1024, 1536, 512, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gs5df"]
+atlas = ExtResource("1_p6aw5")
+region = Rect2(1536, 1536, 512, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fa842"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3wbeg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8v2qi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tumbh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2qfk4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mbign")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_eu3rr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uhm04")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_72x4r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xmaob")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_num4m")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ike11")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nlx4f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xgwjd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_445mq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_aja1a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gs5df")
+}],
+"loop": false,
+"name": &"default",
+"speed": 24.0
+}]
+
+[node name="HitEffect" type="Node3D"]
+script = ExtResource("1_b1yu0")
+
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(-1.4245e-15, 1.0935, 9.55966e-08, 1.0935, -9.71221e-16, 3.25888e-08, 3.25888e-08, 9.55966e-08, -1.0935, 0, 0, 0)
+material_override = SubResource("ShaderMaterial_0870s")
+cast_shadow = 0
+pixel_size = 0.018
+billboard = 1
+double_sided = false
+sprite_frames = SubResource("SpriteFrames_fa842")
+autoplay = "default"
+frame = 15
+frame_progress = 1.0
+
+[connection signal="animation_finished" from="AnimatedSprite3D" to="." method="_on_animated_sprite_3d_animation_finished"]

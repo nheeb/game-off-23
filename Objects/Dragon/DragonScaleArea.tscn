@@ -3,7 +3,7 @@
 [ext_resource type="Script" path="res://Objects/Dragon/DragonScaleArea.gd" id="1_e5gfn"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_xeedl"]
-size = Vector3(1.2463, 0.0770657, 1.45145)
+size = Vector3(1.48254, 0.235044, 1.63965)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0m6wy"]
 albedo_color = Color(1, 1, 0, 1)
