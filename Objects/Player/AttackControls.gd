@@ -1,7 +1,7 @@
 class_name AttackControls extends Node
 
 @onready var player: Player = $"../.."
-@onready var animation_tree: AnimationTree = $"../../animations"
+@onready var animation_tree: PlayerAnimations = $"../../animations"
 @onready var player_motion: PlayerMotion = $"../PlayerMotion"
 @onready var mouse_detection_layer: MouseDetectionLayer = $"../../MouseDetectionLayer"
 @export var max_charge = 2.0
@@ -15,7 +15,9 @@ var is_performing_melee = false
 var charge = 0.0
 var projectile_scene = preload("res://Objects/Projectiles/PlayerArrow.tscn")
 
-func _process(delta):
+func _physics_process(delta):
+	if Input.is_action_just_released("melee"):
+		print('x')
 	if player.is_dead():
 		return
 	if sword_count < 1:
@@ -26,7 +28,7 @@ func _process(delta):
 		if not is_range_charging and charge > 0.2:
 			player_motion.range_attack_speed_coefficient = 0.5
 			is_range_charging = true
-	if is_charging and Input.is_action_just_released("melee"):
+	if Input.is_action_just_released("melee"):
 		if charge < 0.2:
 			perform_melee()
 		else:
@@ -36,6 +38,7 @@ func _process(delta):
 		
 func reset_charge():
 	is_charging = false
+	animation_tree.is_charging = is_charging
 	is_range_charging = false
 	charge = 0.0
 	player_motion.range_attack_speed_coefficient = 1.0
@@ -45,6 +48,7 @@ func start_shoot():
 	animation_tree.set("parameters/Core/conditions/has_released_shot", false)
 	animation_tree.set("parameters/Core/conditions/is_aiming", true)
 	is_charging = true
+	animation_tree.is_charging = is_charging
 	charge = 0.0
 	
 func perform_shoot():
@@ -55,11 +59,12 @@ func perform_shoot():
 	sword_thrown()
 
 func perform_melee():
-	if is_performing_melee:
-		return
+	#if is_performing_melee:
+	#	return
 	
 	animation_tree.set("parameters/Core/conditions/is_aiming", false)
 	animation_tree.set("parameters/Core/conditions/performing_melee", true)
+	animation_tree.attack()
 	reset_charge()
 	is_performing_melee = true
 	await get_tree().create_timer(.1).timeout
