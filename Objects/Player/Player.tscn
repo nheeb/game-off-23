@@ -225,21 +225,21 @@ transform = Transform3D(-0.65, 0, -5.68248e-08, 0, 0.65, 0, 5.68248e-08, 0, -0.6
 [node name="Skeleton3D" parent="Knight/RootNode/Rig" index="0"]
 bones/1/position = Vector3(-2.36658e-32, 0.00392064, 1.97215e-33)
 bones/1/rotation = Quaternion(-1.11128e-10, 0.0431578, 2.57241e-09, 0.999068)
-bones/5/rotation = Quaternion(-0.553394, -0.0561316, -0.637971, 0.532539)
-bones/6/rotation = Quaternion(-6.88718e-09, -1.91312e-08, -0.515262, 0.857033)
-bones/8/rotation = Quaternion(-0.321772, -0.336666, 0.150608, 0.87203)
-bones/9/rotation = Quaternion(0.000711417, 0.000711451, -0.70448, 0.709723)
-bones/15/rotation = Quaternion(-0.611822, 0.0769323, 0.613083, 0.493847)
-bones/16/rotation = Quaternion(-9.86923e-09, 4.98663e-08, 0.537642, 0.843173)
-bones/18/rotation = Quaternion(-0.320702, 0.31285, -0.232739, 0.863196)
-bones/19/rotation = Quaternion(0.00226595, 0.00266891, 0.704743, 0.709454)
+bones/5/rotation = Quaternion(-0.550478, -0.057127, -0.641144, 0.531644)
+bones/6/rotation = Quaternion(-6.78527e-09, -1.91676e-08, -0.510694, 0.859762)
+bones/8/rotation = Quaternion(-0.320313, -0.338573, 0.147238, 0.872404)
+bones/9/rotation = Quaternion(0.00125568, 0.00125551, -0.70253, 0.711652)
+bones/15/rotation = Quaternion(-0.609303, 0.07765, 0.616354, 0.492776)
+bones/16/rotation = Quaternion(-9.61084e-09, 4.99167e-08, 0.533268, 0.845946)
+bones/18/rotation = Quaternion(-0.319512, 0.314278, -0.2295, 0.863985)
+bones/19/rotation = Quaternion(0.00385292, 0.00454458, 0.703544, 0.710627)
 bones/22/rotation = Quaternion(-5.80654e-11, -0.0313417, -1.88013e-09, 0.999509)
-bones/24/rotation = Quaternion(0.990491, 0.0834261, 0.0780728, 0.0766285)
-bones/25/rotation = Quaternion(0.367444, 3.82289e-08, -1.42627e-07, 0.930046)
-bones/26/rotation = Quaternion(-0.607033, -0.202458, 0.0717312, 0.765099)
-bones/28/rotation = Quaternion(0.992543, -0.0327151, 0.0300677, 0.113509)
-bones/29/rotation = Quaternion(0.414526, -3.42332e-08, 1.97308e-07, 0.910037)
-bones/30/rotation = Quaternion(-0.634172, 0.112926, -0.0210075, 0.764613)
+bones/24/rotation = Quaternion(0.989517, 0.0839618, 0.0788616, 0.0871072)
+bones/25/rotation = Quaternion(0.400425, 3.31107e-08, -1.43901e-07, 0.91633)
+bones/26/rotation = Quaternion(-0.624352, -0.200487, 0.0777502, 0.750963)
+bones/28/rotation = Quaternion(0.991387, -0.0334587, 0.0297808, 0.123066)
+bones/29/rotation = Quaternion(0.444001, -2.77766e-08, 1.9832e-07, 0.896026)
+bones/30/rotation = Quaternion(-0.650146, 0.112372, -0.0238415, 0.751075)
 bones/31/rotation = Quaternion(2.1302e-08, 0.920355, -0.391084, -9.10831e-08)
 bones/32/rotation = Quaternion(0.707107, -2.29302e-07, -4.60551e-08, 0.707107)
 bones/33/position = Vector3(0.00202182, 0.000259903, 0.00205181)
@@ -258,32 +258,32 @@ transform = Transform3D(0.996275, -1.38015e-09, 0.0862353, 1.36097e-09, 1, 2.812
 bone_idx = 4
 
 [node name="Rectangle_Shield" parent="Knight/RootNode/Rig/Skeleton3D" index="1"]
-transform = Transform3D(0.00241404, 0.262834, 0.964838, 0.999969, -0.00788034, -0.000354656, 0.00751032, 0.964809, -0.262844, 0.00661177, 0.00644721, -0.000417672)
+transform = Transform3D(-2.55475e-05, 0.262837, 0.96484, 0.99991, -0.0129346, 0.00355053, 0.0134134, 0.964754, -0.262812, 0.00662153, 0.00643737, -0.000422457)
 visible = false
 bone_idx = 10
 
 [node name="Round_Shield" parent="Knight/RootNode/Rig/Skeleton3D" index="2"]
-transform = Transform3D(0.00241404, 0.262834, 0.964838, 0.999969, -0.00788034, -0.000354656, 0.00751032, 0.964809, -0.262844, 0.00661177, 0.00644721, -0.000417672)
+transform = Transform3D(-2.55475e-05, 0.262837, 0.96484, 0.99991, -0.0129346, 0.00355053, 0.0134134, 0.964754, -0.262812, 0.00662153, 0.00643737, -0.000422457)
 visible = false
 bone_idx = 11
 
 [node name="Spike_Shield" parent="Knight/RootNode/Rig/Skeleton3D" index="3"]
-transform = Transform3D(0.00241404, 0.262834, 0.964838, 0.999969, -0.00788034, -0.000354656, 0.00751032, 0.964809, -0.262844, 0.00661177, 0.00644721, -0.000417672)
+transform = Transform3D(-2.55475e-05, 0.262837, 0.96484, 0.99991, -0.0129346, 0.00355053, 0.0134134, 0.964754, -0.262812, 0.00662153, 0.00643737, -0.000422457)
 visible = false
 bone_idx = 12
 
 [node name="Badge_Shield" parent="Knight/RootNode/Rig/Skeleton3D" index="4"]
-transform = Transform3D(0.00241404, 0.262834, 0.964838, 0.999969, -0.00788034, -0.000354656, 0.00751032, 0.964809, -0.262844, 0.00661177, 0.00644721, -0.000417672)
+transform = Transform3D(-2.55475e-05, 0.262837, 0.96484, 0.99991, -0.0129346, 0.00355053, 0.0134134, 0.964754, -0.262812, 0.00662153, 0.00643737, -0.000422457)
 visible = false
 bone_idx = 13
 
 [node name="1H_Sword_Offhand" parent="Knight/RootNode/Rig/Skeleton3D" index="5"]
-transform = Transform3D(0.00241404, 0.262834, 0.964838, 0.999969, -0.00788034, -0.000354656, 0.00751032, 0.964809, -0.262844, 0.00510773, 0.00644776, -7.93679e-06)
+transform = Transform3D(-2.55475e-05, 0.262837, 0.96484, 0.99991, -0.0129346, 0.00355053, 0.0134134, 0.964754, -0.262812, 0.00511748, 0.00643184, -1.27711e-05)
 visible = false
 bone_idx = 14
 
 [node name="2H_Sword" parent="Knight/RootNode/Rig/Skeleton3D" index="6"]
-transform = Transform3D(0.0025573, -0.156759, -0.987633, -0.999975, -0.00689881, -0.00149387, -0.00657961, 0.987613, -0.156772, -0.00495186, 0.00649667, 0.00140692)
+transform = Transform3D(0.00257725, -0.161308, -0.986901, -0.999946, -0.0103806, -0.000914028, -0.0100974, 0.986849, -0.161326, -0.00495732, 0.00647551, 0.00140263)
 bone_idx = 20
 
 [node name="2H_Sword" parent="Knight/RootNode/Rig/Skeleton3D/2H_Sword" index="0"]
@@ -301,7 +301,7 @@ transform = Transform3D(0.999991, -0.0041519, 6.33146e-05, 0.00415159, 0.999986,
 shape = SubResource("CylinderShape3D_e15pv")
 
 [node name="1H_Sword" parent="Knight/RootNode/Rig/Skeleton3D" index="7"]
-transform = Transform3D(0.0025573, -0.156759, -0.987633, -0.999975, -0.00689881, -0.00149387, -0.00657961, 0.987613, -0.156772, -0.00495186, 0.00649667, 0.00140692)
+transform = Transform3D(0.00257725, -0.161308, -0.986901, -0.999946, -0.0103806, -0.000914028, -0.0100974, 0.986849, -0.161326, -0.00495732, 0.00647551, 0.00140263)
 visible = false
 bone_idx = 21
 
@@ -338,6 +338,7 @@ unique_name_in_owner = true
 script = ExtResource("5_dhqn6")
 
 [node name="PlayerMotion" type="Node" parent="Behaviours"]
+unique_name_in_owner = true
 script = ExtResource("7_qkk7j")
 
 [node name="animations" type="AnimationTree" parent="."]

@@ -43,5 +43,10 @@ func activate(_lifetime := 0.0):
 
 func do_damage():
 	var health_system = Game.player.get_health_system()
+	var player_motion = Game.player.get_motion()
 	if health_system.can_take_damage():
 		health_system.take_damage(self, damage)
+		var knockback = (Game.player.global_position - global_position).normalized() * knockback_force
+		knockback.y = 0
+		player_motion.apply_knockback(knockback)
+		

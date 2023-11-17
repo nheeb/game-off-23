@@ -14,3 +14,6 @@ func get_attack_controls() -> AttackControls:
 
 func get_health_system() -> HealthSystem:
 	return %HealthSystem
+
+func get_motion() -> PlayerMotion:
+	return %PlayerMotion
