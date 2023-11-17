@@ -1,0 +1,74 @@
+[gd_scene load_steps=9 format=3 uid="uid://2r5vm48t6q7r"]
+
+[ext_resource type="Material" uid="uid://ccxwt8ypopppe" path="res://Assets/Materials/DissolveMaterial.tres" id="1"]
+[ext_resource type="Shader" path="res://Shaders/DustNew.gdshader" id="2"]
+
+[sub_resource type="Gradient" id="11"]
+offsets = PackedFloat32Array(0)
+colors = PackedColorArray(0.54, 0.39312, 0.1728, 1)
+
+[sub_resource type="GradientTexture1D" id="12"]
+gradient = SubResource("11")
+
+[sub_resource type="Curve" id="13"]
+bake_resolution = 512
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.324503, 0.378947), 0.953684, 0.953684, 0, 0, Vector2(1, 0.797727), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="14"]
+width = 512
+curve = SubResource("13")
+
+[sub_resource type="ShaderMaterial" id="15"]
+shader = ExtResource("2")
+shader_parameter/direction = Vector3(0, -0.5, 1)
+shader_parameter/spread = 50.0
+shader_parameter/flatness = 0.0
+shader_parameter/initial_linear_velocity = 1.5
+shader_parameter/initial_angle = 0.0
+shader_parameter/angular_velocity = 0.0
+shader_parameter/orbit_velocity = 0.0
+shader_parameter/linear_accel = 0.0
+shader_parameter/radial_accel = 4.0
+shader_parameter/tangent_accel = 0.0
+shader_parameter/damping = 0.2
+shader_parameter/scale = 2.5
+shader_parameter/hue_variation = 0.0
+shader_parameter/anim_speed = 0.0
+shader_parameter/anim_offset = 0.0
+shader_parameter/initial_linear_velocity_random = 0.5
+shader_parameter/initial_angle_random = 0.0
+shader_parameter/angular_velocity_random = 0.0
+shader_parameter/orbit_velocity_random = 0.0
+shader_parameter/linear_accel_random = 0.0
+shader_parameter/radial_accel_random = 0.0
+shader_parameter/tangent_accel_random = 0.0
+shader_parameter/damping_random = 0.0
+shader_parameter/scale_random = 1.0
+shader_parameter/hue_variation_random = 0.0
+shader_parameter/anim_speed_random = 0.0
+shader_parameter/anim_offset_random = 0.0
+shader_parameter/lifetime_randomness = 0.2
+shader_parameter/emission_sphere_radius = 0.3
+shader_parameter/color_value = Color(1, 1, 1, 1)
+shader_parameter/trail_divisor = 1
+shader_parameter/gravity = Vector3(0, -1e-06, 0)
+shader_parameter/color_ramp = SubResource("12")
+shader_parameter/scale_texture = SubResource("14")
+
+[sub_resource type="SphereMesh" id="6"]
+material = ExtResource("1")
+radius = 0.3
+height = 0.6
+radial_segments = 12
+rings = 12
+
+[node name="DustTrack" type="GPUParticles3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.75913, 0)
+cast_shadow = 0
+amount = 12
+lifetime = 0.5
+speed_scale = 0.8
+visibility_aabb = AABB(-1.4374, -1.64339, -0.996239, 2.96245, 2.66396, 2.90193)
+process_material = SubResource("15")
+draw_pass_1 = SubResource("6")

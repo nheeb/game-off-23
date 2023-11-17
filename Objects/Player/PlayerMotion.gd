@@ -2,6 +2,7 @@ class_name PlayerMotion extends Node
 
 @onready var player: Player = $"../.."
 @onready var animation_tree: AnimationTree = $"../../animations"
+@onready var dust_track: GPUParticles3D = $"../../DustTrack"
 
 var movement_intent: Vector3 = Vector3.ZERO
 
@@ -23,6 +24,8 @@ func _physics_process(delta):
 	handle_knockback(delta)
 	handle_gravity(delta)
 	player.move_and_slide()
+	
+	dust_track.emitting = player.velocity.length_squared() > .1 and player.is_on_floor()
 
 func get_player_intent_movement_direction():
 	return movement_intent
