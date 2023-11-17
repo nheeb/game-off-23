@@ -16,8 +16,6 @@ var charge = 0.0
 var projectile_scene = preload("res://Objects/Projectiles/PlayerArrow.tscn")
 
 func _physics_process(delta):
-	if Input.is_action_just_released("melee"):
-		print('x')
 	if player.is_dead():
 		return
 	if sword_count < 1:

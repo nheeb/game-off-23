@@ -20,7 +20,6 @@ func _on_animation_started(animation_name: String):
 
 func attack():
 	attacks_remaining += 1
-	print(attacks_remaining)
 	
 func attack_completed():
 	attacks_remaining -= 1
