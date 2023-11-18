@@ -8,6 +8,7 @@ func is_dead():
 func _ready():
 	Game.player = self
 	Game.player_health_system = get_health_system()
+	Functions.recursive_set_light_layers(self, 3)
 
 func get_attack_controls() -> AttackControls:
 	return %AttackControls

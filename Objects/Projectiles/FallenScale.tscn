@@ -47,7 +47,7 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 
-[node name="FallenScale" type="Node3D"]
+[node name="FallenScale" type="Node3D" groups=["fallen_scale"]]
 script = ExtResource("1_mcvyj")
 
 [node name="scale" type="CSGBox3D" parent="."]
@@ -57,5 +57,6 @@ material = SubResource("StandardMaterial3D_rqag2")
 
 [node name="Plane_004" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.551085, 0, 0, 0, -0.0690583, 0.451427, 0, -0.558726, -0.0557963, 0, 0.0698026, -0.0549321)
+layers = 3
 mesh = SubResource("ArrayMesh_txobp")
 skeleton = NodePath("")

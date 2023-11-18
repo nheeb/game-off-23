@@ -33,5 +33,11 @@ func align_node(node: Node3D, local_direction: Vector3, target_global_direction:
 		var rotation_angle := current_global_direction.signed_angle_to(target_global_direction, cross_direction)
 		node.rotate(cross_direction, rotation_angle)
 
+func recursive_set_light_layers(node: Node, layers: int):
+	for c in node.get_children():
+		recursive_set_light_layers(c, layers)
+		if c is VisualInstance3D:
+			c.layers = layers
+
 func _ready():
 	pass

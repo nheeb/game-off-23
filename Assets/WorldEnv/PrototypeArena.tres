@@ -6,6 +6,7 @@
 sky_material = SubResource("ProceduralSkyMaterial_0jf7f")
 
 [resource]
+resource_local_to_scene = true
 background_mode = 3
 sky = SubResource("Sky_5ccci")
 ambient_light_source = 3

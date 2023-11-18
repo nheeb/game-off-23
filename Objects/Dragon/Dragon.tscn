@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://cu0j2oc2nfkvl"]
+[gd_scene load_steps=49 format=3 uid="uid://cu0j2oc2nfkvl"]
 
 [ext_resource type="Script" path="res://Objects/Dragon/Dragon.gd" id="1_b10y7"]
 [ext_resource type="Script" path="res://Objects/Dragon/Idle.gd" id="2_3qwwn"]
@@ -25,6 +25,7 @@
 [ext_resource type="Script" path="res://Objects/Dragon/AirFireBalls.gd" id="16_a1ca1"]
 [ext_resource type="Material" uid="uid://se0l8mkv0wwa" path="res://Assets/Materials/DamageIndicator.tres" id="16_yafp0"]
 [ext_resource type="Script" path="res://Objects/Dragon/LandingAttack.gd" id="18_qyu4h"]
+[ext_resource type="Script" path="res://Objects/Dragon/Disrespect.gd" id="22_1tqa8"]
 
 [sub_resource type="Curve" id="Curve_hfnbm"]
 _data = [Vector2(0, 0), 0.0, 3.7213, 0, 0, Vector2(0.284483, 1), 4.60243, 0.0, 0, 0, Vector2(1, 0), -2.10909, 0.0, 0, 0]
@@ -300,9 +301,9 @@ point_count = 3
 radius = 1.75057
 height = 7.21591
 
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_youbw"]
-radius = 1.0446
-height = 4.37482
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wc0od"]
+radius = 2.0
+height = 6.0
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_31bqf"]
 radial_segments = 8
@@ -782,6 +783,9 @@ air_state = true
 
 [node name="HurtCry" type="Node" parent="States"]
 
+[node name="Disrespect" type="Node" parent="States"]
+script = ExtResource("22_1tqa8")
+
 [node name="Dead" type="Node" parent="States"]
 script = ExtResource("14_8ti8k")
 
@@ -823,7 +827,6 @@ outline_size = 64
 [node name="BiteArea" parent="DamageAreas" instance=ExtResource("6_qsmee")]
 unique_name_in_owner = true
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
-visible = false
 damage = 1
 knockback_force = 1.0
 
@@ -832,10 +835,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.101023, 1.28531)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DamageAreas/BiteArea"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.0584455, 1.18611, 4.56705)
-shape = SubResource("CapsuleShape3D_youbw")
+shape = SubResource("CapsuleShape3D_wc0od")
 
 [node name="VisualIndicator" type="MeshInstance3D" parent="DamageAreas/BiteArea"]
-transform = Transform3D(-9.79112e-08, 2.23995, -1.95822e-07, -2.23995, -9.79112e-08, -1.95822e-07, -1.95822e-07, 1.95822e-07, 2.23995, -0.072575, 1.12575, 4.55802)
+transform = Transform3D(-1.52741e-07, 2.91193, -3.30939e-07, -3.49432, -1.27285e-07, -3.30939e-07, -3.05482e-07, 2.54569e-07, 3.78552, -0.072575, 1.12575, 4.55802)
 material_override = ExtResource("16_yafp0")
 mesh = SubResource("CapsuleMesh_31bqf")
 
