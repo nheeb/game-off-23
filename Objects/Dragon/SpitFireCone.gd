@@ -14,9 +14,9 @@ func effect_start(index):
 	await dragon.turn_done
 	var hint = HINT.instantiate()
 	Game.world.add_child(hint)
-	hint.global_position = Functions.get_nearest_ground(dragon.head_position.global_position)
+	hint.global_position = dragon.head_position.global_position
 	hint.global_rotation = dragon.head_position.global_rotation
-	await get_tree().create_timer(.6).timeout
+	await get_tree().create_timer(.9).timeout
 	var fire_cone = FIRE_CONE.instantiate()
 	Game.world.add_child(fire_cone)
 	fire_cone.global_position = dragon.head_position.global_position
