@@ -53,16 +53,41 @@ func activate(direction: Vector3) -> void:
 	if rotation_axis == Vector3(0,0,0):
 		rotation_axis = Vector3.RIGHT
 
+var falling := true
+var contracting := false
+var shrinking := false
+var contract_velocity := 0.0
+var contract_direction: Vector3
+const CONTRACT_ACCEL = 2.0
+const CONTRACT_MAX_DIST = 2.6
+const CONTRACT_MAX_VELOCITY = 4.8
+const CONTRACT_WAIT_FACTOR = .04
 func _physics_process(delta):
-	if transform.origin.y > ground_level + FLOAT_EPSILON:
-		var fall = initial_velocity * delta
-		transform.origin += fall
-		initial_velocity *= 1.0-friction*delta
-		initial_velocity.y -= gravity_speed*delta
-		transform.basis = transform.basis.rotated(rotation_axis, rotation_speed*delta)
-	elif transform.origin.y - ground_level < FLOAT_EPSILON:
-		transform.origin.y = ground_level
-		transform.basis = final_basis
-	else:
-		get_tree().paused = true
+	if falling:
+		if transform.origin.y > ground_level + FLOAT_EPSILON:
+			var fall = initial_velocity * delta
+			transform.origin += fall
+			initial_velocity *= 1.0-friction*delta
+			initial_velocity.y -= gravity_speed*delta
+			transform.basis = transform.basis.rotated(rotation_axis, rotation_speed*delta)
+		elif transform.origin.y - ground_level < FLOAT_EPSILON:
+			transform.origin.y = ground_level
+			transform.basis = final_basis
+		else:
+			falling = false
+	if contracting:
+		contract_velocity += delta * CONTRACT_ACCEL
+		contract_velocity = min(contract_velocity, CONTRACT_MAX_VELOCITY)
+		global_position += contract_direction * contract_velocity * delta
+		if Game.player.global_position.distance_to(global_position) <= CONTRACT_MAX_DIST and not shrinking:
+			shrinking = true
+			var tween := get_tree().create_tween()
+			tween.tween_property(self, "scale", Vector3.ONE*.01, .5)
+			tween.tween_callback(queue_free)
+			
 		
+func start_contracting():
+	var dist_to_player : float = Game.player.global_position.distance_to(global_position)
+	await get_tree().create_timer(dist_to_player * CONTRACT_WAIT_FACTOR).timeout
+	contracting = true
+	contract_direction = Functions.no_y_normalized(global_position.direction_to(Game.player.global_position))

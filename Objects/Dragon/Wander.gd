@@ -1,7 +1,7 @@
 extends DragonState
 
 func get_probability() -> float:
-	return 0.06
+	return 0.05
 
 var max_duration : float
 var timer : float
