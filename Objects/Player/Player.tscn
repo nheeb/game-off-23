@@ -11,15 +11,11 @@
 [ext_resource type="Script" path="res://Objects/Player/PlayerHitArea.gd" id="7_lswjr"]
 [ext_resource type="Script" path="res://Objects/Player/PlayerMotion.gd" id="7_qkk7j"]
 [ext_resource type="Script" path="res://Objects/Player/PlayerAnimations.gd" id="9_sq6q5"]
-[ext_resource type="PackedScene" uid="uid://2r5vm48t6q7r" path="res://Objects/Effects/DustTrack.tscn" id="12_lh2wq"]
+[ext_resource type="PackedScene" path="res://Objects/Effects/DustTrack.tscn" id="12_lh2wq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g2uwq"]
 emission_enabled = true
 emission = Color(0.529412, 0.298039, 0.211765, 1)
-
-[sub_resource type="CylinderShape3D" id="CylinderShape3D_e15pv"]
-height = 0.0176895
-radius = 0.00362217
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_tsyot"]
 height = 1.6234
@@ -214,6 +210,9 @@ states/Start/position = Vector2(146, 34)
 transitions = ["Start", "Core", SubResource("AnimationNodeStateMachineTransition_yg3rd"), "Core", "Hit_A", SubResource("AnimationNodeStateMachineTransition_ksy1m"), "Hit_A", "Core", SubResource("AnimationNodeStateMachineTransition_ntwtp"), "Core", "Death_A", SubResource("AnimationNodeStateMachineTransition_5n4ih"), "Death_A", "Death_A_Pose", SubResource("AnimationNodeStateMachineTransition_aaj3t")]
 graph_offset = Vector2(-56, -127)
 
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uo10k"]
+radius = 0.787365
+
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.55645, 0)
 collision_layer = 65536
@@ -226,21 +225,21 @@ transform = Transform3D(-0.65, 0, -5.68248e-08, 0, 0.65, 0, 5.68248e-08, 0, -0.6
 [node name="Skeleton3D" parent="Knight/RootNode/Rig" index="0"]
 bones/1/position = Vector3(-2.36658e-32, 0.00392064, 1.97215e-33)
 bones/1/rotation = Quaternion(-1.11128e-10, 0.0431578, 2.57241e-09, 0.999068)
-bones/5/rotation = Quaternion(-0.552903, -0.0559782, -0.637908, 0.53314)
-bones/6/rotation = Quaternion(-6.90161e-09, -1.9126e-08, -0.515909, 0.856643)
-bones/8/rotation = Quaternion(-0.321776, -0.337302, 0.150597, 0.871784)
-bones/9/rotation = Quaternion(0.000774781, 0.000774806, -0.704254, 0.709948)
-bones/15/rotation = Quaternion(-0.611394, 0.0769453, 0.61303, 0.49444)
-bones/16/rotation = Quaternion(-9.90586e-09, 4.9859e-08, 0.538262, 0.842778)
-bones/18/rotation = Quaternion(-0.320751, 0.313521, -0.232752, 0.862931)
-bones/19/rotation = Quaternion(0.0024613, 0.00289907, 0.704547, 0.709647)
+bones/5/rotation = Quaternion(-0.553747, -0.0563814, -0.638023, 0.532083)
+bones/6/rotation = Quaternion(-6.87242e-09, -1.91366e-08, -0.514601, 0.85743)
+bones/8/rotation = Quaternion(-0.321808, -0.336143, 0.150531, 0.872232)
+bones/9/rotation = Quaternion(0.000663766, 0.000663806, -0.70465, 0.709554)
+bones/15/rotation = Quaternion(-0.612162, 0.0770639, 0.613152, 0.493319)
+bones/16/rotation = Quaternion(-9.83176e-09, 4.98737e-08, 0.537009, 0.843577)
+bones/18/rotation = Quaternion(-0.320704, 0.312297, -0.23264, 0.863422)
+bones/19/rotation = Quaternion(0.00212064, 0.00249773, 0.704892, 0.709307)
 bones/22/rotation = Quaternion(-5.80654e-11, -0.0313417, -1.88013e-09, 0.999509)
-bones/24/rotation = Quaternion(0.990238, 0.0835042, 0.078264, 0.0795698)
-bones/25/rotation = Quaternion(0.375214, 3.70339e-08, -1.42942e-07, 0.926938)
-bones/26/rotation = Quaternion(-0.611107, -0.202015, 0.0731289, 0.761833)
-bones/28/rotation = Quaternion(0.992231, -0.0328987, 0.0299937, 0.116171)
-bones/29/rotation = Quaternion(0.421433, -3.27322e-08, 1.97562e-07, 0.90686)
-bones/30/rotation = Quaternion(-0.637906, 0.112804, -0.0216633, 0.7615)
+bones/24/rotation = Quaternion(0.990697, 0.083371, 0.0779066, 0.0741521)
+bones/25/rotation = Quaternion(0.360916, 3.92277e-08, -1.42356e-07, 0.932598)
+bones/26/rotation = Quaternion(-0.603617, -0.202819, 0.07057, 0.767809)
+bones/28/rotation = Quaternion(0.992798, -0.0325645, 0.0301306, 0.111282)
+bones/29/rotation = Quaternion(0.408759, -3.54811e-08, 1.97087e-07, 0.912642)
+bones/30/rotation = Quaternion(-0.63106, 0.113023, -0.0204648, 0.767183)
 bones/31/rotation = Quaternion(2.1302e-08, 0.920355, -0.391084, -9.10831e-08)
 bones/32/rotation = Quaternion(0.707107, -2.29302e-07, -4.60551e-08, 0.707107)
 bones/33/position = Vector3(0.00202182, 0.000259903, 0.00205181)
@@ -259,50 +258,39 @@ transform = Transform3D(0.996275, -1.38015e-09, 0.0862353, 1.36097e-09, 1, 2.812
 bone_idx = 4
 
 [node name="Rectangle_Shield" parent="Knight/RootNode/Rig/Skeleton3D" index="1"]
-transform = Transform3D(0.00255879, 0.262776, 0.964853, 0.999963, -0.00853932, -0.000325746, 0.00815382, 0.964819, -0.262788, 0.00661131, 0.00644992, -0.000417138)
+transform = Transform3D(0.00209219, 0.262823, 0.964842, 0.999973, -0.00733854, -0.000168927, 0.00703648, 0.964816, -0.262831, 0.00661356, 0.00644579, -0.000418102)
 visible = false
 bone_idx = 10
 
 [node name="Round_Shield" parent="Knight/RootNode/Rig/Skeleton3D" index="2"]
-transform = Transform3D(0.00255879, 0.262776, 0.964853, 0.999963, -0.00853932, -0.000325746, 0.00815382, 0.964819, -0.262788, 0.00661131, 0.00644992, -0.000417138)
+transform = Transform3D(0.00209219, 0.262823, 0.964842, 0.999973, -0.00733854, -0.000168927, 0.00703648, 0.964816, -0.262831, 0.00661356, 0.00644579, -0.000418102)
 visible = false
 bone_idx = 11
 
 [node name="Spike_Shield" parent="Knight/RootNode/Rig/Skeleton3D" index="3"]
-transform = Transform3D(0.00255879, 0.262776, 0.964853, 0.999963, -0.00853932, -0.000325746, 0.00815382, 0.964819, -0.262788, 0.00661131, 0.00644992, -0.000417138)
+transform = Transform3D(0.00209219, 0.262823, 0.964842, 0.999973, -0.00733854, -0.000168927, 0.00703648, 0.964816, -0.262831, 0.00661356, 0.00644579, -0.000418102)
 visible = false
 bone_idx = 12
 
 [node name="Badge_Shield" parent="Knight/RootNode/Rig/Skeleton3D" index="4"]
-transform = Transform3D(0.00255879, 0.262776, 0.964853, 0.999963, -0.00853932, -0.000325746, 0.00815382, 0.964819, -0.262788, 0.00661131, 0.00644992, -0.000417138)
+transform = Transform3D(0.00209219, 0.262823, 0.964842, 0.999973, -0.00733854, -0.000168927, 0.00703648, 0.964816, -0.262831, 0.00661356, 0.00644579, -0.000418102)
 visible = false
 bone_idx = 13
 
 [node name="1H_Sword_Offhand" parent="Knight/RootNode/Rig/Skeleton3D" index="5"]
-transform = Transform3D(0.00255879, 0.262776, 0.964853, 0.999963, -0.00853932, -0.000325746, 0.00815382, 0.964819, -0.262788, 0.00510724, 0.00645043, -7.48964e-06)
+transform = Transform3D(0.00209219, 0.262823, 0.964842, 0.999973, -0.00733854, -0.000168927, 0.00703648, 0.964816, -0.262831, 0.00510951, 0.00644605, -8.388e-06)
 visible = false
 bone_idx = 14
 
 [node name="2H_Sword" parent="Knight/RootNode/Rig/Skeleton3D" index="6"]
-transform = Transform3D(0.00268941, -0.157256, -0.987554, -0.999973, -0.00721028, -0.00157455, -0.00687315, 0.987532, -0.157271, -0.00495209, 0.00650008, 0.00140849)
+transform = Transform3D(0.00239255, -0.156328, -0.987702, -0.999978, -0.00650143, -0.00139274, -0.00620394, 0.987684, -0.15634, -0.00495243, 0.00649413, 0.00140639)
 bone_idx = 20
 
 [node name="2H_Sword" parent="Knight/RootNode/Rig/Skeleton3D/2H_Sword" index="0"]
 material_override = SubResource("StandardMaterial3D_g2uwq")
 
-[node name="player_hurt_box" type="Area3D" parent="Knight/RootNode/Rig/Skeleton3D/2H_Sword/2H_Sword" index="0"]
-transform = Transform3D(0.999997, 0.00246557, -0.000292295, -0.00246755, 0.999973, -0.00697103, 0.000275095, 0.00697164, 0.999976, 0.000114128, 0.00025487, 0.00171542)
-collision_layer = 4
-collision_mask = 0
-monitoring = false
-monitorable = false
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Knight/RootNode/Rig/Skeleton3D/2H_Sword/2H_Sword/player_hurt_box"]
-transform = Transform3D(0.999991, -0.0041519, 6.33146e-05, 0.00415159, 0.999986, 0.00313413, -7.63517e-05, -0.00313391, 0.999995, 1.18352e-05, 0.0129093, -0.00206757)
-shape = SubResource("CylinderShape3D_e15pv")
-
 [node name="1H_Sword" parent="Knight/RootNode/Rig/Skeleton3D" index="7"]
-transform = Transform3D(0.00268941, -0.157256, -0.987554, -0.999973, -0.00721028, -0.00157455, -0.00687315, 0.987532, -0.157271, -0.00495209, 0.00650008, 0.00140849)
+transform = Transform3D(0.00239255, -0.156328, -0.987702, -0.999978, -0.00650143, -0.00139274, -0.00620394, 0.987684, -0.15634, -0.00495243, 0.00649413, 0.00140639)
 visible = false
 bone_idx = 21
 
@@ -325,11 +313,10 @@ script = ExtResource("2_cr4bx")
 [node name="DodgingControls" type="Node3D" parent="Behaviours"]
 script = ExtResource("3_84egt")
 
-[node name="AttackControls" type="Node3D" parent="Behaviours" node_paths=PackedStringArray("sword_model", "hurt_box")]
+[node name="AttackControls" type="Node3D" parent="Behaviours" node_paths=PackedStringArray("sword_model")]
 unique_name_in_owner = true
 script = ExtResource("4_01k2c")
 sword_model = NodePath("../../Knight/RootNode/Rig/Skeleton3D/2H_Sword/2H_Sword")
-hurt_box = NodePath("../../Knight/RootNode/Rig/Skeleton3D/2H_Sword/2H_Sword/player_hurt_box")
 
 [node name="JumpControls" type="Node" parent="Behaviours"]
 script = ExtResource("6_pxows")
@@ -342,7 +329,7 @@ script = ExtResource("5_dhqn6")
 unique_name_in_owner = true
 script = ExtResource("7_qkk7j")
 
-[node name="animations" type="AnimationTree" parent="."]
+[node name="animations" type="AnimationTree" parent="." node_paths=PackedStringArray("hurt_box")]
 tree_root = SubResource("AnimationNodeStateMachine_78bjl")
 anim_player = NodePath("../Knight/AnimationPlayer")
 active = true
@@ -358,9 +345,20 @@ parameters/Core/AttackMoveBlend/Blend2/blend_amount = 1.0
 parameters/Core/AttackMoveBlend/TimeScale/scale = 5.0
 parameters/Core/IdleAndMovement/blend_position = Vector2(0, 0)
 script = ExtResource("9_sq6q5")
+hurt_box = NodePath("../PlayerHurtArea")
 
 [node name="MouseDetectionLayer" parent="." instance=ExtResource("5_w6gfs")]
 visible = false
+
+[node name="PlayerHurtArea" type="Area3D" parent="."]
+collision_layer = 4
+collision_mask = 0
+monitoring = false
+monitorable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerHurtArea"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, -1)
+shape = SubResource("CapsuleShape3D_uo10k")
 
 [node name="PlayerHitArea" type="Area3D" parent="."]
 collision_layer = 8
