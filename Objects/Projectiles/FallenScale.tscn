@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://ccnn8pa6vgif"]
+[gd_scene load_steps=6 format=3 uid="uid://1pxetuomufix"]
 
 [ext_resource type="Script" path="res://Objects/Projectiles/FallenScale.gd" id="1_mcvyj"]
 

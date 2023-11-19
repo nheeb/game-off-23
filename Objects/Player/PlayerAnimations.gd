@@ -16,7 +16,9 @@ func _on_animation_started(animation_name: String):
 		return
 	i = false
 	
-	if animation_name == '2H_Melee_Attack_Spin':
+	print(animation_name)
+	
+	if animation_name == 'knight_animations/2H_Melee_Attack_Spin':
 		hurt_box.monitorable = true
 		attacks_remaining -= 1
 	else:

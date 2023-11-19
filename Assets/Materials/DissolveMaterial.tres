@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://ccxwt8ypopppe"]
+[gd_resource type="ShaderMaterial" load_steps=5 format=3 uid="uid://b0r55ejve2cmg"]
 
 [ext_resource type="Shader" path="res://Shaders/Dissolve.gdshader" id="1"]
 [ext_resource type="Texture2D" uid="uid://i731rmsh5b60" path="res://Assets/Sprites/voronoi.png" id="2"]
