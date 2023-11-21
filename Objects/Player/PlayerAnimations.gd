@@ -1,9 +1,8 @@
 class_name PlayerAnimations extends AnimationTree
 
-@export var hurt_box: Area3D
-
 var attacks_remaining: int = 0
 var is_charging: bool = false
+@onready var hurt_area: PlayerHurtArea = $"../PlayerHurtArea"
 
 func _ready():
 	connect('animation_started', _on_animation_started)
@@ -18,14 +17,12 @@ func _on_animation_started(animation_name: String):
 	i = false
 	
 	if animation_name == 'knight_animations/2H_Melee_Attack_Spin':
-		hurt_box.monitorable = true
-		print("mon = true")
 		attacks_remaining -= 1
+		hurt_area.set_attacking(true)
 
 func _on_animation_finished(animation_name: String):
 	if animation_name == 'knight_animations/2H_Melee_Attack_Spin':
-		hurt_box.monitorable = false
-
+		hurt_area.set_attacking(false)
 
 func attack():
 	attacks_remaining += 1

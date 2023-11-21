@@ -780,15 +780,12 @@ skeleton = NodePath("")
 
 [node name="Idle" type="Node" parent="States"]
 script = ExtResource("2_3qwwn")
-natural_state = false
 
 [node name="PreCutscene" type="Node" parent="States"]
 script = ExtResource("4_eke7i")
-natural_state = false
 
 [node name="Cutscene" type="Node" parent="States"]
 script = ExtResource("5_mg6ba")
-natural_state = false
 
 [node name="Wait" type="Node" parent="States"]
 script = ExtResource("3_8bdho")
@@ -854,11 +851,9 @@ air_state = true
 
 [node name="Disrespect" type="Node" parent="States"]
 script = ExtResource("22_1tqa8")
-natural_state = false
 
 [node name="Dead" type="Node" parent="States"]
 script = ExtResource("14_8ti8k")
-natural_state = false
 
 [node name="PlayerRay" type="RayCast3D" parent="."]
 unique_name_in_owner = true

@@ -7,17 +7,24 @@ var dead := false
 var max_hp := 3
 var hp : int
 
+@onready var hit_area: Area3D = $Area3D
+
 const INVINC_TIME = .15
 
 func _ready():
 	hp = max_hp
+	
+func _physics_process(delta):
+	var overlapping = hit_area.get_overlapping_areas()
+	for hit_object in overlapping:
+		if hit_object is PlayerHurtArea and hit_object.is_attacking():
+			_on_hit()
 
-func _on_area_3d_area_entered(area):
+func _on_hit():
 	if dead: return
 	if $Timer.is_stopped():
 		take_damage(1)
 		$Timer.start(INVINC_TIME)
-	#print('take damage')
 
 const FALLEN_SCALE = preload("res://Objects/Projectiles/FallenScale.tscn")
 const HIT_EFFECT = preload("res://Objects/Effects/HitEffect.tscn")
