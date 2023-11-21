@@ -318,8 +318,8 @@ transitions = ["Start", "Core", SubResource("AnimationNodeStateMachineTransition
 graph_offset = Vector2(-56, -127)
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_uo10k"]
-radius = 1.57264
-height = 5.41225
+radius = 1.17555
+height = 2.3511
 
 [node name="Player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.55645, 0)
@@ -375,41 +375,41 @@ libraries = {
 transform = Transform3D(-0.45, 0, -6.79481e-08, 0, 0.45, 0, 6.79481e-08, 0, -0.45, 0, -0.678362, 0)
 
 [node name="GeneralSkeleton" parent="mc_rabbit_2_3/metarig" index="0"]
-bones/0/position = Vector3(-8.34748e-29, 1.36451, 1.45519e-09)
-bones/0/rotation = Quaternion(0.000184748, 0.0430752, -7.96292e-06, 0.999072)
-bones/1/rotation = Quaternion(0.00021595, -0.000240773, 1.89203e-05, 1)
-bones/2/rotation = Quaternion(8.07426e-05, -3.9656e-06, -2.0401e-05, 1)
-bones/4/rotation = Quaternion(-0.000248979, -0.0310506, -2.19439e-05, 0.999518)
+bones/0/position = Vector3(-8.34747e-29, 1.37778, 1.45519e-09)
+bones/0/rotation = Quaternion(0.000187106, 0.0430752, -8.06458e-06, 0.999072)
+bones/1/rotation = Quaternion(0.000216288, 0.000227258, -1.78837e-05, 1)
+bones/2/rotation = Quaternion(8.07465e-05, 3.74107e-06, 1.92457e-05, 1)
+bones/4/rotation = Quaternion(-0.000249882, -0.0315107, 6.19692e-06, 0.999503)
 bones/6/rotation = Quaternion(2.11758e-22, 0, -1.50463e-36, 1)
-bones/14/rotation = Quaternion(-0.0765102, 0.0599896, 0.991658, -0.084629)
-bones/15/rotation = Quaternion(-8.73152e-08, 0.963127, -0.269047, 3.03045e-09)
-bones/16/rotation = Quaternion(0.0316401, 0.541027, -0.813217, 0.212055)
+bones/14/rotation = Quaternion(-0.0759409, 0.0511932, 0.992219, -0.0843465)
+bones/15/rotation = Quaternion(-8.39867e-08, 0.970344, -0.241728, 1.70972e-09)
+bones/16/rotation = Quaternion(0.0365124, 0.554462, -0.804161, 0.2111)
 bones/17/rotation = Quaternion(-7.95141e-11, 1, 1.14184e-10, 7.6668e-11)
-bones/19/rotation = Quaternion(-0.0305339, 0.0973906, 0.994257, 0.0321918)
-bones/20/rotation = Quaternion(1.73553e-07, 0.948604, -0.316466, 3.56092e-09)
-bones/21/rotation = Quaternion(-0.0344956, 0.531717, -0.839126, -0.109335)
-bones/22/rotation = Quaternion(7.95315e-11, 1, 5.96047e-08, -7.66652e-11)
-bones/24/rotation = Quaternion(0.66456, 0.500624, -0.549505, 0.0760261)
-bones/25/rotation = Quaternion(0.312699, -0.634208, 0.312699, 0.634207)
+bones/19/rotation = Quaternion(-0.0307916, 0.0879396, 0.995149, 0.0315811)
+bones/20/rotation = Quaternion(1.6911e-07, 0.955778, -0.29409, 5.53393e-09)
+bones/21/rotation = Quaternion(-0.0364693, 0.545543, -0.830205, -0.108685)
+bones/22/rotation = Quaternion(1.0833e-10, 1, 8.04543e-05, -6.47362e-11)
+bones/24/rotation = Quaternion(0.669329, 0.493363, -0.55, 0.0780529)
+bones/25/rotation = Quaternion(0.305155, -0.637872, 0.305155, 0.637871)
 bones/26/rotation = Quaternion(-2.32831e-09, 0.707107, -2.32831e-09, 0.707107)
-bones/28/rotation = Quaternion(0.637793, -0.462642, 0.607898, 0.0981952)
-bones/29/rotation = Quaternion(0.329829, 0.62547, -0.329829, 0.62547)
+bones/28/rotation = Quaternion(0.641094, -0.456475, 0.608853, 0.0996335)
+bones/29/rotation = Quaternion(0.32239, 0.629337, -0.32239, 0.629336)
 bones/30/rotation = Quaternion(2.39861e-08, -0.707107, 6.03076e-08, 0.707107)
 
 [node name="spine_001" parent="mc_rabbit_2_3/metarig/GeneralSkeleton" index="0"]
-transform = Transform3D(0.999722, 0.000102301, 0.0235742, -9.1433e-05, 1, -0.000462094, -0.0235743, 0.00045981, 0.999722, 0.00609835, 0.820426, 0.0921276)
+transform = Transform3D(0.999721, 4.09143e-05, 0.0236051, -2.98807e-05, 1, -0.000467777, -0.0236051, 0.000466941, 0.999721, 0.00621098, 0.833693, 0.0921202)
 bone_idx = 7
 
 [node name="Sphere_004" parent="mc_rabbit_2_3/metarig/GeneralSkeleton" index="1"]
-transform = Transform3D(-0.10516, 0.748943, -0.654237, 0.581836, -0.487191, -0.651239, -0.806479, -0.449143, -0.384529, 0.215787, 2.39964, -0.0629228)
+transform = Transform3D(-0.091814, 0.746302, -0.659244, 0.574586, -0.501001, -0.647185, -0.813278, -0.438213, -0.382816, 0.216194, 2.39925, -0.0630286)
 bone_idx = 27
 
 [node name="Sphere_005" parent="mc_rabbit_2_3/metarig/GeneralSkeleton" index="2"]
-transform = Transform3D(-0.167156, -0.709525, 0.684568, -0.470754, -0.55264, -0.687735, 0.866285, -0.437222, -0.241635, -0.221911, 2.41015, -0.0659193)
+transform = Transform3D(-0.158143, -0.706611, 0.689704, -0.463962, -0.563408, -0.683601, 0.871625, -0.428103, -0.238742, -0.222344, 2.40979, -0.0661573)
 bone_idx = 31
 
 [node name="sword" type="BoneAttachment3D" parent="mc_rabbit_2_3/metarig/GeneralSkeleton" index="15"]
-transform = Transform3D(0.491077, -0.538712, 0.684568, 0.190128, -0.700623, -0.687735, 0.850114, 0.467887, -0.241636, -0.277006, 1.69165, -0.0279564)
+transform = Transform3D(0.481065, -0.541187, 0.689705, 0.186171, -0.705713, -0.683601, 0.856689, 0.457259, -0.238741, -0.276567, 1.68667, -0.025626)
 bone_name = "RightHand"
 bone_idx = 30
 
