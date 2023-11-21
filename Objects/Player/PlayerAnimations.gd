@@ -7,6 +7,7 @@ var is_charging: bool = false
 
 func _ready():
 	connect('animation_started', _on_animation_started)
+	connect('animation_finished', _on_animation_finished)
 
 var i = false
 func _on_animation_started(animation_name: String):
@@ -16,13 +17,14 @@ func _on_animation_started(animation_name: String):
 		return
 	i = false
 	
-	print(animation_name)
-	
 	if animation_name == 'knight_animations/2H_Melee_Attack_Spin':
 		hurt_box.monitorable = true
 		attacks_remaining -= 1
-	else:
+
+func _on_animation_finished(animation_name: String):
+	if animation_name == 'knight_animations/2H_Melee_Attack_Spin':
 		hurt_box.monitorable = false
+
 
 func attack():
 	attacks_remaining += 1
