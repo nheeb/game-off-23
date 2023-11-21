@@ -4,7 +4,6 @@
 
 func _set_state(new_state: float):
 	state = new_state
-	#print('set')
 	var torus: TorusMesh = mesh as TorusMesh
 	torus.inner_radius = new_state
 	torus.outer_radius = new_state + 1.1
