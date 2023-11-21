@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://6scktaj5atmu"]
+
+[ext_resource type="Script" path="res://Worlds/PrototypeArena.gd" id="1_4gn8l"]
+[ext_resource type="PackedScene" uid="uid://d1t8v3yidk6mp" path="res://Objects/Player/Player.tscn" id="2_hplb1"]
+[ext_resource type="PackedScene" uid="uid://q0ul6kun0gv4" path="res://Objects/Player/PlayerCamera.tscn" id="3_aaqen"]
+[ext_resource type="Environment" uid="uid://bagmablituwcd" path="res://Assets/WorldEnv/PrototypeArena.tres" id="4_m4eml"]
+[ext_resource type="PackedScene" uid="uid://nsvtq3nres6s" path="res://Assets/Models/dragon_cave.blend" id="5_bivoa"]
+[ext_resource type="PackedScene" uid="uid://cu0j2oc2nfkvl" path="res://Objects/Dragon/Dragon.tscn" id="5_lpixg"]
+
+[node name="PrototypeArena" type="Node3D"]
+script = ExtResource("1_4gn8l")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.639546, 0.606149, 0.472826, 0, -0.615056, 0.788483, 0.768753, -0.504272, -0.393357, 0, 14.5074, 0)
+shadow_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("2_hplb1")]
+
+[node name="PlayerCamera" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_aaqen")]
+target_distance_from_player = 6.0
+player = NodePath("../Player")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("4_m4eml")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(0.909541, -0.229514, 0.346495, -0.415614, -0.502274, 0.758278, 0, -0.833693, -0.552228, 0, 10.8668, 0)
+
+[node name="dragon_cave" parent="." instance=ExtResource("5_bivoa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 54.9095)
+
+[node name="Dragon" parent="." instance=ExtResource("5_lpixg")]
+transform = Transform3D(0.436566, 0, -0.899672, 0, 1, 0, 0.899672, 0, 0.436566, 5.03567, 2.35794, -21.6246)
