@@ -68,6 +68,9 @@ func toggle_item_on_scale(item_ref):
 func _ready():
 	for item in $Items.get_children():
 		item.shop_ref = self
+	scale_count_yellow = Items.scale_bank[0] / 5
+	scale_count_red = Items.scale_bank[1] / 5
+	scale_count_black = Items.scale_bank[2] / 5
 
 func scale_weight():
 	var weight = 0

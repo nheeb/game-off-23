@@ -7,7 +7,7 @@ func get_probability() -> float:
 		return 0.0
 
 func effect_start(index):
-	await get_tree().create_timer(1.2).timeout
+	await get_tree().create_timer(0.8).timeout
 	dragon.tail_area.activate()
 	await get_tree().create_timer(2.2).timeout
 	if is_active():

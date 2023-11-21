@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://2r5vm48t6q7r"]
+[gd_scene load_steps=13 format=3 uid="uid://2r5vm48t6q7r"]
 
-[ext_resource type="Material" uid="uid://ccxwt8ypopppe" path="res://Assets/Materials/DissolveMaterial.tres" id="1"]
 [ext_resource type="Shader" path="res://Shaders/DustNew.gdshader" id="2"]
+[ext_resource type="Shader" path="res://Shaders/Dissolve.gdshader" id="2_1vb5j"]
+[ext_resource type="Texture2D" uid="uid://i731rmsh5b60" path="res://Assets/Sprites/voronoi.png" id="3_eyadg"]
 
 [sub_resource type="Gradient" id="11"]
 offsets = PackedFloat32Array(0)
@@ -56,8 +57,30 @@ shader_parameter/gravity = Vector3(0, -1e-06, 0)
 shader_parameter/color_ramp = SubResource("12")
 shader_parameter/scale_texture = SubResource("14")
 
-[sub_resource type="SphereMesh" id="6"]
-material = ExtResource("1")
+[sub_resource type="Curve" id="1"]
+_data = [Vector2(0, 0.0136364), 0.0, -0.0417355, 0, 1, Vector2(0.326733, 0), 0.0, 0.0, 0, 0, Vector2(1, 1), 1.48529, 0.0, 1, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="2"]
+curve = SubResource("1")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0l8uq"]
+render_priority = 0
+shader = ExtResource("2_1vb5j")
+shader_parameter/albedo = Color(0, 0, 0, 1)
+shader_parameter/specular = 0.0
+shader_parameter/metallic = 0.265
+shader_parameter/roughness = 1.0
+shader_parameter/point_size = null
+shader_parameter/uv1_scale = null
+shader_parameter/uv1_offset = null
+shader_parameter/uv2_scale = null
+shader_parameter/uv2_offset = null
+shader_parameter/dissolve_texture = ExtResource("3_eyadg")
+shader_parameter/dissolve_ramp = SubResource("2")
+
+[sub_resource type="SphereMesh" id="SphereMesh_jnwaf"]
+material = SubResource("ShaderMaterial_0l8uq")
 radius = 0.3
 height = 0.6
 radial_segments = 12
@@ -71,4 +94,4 @@ lifetime = 0.5
 speed_scale = 0.8
 visibility_aabb = AABB(-1.4374, -1.64339, -0.996239, 2.96245, 2.66396, 2.90193)
 process_material = SubResource("15")
-draw_pass_1 = SubResource("6")
+draw_pass_1 = SubResource("SphereMesh_jnwaf")

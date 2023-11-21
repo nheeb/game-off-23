@@ -29,7 +29,7 @@ func getTargetCameraPosition():
 func getTargetCameraRotation():
 	if boss_focus == null:
 		return quaternion
-	var transform = Transform3D(Basis(), Functions.remove_y_value(player.global_position)) \
+	var _transform = Transform3D(Basis(), Functions.remove_y_value(player.global_position)) \
 		.looking_at(Functions.remove_y_value(boss_focus.global_position))
 	return getTargetCameraRotationTransform().basis.get_rotation_quaternion()
 

@@ -2,6 +2,7 @@ extends Node
 
 var items: Array[ItemData] = []
 var equipment: Dictionary = {} # SLOTS -> ItemData
+var scale_bank: Array[int] = [0, 0, 0]
 
 func _ready():
 	items.append_array(get_children().filter(func (x): return x is ItemData))

@@ -52,6 +52,7 @@ func activate(direction: Vector3) -> void:
 	).normalized()
 	if rotation_axis == Vector3(0,0,0):
 		rotation_axis = Vector3.RIGHT
+	Items.scale_bank[Game.dragon.stage-1] += 1
 
 var falling := true
 var contracting := false
