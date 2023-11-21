@@ -1,6 +1,6 @@
 [gd_scene load_steps=7 format=3 uid="uid://6scktaj5atmu"]
 
-[ext_resource type="Script" path="res://Worlds/PrototypeArena.gd" id="1_4gn8l"]
+[ext_resource type="Script" path="res://Worlds/World.gd" id="1_4gn8l"]
 [ext_resource type="PackedScene" uid="uid://d1t8v3yidk6mp" path="res://Objects/Player/Player.tscn" id="2_hplb1"]
 [ext_resource type="PackedScene" uid="uid://q0ul6kun0gv4" path="res://Objects/Player/PlayerCamera.tscn" id="3_aaqen"]
 [ext_resource type="Environment" uid="uid://bagmablituwcd" path="res://Assets/WorldEnv/PrototypeArena.tres" id="4_m4eml"]

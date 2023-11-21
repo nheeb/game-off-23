@@ -8,7 +8,7 @@ size = Vector3(1.48254, 0.235044, 1.63965)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0m6wy"]
 albedo_color = Color(1, 1, 0, 1)
 
-[node name="DragonScaleArea" type="Node3D"]
+[node name="DragonScaleArea" type="Node3D" groups=["dragon_scale_area"]]
 script = ExtResource("1_e5gfn")
 
 [node name="Area3D" type="Area3D" parent="."]

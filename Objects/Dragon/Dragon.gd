@@ -26,6 +26,7 @@ var current_state := "":
 	set(value):
 		current_state = value
 		%DebugStateLabel.text = value
+		DebugInfo.refresh_info("Current Dragon State: ", value)
 var new_state := "Idle"
 var current_state_object: DragonState
 var state_history := [""]
@@ -114,10 +115,12 @@ func statemachine_process(delta: float):
 			if new_state != "":
 				pass
 
-func force_state_change(_new_state: String, force := false, restart := false) -> void:
+func force_state_change(_new_state: String, force := true, restart := false) -> void:
 	if current_state != _new_state or restart:
 		if force or new_state == "":
 			new_state = _new_state
+			if DebugInfo.debug_visible:
+				print("State force: " + new_state)
 
 func reset_behaviour():
 	movement_type = MovementType.STANDING
@@ -140,9 +143,9 @@ func analyse_battlefield():
 	var own_direction_clean = Functions.no_y_normalized(to_global(Vector3.FORWARD) - global_position)
 	player_face_angle_signed_rad = own_direction_clean.signed_angle_to(player_direction_clean, Vector3.UP)
 	player_face_angle = rad_to_deg(abs(player_face_angle_signed_rad))
-	if DebugInfo.debug_visible:
-		DebugInfo.refresh_info("Player Dist", player_distance)
-		DebugInfo.refresh_info("Player Angle", player_face_angle)
+#	if DebugInfo.debug_visible:
+#		DebugInfo.refresh_info("Player Dist", player_distance)
+#		DebugInfo.refresh_info("Player Angle", player_face_angle)
 
 func choose_action():
 	var running_total := 0.0
@@ -165,14 +168,14 @@ func choose_action():
 			break
 	if new_state == "":
 		printerr("No state was chosen")
-	if DebugInfo.debug_visible:
-		var sorted_index = range(len(state_names))
-		sorted_index.sort_custom(func(a,b): return flat_chances[a] > flat_chances[b])
-		var debug_states_chances_string := ""
-		for index in sorted_index:
-			debug_states_chances_string = debug_states_chances_string + str(state_names[index]) + ": " + "%.2f" % (flat_chances[index] / running_total * 100.0) + "%\n"
-		DebugInfo.refresh_info("State Chances", debug_states_chances_string)
-		print(debug_states_chances_string)
+#	if DebugInfo.debug_visible:
+#		var sorted_index = range(len(state_names))
+#		sorted_index.sort_custom(func(a,b): return flat_chances[a] > flat_chances[b])
+#		var debug_states_chances_string := ""
+#		for index in sorted_index:
+#			debug_states_chances_string = debug_states_chances_string + str(state_names[index]) + ": " + "%.2f" % (flat_chances[index] / running_total * 100.0) + "%\n"
+#		DebugInfo.refresh_info("State Chances", debug_states_chances_string)
+#		print(debug_states_chances_string)
 
 var last_movement_vector : Vector3
 func movement_process(delta: float):

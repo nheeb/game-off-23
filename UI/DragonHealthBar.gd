@@ -58,14 +58,15 @@ func render():
 		add_child(s)
 
 func _physics_process(delta):
-	last_health_change = max(0, last_health_change - delta)
-	if last_health_change == 0:
-		if displayed_health < health:
-			last_health_change = health_increase_delay
-			displayed_health += displayed_health % 5
-			displayed_health += min(5, health - displayed_health)
-			render()
-		elif displayed_health > health:
-			last_health_change = health_reduce_delay
-			displayed_health -= 1
-			render()
+	if Game.current_game_state == Game.GAME_STATE.Battle:
+		last_health_change = max(0, last_health_change - delta)
+		if last_health_change == 0:
+			if displayed_health < health:
+				last_health_change = health_increase_delay
+				displayed_health += displayed_health % 5
+				displayed_health += min(5, health - displayed_health)
+				render()
+			elif displayed_health > health:
+				last_health_change = health_reduce_delay
+				displayed_health -= 1
+				render()

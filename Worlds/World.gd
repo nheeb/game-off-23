@@ -29,15 +29,17 @@ func defeat_animation(_source):
 	Game.load_shop()
 
 func make_everything_ready_for_intro():
-	area_start_cutscene.body_entered.connect(start_cutscene, CONNECT_ONE_SHOT)
+	area_start_cutscene.body_entered.connect(func (x): start_cutscene(), CONNECT_ONE_SHOT)
 	Game.player.global_position = player_spawn_intro.global_position
 	Game.dragon.force_state_change("PreCutscene")
 
 func make_everything_ready_for_battle():
+	Game.current_game_state = Game.GAME_STATE.Battle
 	Game.player.global_position = player_spawn_battle.global_position
 	Game.dragon.force_state_change("Idle")
 
 var cutscene_running := false
+var cutscene_tooltip := false
 func start_cutscene():
 	cutscene_running = true
 	Game.current_game_state = Game.GAME_STATE.Cutscene
@@ -45,15 +47,21 @@ func start_cutscene():
 	# Disable player input
 	# Camera to dragon
 	# Whatever
-	await get_tree().create_timer(10.0).timeout
+	await get_tree().create_timer(7.0).timeout
 	end_cutscene()
 
 func end_cutscene():
 	if cutscene_running:
 		cutscene_running = false
+		cutscene_tooltip = false
+		PlayerUI.set_cutscene_tooltip_visible(false)
 		make_everything_ready_for_battle()
 
 func _input(event):
 	if cutscene_running:
 		if event.is_action_pressed("skip_cutscene"):
-			end_cutscene()
+			if cutscene_tooltip:
+				end_cutscene()
+			else:
+				cutscene_tooltip = true
+				PlayerUI.set_cutscene_tooltip_visible(true)

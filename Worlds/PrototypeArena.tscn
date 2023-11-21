@@ -151,7 +151,7 @@ mesh = SubResource("BoxMesh_q0048")
 shape = SubResource("ConcavePolygonShape3D_fbm8o")
 
 [node name="Dragon" parent="." instance=ExtResource("3_evqoh")]
-transform = Transform3D(-0.975645, 0, 0.219353, 0, 1, 0, -0.219353, 0, -0.975645, 5.03567, 0.690028, -21.6246)
+transform = Transform3D(-0.975645, 0, 0.219353, 0, 1, 0, -0.219353, 0, -0.975645, 3.14722, 0.690028, -14.5613)
 
 [node name="PositionsForCutscene" type="Node3D" parent="."]
 
@@ -159,7 +159,7 @@ transform = Transform3D(-0.975645, 0, 0.219353, 0, 1, 0, -0.219353, 0, -0.975645
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.03549, 3.09316, 79.7318)
 
 [node name="PlayerSpawnBattle" type="Node3D" parent="PositionsForCutscene"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.61488, 15.8003)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.26533, 2.80077, 22.8299)
 
 [node name="AreaStartCutscene" type="Area3D" parent="PositionsForCutscene"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 27.2484)

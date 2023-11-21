@@ -23,7 +23,10 @@ var active_graphics_settings : GRAPHICS :
 		graphic_settings_changed.emit(x)
 
 enum GAME_STATE {Menu, Intro, Cutscene, Battle, Pause, Shop, Victory}
-var current_game_state: GAME_STATE = GAME_STATE.Menu
+var current_game_state: GAME_STATE = GAME_STATE.Menu :
+	set(x):
+		current_game_state = x
+		DebugInfo.refresh_info("Current Game State: ", GAME_STATE.keys()[x])
 
 func hit_pause():
 	return

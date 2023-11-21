@@ -1,16 +1,13 @@
 extends CanvasLayer
 
-
 var player_health_system : HealthSystem
 
 func _ready():
 	Game.player_ui = self
 
-
 func _process(delta):
 	if (player_health_system != null):
 		update_health(null)
-
 
 func update_health(_source) -> void:
 	var health : float = player_health_system.health
@@ -20,8 +17,6 @@ func update_health(_source) -> void:
 	
 	for i in int(health):
 		%HBHealth.add_child(create_heart())
-	
-	
 
 func create_heart() -> ColorRect:
 	var heart = ColorRect.new()
@@ -37,4 +32,6 @@ func set_health_system(health_system:HealthSystem) -> void:
 	var max_health : float = player_health_system.max_health
 	for i in max_health:
 		%HBHealth.add_child(create_heart())
-	
+
+func set_cutscene_tooltip_visible(_visible: bool):
+	%CutsceneTooltip.visible = _visible
