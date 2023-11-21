@@ -1,12 +1,12 @@
 extends Node2D
 
-const num_scales :int = 20
+const num_scales : int = 20
 const scale_size : int = 34
 const max_health : int = 100
-const variant_count: int = 2
+const variant_count : int = 2
 
-@export var stage:int = 1
-@export var health:int = 100 : set=set_health
+@export var stage : int = 1
+@export var health : int = 100 : set=set_health
 var displayed_health : int = 0
 var health_increase_delay = 0.05
 var health_reduce_delay = 0.05

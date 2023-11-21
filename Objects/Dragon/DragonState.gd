@@ -6,6 +6,7 @@ class_name DragonState extends Node
 
 # Probability Tags
 @export var air_state := false
+@export var natural_state := true
 @export var stage_flags := [true, true, true]
 @export var repeat_malus := true
 @export var repeat_malus_ease_curve := 1.4

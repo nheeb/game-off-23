@@ -13,7 +13,8 @@ func _ready():
 
 func _on_bt_start_pressed():
 	visible = false
-	get_tree().change_scene_to_file(Game.scene_path)
+	#get_tree().change_scene_to_file(Game.scene_path)
+	Game.load_game()
 	PlayerUI.visible = true
 #	get_tree().root.add_child(load(ui_path).instantiate())
 #	if (Game.debug):

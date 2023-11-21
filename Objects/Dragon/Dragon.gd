@@ -114,7 +114,7 @@ func statemachine_process(delta: float):
 			if new_state != "":
 				pass
 
-func force_state_change(_new_state: String, force := false, restart := false):
+func force_state_change(_new_state: String, force := false, restart := false) -> void:
 	if current_state != _new_state or restart:
 		if force or new_state == "":
 			new_state = _new_state
@@ -151,12 +151,13 @@ func choose_action():
 	var state_names := []
 	for state in states:
 		if state.has_method("get_probability"):
-			var prob = state.get_probability() * state.get_probabilty_modifier_from_tags()
-			if prob != 0.0:
-				running_total += prob
-				cumulative_chances.append(running_total)
-				flat_chances.append(prob)
-				state_names.append(state.name)
+			if state.natural_state:
+				var prob = state.get_probability() * state.get_probabilty_modifier_from_tags()
+				if prob != 0.0:
+					running_total += prob
+					cumulative_chances.append(running_total)
+					flat_chances.append(prob)
+					state_names.append(state.name)
 	var random_choice := randf() * running_total
 	for i in range(len(cumulative_chances)):
 		if random_choice <= cumulative_chances[i]:
