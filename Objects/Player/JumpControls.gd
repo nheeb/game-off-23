@@ -20,14 +20,14 @@ func _physics_process(delta):
 		
 func start_jump():
 	is_jumping = true
-	animation_tree.set("parameters/Core/conditions/is_jumping_completed", false)
-	animation_tree.set("parameters/Core/conditions/is_jumping", true)
+	animation_tree.set("parameters/Core/Movement/conditions/is_jumping_completed", false)
+	animation_tree.set("parameters/Core/Movement/conditions/is_jumping", true)
 	player.velocity.y = jump_velocity
 	player_motion.dodge_boost_speed = forward_boost_velocity
 	
 func stop_jump():
 	is_jumping = false
-	animation_tree.set("parameters/Core/conditions/is_jumping", false)
-	animation_tree.set("parameters/Core/conditions/is_jumping_completed", true)
+	animation_tree.set("parameters/Core/Movement/conditions/is_jumping", false)
+	animation_tree.set("parameters/Core/Movement/conditions/is_jumping_completed", true)
 	player_motion.dodge_boost_speed = 0.0
 	

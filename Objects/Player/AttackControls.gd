@@ -56,8 +56,8 @@ func perform_shoot():
 	sword_thrown()
 
 func perform_melee():
-	#if is_performing_melee:
-	#	return
+	if animation_tree.attacks_remaining >= 2:
+		return
 	
 	animation_tree.set("parameters/Core/conditions/is_aiming", false)
 	animation_tree.set("parameters/Core/conditions/performing_melee", true)

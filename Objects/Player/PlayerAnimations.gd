@@ -1,7 +1,7 @@
 class_name PlayerAnimations extends AnimationTree
 
-var attacks_remaining: int = 0
-var is_charging: bool = false
+@export var attacks_remaining: int = 0
+@export var is_charging: bool = false
 @onready var hurt_area: PlayerHurtArea = $"../PlayerHurtArea"
 
 func _ready():
@@ -32,3 +32,6 @@ func attack_completed():
 
 func should_prepare_attack():
 	return attacks_remaining > 0 or is_charging
+
+func _physics_process(delta):
+	print(should_prepare_attack())
