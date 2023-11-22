@@ -1,4 +1,4 @@
-[gd_scene load_steps=51 format=3 uid="uid://cu0j2oc2nfkvl"]
+[gd_scene load_steps=53 format=3 uid="uid://cu0j2oc2nfkvl"]
 
 [ext_resource type="Script" path="res://Objects/Dragon/Dragon.gd" id="1_b10y7"]
 [ext_resource type="Script" path="res://Objects/Dragon/Idle.gd" id="2_3qwwn"]
@@ -303,6 +303,10 @@ point_count = 3
 radius = 1.75057
 height = 7.21591
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2i248"]
+friction = 0.0
+rough = true
+
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_wc0od"]
 radius = 2.0
 height = 6.0
@@ -330,6 +334,9 @@ rings = 2
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_sbexe"]
 height = 3.10338
 radius = 7.77653
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_52qxw"]
+height = 3.61936
 
 [node name="Dragon" type="Node3D"]
 script = ExtResource("1_b10y7")
@@ -873,6 +880,7 @@ shape = SubResource("CapsuleShape3D_8k4dv")
 visible = false
 collision_layer = 16
 collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_2i248")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="StaticBody"]
 transform = Transform3D(1, 0, 0, 0, 0.0524573, 0.998623, 0, -0.998623, 0.0524573, 0, 1.38094, 0.0918454)
@@ -978,6 +986,16 @@ transform = Transform3D(15.9834, 0, 0, 0, 1.19744, 0, 0, 0, 15.9833, 0, 0.770042
 material_override = ExtResource("16_yafp0")
 mesh = SubResource("CylinderMesh_ic1fu")
 
+[node name="BackKnockbackArea" parent="DamageAreas" instance=ExtResource("6_qsmee")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.92971, 0)
+knockback_force = 4.0
+active = true
+perishable = false
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="DamageAreas/BackKnockbackArea"]
+transform = Transform3D(1, 0, 0, 0, -0.258819, 0.965926, 0, -0.965926, -0.258819, 0, 0, 0)
+shape = SubResource("CapsuleShape3D_52qxw")
+
 [node name="Positions" type="Node3D" parent="."]
 
 [node name="HeadPosition" type="Node3D" parent="Positions"]
@@ -1017,3 +1035,4 @@ transform = Transform3D(0.594756, -0.58548, 0.5509, 0.801931, 0.38401, -0.457659
 [editable path="DamageAreas/TailArea"]
 [editable path="DamageAreas/BodyArea"]
 [editable path="DamageAreas/AirKnockbackArea"]
+[editable path="DamageAreas/BackKnockbackArea"]
