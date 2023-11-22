@@ -3,10 +3,12 @@ class_name ItemData extends Node
 enum SLOTS {WEAPON, RING, BOOT, CONSUMABLE}
 
 # Shop-Exports
+@export var order_index: int
 @export var slot: SLOTS
 @export var price: int
-@export var order_index: int
-@export var texture: String
+@export var stats: Dictionary = {'damage': 0, 'speed': 0, 'armor': 0}
+@export var tooltip := ""
+@export var texture: Texture2D
 @export var not_obtainable := false
 
 var obtained := false

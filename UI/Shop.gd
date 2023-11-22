@@ -71,6 +71,7 @@ func _ready():
 	scale_count_yellow = Items.scale_bank[0] / 5
 	scale_count_red = Items.scale_bank[1] / 5
 	scale_count_black = Items.scale_bank[2] / 5
+	load_items()
 
 func scale_weight():
 	var weight = 0
@@ -181,3 +182,19 @@ func _on_buy_pressed():
 			if _scale is DragonScaleItem:
 				items_in_fire.append(scale)
 		catch_fire()
+
+const ITEM = preload("res://Objects/Items/ShopItem.tscn")
+ 
+func load_items():
+	var PADDING = get_viewport_rect().size.y / 4
+	var PAGE_SIZE = get_viewport_rect().size.y
+	var item_count := 0
+	for item_data in Items.get_items_for_shop():
+		var new_item := ITEM.instantiate()
+		%Items.add_child(new_item)
+		new_item.position.y = (item_count / 3) * PAGE_SIZE + (item_count % 3) * PADDING
+		new_item.apply_changes(item_data)
+		item_count += 1
+
+func _on_exit_pressed():
+	Game.load_game()

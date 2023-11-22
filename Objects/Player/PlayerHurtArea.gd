@@ -7,3 +7,6 @@ func set_attacking(value: bool):
 
 func is_attacking():
 	return attack_state
+
+func _physics_process(delta):
+	DebugInfo.refresh_info("Attacking: ", str(attack_state))

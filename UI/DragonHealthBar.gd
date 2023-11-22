@@ -59,6 +59,7 @@ func render():
 
 func _physics_process(delta):
 	if Game.current_game_state == Game.GAME_STATE.Battle:
+		visible = true
 		last_health_change = max(0, last_health_change - delta)
 		if last_health_change == 0:
 			if displayed_health < health:
@@ -70,3 +71,5 @@ func _physics_process(delta):
 				last_health_change = health_reduce_delay
 				displayed_health -= 1
 				render()
+	else:
+		visible = false

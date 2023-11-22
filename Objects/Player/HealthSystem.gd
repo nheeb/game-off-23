@@ -15,6 +15,8 @@ func _ready():
 func _physics_process(delta):
 	if invulnerable_time_remaining > 0.0:
 		invulnerable_time_remaining -= delta
+	if Input.is_action_just_pressed("suicide"):
+		take_damage(Game.player, 20)
 
 func take_damage(source: Node3D, amount: int):
 	if not can_take_damage():

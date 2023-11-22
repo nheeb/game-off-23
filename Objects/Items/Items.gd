@@ -12,7 +12,7 @@ func _ready():
 func get_items_for_shop() -> Array[ItemData]:
 	var item_array: Array[ItemData] = []
 	item_array.append_array(items.filter(func(x): return x.can_be_obtained()))
-	item_array.sort_custom(func (a,b): return a.order_index > b.order_index)
+	item_array.sort_custom(func (a,b): return a.order_index < b.order_index)
 	return item_array
 
 func get_obtained_items() -> Array[ItemData]:

@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://bfj13h30f3jol"]
+[gd_scene load_steps=5 format=3 uid="uid://bfj13h30f3jol"]
 
 [ext_resource type="Script" path="res://Objects/Items/Items.gd" id="1_g1uul"]
 [ext_resource type="Script" path="res://Objects/Items/TrashSword.gd" id="2_6k677"]
+[ext_resource type="Texture2D" uid="uid://ckpspw6iev3ee" path="res://Assets/Sprites/placeholder/weapon_watersword.png" id="3_v6pxj"]
+[ext_resource type="Texture2D" uid="uid://nde36ayewkxl" path="res://Assets/Sprites/placeholder/weapon_firesword.png" id="4_p6xcv"]
 
 [node name="Items" type="Node"]
 script = ExtResource("1_g1uul")
@@ -9,3 +11,21 @@ script = ExtResource("1_g1uul")
 [node name="TrashSword" type="Node" parent="."]
 script = ExtResource("2_6k677")
 price = 3
+stats = {
+"armor": 1,
+"damage": 1,
+"speed": 1
+}
+texture = ExtResource("3_v6pxj")
+
+[node name="GoodSword" type="Node" parent="."]
+script = ExtResource("2_6k677")
+order_index = 1
+price = 5
+stats = {
+"armor": 3,
+"damage": 2,
+"speed": 1
+}
+tooltip = "Better sword"
+texture = ExtResource("4_p6xcv")

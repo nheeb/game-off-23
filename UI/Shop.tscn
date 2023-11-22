@@ -1,11 +1,10 @@
-[gd_scene load_steps=21 format=3 uid="uid://bkjep3xq6tfxs"]
+[gd_scene load_steps=20 format=3 uid="uid://bkjep3xq6tfxs"]
 
 [ext_resource type="Texture2D" uid="uid://bgxfs4owgftqh" path="res://Assets/Sprites/placeholder/Stand.png" id="1_dbt80"]
 [ext_resource type="Script" path="res://UI/Shop.gd" id="1_hwity"]
 [ext_resource type="Texture2D" uid="uid://m6g8gyy7gye0" path="res://Assets/Sprites/placeholder/Left.png" id="2_ocnwg"]
 [ext_resource type="Texture2D" uid="uid://dexvv0faoka5p" path="res://Assets/Sprites/placeholder/Shaft.png" id="3_brkt0"]
 [ext_resource type="Texture2D" uid="uid://bgjitr5girrb" path="res://Assets/Sprites/placeholder/firesprite.png" id="4_b1whx"]
-[ext_resource type="PackedScene" uid="uid://bu45h1nxjc133" path="res://Objects/Items/ShopItem.tscn" id="5_1jepi"]
 [ext_resource type="Texture2D" uid="uid://dsy5m87xkhbe3" path="res://Assets/Sprites/placeholder/shop_buy_enabled.png" id="6_2kpmp"]
 [ext_resource type="Texture2D" uid="uid://b8hgq30xt4aak" path="res://Assets/Sprites/placeholder/shop_buy_disabled.png" id="7_1yekj"]
 
@@ -191,17 +190,8 @@ offset_right = 40.0
 offset_bottom = 23.0
 
 [node name="Items" type="Node2D" parent="."]
-
-[node name="Item1" parent="Items" instance=ExtResource("5_1jepi")]
-position = Vector2(1088, 93)
-
-[node name="Item2" parent="Items" instance=ExtResource("5_1jepi")]
-position = Vector2(1089, 286)
-item_name = "watersword"
-
-[node name="Item3" parent="Items" instance=ExtResource("5_1jepi")]
-position = Vector2(1089, 470)
-item_name = "slasher"
+unique_name_in_owner = true
+position = Vector2(1070, 149)
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
@@ -234,4 +224,5 @@ position = Vector2(583, 328)
 [node name="scale_spawn_point" type="Node2D" parent="."]
 position = Vector2(140, -258)
 
+[connection signal="pressed" from="Control/Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="Control/Buy" to="." method="_on_buy_pressed"]
