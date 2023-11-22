@@ -26,8 +26,10 @@ environment = ExtResource("4_m4eml")
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
 transform = Transform3D(0.909541, -0.229514, 0.346495, -0.415614, -0.502274, 0.758278, 0, -0.833693, -0.552228, 0, 10.8668, 0)
 
-[node name="dragon_cave" parent="." instance=ExtResource("5_bivoa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 54.9095)
-
 [node name="Dragon" parent="." instance=ExtResource("5_lpixg")]
 transform = Transform3D(0.436566, 0, -0.899672, 0, 1, 0, 0.899672, 0, 0.436566, 5.03567, 2.35794, -21.6246)
+
+[node name="level" type="Node3D" parent="."]
+
+[node name="dragon_cave" parent="level" instance=ExtResource("5_bivoa")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 54.9095)
