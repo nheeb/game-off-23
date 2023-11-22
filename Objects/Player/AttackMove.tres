@@ -1,0 +1,26 @@
+[gd_resource type="AnimationNodeBlendTree" load_steps=5 format=3 uid="uid://vshaio5c3ae1"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_u07bl"]
+animation = &"knight_animations/Running_A"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_esnbs"]
+animation = &"knight_animations/2H_Melee_Attack_Stab"
+
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_teu62"]
+filter_enabled = true
+filters = ["%GeneralSkeleton:LeftFoot", "%GeneralSkeleton:LeftLowerLeg", "%GeneralSkeleton:LeftToes", "%GeneralSkeleton:LeftUpperLeg", "%GeneralSkeleton:RightFoot", "%GeneralSkeleton:RightLowerLeg", "%GeneralSkeleton:RightToes", "%GeneralSkeleton:RightUpperLeg"]
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_b3xkb"]
+
+[resource]
+graph_offset = Vector2(-293.22, 69.5219)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_esnbs")
+nodes/Animation/position = Vector2(-280, 220)
+"nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_u07bl")
+"nodes/Animation 2/position" = Vector2(-100, 460)
+nodes/Blend2/node = SubResource("AnimationNodeBlend2_teu62")
+nodes/Blend2/position = Vector2(360, 360)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_b3xkb")
+nodes/TimeScale/position = Vector2(140, 220)
+nodes/output/position = Vector2(540, 260)
+node_connections = [&"output", 0, &"Blend2", &"Blend2", 0, &"TimeScale", &"Blend2", 1, &"Animation 2", &"TimeScale", 0, &"Animation"]
