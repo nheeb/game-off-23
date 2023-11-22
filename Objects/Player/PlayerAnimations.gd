@@ -1,7 +1,7 @@
 class_name PlayerAnimations extends AnimationTree
 
-var attacks_remaining: int = 0
-var is_charging: bool = false
+@export var attacks_remaining: int = 0
+@export var is_charging: bool = false
 @onready var hurt_area: PlayerHurtArea = $"../PlayerHurtArea"
 
 func _ready():
@@ -16,9 +16,9 @@ func _on_animation_started(animation_name: String):
 		return
 	i = false
 	
-	if animation_name == 'knight_animations/2H_Melee_Attack_Spin':
-		attacks_remaining -= 1
+	if "2H_Melee" in animation_name:
 		hurt_area.set_attacking(true)
+		attack_completed()
 
 func _on_animation_finished(animation_name: String):
 	if animation_name == 'knight_animations/2H_Melee_Attack_Spin':
@@ -28,7 +28,8 @@ func attack():
 	attacks_remaining += 1
 
 func attack_completed():
-	attacks_remaining -= 1
+	attacks_remaining = max(attacks_remaining - 1, 0)
 
 func should_prepare_attack():
 	return attacks_remaining > 0 or is_charging
+

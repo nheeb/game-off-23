@@ -18,12 +18,13 @@ func _physics_process(delta):
 	var overlapping = hit_area.get_overlapping_areas()
 	for hit_object in overlapping:
 		if hit_object is PlayerHurtArea and hit_object.is_attacking():
-			_on_hit()
+			_on_hit(hit_object)
 
-func _on_hit():
+func _on_hit(hit_object: PlayerHurtArea):
 	if dead: return
 	if $Timer.is_stopped():
 		take_damage(1)
+		hit_object.set_attacking(false)
 		$Timer.start(INVINC_TIME)
 
 const FALLEN_SCALE = preload("res://Objects/Projectiles/FallenScale.tscn")

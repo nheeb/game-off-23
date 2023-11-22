@@ -22,16 +22,16 @@ func _physics_process(delta):
 		
 func start_dodge():
 	dodge_remaining_time = dodge_duration
-	animation_tree.set("parameters/Core/conditions/is_dodging_completed", false)
-	animation_tree.set("parameters/Core/conditions/is_dodging", true)
+	animation_tree.set("parameters/Core/Movement/conditions/is_dodging_completed", false)
+	animation_tree.set("parameters/Core/Movement/conditions/is_dodging", true)
 	player.velocity.y = jump_velocity
 	player_motion.dodge_boost_speed = 10.0
 	player_motion.dash_lock = true
 	
 func stop_dodge():
 	dodge_remaining_time = 0
-	animation_tree.set("parameters/Core/conditions/is_dodging", false)
-	animation_tree.set("parameters/Core/conditions/is_dodging_completed", true)
+	animation_tree.set("parameters/Core/Movement/conditions/is_dodging", false)
+	animation_tree.set("parameters/Core/Movement/conditions/is_dodging_completed", true)
 	player_motion.dodge_boost_speed = 0.0
 	player_motion.dash_lock = false
 	
