@@ -15,13 +15,12 @@ func _on_animation_started(animation_name: String):
 		i = true
 		return
 	i = false
-	
 	if "2H_Melee" in animation_name:
 		hurt_area.set_attacking(true)
 		attack_completed()
 
 func _on_animation_finished(animation_name: String):
-	if animation_name == 'knight_animations/2H_Melee_Attack_Spin':
+	if "2H_Melee" in animation_name:
 		hurt_area.set_attacking(false)
 
 func attack():
