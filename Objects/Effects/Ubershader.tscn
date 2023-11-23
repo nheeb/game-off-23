@@ -1,12 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://dxad0qhxford7"]
+[gd_scene load_steps=7 format=3 uid="uid://dxad0qhxford7"]
 
 [ext_resource type="PackedScene" uid="uid://c6fi4uotdsqog" path="res://Objects/Effects/Fire.tscn" id="1_mm727"]
+[ext_resource type="Script" path="res://Objects/Effects/Ubershader.gd" id="1_nht25"]
 [ext_resource type="PackedScene" uid="uid://cvp3kawmlgko8" path="res://Objects/Effects/AttackHintFallingDebris.tscn" id="2_m4ji4"]
 [ext_resource type="PackedScene" uid="uid://g6rdyf5htd3s" path="res://Objects/Effects/AttackHintFireCone.tscn" id="3_rjqw1"]
 [ext_resource type="PackedScene" uid="uid://dmsfcv2i7w08x" path="res://Objects/Effects/Explosion.tscn" id="4_tqyft"]
 [ext_resource type="PackedScene" uid="uid://cjqrmxkllndkj" path="res://Objects/Effects/HitEffect.tscn" id="5_meh68"]
 
 [node name="Ubershader" type="Node3D"]
+script = ExtResource("1_nht25")
 
 [node name="Pivot" type="Node3D" parent="."]
 transform = Transform3D(0.106286, 0, 0, 0, 0.106286, 0, 0, 0, 0.106286, 0, 0, 0)

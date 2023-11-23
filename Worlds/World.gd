@@ -25,7 +25,13 @@ func defeat_animation(_source):
 	$Player/LightForDeathAnimation.visible = true
 	await get_tree().create_timer(.8).timeout
 	get_tree().call_group("fallen_scale", "start_contracting")
-	await get_tree().create_timer(4).timeout
+	await get_tree().physics_frame
+	var all_scales = get_tree().get_nodes_in_group("fallen_scale")
+	all_scales.sort_custom(func (a, b): return Game.player.global_position.distance_squared_to(a.global_position) > Game.player.global_position.distance_squared_to(b.global_position))
+	if all_scales.size() > 0:
+		await all_scales[0].tree_exited
+	await get_tree().create_timer(1).timeout
+	# Fade black screen
 	Game.load_shop()
 
 func make_everything_ready_for_intro():

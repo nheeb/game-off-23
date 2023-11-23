@@ -29,6 +29,7 @@ anchor_bottom = 0.949074
 metadata/_edit_use_anchors_ = true
 
 [node name="DragonHealthBar" parent="PlayerUI" instance=ExtResource("1_dttwr")]
+unique_name_in_owner = true
 
 [node name="CutsceneTooltip" type="Label" parent="PlayerUI"]
 unique_name_in_owner = true

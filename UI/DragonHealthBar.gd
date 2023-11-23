@@ -1,12 +1,13 @@
 extends Node2D
 
-const num_scales : int = 20
+const hp_frames : int = 12
+const num_scales : int = 8
 const scale_size : int = 34
-const max_health : int = 100
+const max_health : int = num_scales * 3 * hp_frames
 const variant_count : int = 2
 
 @export var stage : int = 1
-@export var health : int = 100 : set=set_health
+@export var health : int = max_health : set=set_health
 var displayed_health : int = 0
 var health_increase_delay = 0.05
 var health_reduce_delay = 0.05
@@ -30,7 +31,7 @@ func decide_variants():
 	return variants
 
 func set_health(h):
-	health = h
+	health = h * hp_frames
 
 func render():
 	if baked_randomness == null:
@@ -54,7 +55,7 @@ func render():
 		s.position.x = offset_x + scale_offset * i
 		var falling = (1-(float(displayed_health%health_per_scale) / health_per_scale))
 		s.position.y = scale_offset + falling * 16
-		s.rotation_degrees = falling * 90
+		s.rotation_degrees = falling * 70
 		add_child(s)
 
 func _physics_process(delta):

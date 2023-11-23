@@ -66,9 +66,9 @@ func toggle_item_on_scale(item_ref: RigidBody2D):
 
 func _ready():
 	Game.shop = self
-	scale_count_yellow = 10 + Items.scale_bank[0] / 9
+	scale_count_yellow = Items.scale_bank[0] / 9
 	scale_count_red = Items.scale_bank[1] / 9
-	scale_count_black = 3 + Items.scale_bank[2] / 9
+	scale_count_black = Items.scale_bank[2] / 9
 	load_items()
 	setup_shop_slots()
 

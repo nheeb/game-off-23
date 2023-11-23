@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://burdsuunncfk7"]
+[gd_scene load_steps=3 format=3 uid="uid://cflgdfjynbt88"]
 
-[ext_resource type="PackedScene" uid="uid://b4t0wig6a1sm1" path="res://UI/DragonHealthBar.tscn" id="1_lrman"]
+[ext_resource type="PackedScene" uid="uid://5qhqt64jasu" path="res://UI/DragonHealthBar.tscn" id="1_lrman"]
 [ext_resource type="Script" path="res://Worlds/DebugDragonHealthbar.gd" id="1_wa7ir"]
 
 [node name="DebugDragonHealthbar" type="Control"]

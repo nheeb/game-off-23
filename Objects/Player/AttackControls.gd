@@ -29,9 +29,9 @@ func _physics_process(delta):
 		if charge < 0.2:
 			perform_melee()
 		else:
-			if not PlayerStats.sword_throw_unlocked:
+			if PlayerStats.charged_attack_type == PlayerStats.CHARGED_ATTACK.None:
 				perform_melee()
-			else:
+			elif PlayerStats.charged_attack_type == PlayerStats.CHARGED_ATTACK.Throw:
 				perform_shoot()
 	if Input.is_action_just_pressed("melee"):
 		start_shoot()

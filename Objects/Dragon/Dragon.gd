@@ -63,7 +63,7 @@ var fly_wave_tween: Tween
 
 # Constanst
 const DEFAULT_MOVEMENT_SPEED = 4.0
-const DEFAULT_ANGULAR_SPEED = 1.1
+const DEFAULT_ANGULAR_SPEED = 1.35
 const GRAVITY = 3.5
 const MOVEMENT_TARGET_RANGE = 1.5
 const FLY_HEIGHT = 3.6
@@ -87,7 +87,7 @@ func _ready():
 
 func refresh_hp():
 	hp = scale_areas.reduce(func (x,y): return x+y.hp, 0)
-	#TODO hook to UI
+	PlayerUI.dragon_health_bar.health = hp
 	if hp <= 0:
 		force_state_change("Dead", true)
 		stage_defeated.emit()

@@ -31,6 +31,7 @@ mesh = SubResource("SphereMesh_f5p2p")
 
 [node name="Fire" parent="Model" instance=ExtResource("1_4x7ou")]
 transform = Transform3D(1.83132, 0, 0, 0, 1.83132, 0, 0, 0, 1.83132, 0, 0, 0)
+visible = false
 
 [node name="CollisionDetector" type="Area3D" parent="."]
 collision_layer = 0

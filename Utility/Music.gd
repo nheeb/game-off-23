@@ -20,7 +20,7 @@ var current_track : :
 
 func _ready():
 	current_track = playlist.pick_random()
-	set_volume(Music.MUSIC_BUS_ID,0.5)
+	set_volume(Music.MUSIC_BUS_ID,0.2) # .5 was way to loud for me
 	set_volume(Music.SFX_BUS_ID,0.5)
 
 @export var debug_fade_out : bool = false : 

@@ -3,6 +3,7 @@ extends CanvasLayer
 var player_health_system : HealthSystem
 @export var heart_icon : Texture2D
 @export var heart_scale : float = 0.15
+@onready var dragon_health_bar := %DragonHealthBar
 
 func _ready():
 	Game.player_ui = self
