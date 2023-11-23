@@ -25,8 +25,14 @@ func get_equiped_items() -> Array[ItemData]:
 	item_array.append_array(equipment.values().filter(func (x): return x != null))
 	return item_array
 
+func is_equiped(item: ItemData) -> bool:
+	return item in equipment.values()
+
 func equip_item(item: ItemData):
 	equipment[item.slot] = item
+
+func active_unequip_item(item: ItemData):
+	equipment[item.slot] = null
 
 func get_equiped_item(slot: ItemData.SLOTS) -> ItemData:
 	if equipment.has(slot):

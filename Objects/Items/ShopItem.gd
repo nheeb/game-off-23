@@ -1,20 +1,25 @@
 class_name ShopItem extends RigidBody2D
 
+var equipment_object := false
+
 var price_weight : int = 10
-@export var item_name: String = 'firesword'
 var sprite : Sprite2D
-var on_scale = false
-var shelf_location = null
-var shop_ref = null
+var on_scale := false
+var shelf_location : Vector2
+var item_data_node: ItemData
 
 func apply_changes(item_data: ItemData):
+	item_data_node = item_data
 	for child in item_data.get_children():
 		var dup = child.duplicate()
 		add_child(dup)
+		dup.position = Vector2.ZERO
 		if dup is Sprite2D:
 			sprite = dup
+			sprite.visible = true
+		elif dup is CollisionPolygon2D:
+			$Area2D.add_child(dup.duplicate())
 	if sprite!=null:
-		sprite.texture = item_data.texture
 		price_weight = item_data.price
 		for child in $Tooltip.get_children():
 			child.queue_free()
@@ -45,5 +50,14 @@ func _on_mouse_leave():
 	$Tooltip.hide()
 
 func _on_area_input(viewport, event, shape_idx):
+	if Game.shop.transition: return
 	if event.is_action_pressed('ShopInteract'):
-		shop_ref.toggle_item_on_scale(self)
+		if equipment_object:
+			if item_data_node.is_equiped():
+				item_data_node.active_unequip()
+				Game.shop.place_in_stash(self)
+			else:
+				item_data_node.equip()
+				Game.shop.visually_equip_item(self)
+		else:
+			Game.shop.toggle_item_on_scale(self)

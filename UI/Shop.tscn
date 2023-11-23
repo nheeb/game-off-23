@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://bkjep3xq6tfxs"]
+[gd_scene load_steps=23 format=3 uid="uid://bkjep3xq6tfxs"]
 
 [ext_resource type="Texture2D" uid="uid://bgxfs4owgftqh" path="res://Assets/Sprites/placeholder/Stand.png" id="1_dbt80"]
 [ext_resource type="Script" path="res://UI/Shop.gd" id="1_hwity"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://bgjitr5girrb" path="res://Assets/Sprites/placeholder/firesprite.png" id="4_b1whx"]
 [ext_resource type="Texture2D" uid="uid://dsy5m87xkhbe3" path="res://Assets/Sprites/placeholder/shop_buy_enabled.png" id="6_2kpmp"]
 [ext_resource type="Texture2D" uid="uid://b8hgq30xt4aak" path="res://Assets/Sprites/placeholder/shop_buy_disabled.png" id="7_1yekj"]
+[ext_resource type="PackedScene" uid="uid://b42unfgrjpgta" path="res://UI/ShopSlot.tscn" id="8_d5gcj"]
+[ext_resource type="PackedScene" uid="uid://b3ux2ipqcro62" path="res://UI/ShopTriangleButton.tscn" id="9_2vunc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mi0mg"]
 size = Vector2(178, 208)
@@ -84,6 +86,9 @@ animations = [{
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ce5ek"]
 size = Vector2(37, 145)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sqyin"]
+size = Vector2(1135.75, 59.5)
 
 [node name="Shop" type="Node2D"]
 script = ExtResource("1_hwity")
@@ -181,9 +186,13 @@ position = Vector2(364, 473)
 position = Vector2(-102, 107.5)
 shape = SubResource("RectangleShape2D_ce5ek")
 
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Boundary/StaticBody2D"]
+position = Vector2(1395.13, 201)
+shape = SubResource("RectangleShape2D_sqyin")
+
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Boundary/StaticBody2D"]
 position = Vector2(-360, -470)
-polygon = PackedVector2Array(-4, -3, -6, 646, 1148, 645, 1148, -3, 277, -3, 277, -435, 149.769, -434.101, 150, -462, 327, -489, 333, -82, 1228, -88, 1225, 733, -63, 740, -49, -461, 150, -461, 148, -433, -6, -433)
+polygon = PackedVector2Array(-4, -3, -6, 646, 1148, 645, 1148, -3, 277, -3, 277, -435, 149.769, -434.101, 150, -462, 327, -489, 333, -82, 1187, -73, 1185, 701, -45, 696, -49, -461, 150, -461, 148, -433, -6, -433)
 
 [node name="Label" type="Label" parent="."]
 offset_right = 40.0
@@ -195,9 +204,12 @@ position = Vector2(1070, 149)
 
 [node name="Control" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
 
 [node name="Exit" type="Button" parent="Control"]
 layout_mode = 0
@@ -205,6 +217,14 @@ offset_left = 548.0
 offset_top = 23.0
 offset_right = 686.0
 offset_bottom = 54.0
+text = "Change Equipment"
+
+[node name="Fight" type="Button" parent="Control"]
+layout_mode = 0
+offset_left = 1644.0
+offset_top = 33.0
+offset_right = 1799.0
+offset_bottom = 64.0
 text = "Fight the Dragon"
 
 [node name="Buy" type="TextureButton" parent="Control"]
@@ -224,5 +244,47 @@ position = Vector2(583, 328)
 [node name="scale_spawn_point" type="Node2D" parent="."]
 position = Vector2(140, -258)
 
+[node name="Equipment" type="Node2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(1731, 344)
+
+[node name="EquipmentItemSpawn" type="Node2D" parent="Equipment"]
+unique_name_in_owner = true
+position = Vector2(-3, 104)
+
+[node name="WeaponSlot" parent="Equipment" instance=ExtResource("8_d5gcj")]
+unique_name_in_owner = true
+position = Vector2(0, -70)
+scale = Vector2(0.654661, 0.654661)
+caption = "Weapon"
+
+[node name="BootsSlot" parent="Equipment" instance=ExtResource("8_d5gcj")]
+unique_name_in_owner = true
+position = Vector2(-300, 0)
+scale = Vector2(0.654661, 0.654661)
+caption = "Boots"
+
+[node name="ConsumableSlot" parent="Equipment" instance=ExtResource("8_d5gcj")]
+unique_name_in_owner = true
+position = Vector2(300, 0)
+scale = Vector2(0.654661, 0.654661)
+caption = "Item"
+
+[node name="TriangleButtons" type="Node2D" parent="."]
+
+[node name="ShopTriangleButtonUp" parent="TriangleButtons" instance=ExtResource("9_2vunc")]
+unique_name_in_owner = true
+position = Vector2(993, 596)
+scale = Vector2(2.66002, 2.66002)
+
+[node name="ShopTriangleButtonDown" parent="TriangleButtons" instance=ExtResource("9_2vunc")]
+unique_name_in_owner = true
+position = Vector2(993, 603)
+rotation = -3.14159
+scale = Vector2(2.66002, 2.66002)
+
 [connection signal="pressed" from="Control/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Control/Fight" to="." method="_on_fight_pressed"]
 [connection signal="pressed" from="Control/Buy" to="." method="_on_buy_pressed"]
+[connection signal="click" from="TriangleButtons/ShopTriangleButtonUp" to="." method="_on_shop_triangle_button_up_click"]
+[connection signal="click" from="TriangleButtons/ShopTriangleButtonDown" to="." method="_on_shop_triangle_button_down_click"]
