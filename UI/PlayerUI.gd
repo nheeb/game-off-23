@@ -6,7 +6,7 @@ var player_health_system : HealthSystem
 
 func _ready():
 	Game.player_ui = self
-	heart_icon.modulate# = "fb687e"
+#	heart_icon.modulate# = "fb687e"
 
 func _process(delta):
 	if (player_health_system != null):
