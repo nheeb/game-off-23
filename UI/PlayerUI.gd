@@ -1,9 +1,12 @@
 extends CanvasLayer
 
 var player_health_system : HealthSystem
+@export var heart_icon : Texture2D
+@export var heart_scale : float = 0.15
 
 func _ready():
 	Game.player_ui = self
+#	heart_icon.modulate# = "fb687e"
 
 func _process(delta):
 	if (player_health_system != null):
@@ -18,11 +21,17 @@ func update_health(_source) -> void:
 	for i in int(health):
 		%HBHealth.add_child(create_heart())
 
-func create_heart() -> ColorRect:
-	var heart = ColorRect.new()
-	heart.color = "fb687e"
+func create_heart():
+	var heart = TextureRect.new()
+	heart.texture = heart_icon
+#	heart.modulate = "fb687e"
+#	heart.set_scale(Vector2(heart_scale,heart_scale))
+	
+#	heart.color = "fb687e"
 	heart.custom_minimum_size.x = 50
 	heart.custom_minimum_size.y = 50
+	heart.expand_mode = TextureRect.EXPAND_IGNORE_SIZE
+
 	return heart
 
 func set_health_system(health_system:HealthSystem) -> void:

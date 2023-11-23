@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://dbecnm0hqqsap"]
+[gd_scene load_steps=4 format=3 uid="uid://dbecnm0hqqsap"]
 
 [ext_resource type="PackedScene" uid="uid://5qhqt64jasu" path="res://UI/DragonHealthBar.tscn" id="1_dttwr"]
 [ext_resource type="Script" path="res://UI/PlayerUI.gd" id="1_mh6lv"]
+[ext_resource type="Texture2D" uid="uid://dvaxgp8156v3y" path="res://Assets/Textures/mineral-heart.png" id="2_6fy3d"]
 
 [node name="PlayerUI" type="CanvasLayer"]
 layer = 2
 script = ExtResource("1_mh6lv")
+heart_icon = ExtResource("2_6fy3d")
 
 [node name="PlayerUI" type="Control" parent="."]
 layout_mode = 3

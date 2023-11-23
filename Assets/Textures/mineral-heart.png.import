@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://j2iypi8t15lc"
-path="res://.godot/imported/dragoncrown.PNG-89c1b08d864869a910449fee4304c3e0.ctex"
+uid="uid://dvaxgp8156v3y"
+path="res://.godot/imported/mineral-heart.png-c43fd149caf397390dbc1678d740e8f9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Models/dragoncrown.PNG"
-dest_files=["res://.godot/imported/dragoncrown.PNG-89c1b08d864869a910449fee4304c3e0.ctex"]
+source_file="res://Assets/Textures/mineral-heart.png"
+dest_files=["res://.godot/imported/mineral-heart.png-c43fd149caf397390dbc1678d740e8f9.ctex"]
 
 [params]
 
