@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://d37nrxxcr5mq8"]
+
+[ext_resource type="Script" path="res://Utility/Music.gd" id="1_c3bne"]
+[ext_resource type="AudioStream" uid="uid://d1opaw7is7kk1" path="res://Assets/Audio/Music/ANOTHER_EPIC_BATTLE.mp3" id="2_nehde"]
+[ext_resource type="AudioStream" uid="uid://bf3b5l6es7nbn" path="res://Assets/Audio/Music/GAMEJAM_ETHNIC_BATTLE_MUSIC_noguitar.mp3" id="3_pi5k0"]
+
+[node name="Music" type="Node" node_paths=PackedStringArray("audio_player")]
+script = ExtResource("1_c3bne")
+audio_player = NodePath("AudioStreamPlayer")
+playlist = [ExtResource("2_nehde"), ExtResource("3_pi5k0")]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+bus = &"Music"
+
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

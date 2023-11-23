@@ -101,6 +101,7 @@ text = "Music"
 [node name="HSMusic" type="HSlider" parent="TabContainer/Sound/MarginContainer/VBoxContainer/HBMusic"]
 layout_mode = 2
 size_flags_horizontal = 3
+value = 50.0
 
 [node name="MusicValue" type="Label" parent="TabContainer/Sound/MarginContainer/VBoxContainer/HBMusic"]
 unique_name_in_owner = true
@@ -117,6 +118,7 @@ text = "Sound FX"
 [node name="HSSFX" type="HSlider" parent="TabContainer/Sound/MarginContainer/VBoxContainer/HBMusic2"]
 layout_mode = 2
 size_flags_horizontal = 3
+value = 50.0
 
 [node name="SFXValue" type="Label" parent="TabContainer/Sound/MarginContainer/VBoxContainer/HBMusic2"]
 unique_name_in_owner = true

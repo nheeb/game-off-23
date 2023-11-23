@@ -24,6 +24,7 @@ DebugInfo="*res://Utility/DebugInfo.tscn"
 Functions="*res://Utility/Functions.tscn"
 Items="*res://Objects/Items/Items.tscn"
 PlayerStats="*res://Objects/Player/PlayerStats.tscn"
+Music="*res://Utility/Music.tscn"
 
 [debug]
 

@@ -13,8 +13,8 @@ func _on_hssfx_value_changed(value):
 
 func change_volume(sound_type,value):
 	match(sound_type):
-		SOUNDTYPE.MUSIC: pass
-		SOUNDTYPE.SFX: pass
+		SOUNDTYPE.MUSIC: Music.set_volume(Music.MUSIC_BUS_ID,(value/100))
+		SOUNDTYPE.SFX: Music.set_volume(Music.SFX_BUS_ID,(value/100))
 	return
 
 
