@@ -1,19 +1,12 @@
-[gd_scene load_steps=3 format=3 uid="uid://bu45h1nxjc133"]
+[gd_scene load_steps=2 format=3 uid="uid://bu45h1nxjc133"]
 
 [ext_resource type="Script" path="res://Objects/Items/ShopItem.gd" id="1_yksaf"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_yhptm"]
-size = Vector2(80, 145)
 
 [node name="ShopItem" type="RigidBody2D"]
 freeze = true
 script = ExtResource("1_yksaf")
 
 [node name="Area2D" type="Area2D" parent="."]
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="Area2D"]
-position = Vector2(0, 7.5)
-shape = SubResource("RectangleShape2D_yhptm")
 
 [node name="Tooltip" type="Control" parent="."]
 visible = false

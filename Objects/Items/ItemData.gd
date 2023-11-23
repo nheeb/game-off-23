@@ -1,6 +1,6 @@
 class_name ItemData extends Node
 
-enum SLOTS {WEAPON, RING, BOOT, CONSUMABLE}
+enum SLOTS {WEAPON, BOOT, CONSUMABLE}
 
 # Shop-Exports
 @export var order_index: int
@@ -16,8 +16,14 @@ var obtained := false
 func can_be_obtained() -> bool:
 	return not not_obtainable
 
+func is_equiped() -> bool:
+	return Items.is_equiped(self)
+
 func equip() -> void:
 	Items.equip_item(self)
+
+func active_unequip() -> void:
+	Items.active_unequip_item(self)
 
 func obtain() -> void:
 	obtained = true

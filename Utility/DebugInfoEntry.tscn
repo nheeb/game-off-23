@@ -11,10 +11,12 @@ offset_right = 70.0
 offset_bottom = 13.0
 grow_vertical = 2
 size_flags_horizontal = 0
+mouse_filter = 2
 script = ExtResource("1_u55n7")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="LabelName" type="Label" parent="HBoxContainer"]
 layout_mode = 2

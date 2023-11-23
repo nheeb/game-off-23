@@ -1,4 +1,4 @@
-extends Node2D
+class_name Shop extends Node2D
 
 const max_scale_angle = 20
 @onready var scale_spawn_location = $scale_spawn_point.transform.origin
@@ -37,7 +37,6 @@ func set_black_scale(new_scale_count):
 func spawn_scale(stage):
 	var s = scale_scene.instantiate()
 	s.stage = stage
-	s.price_weight = stage * 10
 	s.variant = rng.randi_range(0, 2)
 	s.transform.origin = scale_spawn_location
 	s.transform.origin.x += rng.randi_range(-scale_spawn_variation, scale_spawn_variation)
@@ -53,25 +52,25 @@ func clear_scales():
 		scales = []
 		spawned_scale_count = [0,0,0]
 
-func toggle_item_on_scale(item_ref):
+func toggle_item_on_scale(item_ref: RigidBody2D):
 	if item_ref.on_scale:
 		item_ref.freeze = true
 		item_ref.on_scale = false
-		item_ref.transform.origin = item_ref.shelf_location
+		item_ref.global_position = item_ref.shelf_location
 		item_ref.rotation = 0
 	else:
 		item_ref.freeze = false
 		item_ref.on_scale = true
-		item_ref.shelf_location = item_ref.transform.origin
-		item_ref.transform.origin = $Scale/Right.global_transform.origin
+		item_ref.shelf_location = item_ref.global_position
+		item_ref.global_position = $Scale/Right.global_position
 
 func _ready():
-	for item in $Items.get_children():
-		item.shop_ref = self
-	scale_count_yellow = Items.scale_bank[0] / 5
-	scale_count_red = Items.scale_bank[1] / 5
-	scale_count_black = Items.scale_bank[2] / 5
+	Game.shop = self
+	scale_count_yellow = 10 + Items.scale_bank[0] / 9
+	scale_count_red = Items.scale_bank[1] / 9
+	scale_count_black = 3 + Items.scale_bank[2] / 9
 	load_items()
+	setup_shop_slots()
 
 func scale_weight():
 	var weight = 0
@@ -120,7 +119,7 @@ func handle_scale_dragging(delta):
 
 func handle_scale_angle(delta):
 	# todo: make logarithmic scale?
-	var shaft_angle_target = max(-max_scale_angle, min(max_scale_angle, (item_weight()-scale_weight())/10))
+	var shaft_angle_target = max(-max_scale_angle, min(max_scale_angle, (item_weight()-scale_weight())))
 	if shaft_angle_target != last_shaft_angle:
 		last_shaft_angle = shaft_angle_target
 		shaft_angle_time_left = 1
@@ -164,9 +163,9 @@ func handle_fire(delta):
 			$Scale/Left/Fire.stop()
 			$Scale/Right/Fire.hide()
 			$Scale/Right/Fire.stop()
-		
 
 func _on_buy_pressed():
+	if transition: return
 	if scale_weight() >= item_weight():
 		fire_duration_left = 1.5
 		$Scale/Left/Fire.show()
@@ -177,24 +176,101 @@ func _on_buy_pressed():
 		for item in get_node("Scale/Right/scales_paid").get_overlapping_bodies():
 			if item is ShopItem:
 				items_in_fire.append(item)
-				print('bought '+item.item_name)
+				item.item_data_node.obtain()
 		for _scale in get_node("Scale/Left/scales_paid").get_overlapping_bodies():
 			if _scale is DragonScaleItem:
-				items_in_fire.append(scale)
+				items_in_fire.append(_scale)
+
 		catch_fire()
 
 const ITEM = preload("res://Objects/Items/ShopItem.tscn")
  
+var item_count := 0
 func load_items():
 	var PADDING = get_viewport_rect().size.y / 4
 	var PAGE_SIZE = get_viewport_rect().size.y
-	var item_count := 0
+	item_count = 0 
 	for item_data in Items.get_items_for_shop():
 		var new_item := ITEM.instantiate()
 		%Items.add_child(new_item)
 		new_item.position.y = (item_count / 3) * PAGE_SIZE + (item_count % 3) * PADDING
 		new_item.apply_changes(item_data)
 		item_count += 1
+	%ShopTriangleButtonUp.set_enabled(false)
+	%ShopTriangleButtonDown.set_enabled(true if item_count > 3 else false)
+
+var transition := false
+var item_cursor := 0
+
+func _on_shop_triangle_button_up_click():
+	scroll_items(1)
+
+func _on_shop_triangle_button_down_click():
+	scroll_items(-1)
+
+func scroll_items(direction: int):
+	item_cursor += - direction * 3
+	%ShopTriangleButtonUp.set_enabled(true if item_cursor > 0 else false)
+	%ShopTriangleButtonDown.set_enabled(true if item_cursor + 3 < item_count else false)
+	transition = true
+	var PAGE_SIZE = get_viewport_rect().size.y
+	var tween := get_tree().create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_BACK).set_parallel()
+	for item in %Items.get_children():
+		item = item as ShopItem
+		if item.on_scale:
+			item.shelf_location.y += direction * PAGE_SIZE
+		else:
+			tween.tween_property(item, "position:y", item.position.y + direction * PAGE_SIZE, 1.5)
+	await tween.finished
+	transition = false
+
+
+var equipment_menu := false
 
 func _on_exit_pressed():
+	if transition: return
+	if not equipment_menu:
+		transition = true
+		var tween := get_tree().create_tween()
+		tween.tween_property($Camera2D, "position:x", $Camera2D.position.x + get_viewport_rect().size.x, 1.6).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
+		equipment_menu = true
+		setup_equipment()
+		await tween.finished
+		unfreeze_equipment()
+		transition = false
+
+func unfreeze_equipment():
+	for item in %Equipment.get_children():
+		if item is ShopItem:
+			item.freeze = false
+
+func setup_equipment():
+	for item_data in Items.get_obtained_items():
+		var item = ITEM.instantiate()
+		%Equipment.add_child(item)
+		item.equipment_object = true
+		item.apply_changes(item_data)
+		if item_data.is_equiped():
+			var slot = shop_slots[item_data.slot]
+			slot.visual_equip(item)
+		else:
+			place_in_stash(item)
+
+func place_in_stash(item: ShopItem):
+	if not item.equipment_object:
+		printerr("Wrong item state: Not equipment")
+	item.global_position = %EquipmentItemSpawn.global_position + Vector2.RIGHT * randi_range(-200, 200)
+
+func visually_equip_item(item: ShopItem):
+	var slot = shop_slots[item.item_data_node.slot]
+	slot.visual_equip(item)
+
+var shop_slots := {}
+func setup_shop_slots():
+	shop_slots[ItemData.SLOTS.WEAPON] = %WeaponSlot
+	shop_slots[ItemData.SLOTS.BOOT] = %BootsSlot
+	shop_slots[ItemData.SLOTS.CONSUMABLE] = %ConsumableSlot
+
+func _on_fight_pressed():
+	if transition: return
 	Game.load_game()

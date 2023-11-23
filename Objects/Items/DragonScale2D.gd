@@ -1,6 +1,6 @@
 class_name DragonScaleItem extends RigidBody2D
 
-@export var price_weight : int = 10
+@export var price_weight : int = 1
 @export var stage : int = 1: set=set_stage
 @export var variant : int = 0: set=set_variant
 const variant_count = 3
@@ -21,6 +21,12 @@ var textures = [
 
 func set_stage(s):
 	stage = s
+	if stage == 1:
+		price_weight = 1
+	elif stage == 2:
+		price_weight = 3
+	elif stage == 3:
+		price_weight = 5
 	var size:float = 1.0+(s-1.0)/2.0
 	$Sprite.scale = Vector2(size, size)
 	$Collision.scale = Vector2(size, size)

@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://b42unfgrjpgta"]
+
+[ext_resource type="Script" path="res://UI/ShopSlot.gd" id="1_crsoy"]
+[ext_resource type="Texture2D" uid="uid://de1xnyrgcgqtc" path="res://Assets/Sprites/slot.png" id="1_lbyqq"]
+[ext_resource type="FontFile" uid="uid://bnf7hlkc0y1gq" path="res://Assets/Fonts/IMMORTAL.ttf" id="2_wribl"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_aqkb5"]
+font = ExtResource("2_wribl")
+font_size = 48
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ukxpk"]
+size = Vector2(363, 108)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dkadb"]
+radius = 16.0312
+
+[node name="ShopSlot" type="Node2D"]
+script = ExtResource("1_crsoy")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_lbyqq")
+
+[node name="Label" type="Label" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "Weapon"
+label_settings = SubResource("LabelSettings_aqkb5")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-1.5, 0)
+shape = SubResource("RectangleShape2D_ukxpk")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(186, -54)
+shape = SubResource("CircleShape2D_dkadb")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(-187, -54)
+shape = SubResource("CircleShape2D_dkadb")
+
+[node name="ItemSpawn" type="Node2D" parent="."]
+position = Vector2(0, -195)
