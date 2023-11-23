@@ -9,6 +9,8 @@ var movement_speed_modifier : float
 const RESET_SWORD_SLASH_DAMAGE = 1
 var sword_slash_damage: int
 
+var sword_throw_unlocked: bool = false
+
 func reset():
 	movement_speed_modifier = RESET_MOVEMENT_SPEED_MODIFIER
 	sword_slash_damage = RESET_SWORD_SLASH_DAMAGE
