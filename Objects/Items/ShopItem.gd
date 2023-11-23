@@ -2,12 +2,17 @@ class_name ShopItem extends RigidBody2D
 
 var price_weight : int = 10
 @export var item_name: String = 'firesword'
-@onready var sprite : Sprite2D = get_node("Sprite2D")
+var sprite : Sprite2D
 var on_scale = false
 var shelf_location = null
 var shop_ref = null
 
 func apply_changes(item_data: ItemData):
+	for child in item_data.get_children():
+		var dup = child.duplicate()
+		add_child(dup)
+		if dup is Sprite2D:
+			sprite = dup
 	if sprite!=null:
 		sprite.texture = item_data.texture
 		price_weight = item_data.price

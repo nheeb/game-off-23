@@ -8,7 +8,7 @@ enum SLOTS {WEAPON, RING, BOOT, CONSUMABLE}
 @export var price: int
 @export var stats: Dictionary = {'damage': 0, 'speed': 0, 'armor': 0}
 @export var tooltip := ""
-@export var texture: Texture2D
+# @export var texture: Texture2D
 @export var not_obtainable := false
 
 var obtained := false

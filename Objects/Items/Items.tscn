@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Objects/Items/Items.gd" id="1_g1uul"]
 [ext_resource type="Script" path="res://Objects/Items/TrashSword.gd" id="2_6k677"]
-[ext_resource type="Texture2D" uid="uid://ckpspw6iev3ee" path="res://Assets/Sprites/placeholder/weapon_watersword.png" id="3_v6pxj"]
+[ext_resource type="Texture2D" uid="uid://4nb41jhrseld" path="res://Assets/Sprites/sword-1.png" id="3_vavyp"]
 [ext_resource type="Texture2D" uid="uid://nde36ayewkxl" path="res://Assets/Sprites/placeholder/weapon_firesword.png" id="4_p6xcv"]
 
 [node name="Items" type="Node"]
@@ -16,7 +16,13 @@ stats = {
 "damage": 1,
 "speed": 1
 }
-texture = ExtResource("3_v6pxj")
+texture = null
+
+[node name="Sprite2D" type="Sprite2D" parent="TrashSword"]
+texture = ExtResource("3_vavyp")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TrashSword"]
+polygon = PackedVector2Array(17.5, -139.9, 17.5, -132.7, 9.5, -121.7, 8.6, -89.5, 26.5, -70.6, 26.5, -64.9, 26.1, -64, 24.1, -64, 8.5, -48.4, 8.5, -16.6, 2.5, 11.3, 2.5, 12, 6.6, 146, 4.2, 146, 2.6, 150, -4.5, 150, -4.5, 147, -8.5, 138.9, -8.5, -49.7, -18.5, -63, -19.5, -63, -19.5, -64.3, -19.5, -71, -22.5, -71, -22.5, -67, -25.4, -69.8, -4.5, -91.6, -4.5, -104.1, -3.7, -117.3, -15.7, -144, -10.1, -144, -4.5, -149.6, 4.7, -150)
 
 [node name="GoodSword" type="Node" parent="."]
 script = ExtResource("2_6k677")

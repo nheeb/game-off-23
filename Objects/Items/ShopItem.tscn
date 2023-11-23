@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bu45h1nxjc133"]
+[gd_scene load_steps=3 format=3 uid="uid://bu45h1nxjc133"]
 
 [ext_resource type="Script" path="res://Objects/Items/ShopItem.gd" id="1_yksaf"]
-[ext_resource type="Texture2D" uid="uid://nde36ayewkxl" path="res://Assets/Sprites/placeholder/weapon_firesword.png" id="2_pdr5q"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yhptm"]
 size = Vector2(80, 145)
@@ -9,15 +8,6 @@ size = Vector2(80, 145)
 [node name="ShopItem" type="RigidBody2D"]
 freeze = true
 script = ExtResource("1_yksaf")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-texture_filter = 1
-scale = Vector2(5, 5)
-texture = ExtResource("2_pdr5q")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 7.5)
-shape = SubResource("RectangleShape2D_yhptm")
 
 [node name="Area2D" type="Area2D" parent="."]
 
