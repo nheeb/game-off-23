@@ -45,6 +45,7 @@ layout_mode = 2
 text = "Settings"
 
 [node name="bt_Exit" type="Button" parent="PauseMenu/MarginContainer/VBoxContainer"]
+visible = false
 layout_mode = 2
 text = "Exit"
 

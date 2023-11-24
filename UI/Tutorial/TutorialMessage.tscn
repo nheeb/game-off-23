@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfl7h5wb3i10a"]
+
+[ext_resource type="Script" path="res://UI/Tutorial/TutorialMessage.gd" id="1_0qgtm"]
+
+[node name="TutorialMessage" type="Label3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0.0144658, 0)
+outline_modulate = Color(0, 0, 0, 0)
+text = "Marcel Davisississ
+1 & Keins"
+script = ExtResource("1_0qgtm")
