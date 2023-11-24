@@ -19,7 +19,7 @@ var current_track : :
 		audio_player.play()
 
 func _ready():
-	current_track = playlist.pick_random()
+	# current_track = playlist.pick_random()
 	set_volume(Music.MUSIC_BUS_ID,0.2) # .5 was way to loud for me
 	set_volume(Music.SFX_BUS_ID,0.5)
 

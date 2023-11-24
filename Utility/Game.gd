@@ -23,11 +23,12 @@ var active_graphics_settings : GRAPHICS :
 		active_graphics_settings = x
 		graphic_settings_changed.emit(x)
 
-enum GAME_STATE {Menu, Intro, Cutscene, Battle, Pause, Shop, Victory}
+enum GAME_STATE {Menu, Intro, Cutscene, Loading, Battle, Pause, Shop, Victory}
 var current_game_state: GAME_STATE = GAME_STATE.Menu :
 	set(x):
 		current_game_state = x
 		DebugInfo.refresh_info("Current Game State: ", GAME_STATE.keys()[x])
+var start_game_with_state: GAME_STATE
 
 func hit_pause():
 	return
@@ -42,5 +43,6 @@ func load_shop():
 
 func load_game(with_intro : bool = true):
 	get_tree().change_scene_to_file(scene_path)
-	current_game_state = GAME_STATE.Intro if with_intro else GAME_STATE.Battle
+	start_game_with_state = GAME_STATE.Intro if with_intro else GAME_STATE.Battle
+	current_game_state = GAME_STATE.Loading
 	PlayerStats.reset_and_render_equipped_items()

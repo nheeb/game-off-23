@@ -25,6 +25,7 @@ Functions="*res://Utility/Functions.tscn"
 Items="*res://Objects/Items/Items.tscn"
 PlayerStats="*res://Objects/Player/PlayerStats.tscn"
 Music="*res://Utility/Music.tscn"
+BlackScreen="*res://UI/BlackScreen.tscn"
 
 [debug]
 

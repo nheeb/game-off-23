@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bacftodx0g1vv"]
+
+[ext_resource type="Script" path="res://UI/BlackScreen.gd" id="1_7y8oh"]
+[ext_resource type="FontFile" uid="uid://bnf7hlkc0y1gq" path="res://Assets/Fonts/IMMORTAL.ttf" id="2_sv8o8"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_t7g03"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gwbou"]
+font = ExtResource("2_sv8o8")
+font_size = 64
+
+[node name="BlackScreen" type="CanvasLayer"]
+layer = 99
+script = ExtResource("1_7y8oh")
+
+[node name="SpriteBlack" type="Sprite2D" parent="."]
+modulate = Color(0, 0, 0, 1)
+scale = Vector2(2000, 1000)
+texture = SubResource("PlaceholderTexture2D_t7g03")
+centered = false
+
+[node name="LabelLoading" type="Label" parent="."]
+top_level = true
+offset_left = 50.0
+offset_top = 50.0
+offset_right = 343.0
+offset_bottom = 133.0
+text = "Loading..."
+label_settings = SubResource("LabelSettings_gwbou")

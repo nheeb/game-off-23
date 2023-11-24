@@ -4,15 +4,18 @@ class_name World extends Node3D
 @onready var player_spawn_battle : Node3D = $PositionsForCutscene/PlayerSpawnBattle
 @onready var area_start_cutscene : Area3D = $PositionsForCutscene/AreaStartCutscene
 
+signal everything_ready
+
 func _ready():
 	Game.world = self
 	Game.player_health_system.death.connect(defeat_animation)
-	if Game.current_game_state == Game.GAME_STATE.Intro:
+	if Game.start_game_with_state == Game.GAME_STATE.Intro:
 		make_everything_ready_for_intro()
-	elif Game.current_game_state == Game.GAME_STATE.Battle:
+	elif Game.start_game_with_state == Game.GAME_STATE.Battle:
 		make_everything_ready_for_battle()
 	else:
-		printerr("Wrong GameState when world is ready.")
+		printerr("Wrong GameState start when world is ready.")
+	everything_ready.connect(func (): BlackScreen.fade_out(), CONNECT_ONE_SHOT)
 
 func defeat_animation(_source):
 	Game.dragon.force_state_change("Disrespect")
@@ -38,11 +41,18 @@ func make_everything_ready_for_intro():
 	area_start_cutscene.body_entered.connect(func (x): start_cutscene(), CONNECT_ONE_SHOT)
 	Game.player.global_position = player_spawn_intro.global_position
 	Game.dragon.force_state_change("PreCutscene")
+	await get_tree().create_timer(3.0).timeout
+	Game.current_game_state = Game.GAME_STATE.Intro
+	everything_ready.emit()
 
 func make_everything_ready_for_battle():
-	Game.current_game_state = Game.GAME_STATE.Battle
+	Game.dragon.force_state_change("PreCutscene")
 	Game.player.global_position = player_spawn_battle.global_position
+	if Game.current_game_state == Game.GAME_STATE.Loading:
+		await get_tree().create_timer(3.0).timeout
+	Game.current_game_state = Game.GAME_STATE.Battle
 	Game.dragon.force_state_change("Idle")
+	everything_ready.emit()
 
 var cutscene_running := false
 var cutscene_tooltip := false
@@ -53,7 +63,7 @@ func start_cutscene():
 	# Disable player input
 	# Camera to dragon
 	# Whatever
-	await get_tree().create_timer(7.0).timeout
+	await get_tree().create_timer(4.0).timeout
 	end_cutscene()
 
 func end_cutscene():

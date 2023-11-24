@@ -6,7 +6,8 @@ func get_probability() -> float:
 var last_y_pos: float
 func effect_start(index):
 	last_y_pos = dragon.model.global_position.y
-	await get_tree().create_timer(3.0).timeout
+	Game.main_cam.screen_shake()
+	await get_tree().create_timer(2.6).timeout
 	if is_active(index):
 		next_state = "Idle"
 		dragon.model.global_position.y = last_y_pos

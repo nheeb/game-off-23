@@ -1,8 +1,19 @@
-[gd_scene load_steps=2 format=3 uid="uid://q0ul6kun0gv4"]
+[gd_scene load_steps=3 format=3 uid="uid://q0ul6kun0gv4"]
 
 [ext_resource type="Script" path="res://Objects/Player/PlayerCamera.gd" id="1_fykjp"]
 
-[node name="PlayerCamera" type="Camera3D"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_li6q0"]
+frequency = 0.05
+fractal_octaves = 4
+fractal_gain = 0.8
+
+[node name="PlayerCamera" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 0.866025, 0.5, 0, -0.5, 0.866025, 0, 0, 0)
-size = 10.0
 script = ExtResource("1_fykjp")
+noise = SubResource("FastNoiseLite_li6q0")
+
+[node name="ShakePivot" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="Camera3D" type="Camera3D" parent="ShakePivot"]
+current = true
