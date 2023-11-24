@@ -32,3 +32,5 @@ func attack_completed():
 func should_prepare_attack():
 	return attacks_remaining > 0 or is_charging
 
+func no_attack_taken():
+	return attacks_remaining <= 0 and not is_charging
