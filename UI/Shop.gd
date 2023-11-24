@@ -273,4 +273,7 @@ func setup_shop_slots():
 
 func _on_fight_pressed():
 	if transition: return
-	Game.load_game()
+	transition = true
+	BlackScreen.fade_in()
+	await BlackScreen.fade_done
+	Game.load_game(false)
