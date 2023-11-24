@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bhmse741i1alp"]
+
+[ext_resource type="Script" path="res://UI/Tutorial/Tutorial3D.gd" id="1_gsypc"]
+
+[node name="Tutorial3D" type="Node3D"]
+script = ExtResource("1_gsypc")

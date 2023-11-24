@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://r6ae26ljbfrt"]
+[gd_scene load_steps=10 format=3 uid="uid://r6ae26ljbfrt"]
 
 [ext_resource type="PackedScene" uid="uid://q0ul6kun0gv4" path="res://Objects/Player/PlayerCamera.tscn" id="1_bmttx"]
 [ext_resource type="Script" path="res://Worlds/World.gd" id="1_ppe0h"]
 [ext_resource type="PackedScene" uid="uid://d1t8v3yidk6mp" path="res://Objects/Player/Player.tscn" id="2_khuxf"]
 [ext_resource type="PackedScene" uid="uid://cu0j2oc2nfkvl" path="res://Objects/Dragon/Dragon.tscn" id="3_evqoh"]
 [ext_resource type="Environment" uid="uid://bagmablituwcd" path="res://Assets/WorldEnv/PrototypeArena.tres" id="4_1gto5"]
+[ext_resource type="PackedScene" uid="uid://dfl7h5wb3i10a" path="res://UI/Tutorial/TutorialMessage.tscn" id="6_ce2gf"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_q0048"]
 
@@ -169,3 +170,8 @@ collision_mask = 65536
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PositionsForCutscene/AreaStartCutscene"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.76719, 1.93787, 2.84248)
 shape = SubResource("BoxShape3D_uvw7m")
+
+[node name="Tutorial" type="Node3D" parent="."]
+
+[node name="TutorialMessage" parent="Tutorial" instance=ExtResource("6_ce2gf")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, -8.42823, 0.513423, 48.7213)
