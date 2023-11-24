@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://bx1tf4bkvvp53"
-path="res://.godot/imported/mc_rabbit_2.3.blend-81b2a608a78548203e609a2b2b0181db.scn"
+path="res://.godot/imported/mc_rabbit.blend-750776134df08fe16a63efd654edc48a.scn"
 
 [deps]
 
-source_file="res://Assets/Models/mc_rabbit_2.3.blend"
-dest_files=["res://.godot/imported/mc_rabbit_2.3.blend-81b2a608a78548203e609a2b2b0181db.scn"]
+source_file="res://Assets/Models/mc_rabbit.blend"
+dest_files=["res://.godot/imported/mc_rabbit.blend-750776134df08fe16a63efd654edc48a.scn"]
 
 [params]
 

@@ -59,13 +59,13 @@ func perform_shoot():
 	sword_thrown()
 
 func perform_melee():
-	if animation_tree.attacks_remaining >= 2:
+	reset_charge()
+	if animation_tree.attacks_remaining >= 1:
 		return
 	
 	animation_tree.set("parameters/Core/conditions/is_aiming", false)
 	animation_tree.set("parameters/Core/conditions/performing_melee", true)
 	animation_tree.attack()
-	reset_charge()
 	is_performing_melee = true
 	await get_tree().create_timer(.3).timeout
 	is_performing_melee = false
