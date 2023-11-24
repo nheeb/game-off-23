@@ -180,6 +180,7 @@ func _on_buy_pressed():
 		for _scale in get_node("Scale/Left/scales_paid").get_overlapping_bodies():
 			if _scale is DragonScaleItem:
 				items_in_fire.append(_scale)
+				Items.scale_bank[_scale.stage-1] -= Items.SCALE_RATE
 
 		catch_fire()
 
