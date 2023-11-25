@@ -76,14 +76,18 @@ func scale_weight():
 	var weight = 0
 	for body in $Scale/Left/scales_paid.get_overlapping_bodies():
 		if 'price_weight' in body and body != scale_in_hand:
-			weight += body.price_weight
+			body = body as RigidBody2D
+			if body.get_contact_count() != 0:
+				weight += body.price_weight
 	return weight
 
 func item_weight():
 	var weight = 0
 	for body in $Scale/Right/scales_paid.get_overlapping_bodies():
 		if 'price_weight' in body and body != scale_in_hand:
-			weight += body.price_weight
+			body = body as RigidBody2D
+			if body.get_contact_count() != 0:
+				weight += body.price_weight
 	return weight
 
 func catch_fire():

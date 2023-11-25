@@ -11,6 +11,11 @@ var hp : int
 
 const INVINC_TIME = .15
 
+var scale_meshes: Array[MeshInstance3D] = []
+var scales_per_damage := 0
+const VISUAL_BONUS_SCALES = .2
+var next_scale_index := 0
+
 func _ready():
 	hp = max_hp
 	
@@ -37,13 +42,21 @@ func take_damage(damage: int = 1):
 	
 	Game.hit_pause()
 	
-	# Make scales invis
+	# Make scales invis placeholder
 	if $PlaceholderScales.visible:
 		for i in range(damage):
 			var visible_scales = $PlaceholderScales.get_children().filter(func (x): return x.visible)
 			if visible_scales.is_empty(): break
 			visible_scales.pick_random().visible = false
-			
+	
+	# Make scales invis
+	if damage >= hp:
+		for m in scale_meshes: m.visible = false
+	else:
+		for i in range(damage * scales_per_damage):
+			scale_meshes[next_scale_index + i].visible = false
+		next_scale_index += damage * scales_per_damage
+	
 	# Throw fallen scales
 	for i in range(randi_range(2,4)):
 		var direction = global_transform.basis.y + .7 * Vector3.UP + 2.0 * (randf()-.5) * global_transform.basis.x
@@ -60,4 +73,17 @@ func take_damage(damage: int = 1):
 	if hp <= 0:
 		emit_signal("scale_area_dead")
 		dead = true
-		
+
+func add_scale_mesh(mesh: MeshInstance3D):
+	scale_meshes.append(mesh)
+
+func order_scale_meshes():
+	scale_meshes.sort_custom(func (a, b): return a.global_position.distance_squared_to(self.global_position) < b.global_position.distance_squared_to(self.global_position))
+	var scale_count := len(scale_meshes)
+	var bonus_scales := int(scale_count * VISUAL_BONUS_SCALES)
+	bonus_scales += (scale_count - bonus_scales) % max_hp
+	scales_per_damage = (scale_count - bonus_scales) / max_hp
+
+func reset_hp():
+	next_scale_index = 0
+	hp = max_hp

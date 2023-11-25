@@ -3,6 +3,8 @@
 [ext_resource type="Script" path="res://Objects/Items/ShopItem.gd" id="1_yksaf"]
 
 [node name="ShopItem" type="RigidBody2D"]
+max_contacts_reported = 5
+contact_monitor = true
 freeze = true
 script = ExtResource("1_yksaf")
 

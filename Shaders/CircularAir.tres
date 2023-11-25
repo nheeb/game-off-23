@@ -1,0 +1,44 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://bbn4kyajasdus"]
+
+[sub_resource type="Shader" id="Shader_mfbqi"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.1.3.stable's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_disabled,diffuse_burley,specular_schlick_ggx,unshaded;
+uniform vec4 albedo : source_color;
+uniform sampler2D noise;
+
+#include \"res://Shaders/lib.gdshaderinc\"
+
+vec2 map_uv_to_cylinder(vec2 uv) {
+	uv.y *= 2.0;
+	return uv;
+}
+
+void fragment() {
+	vec2 uv = map_uv_to_cylinder(UV);
+	ALBEDO = albedo.rgb;
+	float offset = 0.0;NODE_POSITION_WORLD.y * 1000.0;
+	float time = TIME * .7;
+	vec2 timed_uv = uv + vec2(.8*time + offset * .4,-time + offset);
+	ALPHA = albedo.a * clamp_and_map(texture(noise, timed_uv).r, .8, 1.0, 0.0, 1.0);
+	ALPHA = ALPHA * clamp_and_map(distance(0.5, uv.y), 0.0, 0.5, 1.0, 0.0);
+	ALPHA = ALPHA * float(UV.y < .5);
+}
+"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_pvp75"]
+frequency = 0.02
+fractal_type = 0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_1i611"]
+width = 100
+height = 600
+seamless = true
+noise = SubResource("FastNoiseLite_pvp75")
+
+[resource]
+render_priority = 0
+shader = SubResource("Shader_mfbqi")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/noise = SubResource("NoiseTexture2D_1i611")

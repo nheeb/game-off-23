@@ -19,6 +19,7 @@ collision_mask = 4
 shape = SubResource("BoxShape3D_xeedl")
 
 [node name="PlaceholderScales" type="Node3D" parent="."]
+visible = false
 
 [node name="scale" type="CSGBox3D" parent="PlaceholderScales"]
 transform = Transform3D(0.52164, 0, 0, 0, 1, 0, 0, 0, 0.549494, -0.217999, 2.98023e-08, -0.221491)

@@ -36,3 +36,14 @@ mat3 rotation_matrix_z(float angle) {
 	vec3 z = vec3(0, 0, 1);
 	return mat3(x, y, z);
 }
+
+float clamp_and_map(float value, float istart, float istop, float ostart, float ostop) {
+    value = clamp(value, istart, istop);
+    return ostart + (ostop - ostart) * ((value - istart) / (istop - istart));
+}
+
+float clamp_and_map_and_pow(float value, float istart, float istop, float ostart, float ostop, float pow) {
+    value = clamp(value, istart, istop);
+	float middle_value = ((value - istart) / (istop - istart));
+    return ostart + (ostop - ostart) * ((value - istart) / (istop - istart));
+}

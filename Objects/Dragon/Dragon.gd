@@ -4,7 +4,6 @@ class_name Dragon extends Node3D
 var stage := 1
 var is_flying := false
 var hp : int
-var scale_areas: Array[DragonScaleArea]
 
 # Signals
 signal turn_done
@@ -61,6 +60,10 @@ var fly_wave_tween: Tween
 @export var fly_wave_duration := .95
 @onready var fly_wave_pivot: Node3D = %FlyWavePivot
 
+# Scales
+var scale_areas : Array[DragonScaleArea] = []
+var scale_meshes : Array[MeshInstance3D] = []
+
 # Constanst
 const DEFAULT_MOVEMENT_SPEED = 4.0
 const DEFAULT_ANGULAR_SPEED = 1.35
@@ -74,16 +77,11 @@ func _ready():
 	$DebugStateLabel.visible = DebugInfo.debug_visible
 	fly_wave_curve.bake()
 	DebugInfo.visibility_changed.connect(func (): $DebugStateLabel.visible = not $DebugStateLabel.visible)
-	scale_areas = []
-	scale_areas.append_array($ScaleAreas.get_children())
-	for scale_area in scale_areas:
-		scale_area.scale_area_damage.connect(refresh_hp)
-		scale_area.scale_area_dead.connect(scale_area_destroyed)
-	for area in $DamageAreas.get_children():
-		area.visible = true
 	states = []
 	states.append_array($States.get_children().filter(func (x): return x is DragonState))
-	
+	connect_scales()
+	for area in $DamageAreas.get_children():
+		area.visible = true
 
 func refresh_hp():
 	hp = scale_areas.reduce(func (x,y): return x+y.hp, 0)
@@ -247,3 +245,23 @@ func get_nearest_collision(direction: Vector3) -> Vector3:
 func get_state_history_index(state_name):
 	var index = state_history.slice(-1, -20, -1).find(state_name)
 	return 20 if index == -1 else index
+
+func connect_scales():
+	gather_scale_meshes(%dragonmesh)
+	scale_areas.append_array($ScaleAreas.get_children())
+	for scale_mesh in scale_meshes:
+		scale_areas.sort_custom(func (a, b): return a.global_position.distance_squared_to(scale_mesh.global_position) < b.global_position.distance_squared_to(scale_mesh.global_position))
+		scale_areas[0].add_scale_mesh(scale_mesh)
+	for scale_area in scale_areas:
+		scale_area.scale_area_damage.connect(refresh_hp)
+		scale_area.scale_area_dead.connect(scale_area_destroyed)
+		scale_area.order_scale_meshes()
+
+func gather_scale_meshes(node: Node):
+	if node is MeshInstance3D:
+		if node.name.begins_with("Plane_"):
+			scale_meshes.append(node)
+	else:
+		for c in node.get_children():
+			gather_scale_meshes(c)
+	
