@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Objects/Dragon/Dragon.gd" id="1_b10y7"]
 [ext_resource type="Script" path="res://Objects/Dragon/Idle.gd" id="2_3qwwn"]
-[ext_resource type="PackedScene" uid="uid://dl71xj60wbbbu" path="res://Assets/Models/dragonmesh.rigged_1.4.4_export_24.11.blend" id="2_65eo8"]
+[ext_resource type="PackedScene" uid="uid://dl71xj60wbbbu" path="res://Assets/Models/Dragon/dragonmesh.rigged_1.4.4_export_24.11.blend" id="2_65eo8"]
 [ext_resource type="Script" path="res://Objects/Dragon/Wait.gd" id="3_8bdho"]
 [ext_resource type="Script" path="res://Objects/Dragon/Strife.gd" id="4_au1tx"]
 [ext_resource type="Script" path="res://Objects/Dragon/PreCutscene.gd" id="4_eke7i"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cm1kbw74emy08"]
 
-[ext_resource type="PackedScene" uid="uid://cpl5vh2n7k7fa" path="res://Assets/Models/dragonmesh_1.4.blend" id="1_ne4do"]
+[ext_resource type="PackedScene" uid="uid://cpl5vh2n7k7fa" path="res://Assets/Models/Dragon/dragonmesh_1.4.blend" id="1_ne4do"]
 [ext_resource type="Environment" uid="uid://bagmablituwcd" path="res://Assets/WorldEnv/PrototypeArena.tres" id="2_h53id"]
 
 [node name="Node3D" type="Node3D"]
