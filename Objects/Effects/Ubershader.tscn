@@ -29,6 +29,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0271059, 0, 0.860731)
 
 [node name="Explosion" parent="Pivot" instance=ExtResource("4_tqyft")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.200989, 0, 0.146432)
+uber_effect = true
 
 [node name="HitEffect" parent="Pivot" instance=ExtResource("5_meh68")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.426831, 0, -0.78131)
