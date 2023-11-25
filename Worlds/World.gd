@@ -3,6 +3,7 @@ class_name World extends Node3D
 @onready var player_spawn_intro : Node3D = $PositionsForCutscene/PlayerSpawnIntro
 @onready var player_spawn_battle : Node3D = $PositionsForCutscene/PlayerSpawnBattle
 @onready var area_start_cutscene : Area3D = $PositionsForCutscene/AreaStartCutscene
+@onready var cutscene: Node3D = $PositionsForCutscene/IntroCutScene
 
 signal everything_ready
 
@@ -57,13 +58,15 @@ func make_everything_ready_for_battle():
 var cutscene_running := false
 var cutscene_tooltip := false
 func start_cutscene():
+	var player_cam = get_viewport().get_camera_3d()
 	cutscene_running = true
 	Game.current_game_state = Game.GAME_STATE.Cutscene
 	Game.dragon.force_state_change("Cutscene")
 	# Disable player input
-	# Camera to dragon
-	# Whatever
+	cutscene.activate()
+	await Signal(cutscene, 'completed')
 	await get_tree().create_timer(4.0).timeout
+	player_cam.current = true
 	end_cutscene()
 
 func end_cutscene():
