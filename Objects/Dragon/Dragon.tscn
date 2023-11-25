@@ -475,7 +475,6 @@ script = ExtResource("8_u8nhm")
 
 [node name="SpitFireBall" type="Node" parent="States"]
 script = ExtResource("9_ev16w")
-natural_state = false
 
 [node name="SpitFireCone" type="Node" parent="States"]
 script = ExtResource("10_b6fvh")
