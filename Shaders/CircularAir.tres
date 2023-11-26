@@ -40,5 +40,5 @@ noise = SubResource("FastNoiseLite_pvp75")
 [resource]
 render_priority = 0
 shader = SubResource("Shader_mfbqi")
-shader_parameter/albedo = Color(1, 1, 1, 0.00392157)
+shader_parameter/albedo = Color(1, 1, 1, 1)
 shader_parameter/noise = SubResource("NoiseTexture2D_1i611")
