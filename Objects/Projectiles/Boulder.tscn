@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://brosrv1g4457e"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_pqu7h"]
+radial_segments = 6
+rings = 6
+
+[node name="Boulder" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_pqu7h")

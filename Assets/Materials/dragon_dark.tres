@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://c8vscq8ib10aa"]
+
+[resource]
+resource_name = "dragonskin_03"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_color = Color(0, 0.151502, 0.0265767, 1)
+metallic = 0.0652174
+roughness = 0.896739

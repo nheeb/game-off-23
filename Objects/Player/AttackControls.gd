@@ -4,6 +4,7 @@ class_name AttackControls extends Node
 @onready var animation_tree: PlayerAnimations = $"../../animations"
 @onready var player_motion: PlayerMotion = $"../PlayerMotion"
 @onready var mouse_detection_layer: MouseDetectionLayer = $"../../MouseDetectionLayer"
+@onready var melee_combat: MeleeCombat = $"../MeleeCombat"
 @export var max_charge = 2.0
 @export var sword_model: MeshInstance3D
 
@@ -60,15 +61,7 @@ func perform_shoot():
 
 func perform_melee():
 	reset_charge()
-	if animation_tree.attacks_remaining >= 1:
-		return
-	
-	animation_tree.set("parameters/Core/conditions/is_aiming", false)
-	animation_tree.set("parameters/Core/conditions/performing_melee", true)
-	animation_tree.attack()
-	is_performing_melee = true
-	await get_tree().create_timer(.3).timeout
-	is_performing_melee = false
+	melee_combat.attack()
 	
 func create_projectile():
 	var target_position = mouse_detection_layer.get_global_layer_mouse_position()

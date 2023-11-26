@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgtes18a4nj6w"]
+
+[ext_resource type="PackedScene" uid="uid://xjx5l528ecl6" path="res://Assets/Models/Buildings/townhall.blend" id="1_xwgtw"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_xwlhb"]
+size = Vector3(8.42307, 4.59245, 5.10808)
+
+[node name="Townhall" type="StaticBody3D"]
+
+[node name="Townhall" parent="." instance=ExtResource("1_xwgtw")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.60522, 0)
+shape = SubResource("BoxShape3D_xwlhb")
+
+[editable path="Townhall"]

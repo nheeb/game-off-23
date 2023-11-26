@@ -4,12 +4,13 @@ class_name Dragon extends Node3D
 var stage := 1
 var is_flying := false
 var hp : int
-var scale_areas: Array[DragonScaleArea]
+var invincible := false
 
 # Signals
 signal turn_done
 signal movement_done
 signal stage_defeated
+signal victory
 
 # Areas & Positions
 @onready var bite_area : PlayerDamageArea = %BiteArea
@@ -18,6 +19,7 @@ signal stage_defeated
 @onready var air_knockback_area : PlayerDamageArea = %AirKnockbackArea
 @onready var jump_landing_area : PlayerDamageArea = %JumpLandingArea
 @onready var head_position : Node3D = %HeadPosition
+@onready var tail_position : Node3D = %TailPosition
 @onready var model : Node3D = %Model
 
 # State Machine
@@ -30,6 +32,7 @@ var current_state := "":
 var new_state := "Idle"
 var current_state_object: DragonState
 var state_history := [""]
+var first_idle_state := true
 
 # Battlefield analysis
 var player_in_sight : bool
@@ -61,6 +64,11 @@ var fly_wave_tween: Tween
 @export var fly_wave_duration := .95
 @onready var fly_wave_pivot: Node3D = %FlyWavePivot
 
+# Scales & Colors
+var scale_areas : Array[DragonScaleArea] = []
+var scale_meshes : Array[MeshInstance3D] = []
+@onready var colors: DragonColors = %DragonColors
+
 # Constanst
 const DEFAULT_MOVEMENT_SPEED = 4.0
 const DEFAULT_ANGULAR_SPEED = 1.35
@@ -74,23 +82,29 @@ func _ready():
 	$DebugStateLabel.visible = DebugInfo.debug_visible
 	fly_wave_curve.bake()
 	DebugInfo.visibility_changed.connect(func (): $DebugStateLabel.visible = not $DebugStateLabel.visible)
-	scale_areas = []
-	scale_areas.append_array($ScaleAreas.get_children())
-	for scale_area in scale_areas:
-		scale_area.scale_area_damage.connect(refresh_hp)
-		scale_area.scale_area_dead.connect(scale_area_destroyed)
-	for area in $DamageAreas.get_children():
-		area.visible = true
 	states = []
 	states.append_array($States.get_children().filter(func (x): return x is DragonState))
-	
+	connect_scales()
+	for area in $DamageAreas.get_children():
+		area.visible = true
+	colors.make_everything_ready()
+
+func revive_hp():
+	for scale_area in scale_areas:
+		scale_area.reset_hp()
+	refresh_hp()
 
 func refresh_hp():
 	hp = scale_areas.reduce(func (x,y): return x+y.hp, 0)
 	PlayerUI.dragon_health_bar.health = hp
 	if hp <= 0:
-		force_state_change("Dead", true)
-		stage_defeated.emit()
+		if stage < 3:
+			stage += 1
+			force_state_change("Transform", true)
+			stage_defeated.emit()
+		else:
+			force_state_change("Dead", true)
+			victory.emit()
 
 func scale_area_destroyed():
 	pass
@@ -197,7 +211,7 @@ func movement_process(delta: float):
 		MovementType.STANDING:
 			move_vector = Vector3.ZERO
 	$CollisionBody.velocity = move_vector
-	if has_gravity:
+	if has_gravity and not is_flying:
 		$CollisionBody.velocity.y -= GRAVITY
 	$CollisionBody.move_and_slide()
 	
@@ -247,3 +261,23 @@ func get_nearest_collision(direction: Vector3) -> Vector3:
 func get_state_history_index(state_name):
 	var index = state_history.slice(-1, -20, -1).find(state_name)
 	return 20 if index == -1 else index
+
+func connect_scales():
+	gather_scale_meshes(%dragonmesh)
+	scale_areas.append_array($ScaleAreas.get_children())
+	for scale_mesh in scale_meshes:
+		scale_areas.sort_custom(func (a, b): return a.global_position.distance_squared_to(scale_mesh.global_position) < b.global_position.distance_squared_to(scale_mesh.global_position))
+		scale_areas[0].add_scale_mesh(scale_mesh)
+	for scale_area in scale_areas:
+		scale_area.scale_area_damage.connect(refresh_hp)
+		scale_area.scale_area_dead.connect(scale_area_destroyed)
+		scale_area.order_scale_meshes()
+
+func gather_scale_meshes(node: Node):
+	if node is MeshInstance3D:
+		if node.name.begins_with("Plane_"):
+			scale_meshes.append(node)
+	else:
+		for c in node.get_children():
+			gather_scale_meshes(c)
+	

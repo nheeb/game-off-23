@@ -7,6 +7,8 @@
 radius = 14.0
 
 [node name="DragonScale" type="RigidBody2D"]
+max_contacts_reported = 5
+contact_monitor = true
 can_sleep = false
 script = ExtResource("1_mg0rl")
 

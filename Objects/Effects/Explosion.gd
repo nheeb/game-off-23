@@ -1,8 +1,10 @@
 extends Node3D
 
 @export var damage := 40
+@export var uber_effect := false
 
 func _ready():
+	if not uber_effect: Game.main_cam.screen_shake(1.0)
 	$Particles.emitting = true
 	$Particles2.emitting = true
 	$Particles3.emitting = true
