@@ -4,11 +4,13 @@ class_name Dragon extends Node3D
 var stage := 1
 var is_flying := false
 var hp : int
+var invincible := false
 
 # Signals
 signal turn_done
 signal movement_done
 signal stage_defeated
+signal victory
 
 # Areas & Positions
 @onready var bite_area : PlayerDamageArea = %BiteArea
@@ -17,6 +19,7 @@ signal stage_defeated
 @onready var air_knockback_area : PlayerDamageArea = %AirKnockbackArea
 @onready var jump_landing_area : PlayerDamageArea = %JumpLandingArea
 @onready var head_position : Node3D = %HeadPosition
+@onready var tail_position : Node3D = %TailPosition
 @onready var model : Node3D = %Model
 
 # State Machine
@@ -60,9 +63,10 @@ var fly_wave_tween: Tween
 @export var fly_wave_duration := .95
 @onready var fly_wave_pivot: Node3D = %FlyWavePivot
 
-# Scales
+# Scales & Colors
 var scale_areas : Array[DragonScaleArea] = []
 var scale_meshes : Array[MeshInstance3D] = []
+@onready var colors: DragonColors = %DragonColors
 
 # Constanst
 const DEFAULT_MOVEMENT_SPEED = 4.0
@@ -82,13 +86,24 @@ func _ready():
 	connect_scales()
 	for area in $DamageAreas.get_children():
 		area.visible = true
+	colors.make_everything_ready()
+
+func revive_hp():
+	for scale_area in scale_areas:
+		scale_area.reset_hp()
+	refresh_hp()
 
 func refresh_hp():
 	hp = scale_areas.reduce(func (x,y): return x+y.hp, 0)
 	PlayerUI.dragon_health_bar.health = hp
 	if hp <= 0:
-		force_state_change("Dead", true)
-		stage_defeated.emit()
+		if stage < 3:
+			stage += 1
+			force_state_change("Transform", true)
+			stage_defeated.emit()
+		else:
+			force_state_change("Dead", true)
+			victory.emit()
 
 func scale_area_destroyed():
 	pass

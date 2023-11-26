@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://mp6sgss4eiob"]
+
+[resource]
+resource_name = "scalecolor_09.02"
+cull_mode = 2
+vertex_color_use_as_albedo = true
+albedo_color = Color(0.67451, 0.698039, 0.541176, 1)
+roughness = 0.1

@@ -28,7 +28,7 @@ func _physics_process(delta):
 func _on_hit(hit_object: PlayerHurtArea):
 	if dead: return
 	if $Timer.is_stopped():
-		take_damage(1)
+		take_damage(3) # FOR TESTING
 		hit_object.set_attacking(false)
 		$Timer.start(INVINC_TIME)
 
@@ -87,3 +87,4 @@ func order_scale_meshes():
 func reset_hp():
 	next_scale_index = 0
 	hp = max_hp
+	dead = false

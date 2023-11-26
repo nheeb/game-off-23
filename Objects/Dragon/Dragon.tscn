@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://cu0j2oc2nfkvl"]
+[gd_scene load_steps=48 format=3 uid="uid://cu0j2oc2nfkvl"]
 
 [ext_resource type="Script" path="res://Objects/Dragon/Dragon.gd" id="1_b10y7"]
 [ext_resource type="Script" path="res://Objects/Dragon/Idle.gd" id="2_3qwwn"]
@@ -28,6 +28,13 @@
 [ext_resource type="Material" uid="uid://se0l8mkv0wwa" path="res://Assets/Materials/DamageIndicator.tres" id="16_yafp0"]
 [ext_resource type="Script" path="res://Objects/Dragon/LandingAttack.gd" id="18_qyu4h"]
 [ext_resource type="Script" path="res://Objects/Dragon/Disrespect.gd" id="22_1tqa8"]
+[ext_resource type="Script" path="res://Objects/Dragon/Transform.gd" id="26_0a6bo"]
+[ext_resource type="Script" path="res://Objects/Dragon/DragonColors.gd" id="29_c323v"]
+[ext_resource type="Material" uid="uid://d2rcaqcr0v56j" path="res://Assets/Materials/dragon_skin.tres" id="30_6midm"]
+[ext_resource type="Material" uid="uid://c8vscq8ib10aa" path="res://Assets/Materials/dragon_dark.tres" id="31_2ge1n"]
+[ext_resource type="Material" uid="uid://cbjbyfq17gyqr" path="res://Assets/Materials/dragon_wings.tres" id="32_nwrji"]
+[ext_resource type="Material" uid="uid://c34vcbxgh2e8f" path="res://Assets/Materials/dragon_scale.tres" id="33_p63q4"]
+[ext_resource type="Material" uid="uid://mp6sgss4eiob" path="res://Assets/Materials/dragon_yolk.tres" id="34_jysc7"]
 
 [sub_resource type="Curve" id="Curve_hfnbm"]
 _data = [Vector2(0, 0), 0.0, 3.7213, 0, 0, Vector2(0.284483, 1), 4.60243, 0.0, 0, 0, Vector2(1, 0), -2.10909, 0.0, 0, 0]
@@ -523,6 +530,10 @@ script = ExtResource("22_1tqa8")
 [node name="Dead" type="Node" parent="States"]
 script = ExtResource("14_8ti8k")
 
+[node name="Transform" type="Node" parent="States"]
+script = ExtResource("26_0a6bo")
+natural_state = false
+
 [node name="PlayerRay" type="RayCast3D" parent="."]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.84416, 0)
@@ -659,9 +670,13 @@ shape = SubResource("CapsuleShape3D_52qxw")
 
 [node name="Positions" type="Node3D" parent="."]
 
-[node name="HeadPosition" type="Node3D" parent="Positions"]
+[node name="HeadPosition" type="Marker3D" parent="Positions"]
 unique_name_in_owner = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.07424, -4.16082)
+
+[node name="TailPosition" type="Marker3D" parent="Positions"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.07424, 4.48826)
 
 [node name="ScaleAreas" type="Node3D" parent="."]
 transform = Transform3D(-0.577418, -0.811137, -0.0929763, -0.0458434, 0.14591, -0.988235, 0.815161, -0.566363, -0.121437, -1.66002, 1.23573, -1.58022)
@@ -689,6 +704,35 @@ transform = Transform3D(0.605813, -0.764924, 0.218841, 0.792613, 0.556387, -0.24
 
 [node name="DragonScaleArea8" parent="ScaleAreas" instance=ExtResource("15_0h3lm")]
 transform = Transform3D(0.585715, -0.403463, 0.702972, 0.808829, 0.234912, -0.539093, 0.052367, 0.884332, 0.463923, 2.36163, -3.81941, -1.12523)
+
+[node name="DragonColors" type="Node" parent="."]
+unique_name_in_owner = true
+script = ExtResource("29_c323v")
+main_mesh_path = NodePath("../Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D/dragonmesh_001")
+second_mesh_path = NodePath("../Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D/dragon_leg_behind_r")
+mat_skin = ExtResource("30_6midm")
+mat_dark = ExtResource("31_2ge1n")
+mat_wings = ExtResource("32_nwrji")
+mat_scale = ExtResource("33_p63q4")
+mat_yolk = ExtResource("34_jysc7")
+slot_dark = 3
+slot_wings = 10
+slot_yolk = 1
+stage_1_skin = Color(0.337255, 0.392157, 0, 1)
+stage_1_dark = Color(0, 0.152941, 0.027451, 1)
+stage_1_wings = Color(0.0156863, 0.278431, 0.12549, 1)
+stage_1_scale = Color(0.690196, 0.54902, 0.0352941, 1)
+stage_1_yolk = Color(0.839216, 0.776471, 0.698039, 1)
+stage_2_skin = Color(0.54902, 0.247059, 0.247059, 1)
+stage_2_dark = Color(0.2, 0, 0.0666667, 1)
+stage_2_wings = Color(0.541176, 0, 0, 1)
+stage_2_scale = Color(0.521569, 0.027451, 0.396078, 1)
+stage_2_yolk = Color(0.941176, 0.027451, 0.592157, 1)
+stage_3_skin = Color(0.168627, 0.168627, 0.278431, 1)
+stage_3_dark = Color(0.0509804, 0.0509804, 0.0509804, 1)
+stage_3_wings = Color(0, 0.321569, 0.341176, 1)
+stage_3_scale = Color(0, 0, 0.745098, 1)
+stage_3_yolk = Color(0, 0.419608, 0.788235, 1)
 
 [editable path="Model/FlyWavePivot/dragonmesh"]
 [editable path="DamageAreas/BiteArea"]
