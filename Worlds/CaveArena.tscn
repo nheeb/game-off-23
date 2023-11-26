@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://6scktaj5atmu"]
+[gd_scene load_steps=10 format=3 uid="uid://6scktaj5atmu"]
 
 [ext_resource type="Script" path="res://Worlds/World.gd" id="1_4gn8l"]
 [ext_resource type="PackedScene" uid="uid://d1t8v3yidk6mp" path="res://Objects/Player/Player.tscn" id="2_hplb1"]
@@ -6,6 +6,9 @@
 [ext_resource type="Environment" uid="uid://bagmablituwcd" path="res://Assets/WorldEnv/PrototypeArena.tres" id="4_m4eml"]
 [ext_resource type="PackedScene" uid="uid://nsvtq3nres6s" path="res://Assets/Models/dragon_cave.blend" id="5_bivoa"]
 [ext_resource type="PackedScene" uid="uid://cu0j2oc2nfkvl" path="res://Objects/Dragon/Dragon.tscn" id="5_lpixg"]
+[ext_resource type="PackedScene" uid="uid://smdy3b4ihych" path="res://Objects/Props/Stalagmite1.tscn" id="8_30q0f"]
+[ext_resource type="PackedScene" uid="uid://bvkdm0loqtmtj" path="res://Objects/Props/Stalagmite2.tscn" id="9_2n3e5"]
+[ext_resource type="PackedScene" uid="uid://byv4wdjmbf0mp" path="res://Objects/Props/Stalagmite3.tscn" id="9_6r43u"]
 
 [node name="PrototypeArena" type="Node3D"]
 script = ExtResource("1_4gn8l")
@@ -15,6 +18,7 @@ transform = Transform3D(0.639546, 0.606149, 0.472826, 0, -0.615056, 0.788483, 0.
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("2_hplb1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.55645, 15.7711)
 
 [node name="PlayerCamera" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_aaqen")]
 target_distance_from_player = 6.0
@@ -33,3 +37,11 @@ transform = Transform3D(0.436566, 0, -0.899672, 0, 1, 0, 0.899672, 0, 0.436566, 
 
 [node name="dragon_cave" parent="level" instance=ExtResource("5_bivoa")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 54.9095)
+
+[node name="Stalagmite3" parent="level" instance=ExtResource("9_6r43u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.00925)
+
+[node name="Stalagmite1" parent="level" instance=ExtResource("8_30q0f")]
+
+[node name="Stalagmite2" parent="level" instance=ExtResource("9_2n3e5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 0)

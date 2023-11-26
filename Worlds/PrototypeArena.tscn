@@ -53,36 +53,36 @@ transform = Transform3D(-0.149896, 1.39291e-06, 0.988702, -2.32458e-06, -1, 1.07
 transform = Transform3D(0.99972, -1.40145e-09, 0.0236468, 1.39343e-09, 1, 3.55688e-10, -0.0236468, -3.22638e-10, 0.99972, 4.69869e-07, 1.20229, -1.19779e-07)
 
 [node name="GeneralSkeleton" parent="Player/mc_rabbit_2_3/metarig" index="0"]
-bones/0/position = Vector3(-8.35355e-29, 1.34656, 0)
+bones/0/position = Vector3(-8.35355e-29, 1.3575, 0)
 bones/0/rotation = Quaternion(-1.11122e-10, 0.0431579, 2.57241e-09, 0.999068)
 bones/4/rotation = Quaternion(-5.80618e-11, -0.0313417, -1.88012e-09, 0.999509)
 bones/6/rotation = Quaternion(2.11758e-22, 0, -1.50463e-36, 1)
-bones/14/rotation = Quaternion(-0.0774535, 0.0709604, 0.990808, -0.0852392)
-bones/15/rotation = Quaternion(-9.1366e-08, 0.953681, -0.300821, 4.63436e-09)
-bones/16/rotation = Quaternion(0.0259366, 0.52243, -0.825122, 0.213465)
+bones/14/rotation = Quaternion(-0.0769758, 0.0646666, 0.991303, -0.084919)
+bones/15/rotation = Quaternion(-8.89865e-08, 0.959717, -0.280968, 3.63676e-09)
+bones/16/rotation = Quaternion(0.0295878, 0.533393, -0.818117, 0.212841)
 bones/17/rotation = Quaternion(2.35514e-15, 1, 0, -2.35514e-15)
-bones/19/rotation = Quaternion(-0.0303412, 0.106783, 0.993273, 0.0329492)
-bones/20/rotation = Quaternion(1.79813e-07, 0.938121, -0.346308, -1.82361e-11)
-bones/21/rotation = Quaternion(-0.0319441, 0.514601, -0.8497, -0.110342)
+bones/19/rotation = Quaternion(-0.0304984, 0.101018, 0.993885, 0.0325194)
+bones/20/rotation = Quaternion(1.76037e-07, 0.944538, -0.328402, 1.81539e-09)
+bones/21/rotation = Quaternion(-0.033563, 0.52502, -0.843303, -0.109854)
 bones/22/rotation = Quaternion(1.50729e-14, 1, 5.96047e-08, 5.0243e-15)
-bones/24/rotation = Quaternion(0.654683, 0.514702, -0.548829, 0.0725207)
-bones/25/rotation = Quaternion(0.328896, -0.625962, 0.328896, 0.625961)
+bones/24/rotation = Quaternion(0.662641, 0.504256, -0.548645, 0.0749668)
+bones/25/rotation = Quaternion(0.316991, -0.632074, 0.316991, 0.632073)
 bones/26/rotation = Quaternion(-2.32831e-09, 0.707107, -2.32831e-09, 0.707107)
-bones/28/rotation = Quaternion(0.628976, -0.476469, 0.606953, 0.0947386)
-bones/29/rotation = Quaternion(0.345295, 0.617067, -0.345295, 0.617067)
+bones/28/rotation = Quaternion(0.635821, -0.466507, 0.607194, 0.0970461)
+bones/29/rotation = Quaternion(0.33384, 0.623339, -0.33384, 0.623338)
 bones/30/rotation = Quaternion(2.39861e-08, -0.707107, 6.03076e-08, 0.707107)
 
 [node name="spine_001" parent="Player/mc_rabbit_2_3/metarig/GeneralSkeleton" index="0"]
-transform = Transform3D(0.99972, -1.40144e-09, 0.0236466, 1.39341e-09, 1, 3.55688e-10, -0.0236466, -3.22639e-10, 0.99972, 0.00620893, 0.802512, 0.09206)
+transform = Transform3D(0.99972, -1.40144e-09, 0.0236466, 1.39341e-09, 1, 3.55688e-10, -0.0236466, -3.22639e-10, 0.99972, 0.00620893, 0.813456, 0.09206)
 
 [node name="Sphere_004" parent="Player/mc_rabbit_2_3/metarig/GeneralSkeleton" index="1"]
-transform = Transform3D(-0.132263, 0.753536, -0.643965, 0.59433, -0.459645, -0.659923, -0.793271, -0.470011, -0.387055, 0.214948, 2.40042, -0.0627627)
+transform = Transform3D(-0.110573, 0.750543, -0.651505, 0.586022, -0.480211, -0.652668, -0.802715, -0.453964, -0.386737, 0.215582, 2.3998, -0.0627826)
 
 [node name="Sphere_005" parent="Player/mc_rabbit_2_3/metarig/GeneralSkeleton" index="2"]
-transform = Transform3D(-0.190829, -0.714378, 0.673237, -0.484371, -0.528004, -0.697565, 0.853797, -0.459212, -0.245266, -0.220924, 2.41098, -0.0655864)
+transform = Transform3D(-0.172628, -0.711082, 0.681588, -0.475379, -0.545906, -0.689929, 0.862679, -0.443113, -0.243794, -0.221657, 2.41035, -0.0657438)
 
 [node name="sword" parent="Player/mc_rabbit_2_3/metarig/GeneralSkeleton" index="15"]
-transform = Transform3D(0.50903, -0.536321, 0.673238, 0.19664, -0.689011, -0.697564, 0.837986, 0.487467, -0.245265, -0.27912, 1.70241, -0.0336154)
+transform = Transform3D(0.496219, -0.537776, 0.681589, 0.190946, -0.698239, -0.689929, 0.846939, 0.472502, -0.243794, -0.277493, 1.69434, -0.0301112)
 
 [node name="animations" parent="Player" index="5"]
 parameters/Core/AttackMoveBlend/Hit2/TimeScale/scale = 1.0
