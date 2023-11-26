@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bfj13h30f3jol"]
+[gd_scene load_steps=14 format=3 uid="uid://bfj13h30f3jol"]
 
 [ext_resource type="Script" path="res://Objects/Items/Items.gd" id="1_g1uul"]
 [ext_resource type="Script" path="res://Objects/Items/TrashSword.gd" id="2_6k677"]
@@ -12,6 +12,7 @@
 [ext_resource type="Texture2D" uid="uid://bmfvd2lay74b4" path="res://Assets/Sprites/placeholder/carrotnomicon.png" id="7_4jtph"]
 [ext_resource type="Texture2D" uid="uid://b1yjfmle3slik" path="res://Assets/Sprites/placeholder/boomerang_sword.png" id="7_df167"]
 [ext_resource type="Texture2D" uid="uid://oqfj8vc5a4ou" path="res://Assets/Sprites/placeholder/winged_boots.png" id="7_iawet"]
+[ext_resource type="Script" path="res://Objects/Items/Wingedboots.gd" id="7_nb6es"]
 
 [node name="Items" type="Node"]
 script = ExtResource("1_g1uul")
@@ -105,16 +106,9 @@ scale = Vector2(0.169903, 0.169903)
 polygon = PackedVector2Array(-36, -209.8, -36, -199.5, -29.6, -179.6, 5, -192.3, 5, -183.1, 16.5, -177.4, 29.1, -200, 37.4, -200, 97, -203.6, 97, -71.6, 158.3, 18.4, 219, 48.8, 219, 58.7, 234.9, 121, 222.4, 121, 133, 146.8, 103.7, 182, 90.9, 182, 52.8, 196, 46.2, 196, 31.6, 187, 23.5, 200, -17.9, 200, -23.9, 184, -45.3, 198.7, -56, 193, -56, 189.8, -70.2, 174.2, -110, 178, -110, 167.2, -116.5, 141.3, -161, 151.6, -161, 145, -228, 121, -228, 110.6, -220.1, 23, -212.4, 23, -202.7, 17.9, -197, -37, -189.2, -37, -184.1, -39.4, -187.2, -170, -178.1, -170, -80, -209.8, -80, -215.3)
 
 [node name="Wingedboots" type="Node" parent="."]
-script = ExtResource("2_6k677")
-order_index = 1
+script = ExtResource("7_nb6es")
 slot = 1
-price = 3
-stats = {
-"armor": 0,
-"damage": 0,
-"speed": 3
-}
-tooltip = "+Dash speed"
+price = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="Wingedboots"]
 visible = false

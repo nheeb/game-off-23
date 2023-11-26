@@ -25,7 +25,7 @@ func start_dodge():
 	animation_tree.set("parameters/Core/Movement/conditions/is_dodging_completed", false)
 	animation_tree.set("parameters/Core/Movement/conditions/is_dodging", true)
 	player.velocity.y = jump_velocity
-	player_motion.dodge_boost_speed = 10.0
+	player_motion.dodge_boost_speed = PlayerStats.dodge_boost_speed
 	player_motion.dash_lock = true
 	
 func stop_dodge():
