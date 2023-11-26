@@ -1,7 +1,7 @@
 extends DragonState
 
 func get_probability() -> float:
-	return 100.03
+	return 0.01
 
 const RISE_TIME = 2.7
 
