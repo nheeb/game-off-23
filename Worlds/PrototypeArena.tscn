@@ -25,64 +25,30 @@ shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("2_khuxf")]
 
-[node name="Knight_Cape" parent="Player/Knight/RootNode/Rig/GeneralSkeleton" index="0"]
-transform = Transform3D(0.996275, -5.14962e-09, 0.0862354, 5.13044e-09, 1, 4.44077e-10, -0.0862354, 2.74948e-15, 0.996275, -1.63023e-08, 1.20229, -1.40136e-07)
-
-[node name="Rectangle_Shield" parent="Player/Knight/RootNode/Rig/GeneralSkeleton" index="1"]
-transform = Transform3D(-0.262864, 7.05888e-07, -0.964833, -1.42109e-14, -1, -8.04663e-07, -0.964833, -1.88475e-07, 0.262864, 0.662643, 0.636705, -0.0430843)
-
-[node name="Round_Shield" parent="Player/Knight/RootNode/Rig/GeneralSkeleton" index="2"]
-transform = Transform3D(-0.262864, 7.05888e-07, -0.964833, -1.42109e-14, -1, -8.04663e-07, -0.964833, -1.88475e-07, 0.262864, 0.662643, 0.636705, -0.0430843)
-
-[node name="Spike_Shield" parent="Player/Knight/RootNode/Rig/GeneralSkeleton" index="3"]
-transform = Transform3D(-0.262864, 7.05888e-07, -0.964833, -1.42109e-14, -1, -8.04663e-07, -0.964833, -1.88475e-07, 0.262864, 0.662643, 0.636705, -0.0430843)
-
-[node name="Badge_Shield" parent="Player/Knight/RootNode/Rig/GeneralSkeleton" index="4"]
-transform = Transform3D(-0.262864, 7.05888e-07, -0.964833, -1.42109e-14, -1, -8.04663e-07, -0.964833, -1.88475e-07, 0.262864, 0.662643, 0.636705, -0.0430843)
-
-[node name="1H_Sword_Offhand" parent="Player/Knight/RootNode/Rig/GeneralSkeleton" index="5"]
-transform = Transform3D(-0.262864, 7.05888e-07, -0.964833, -1.42109e-14, -1, -8.04663e-07, -0.964833, -1.88475e-07, 0.262864, 0.51224, 0.636706, -0.00210766)
-
-[node name="2H_Sword" parent="Player/Knight/RootNode/Rig/GeneralSkeleton" index="6"]
-transform = Transform3D(-0.149896, 1.39291e-06, 0.988702, -2.32458e-06, -1, 1.07288e-06, 0.988702, -2.21412e-06, 0.149896, -0.496053, 0.64103, 0.139528)
-
-[node name="1H_Sword" parent="Player/Knight/RootNode/Rig/GeneralSkeleton" index="7"]
-transform = Transform3D(-0.149896, 1.39291e-06, 0.988702, -2.32458e-06, -1, 1.07288e-06, 0.988702, -2.21412e-06, 0.149896, -0.496053, 0.64103, 0.139528)
-
-[node name="Knight_Helmet" parent="Player/Knight/RootNode/Rig/GeneralSkeleton" index="8"]
-transform = Transform3D(0.99972, -1.40145e-09, 0.0236468, 1.39343e-09, 1, 3.55688e-10, -0.0236468, -3.22638e-10, 0.99972, 4.69869e-07, 1.20229, -1.19779e-07)
-
 [node name="GeneralSkeleton" parent="Player/mc_rabbit_2_3/metarig" index="0"]
-bones/0/position = Vector3(-8.35355e-29, 1.3575, 0)
-bones/0/rotation = Quaternion(-1.11122e-10, 0.0431579, 2.57241e-09, 0.999068)
-bones/4/rotation = Quaternion(-5.80618e-11, -0.0313417, -1.88012e-09, 0.999509)
-bones/6/rotation = Quaternion(2.11758e-22, 0, -1.50463e-36, 1)
-bones/14/rotation = Quaternion(-0.0769758, 0.0646666, 0.991303, -0.084919)
-bones/15/rotation = Quaternion(-8.89865e-08, 0.959717, -0.280968, 3.63676e-09)
-bones/16/rotation = Quaternion(0.0295878, 0.533393, -0.818117, 0.212841)
-bones/17/rotation = Quaternion(2.35514e-15, 1, 0, -2.35514e-15)
-bones/19/rotation = Quaternion(-0.0304984, 0.101018, 0.993885, 0.0325194)
-bones/20/rotation = Quaternion(1.76037e-07, 0.944538, -0.328402, 1.81539e-09)
-bones/21/rotation = Quaternion(-0.033563, 0.52502, -0.843303, -0.109854)
-bones/22/rotation = Quaternion(1.50729e-14, 1, 5.96047e-08, 5.0243e-15)
-bones/24/rotation = Quaternion(0.662641, 0.504256, -0.548645, 0.0749668)
-bones/25/rotation = Quaternion(0.316991, -0.632074, 0.316991, 0.632073)
-bones/26/rotation = Quaternion(-2.32831e-09, 0.707107, -2.32831e-09, 0.707107)
-bones/28/rotation = Quaternion(0.635821, -0.466507, 0.607194, 0.0970461)
-bones/29/rotation = Quaternion(0.33384, 0.623339, -0.33384, 0.623338)
-bones/30/rotation = Quaternion(2.39861e-08, -0.707107, 6.03076e-08, 0.707107)
+bones/0/position = Vector3(-8.35355e-29, 1.37009, 0)
+bones/14/rotation = Quaternion(-0.0763682, 0.0557688, 0.99191, -0.0846864)
+bones/15/rotation = Quaternion(-8.60392e-08, 0.966506, -0.256645, 2.42067e-09)
+bones/16/rotation = Quaternion(0.0339238, 0.546529, -0.809443, 0.212028)
+bones/19/rotation = Quaternion(-0.0307202, 0.0929753, 0.994681, 0.0319659)
+bones/20/rotation = Quaternion(1.71408e-07, 0.951808, -0.306694, 4.02148e-09)
+bones/21/rotation = Quaternion(-0.0354729, 0.537381, -0.835481, -0.109245)
+bones/24/rotation = Quaternion(0.653026, 0.513377, -0.552055, 0.0723658)
+bones/25/rotation = Quaternion(0.329563, -0.625611, 0.329563, 0.62561)
+bones/28/rotation = Quaternion(0.627065, -0.475295, 0.609855, 0.0946614)
+bones/29/rotation = Quaternion(0.345935, 0.616709, -0.345934, 0.616708)
 
 [node name="spine_001" parent="Player/mc_rabbit_2_3/metarig/GeneralSkeleton" index="0"]
-transform = Transform3D(0.99972, -1.40144e-09, 0.0236466, 1.39341e-09, 1, 3.55688e-10, -0.0236466, -3.22639e-10, 0.99972, 0.00620893, 0.813456, 0.09206)
+transform = Transform3D(0.99972, -1.40144e-09, 0.0236466, 1.39341e-09, 1, 3.55688e-10, -0.0236466, -3.22639e-10, 0.99972, 0.00620893, 0.826046, 0.09206)
 
 [node name="Sphere_004" parent="Player/mc_rabbit_2_3/metarig/GeneralSkeleton" index="1"]
-transform = Transform3D(-0.110573, 0.750543, -0.651505, 0.586022, -0.480211, -0.652668, -0.802715, -0.453964, -0.386737, 0.215582, 2.3998, -0.0627826)
+transform = Transform3D(-0.136641, 0.750397, -0.64671, 0.590597, -0.462415, -0.661338, -0.795314, -0.472311, -0.379998, 0.215053, 2.40045, -0.0632135)
 
 [node name="Sphere_005" parent="Player/mc_rabbit_2_3/metarig/GeneralSkeleton" index="2"]
-transform = Transform3D(-0.172628, -0.711082, 0.681588, -0.475379, -0.545906, -0.689929, 0.862679, -0.443113, -0.243794, -0.221657, 2.41035, -0.0657438)
+transform = Transform3D(-0.195658, -0.711541, 0.674853, -0.480622, -0.530267, -0.69844, 0.854822, -0.461005, -0.238231, -0.220997, 2.41101, -0.0660962)
 
 [node name="sword" parent="Player/mc_rabbit_2_3/metarig/GeneralSkeleton" index="15"]
-transform = Transform3D(0.496219, -0.537776, 0.681589, 0.190946, -0.698239, -0.689929, 0.846939, 0.472502, -0.243794, -0.277493, 1.69434, -0.0301112)
+transform = Transform3D(0.505202, -0.537906, 0.674854, 0.201954, -0.686583, -0.69844, 0.839038, 0.489143, -0.238231, -0.278631, 1.70297, -0.0309218)
 
 [node name="animations" parent="Player" index="5"]
 parameters/Core/AttackMoveBlend/Hit2/TimeScale/scale = 1.0

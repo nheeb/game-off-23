@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://bqt11ve8iqv6q"]
+
+[ext_resource type="Texture2D" uid="uid://d0ryy8211g0jp" path="res://Assets/Textures/magic_01.png" id="1_31edy"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nuckv"]
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 0.435294, 0.803922, 1)
+albedo_texture = ExtResource("1_31edy")
+billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_qxaao"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.721264, 0.652632), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_o4rti"]
+curve = SubResource("Curve_qxaao")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_u5gat"]
+emission_shape = 1
+emission_sphere_radius = 0.1
+spread = 180.0
+gravity = Vector3(0, -0.1, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 3.0
+linear_accel_max = 0.2
+scale_min = 0.0
+scale_curve = SubResource("CurveTexture_o4rti")
+hue_variation_min = -1.0
+hue_variation_max = 1.0
+
+[sub_resource type="QuadMesh" id="QuadMesh_3isml"]
+
+[node name="Magic" type="GPUParticles3D"]
+material_override = SubResource("StandardMaterial3D_nuckv")
+emitting = false
+amount = 30
+one_shot = true
+visibility_aabb = AABB(-4, -4, -0.798146, 8, 8, 1.59629)
+process_material = SubResource("ParticleProcessMaterial_u5gat")
+draw_pass_1 = SubResource("QuadMesh_3isml")

@@ -5,5 +5,5 @@
 [node name="Game" type="Node"]
 process_mode = 3
 script = ExtResource("1_ysjqd")
-scene_path = "res://Worlds/PrototypeArena.tscn"
+scene_path = "res://Worlds/CaveArena.tscn"
 shop_scene_path = "res://UI/Shop.tscn"

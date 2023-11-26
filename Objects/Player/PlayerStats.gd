@@ -19,12 +19,19 @@ var dodge_range: float
 const RESET_JUMP_HEIGHT = 1.0
 var jump_height: float
 
+const RESET_DODGE_BOOST_SPEED = 8.0
+var dodge_boost_speed: float
+
+enum SPELL_TYPE {None, Water}
+var active_spell: SPELL_TYPE = SPELL_TYPE.None
+
 func reset():
 	movement_speed_modifier = RESET_MOVEMENT_SPEED_MODIFIER
 	sword_slash_damage = RESET_SWORD_SLASH_DAMAGE
 	charged_attack_type = RESET_CHARGED_ATTACK
 	dodge_range = RESET_DODGE_RANGE
 	jump_height = RESET_JUMP_HEIGHT
+	dodge_boost_speed = RESET_DODGE_BOOST_SPEED
 
 func reset_and_render_equipped_items():
 	reset()

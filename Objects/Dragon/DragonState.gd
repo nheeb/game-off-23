@@ -11,6 +11,7 @@ class_name DragonState extends Node
 @export var repeat_malus := true
 @export var repeat_malus_ease_curve := 1.4
 @export var repeat_malus_range := 4
+@export var invincible_state := false
 
 func get_probabilty_modifier_from_tags() -> float:
 	var modifier := 1.0
@@ -38,6 +39,7 @@ func get_next_state() -> String:
 var counter : int = 0
 var current_index : int
 func set_active() -> int:
+	dragon.invincible = invincible_state
 	if state_name != "Idle": dragon.state_history.append(state_name)
 	counter += 1
 	current_index = counter
