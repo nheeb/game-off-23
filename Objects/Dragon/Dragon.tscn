@@ -77,7 +77,7 @@ radial_segments = 12
 rings = 2
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_sbexe"]
-height = 3.10338
+height = 6.57361
 radius = 7.77653
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_52qxw"]
@@ -458,9 +458,11 @@ script = ExtResource("2_3qwwn")
 
 [node name="PreCutscene" type="Node" parent="States"]
 script = ExtResource("4_eke7i")
+invincible_state = true
 
 [node name="Cutscene" type="Node" parent="States"]
 script = ExtResource("5_mg6ba")
+invincible_state = true
 
 [node name="Wait" type="Node" parent="States"]
 script = ExtResource("3_8bdho")
@@ -501,7 +503,6 @@ jump_curve = SubResource("Curve_jvhla")
 
 [node name="Rise" type="Node" parent="States"]
 script = ExtResource("12_h5ryw")
-natural_state = false
 repeat_malus_range = 8
 
 [node name="AirGrab" type="Node" parent="States"]
@@ -526,13 +527,16 @@ air_state = true
 
 [node name="Disrespect" type="Node" parent="States"]
 script = ExtResource("22_1tqa8")
+invincible_state = true
 
 [node name="Dead" type="Node" parent="States"]
 script = ExtResource("14_8ti8k")
+invincible_state = true
 
 [node name="Transform" type="Node" parent="States"]
 script = ExtResource("26_0a6bo")
 natural_state = false
+invincible_state = true
 
 [node name="PlayerRay" type="RayCast3D" parent="."]
 unique_name_in_owner = true
@@ -645,16 +649,16 @@ mesh = SubResource("CylinderMesh_ic1fu")
 
 [node name="AirKnockbackArea" parent="DamageAreas" instance=ExtResource("6_qsmee")]
 unique_name_in_owner = true
-visible = false
-knockback_force = 2.0
+knockback_force = 4.0
 default_lifetime = 2.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DamageAreas/AirKnockbackArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.06769, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.20785, 0)
 shape = SubResource("CylinderShape3D_sbexe")
 
-[node name="VisualIndicator" type="MeshInstance3D" parent="DamageAreas/AirKnockbackArea"]
+[node name="VisualIndicatorX" type="MeshInstance3D" parent="DamageAreas/AirKnockbackArea"]
 transform = Transform3D(15.9834, 0, 0, 0, 1.19744, 0, 0, 0, 15.9833, 0, 0.770042, 0)
+visible = false
 material_override = ExtResource("16_yafp0")
 mesh = SubResource("CylinderMesh_ic1fu")
 

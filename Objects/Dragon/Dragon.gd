@@ -32,6 +32,7 @@ var current_state := "":
 var new_state := "Idle"
 var current_state_object: DragonState
 var state_history := [""]
+var first_idle_state := true
 
 # Battlefield analysis
 var player_in_sight : bool
@@ -210,7 +211,7 @@ func movement_process(delta: float):
 		MovementType.STANDING:
 			move_vector = Vector3.ZERO
 	$CollisionBody.velocity = move_vector
-	if has_gravity:
+	if has_gravity and not is_flying:
 		$CollisionBody.velocity.y -= GRAVITY
 	$CollisionBody.move_and_slide()
 	

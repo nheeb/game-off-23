@@ -21,7 +21,7 @@ void fragment() {
 	float offset = 0.0;NODE_POSITION_WORLD.y * 1000.0;
 	float time = TIME * .7;
 	vec2 timed_uv = uv + vec2(.8*time + offset * .4,-time + offset);
-	ALPHA = albedo.a * clamp_and_map(texture(noise, timed_uv).r, .8, 1.0, 0.0, 1.0);
+	ALPHA = albedo.a * clamp_and_map(texture(noise, timed_uv).r, .7, .85, 0.0, 1.0);
 	ALPHA = ALPHA * clamp_and_map(distance(0.5, uv.y), 0.0, 0.5, 1.0, 0.0);
 	ALPHA = ALPHA * float(UV.y < .5);
 }
@@ -40,5 +40,5 @@ noise = SubResource("FastNoiseLite_pvp75")
 [resource]
 render_priority = 0
 shader = SubResource("Shader_mfbqi")
-shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/albedo = Color(1, 1, 1, 0.00392157)
 shader_parameter/noise = SubResource("NoiseTexture2D_1i611")
