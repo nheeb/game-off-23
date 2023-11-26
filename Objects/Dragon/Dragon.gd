@@ -32,6 +32,7 @@ var current_state := "":
 var new_state := "Idle"
 var current_state_object: DragonState
 var state_history := [""]
+var first_idle_state := true
 
 # Battlefield analysis
 var player_in_sight : bool
@@ -72,7 +73,7 @@ var scale_meshes : Array[MeshInstance3D] = []
 const DEFAULT_MOVEMENT_SPEED = 4.0
 const DEFAULT_ANGULAR_SPEED = 1.35
 const GRAVITY = 3.5
-const MOVEMENT_TARGET_RANGE = 1.5
+const MOVEMENT_TARGET_RANGE = 2.0
 const FLY_HEIGHT = 3.6
 
 func _ready():
@@ -181,14 +182,14 @@ func choose_action():
 			break
 	if new_state == "":
 		printerr("No state was chosen")
-#	if DebugInfo.debug_visible:
-#		var sorted_index = range(len(state_names))
-#		sorted_index.sort_custom(func(a,b): return flat_chances[a] > flat_chances[b])
-#		var debug_states_chances_string := ""
-#		for index in sorted_index:
-#			debug_states_chances_string = debug_states_chances_string + str(state_names[index]) + ": " + "%.2f" % (flat_chances[index] / running_total * 100.0) + "%\n"
-#		DebugInfo.refresh_info("State Chances", debug_states_chances_string)
-#		print(debug_states_chances_string)
+	if DebugInfo.debug_visible:
+		var sorted_index = range(len(state_names))
+		sorted_index.sort_custom(func(a,b): return flat_chances[a] > flat_chances[b])
+		var debug_states_chances_string := ""
+		for index in sorted_index:
+			debug_states_chances_string = debug_states_chances_string + str(state_names[index]) + ": " + "%.2f" % (flat_chances[index] / running_total * 100.0) + "%\n"
+		DebugInfo.refresh_info("State Chances", debug_states_chances_string)
+		print(debug_states_chances_string)
 
 var last_movement_vector : Vector3
 func movement_process(delta: float):
@@ -210,7 +211,7 @@ func movement_process(delta: float):
 		MovementType.STANDING:
 			move_vector = Vector3.ZERO
 	$CollisionBody.velocity = move_vector
-	if has_gravity:
+	if has_gravity and not is_flying:
 		$CollisionBody.velocity.y -= GRAVITY
 	$CollisionBody.move_and_slide()
 	
@@ -254,8 +255,13 @@ func turning_process(delta: float):
 		emit_signal("turn_done")
 
 func get_nearest_collision(direction: Vector3) -> Vector3:
-	%PlayerRay.target_position = direction.normalized() * 1000.0
-	return %PlayerRay.get_collision_point()
+	var collision_points : Array[Vector3] = []
+	for ray in $Rays.get_children():
+		if ray is RayCast3D:
+			ray.target_position = direction.normalized() * 1000.0
+			ray.force_raycast_update()
+			collision_points.append(ray.get_collision_point())
+	return collision_points.reduce(func(a,b): return a if global_position.distance_squared_to(a) < global_position.distance_squared_to(b) else b)
 
 func get_state_history_index(state_name):
 	var index = state_history.slice(-1, -20, -1).find(state_name)

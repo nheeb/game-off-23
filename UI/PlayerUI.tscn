@@ -1,8 +1,31 @@
-[gd_scene load_steps=4 format=3 uid="uid://dbecnm0hqqsap"]
+[gd_scene load_steps=8 format=3 uid="uid://dbecnm0hqqsap"]
 
 [ext_resource type="PackedScene" uid="uid://5qhqt64jasu" path="res://UI/DragonHealthBar.tscn" id="1_dttwr"]
 [ext_resource type="Script" path="res://UI/PlayerUI.gd" id="1_mh6lv"]
 [ext_resource type="Texture2D" uid="uid://dvaxgp8156v3y" path="res://Assets/Textures/mineral-heart.png" id="2_6fy3d"]
+[ext_resource type="Texture2D" uid="uid://y7bfv6boyrs6" path="res://Assets/Sprites/placeholder/carrot.png" id="4_x7fqd"]
+[ext_resource type="Texture2D" uid="uid://cv7kfn6v7w866" path="res://Assets/Sprites/placeholder/circle.png" id="4_xg3ak"]
+
+[sub_resource type="Animation" id="Animation_k6ba0"]
+resource_name = "ItemIconWoop"
+length = 0.8
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.3, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1.5, 1.5), Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_26om7"]
+_data = {
+"ItemIconWoop": SubResource("Animation_k6ba0")
+}
 
 [node name="PlayerUI" type="CanvasLayer"]
 layer = 2
@@ -44,3 +67,35 @@ offset_right = -0.112
 offset_bottom = -0.184021
 text = "Press any key to skip the cutscene."
 metadata/_edit_use_anchors_ = true
+
+[node name="Item" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 108.0
+offset_top = 530.0
+offset_right = -1043.0
+offset_bottom = -117.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ItemBackground" type="Sprite2D" parent="Item"]
+scale = Vector2(0.212, 0.212)
+texture = ExtResource("4_xg3ak")
+
+[node name="ItemSlot" type="Sprite2D" parent="Item"]
+
+[node name="Sprite2D" type="Sprite2D" parent="Item/ItemSlot"]
+
+[node name="ItemIcon" type="Sprite2D" parent="Item/ItemSlot/Sprite2D"]
+unique_name_in_owner = true
+scale = Vector2(0.367, 0.367)
+texture = ExtResource("4_x7fqd")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Item/ItemSlot"]
+unique_name_in_owner = true
+libraries = {
+"": SubResource("AnimationLibrary_26om7")
+}

@@ -6,8 +6,8 @@ func get_probability() -> float:
 var max_duration := 0.0
 var timer := 0.0
 
-const DISTANCE_TO_WALL = 1.5
-const MIN_DIST = 2.5
+const DISTANCE_TO_WALL = 3.5
+const MIN_DIST = 4.0
 
 func effect_start(index):
 	max_duration = 3.0 + randf() * 2.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://cu0j2oc2nfkvl"]
+[gd_scene load_steps=49 format=3 uid="uid://cu0j2oc2nfkvl"]
 
 [ext_resource type="Script" path="res://Objects/Dragon/Dragon.gd" id="1_b10y7"]
 [ext_resource type="Script" path="res://Objects/Dragon/Idle.gd" id="2_3qwwn"]
@@ -27,6 +27,7 @@
 [ext_resource type="Script" path="res://Objects/Dragon/AirFireBalls.gd" id="16_a1ca1"]
 [ext_resource type="Material" uid="uid://se0l8mkv0wwa" path="res://Assets/Materials/DamageIndicator.tres" id="16_yafp0"]
 [ext_resource type="Script" path="res://Objects/Dragon/LandingAttack.gd" id="18_qyu4h"]
+[ext_resource type="Script" path="res://Objects/Dragon/AirFireCone.gd" id="21_r26lx"]
 [ext_resource type="Script" path="res://Objects/Dragon/Disrespect.gd" id="22_1tqa8"]
 [ext_resource type="Script" path="res://Objects/Dragon/Transform.gd" id="26_0a6bo"]
 [ext_resource type="Script" path="res://Objects/Dragon/DragonColors.gd" id="29_c323v"]
@@ -77,7 +78,7 @@ radial_segments = 12
 rings = 2
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_sbexe"]
-height = 3.10338
+height = 6.57361
 radius = 7.77653
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_52qxw"]
@@ -458,9 +459,11 @@ script = ExtResource("2_3qwwn")
 
 [node name="PreCutscene" type="Node" parent="States"]
 script = ExtResource("4_eke7i")
+invincible_state = true
 
 [node name="Cutscene" type="Node" parent="States"]
 script = ExtResource("5_mg6ba")
+invincible_state = true
 
 [node name="Wait" type="Node" parent="States"]
 script = ExtResource("3_8bdho")
@@ -501,14 +504,20 @@ jump_curve = SubResource("Curve_jvhla")
 
 [node name="Rise" type="Node" parent="States"]
 script = ExtResource("12_h5ryw")
-natural_state = false
 repeat_malus_range = 8
 
 [node name="AirGrab" type="Node" parent="States"]
 script = ExtResource("13_3xwwt")
+air_state = true
+natural_state = false
 
 [node name="AirFireBalls" type="Node" parent="States"]
 script = ExtResource("16_a1ca1")
+air_state = true
+
+[node name="AirFireCone" type="Node" parent="States"]
+script = ExtResource("21_r26lx")
+air_state = true
 
 [node name="AirWander" type="Node" parent="States"]
 script = ExtResource("14_im864")
@@ -526,17 +535,16 @@ air_state = true
 
 [node name="Disrespect" type="Node" parent="States"]
 script = ExtResource("22_1tqa8")
+invincible_state = true
 
 [node name="Dead" type="Node" parent="States"]
 script = ExtResource("14_8ti8k")
+invincible_state = true
 
 [node name="Transform" type="Node" parent="States"]
 script = ExtResource("26_0a6bo")
 natural_state = false
-
-[node name="PlayerRay" type="RayCast3D" parent="."]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.84416, 0)
+invincible_state = true
 
 [node name="CollisionBody" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.98735, -0.158554, 0, 0.158554, 0.98735, 0, 0, -0.359846)
@@ -645,16 +653,16 @@ mesh = SubResource("CylinderMesh_ic1fu")
 
 [node name="AirKnockbackArea" parent="DamageAreas" instance=ExtResource("6_qsmee")]
 unique_name_in_owner = true
-visible = false
-knockback_force = 2.0
+knockback_force = 4.0
 default_lifetime = 2.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DamageAreas/AirKnockbackArea"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.06769, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.20785, 0)
 shape = SubResource("CylinderShape3D_sbexe")
 
-[node name="VisualIndicator" type="MeshInstance3D" parent="DamageAreas/AirKnockbackArea"]
+[node name="VisualIndicatorX" type="MeshInstance3D" parent="DamageAreas/AirKnockbackArea"]
 transform = Transform3D(15.9834, 0, 0, 0, 1.19744, 0, 0, 0, 15.9833, 0, 0.770042, 0)
+visible = false
 material_override = ExtResource("16_yafp0")
 mesh = SubResource("CylinderMesh_ic1fu")
 
@@ -733,6 +741,28 @@ stage_3_dark = Color(0.0509804, 0.0509804, 0.0509804, 1)
 stage_3_wings = Color(0, 0.321569, 0.341176, 1)
 stage_3_scale = Color(0, 0, 0.745098, 1)
 stage_3_yolk = Color(0, 0.419608, 0.788235, 1)
+
+[node name="Rays" type="Node3D" parent="."]
+
+[node name="PlayerRay" type="RayCast3D" parent="Rays"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.84416, 0)
+
+[node name="HelperRay1" type="RayCast3D" parent="Rays"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.82837, 1.37095, 0.989535)
+
+[node name="HelperRay2" type="RayCast3D" parent="Rays"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.96759, 1.25745, -2.27184)
+
+[node name="HelperRay3" type="RayCast3D" parent="Rays"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.89311, 0.961282, 2.10696)
+
+[node name="HelperRay4" type="RayCast3D" parent="Rays"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.88679, 0.798188, -2.74545)
 
 [editable path="Model/FlyWavePivot/dragonmesh"]
 [editable path="DamageAreas/BiteArea"]

@@ -23,7 +23,7 @@ func effect_start(index):
 	Functions.align_node(hint, Vector3.UP, hint_normal)
 	fire_ball.fireball_explode.connect(hint.queue_free)
 	await get_tree().create_timer(2.0).timeout
-	if is_active(): next_state = "Idle"
+	if is_active(index): next_state = "Idle"
 
 func effect_process(delta):
 	pass

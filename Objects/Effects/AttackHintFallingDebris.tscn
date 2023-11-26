@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://Objects/Effects/AttackHintFallingDebris.gd" id="1_vtyqo"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_su0ji"]
+resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("1_74f5u")
 shader_parameter/inner_color = Color(1, 0, 0, 1)

@@ -8,7 +8,7 @@ func get_probability() -> float:
 var duration := 0.0
 var timer := 0.0
 
-const DURATION_PLAYER_MAX_DIST = 7.0
+const DURATION_PLAYER_MAX_DIST = 17.0
 const SPEED_MODIFIER = .5
 
 func effect_start(index):

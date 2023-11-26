@@ -49,7 +49,7 @@ var trauma := 0.0
 var trauma_reduction := .75
 var shake_intensity_factor : float
 func screen_shake(_trauma: float = 2.0, _shake_intensity: float = .5):
-	trauma = _trauma
+	trauma = max(_trauma, trauma)
 	shake_intensity_factor = _shake_intensity
 
 func shake_process(delta):
