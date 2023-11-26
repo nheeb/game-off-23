@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://cu0j2oc2nfkvl"]
+[gd_scene load_steps=49 format=3 uid="uid://cu0j2oc2nfkvl"]
 
 [ext_resource type="Script" path="res://Objects/Dragon/Dragon.gd" id="1_b10y7"]
 [ext_resource type="Script" path="res://Objects/Dragon/Idle.gd" id="2_3qwwn"]
@@ -27,6 +27,7 @@
 [ext_resource type="Script" path="res://Objects/Dragon/AirFireBalls.gd" id="16_a1ca1"]
 [ext_resource type="Material" uid="uid://se0l8mkv0wwa" path="res://Assets/Materials/DamageIndicator.tres" id="16_yafp0"]
 [ext_resource type="Script" path="res://Objects/Dragon/LandingAttack.gd" id="18_qyu4h"]
+[ext_resource type="Script" path="res://Objects/Dragon/AirFireCone.gd" id="21_r26lx"]
 [ext_resource type="Script" path="res://Objects/Dragon/Disrespect.gd" id="22_1tqa8"]
 [ext_resource type="Script" path="res://Objects/Dragon/Transform.gd" id="26_0a6bo"]
 [ext_resource type="Script" path="res://Objects/Dragon/DragonColors.gd" id="29_c323v"]
@@ -507,9 +508,16 @@ repeat_malus_range = 8
 
 [node name="AirGrab" type="Node" parent="States"]
 script = ExtResource("13_3xwwt")
+air_state = true
+natural_state = false
 
 [node name="AirFireBalls" type="Node" parent="States"]
 script = ExtResource("16_a1ca1")
+air_state = true
+
+[node name="AirFireCone" type="Node" parent="States"]
+script = ExtResource("21_r26lx")
+air_state = true
 
 [node name="AirWander" type="Node" parent="States"]
 script = ExtResource("14_im864")
@@ -537,10 +545,6 @@ invincible_state = true
 script = ExtResource("26_0a6bo")
 natural_state = false
 invincible_state = true
-
-[node name="PlayerRay" type="RayCast3D" parent="."]
-unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.84416, 0)
 
 [node name="CollisionBody" type="CharacterBody3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.98735, -0.158554, 0, 0.158554, 0.98735, 0, 0, -0.359846)
@@ -737,6 +741,28 @@ stage_3_dark = Color(0.0509804, 0.0509804, 0.0509804, 1)
 stage_3_wings = Color(0, 0.321569, 0.341176, 1)
 stage_3_scale = Color(0, 0, 0.745098, 1)
 stage_3_yolk = Color(0, 0.419608, 0.788235, 1)
+
+[node name="Rays" type="Node3D" parent="."]
+
+[node name="PlayerRay" type="RayCast3D" parent="Rays"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.84416, 0)
+
+[node name="HelperRay1" type="RayCast3D" parent="Rays"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.82837, 1.37095, 0.989535)
+
+[node name="HelperRay2" type="RayCast3D" parent="Rays"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.96759, 1.25745, -2.27184)
+
+[node name="HelperRay3" type="RayCast3D" parent="Rays"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.89311, 0.961282, 2.10696)
+
+[node name="HelperRay4" type="RayCast3D" parent="Rays"]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.88679, 0.798188, -2.74545)
 
 [editable path="Model/FlyWavePivot/dragonmesh"]
 [editable path="DamageAreas/BiteArea"]

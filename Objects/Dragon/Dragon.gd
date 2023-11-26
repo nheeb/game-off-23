@@ -73,7 +73,7 @@ var scale_meshes : Array[MeshInstance3D] = []
 const DEFAULT_MOVEMENT_SPEED = 4.0
 const DEFAULT_ANGULAR_SPEED = 1.35
 const GRAVITY = 3.5
-const MOVEMENT_TARGET_RANGE = 1.5
+const MOVEMENT_TARGET_RANGE = 2.0
 const FLY_HEIGHT = 3.6
 
 func _ready():
@@ -255,8 +255,13 @@ func turning_process(delta: float):
 		emit_signal("turn_done")
 
 func get_nearest_collision(direction: Vector3) -> Vector3:
-	%PlayerRay.target_position = direction.normalized() * 1000.0
-	return %PlayerRay.get_collision_point()
+	var collision_points : Array[Vector3] = []
+	for ray in $Rays.get_children():
+		if ray is RayCast3D:
+			ray.target_position = direction.normalized() * 1000.0
+			ray.force_raycast_update()
+			collision_points.append(ray.get_collision_point())
+	return collision_points.reduce(func(a,b): return a if global_position.distance_squared_to(a) < global_position.distance_squared_to(b) else b)
 
 func get_state_history_index(state_name):
 	var index = state_history.slice(-1, -20, -1).find(state_name)
