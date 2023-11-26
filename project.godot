@@ -45,6 +45,10 @@ project/assembly_name="GameOff23"
 
 naming/scene_name_casing=1
 
+[filesystem]
+
+import/blender/enabled=false
+
 [input]
 
 movement_left={
