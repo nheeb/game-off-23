@@ -182,14 +182,14 @@ func choose_action():
 			break
 	if new_state == "":
 		printerr("No state was chosen")
-#	if DebugInfo.debug_visible:
-#		var sorted_index = range(len(state_names))
-#		sorted_index.sort_custom(func(a,b): return flat_chances[a] > flat_chances[b])
-#		var debug_states_chances_string := ""
-#		for index in sorted_index:
-#			debug_states_chances_string = debug_states_chances_string + str(state_names[index]) + ": " + "%.2f" % (flat_chances[index] / running_total * 100.0) + "%\n"
-#		DebugInfo.refresh_info("State Chances", debug_states_chances_string)
-#		print(debug_states_chances_string)
+	if DebugInfo.debug_visible:
+		var sorted_index = range(len(state_names))
+		sorted_index.sort_custom(func(a,b): return flat_chances[a] > flat_chances[b])
+		var debug_states_chances_string := ""
+		for index in sorted_index:
+			debug_states_chances_string = debug_states_chances_string + str(state_names[index]) + ": " + "%.2f" % (flat_chances[index] / running_total * 100.0) + "%\n"
+		DebugInfo.refresh_info("State Chances", debug_states_chances_string)
+		print(debug_states_chances_string)
 
 var last_movement_vector : Vector3
 func movement_process(delta: float):
