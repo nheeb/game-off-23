@@ -1,11 +1,17 @@
-[gd_scene load_steps=7 format=3 uid="uid://bfj13h30f3jol"]
+[gd_scene load_steps=13 format=3 uid="uid://bfj13h30f3jol"]
 
 [ext_resource type="Script" path="res://Objects/Items/Items.gd" id="1_g1uul"]
 [ext_resource type="Script" path="res://Objects/Items/TrashSword.gd" id="2_6k677"]
 [ext_resource type="Texture2D" uid="uid://4nb41jhrseld" path="res://Assets/Sprites/sword-1.png" id="3_vavyp"]
 [ext_resource type="Texture2D" uid="uid://s551vaxnhb2r" path="res://Assets/Sprites/placeholder/bootspng.png" id="4_s08l1"]
+[ext_resource type="Texture2D" uid="uid://jfi0ea521n7f" path="res://Assets/Sprites/placeholder/spiked_boots.png" id="5_2u0hr"]
 [ext_resource type="Texture2D" uid="uid://y7bfv6boyrs6" path="res://Assets/Sprites/placeholder/carrot.png" id="5_sv4m8"]
+[ext_resource type="Texture2D" uid="uid://5n20u4mcv1uy" path="res://Assets/Sprites/placeholder/pyroboots.png" id="6_opfi4"]
+[ext_resource type="Script" path="res://Objects/Items/BoomerangSword.gd" id="6_tp5em"]
 [ext_resource type="Texture2D" uid="uid://dncjtdcybaj07" path="res://Assets/Sprites/placeholder/ak47.png" id="6_y255t"]
+[ext_resource type="Texture2D" uid="uid://bmfvd2lay74b4" path="res://Assets/Sprites/placeholder/carrotnomicon.png" id="7_4jtph"]
+[ext_resource type="Texture2D" uid="uid://b1yjfmle3slik" path="res://Assets/Sprites/placeholder/boomerang_sword.png" id="7_df167"]
+[ext_resource type="Texture2D" uid="uid://oqfj8vc5a4ou" path="res://Assets/Sprites/placeholder/winged_boots.png" id="7_iawet"]
 
 [node name="Items" type="Node"]
 script = ExtResource("1_g1uul")
@@ -54,6 +60,71 @@ visible = false
 scale = Vector2(0.169903, 0.169903)
 polygon = PackedVector2Array(0, -244.2, 0, -239.9, 52, -210.9, 52, -204.3, 63.9, -158, 58.9, -158, 43.6, -23.8, 184, 104.6, 184, 109.7, 201.9, 179, 193.4, 179, 158.4, 233, 151.8, 233, 47, 248.6, 47, 243.8, -36, 223.9, -36, 219.9, -85.5, 181, -175, 145.8, -175, 138, -209, -203, -202.1, -203, -177.1, -237, -171.3, -237, -112, -250.1, -112, -253.9)
 
+[node name="Spikedboots" type="Node" parent="."]
+script = ExtResource("2_6k677")
+order_index = 1
+slot = 1
+price = 3
+stats = {
+"armor": 1,
+"damage": 1,
+"speed": 0
+}
+tooltip = "Reflect damage"
+
+[node name="Sprite2D" type="Sprite2D" parent="Spikedboots"]
+visible = false
+scale = Vector2(0.169903, 0.169903)
+texture = ExtResource("5_2u0hr")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Spikedboots"]
+visible = false
+scale = Vector2(0.169903, 0.169903)
+polygon = PackedVector2Array(76, -176.1, 76, 22.9, 125.3, 76, 165.3, 87.2, 211.7, 76.3, 214, 86, 222.1, 90.2, 196.4, 146, 191.6, 146, 143.5, 172, 138.7, 172, 51, 166.4, 51, 158.3, 48.9, 154.1, -2, 175, -5.2, 175, -77, 171.5, -77, 165.5, -92.3, 152.2, -112.6, 168, -129.4, 168, -189, 163.2, -189, 153.5, -198.4, 83, -194, 83, -170.3, -21.8, -189, -38.5, -189, -44, -199.3, -130, -187.4, -130, -167.5, -130.7, -137.8, -157, -125, -157, -104.6, -153.1, -71.9, -177.1, -66.7, -170, -66, -170, -56, -169.1, -58.3, -143.5, -46.7, -131.3, -35.3, -148, -26.7, -148, 23.9, -151.7, 65.1, -181.7)
+
+[node name="Pyroboots" type="Node" parent="."]
+script = ExtResource("2_6k677")
+order_index = 1
+slot = 1
+price = 3
+stats = {
+"armor": 2,
+"damage": 0,
+"speed": 0
+}
+tooltip = "+Fireproof feet"
+
+[node name="Sprite2D" type="Sprite2D" parent="Pyroboots"]
+visible = false
+scale = Vector2(0.169903, 0.169903)
+texture = ExtResource("6_opfi4")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Pyroboots"]
+visible = false
+scale = Vector2(0.169903, 0.169903)
+polygon = PackedVector2Array(-36, -209.8, -36, -199.5, -29.6, -179.6, 5, -192.3, 5, -183.1, 16.5, -177.4, 29.1, -200, 37.4, -200, 97, -203.6, 97, -71.6, 158.3, 18.4, 219, 48.8, 219, 58.7, 234.9, 121, 222.4, 121, 133, 146.8, 103.7, 182, 90.9, 182, 52.8, 196, 46.2, 196, 31.6, 187, 23.5, 200, -17.9, 200, -23.9, 184, -45.3, 198.7, -56, 193, -56, 189.8, -70.2, 174.2, -110, 178, -110, 167.2, -116.5, 141.3, -161, 151.6, -161, 145, -228, 121, -228, 110.6, -220.1, 23, -212.4, 23, -202.7, 17.9, -197, -37, -189.2, -37, -184.1, -39.4, -187.2, -170, -178.1, -170, -80, -209.8, -80, -215.3)
+
+[node name="Wingedboots" type="Node" parent="."]
+script = ExtResource("2_6k677")
+order_index = 1
+slot = 1
+price = 3
+stats = {
+"armor": 0,
+"damage": 0,
+"speed": 3
+}
+tooltip = "+Dash speed"
+
+[node name="Sprite2D" type="Sprite2D" parent="Wingedboots"]
+visible = false
+scale = Vector2(0.169903, 0.169903)
+texture = ExtResource("7_iawet")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Wingedboots"]
+scale = Vector2(0.169903, 0.169903)
+polygon = PackedVector2Array(-137.3, -140.2, -83.6, -98.5, -57.9, -115, -48.3, -115, -4.60001, -100.1, 8.60001, -120, 18.2, -120, 58.2, -118.2, 129, -148.1, 129, -131.6, 119.1, -22, 111.8, -22, 88.6, -8.10001, 85.2, 5, 122.1, 57, 173, 82.9, 173, 89.6, 183.3, 125, 172.3, 125, 148.2, 142, 140.2, 142, 108.1, 136.7, 55.5, 165, 49.9, 165, -6, 169.9, -6, 164.3, -102, 117.2, -102, 111.8, -114.5, 79, -106.5, 79, -98.5, 52.5, -116, 56.7, -116, 39.1, -111.7, 28, -124, 33.8, -124, 24.1, -167, 9.10001, -167, -2.5, -159.1, -12.3, -175.8, -27.1, -170.9, -40, -165.1, -40, -162.2, -41.2, -193, -65.1, -193, -79.5, -180.2, -81.6, -202.5, -124, -182.4, -124, -176.8, -120.9, -183, -129.8, -183, -136, -185, -180.8, -185, -189.5, -170.5, -193.7)
+
 [node name="Carrot" type="Node" parent="."]
 script = ExtResource("2_6k677")
 order_index = 2
@@ -70,6 +141,61 @@ texture = ExtResource("5_sv4m8")
 visible = false
 scale = Vector2(0.366924, 0.366924)
 polygon = PackedVector2Array(150, -74.5, 150, -56, 144.3, -56, 85.8, -29, 75.8, 10, 70.4, 10, 23.4, 46, 19.3, 46, -98.5, 101, -128.9, 101, -150, 97.5, -150, 78, -148.6, 78, 11.4, -52, 16.8, -52, 62.1, -57.2, 101.2, -92, 105.2, -92, 123, -94.6, 138.6, -98.5)
+
+[node name="Carrotnomicon" type="Node" parent="."]
+script = ExtResource("2_6k677")
+order_index = 2
+slot = 2
+price = 2
+tooltip = "Summons carrots"
+
+[node name="Sprite2D" type="Sprite2D" parent="Carrotnomicon"]
+visible = false
+scale = Vector2(0.366924, 0.366924)
+texture = ExtResource("7_4jtph")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Carrotnomicon"]
+scale = Vector2(0.366924, 0.366924)
+polygon = PackedVector2Array(-13.3, -149, 9.5, -168.6, 15.1, -162, 16, -162, 25.9, -160.4, 21.1, -130.5, 67, -141.7, 67, -127.2, 63.1, -101.4, 89, -80.8, 89, -70.3, 57.9, -44.9, 75.9, -3.39999, 174, 17.9, 174, 44.9, 202.8, 73.7, 197.7, 86, 192.9, 86, 43.3, 178.6, 33, 172.9, -194.5, 71.9, -191.1, 56, -186.8, 56, -170.3, 35.8, -176.6, 9, -164.3, 9, -78.8, -32.4, -63, -56.9, -63, -57.6, -61.6, -69.9, -103, -103.2, -103, -109, -104.6, -137, -91.5, -137, -79.7, -133.3, -54.2, -170, -43.9, -170)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Carrotnomicon"]
+scale = Vector2(0.366924, 0.366924)
+polygon = PackedVector2Array(-65.6, -80.1, -68.8, -64, -73.7, -64, -89.3, -47.2, -102, -52.2, -102, -59, -104, -79.5, -104, -95.9)
+
+[node name="Carrotnomicon2" type="Node" parent="."]
+script = ExtResource("2_6k677")
+order_index = 2
+slot = 2
+price = 2
+tooltip = "Summons carrots"
+
+[node name="Sprite2D" type="Sprite2D" parent="Carrotnomicon2"]
+visible = false
+scale = Vector2(0.366924, 0.366924)
+texture = ExtResource("7_4jtph")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Carrotnomicon2"]
+scale = Vector2(0.366924, 0.366924)
+polygon = PackedVector2Array(-13.3, -149, 9.5, -168.6, 15.1, -162, 16, -162, 25.9, -160.4, 21.1, -130.5, 67, -141.7, 67, -127.2, 63.1, -101.4, 89, -80.8, 89, -70.3, 57.9, -44.9, 75.9, -3.39999, 174, 17.9, 174, 44.9, 202.8, 73.7, 197.7, 86, 192.9, 86, 43.3, 178.6, 33, 172.9, -194.5, 71.9, -191.1, 56, -186.8, 56, -170.3, 35.8, -176.6, 9, -164.3, 9, -78.8, -32.4, -63, -56.9, -63, -57.6, -61.6, -69.9, -103, -103.2, -103, -109, -104.6, -137, -91.5, -137, -79.7, -133.3, -54.2, -170, -43.9, -170)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="Carrotnomicon2"]
+scale = Vector2(0.366924, 0.366924)
+polygon = PackedVector2Array(-65.6, -80.1, -68.8, -64, -73.7, -64, -89.3, -47.2, -102, -52.2, -102, -59, -104, -79.5, -104, -95.9)
+
+[node name="BoomerangSword" type="Node" parent="."]
+script = ExtResource("6_tp5em")
+price = 1
+tooltip = "+Charge throw attack"
+
+[node name="Sprite2D" type="Sprite2D" parent="BoomerangSword"]
+visible = false
+scale = Vector2(0.366924, 0.366924)
+texture = ExtResource("7_df167")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BoomerangSword"]
+visible = false
+scale = Vector2(0.366924, 0.366924)
+polygon = PackedVector2Array(164, -170.7, 164, -164.9, 202, -103.9, 202, -85, 191.2, -30, 187.1, -30, 147.1, 25, 142.6, 25, -57.4, 94.2, -172.5, 155, -178.7, 155, -201.6, 141.9, -197.7, 127, -193.7, 127, -105.7, 22, -101.6, 22, 60.2, -26.8, 111.8, -106.6, 97.8, -143.7, 47, -155, 47, -170.5, 81, -185.5, 81, -193.1)
 
 [node name="Ak47" type="Node" parent="."]
 script = ExtResource("2_6k677")
