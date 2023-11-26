@@ -28,7 +28,7 @@ func _physics_process(delta):
 func _on_hit(hit_object: PlayerHurtArea):
 	if dead: return
 	if $Timer.is_stopped():
-		take_damage(3) # FOR TESTING
+		take_damage(1)
 		hit_object.set_attacking(false)
 		$Timer.start(INVINC_TIME)
 
