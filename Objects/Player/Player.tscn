@@ -1,4 +1,4 @@
-[gd_scene load_steps=94 format=3 uid="uid://d1t8v3yidk6mp"]
+[gd_scene load_steps=98 format=3 uid="uid://d1t8v3yidk6mp"]
 
 [ext_resource type="Script" path="res://Objects/Player/Player.gd" id="1_5pkqn"]
 [ext_resource type="PackedScene" uid="uid://cn65k1b6rqpes" path="res://Assets/Models/Placeholders/Knight.fbx" id="1_ox3sj"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://Objects/Player/JumpControls.gd" id="6_pxows"]
 [ext_resource type="Script" path="res://Objects/Player/PlayerHitArea.gd" id="7_lswjr"]
 [ext_resource type="Script" path="res://Objects/Player/PlayerMotion.gd" id="7_qkk7j"]
+[ext_resource type="Script" path="res://Objects/Player/MeleeCombat.gd" id="9_4n0ca"]
 [ext_resource type="Script" path="res://Objects/Player/PlayerAnimations.gd" id="9_sq6q5"]
 [ext_resource type="PackedScene" uid="uid://2r5vm48t6q7r" path="res://Objects/Effects/DustTrack.tscn" id="12_lh2wq"]
 [ext_resource type="Script" path="res://Objects/Player/PlayerHurtArea.gd" id="14_ora01"]
@@ -151,7 +152,7 @@ animation = &"knight_animations/1H_Ranged_Shoot"
 animation = &"knight_animations/Running_A"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_esnbs"]
-animation = &"knight_animations/2H_Melee_Attack_Chop"
+animation = &"knight_animations/1H_Melee_Attack_Chop"
 
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_teu62"]
 filters = ["%GeneralSkeleton:LeftFoot", "%GeneralSkeleton:LeftLowerLeg", "%GeneralSkeleton:LeftToes", "%GeneralSkeleton:LeftUpperLeg", "%GeneralSkeleton:RightFoot", "%GeneralSkeleton:RightLowerLeg", "%GeneralSkeleton:RightToes", "%GeneralSkeleton:RightUpperLeg"]
@@ -159,7 +160,7 @@ filters = ["%GeneralSkeleton:LeftFoot", "%GeneralSkeleton:LeftLowerLeg", "%Gener
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_b3xkb"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_25exd"]
-graph_offset = Vector2(-212.773, 139.224)
+graph_offset = Vector2(-505.496, 124.932)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_esnbs")
 nodes/Animation/position = Vector2(-280, 220)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_u07bl")
@@ -175,7 +176,7 @@ node_connections = [&"output", 0, &"Blend2", &"Blend2", 0, &"TimeScale", &"Blend
 animation = &"knight_animations/Running_A"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_twj11"]
-animation = &"knight_animations/2H_Melee_Attack_Spin"
+animation = &"knight_animations/2H_Melee_Attack_Stab"
 
 [sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_d626t"]
 filter_enabled = true
@@ -184,7 +185,7 @@ filters = ["%GeneralSkeleton:LeftFoot", "%GeneralSkeleton:LeftLowerLeg", "%Gener
 [sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_65el2"]
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_fugsf"]
-graph_offset = Vector2(-275.22, 121.522)
+graph_offset = Vector2(-480.696, 14.8345)
 nodes/Animation/node = SubResource("AnimationNodeAnimation_twj11")
 nodes/Animation/position = Vector2(-280, 220)
 "nodes/Animation 2/node" = SubResource("AnimationNodeAnimation_ilt7v")
@@ -196,42 +197,54 @@ nodes/TimeScale/position = Vector2(140, 220)
 nodes/output/position = Vector2(540, 260)
 node_connections = [&"output", 0, &"Blend2", &"Blend2", 0, &"TimeScale", &"Blend2", 1, &"Animation 2", &"TimeScale", 0, &"Animation"]
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_pcoi8"]
+animation = &"knight_animations/1H_Melee_Attack_Stab"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_wlkul"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_3hfj6"]
+graph_offset = Vector2(-425, -36)
+nodes/Animation/node = SubResource("AnimationNodeAnimation_pcoi8")
+nodes/Animation/position = Vector2(-440, 80)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_wlkul")
+nodes/TimeScale/position = Vector2(0, 100)
+node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"Animation"]
+
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_pysnw"]
 advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5tpbn"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_vds32"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_rbw5d"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_uw53i"]
 xfade_time = 0.1
 switch_mode = 2
 advance_mode = 2
-advance_expression = "attacks_remaining > 0"
+advance_expression = "combo_state <= 1"
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wot0v"]
-xfade_time = 0.1
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jcmnt"]
+advance_mode = 2
+advance_expression = "combo_state > 1"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_13isw"]
 switch_mode = 2
 advance_mode = 2
-advance_expression = "attacks_remaining > 0"
+advance_expression = "combo_state <= 2"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_iqlr3"]
+advance_mode = 2
+advance_expression = "combo_state > 2"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_44ddg"]
+switch_mode = 2
+advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_b0dyb"]
 states/Hit1/node = SubResource("AnimationNodeBlendTree_25exd")
-states/Hit1/position = Vector2(452, 171)
-states/Hit2/node = SubResource("AnimationNodeBlendTree_25exd")
-states/Hit2/position = Vector2(452, 91)
-states/Hit3/node = SubResource("AnimationNodeBlendTree_fugsf")
-states/Hit3/position = Vector2(452, 2)
-transitions = ["Start", "Hit1", SubResource("AnimationNodeStateMachineTransition_pysnw"), "Hit1", "End", SubResource("AnimationNodeStateMachineTransition_5tpbn"), "Hit2", "End", SubResource("AnimationNodeStateMachineTransition_vds32"), "Hit3", "End", SubResource("AnimationNodeStateMachineTransition_rbw5d"), "Hit2", "Hit3", SubResource("AnimationNodeStateMachineTransition_uw53i"), "Hit1", "Hit2", SubResource("AnimationNodeStateMachineTransition_wot0v")]
-graph_offset = Vector2(-16, -76)
+states/Hit1/position = Vector2(452, 170)
+states/Hit2/node = SubResource("AnimationNodeBlendTree_fugsf")
+states/Hit2/position = Vector2(452, 83)
+states/Hit3/node = SubResource("AnimationNodeBlendTree_3hfj6")
+states/Hit3/position = Vector2(452, -14)
+transitions = ["Start", "Hit1", SubResource("AnimationNodeStateMachineTransition_pysnw"), "Hit1", "End", SubResource("AnimationNodeStateMachineTransition_5tpbn"), "Hit1", "Hit2", SubResource("AnimationNodeStateMachineTransition_jcmnt"), "Hit2", "End", SubResource("AnimationNodeStateMachineTransition_13isw"), "Hit2", "Hit3", SubResource("AnimationNodeStateMachineTransition_iqlr3"), "Hit3", "End", SubResource("AnimationNodeStateMachineTransition_44ddg")]
+graph_offset = Vector2(18, -63)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rdq2a"]
 animation = &"knight_animations/Dodge_Forward"
@@ -326,15 +339,15 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_efeyq"]
 advance_mode = 2
-advance_expression = "attacks_remaining > 0"
+advance_expression = "is_attacking()"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_0i7xr"]
 switch_mode = 2
 advance_mode = 2
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_p6lv8"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5q2vg"]
 advance_mode = 2
-advance_expression = "no_attack_taken()"
+advance_expression = "is_attacking()"
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_7a51n"]
 state_machine_type = 1
@@ -343,12 +356,12 @@ states/1H_Ranged_Aiming/position = Vector2(252, 214)
 states/1H_Ranged_Shoot/node = SubResource("AnimationNodeAnimation_pjrtj")
 states/1H_Ranged_Shoot/position = Vector2(420, 296)
 states/AttackMoveBlend/node = SubResource("AnimationNodeStateMachine_b0dyb")
-states/AttackMoveBlend/position = Vector2(60, 144)
+states/AttackMoveBlend/position = Vector2(59, 144)
 states/End/position = Vector2(1101, 100)
 states/Movement/node = SubResource("AnimationNodeStateMachine_ofdtl")
 states/Movement/position = Vector2(461, 100)
 states/Start/position = Vector2(106, 43)
-transitions = ["Start", "Movement", SubResource("AnimationNodeStateMachineTransition_rv6dh"), "Movement", "1H_Ranged_Aiming", SubResource("AnimationNodeStateMachineTransition_bp8a1"), "1H_Ranged_Aiming", "1H_Ranged_Shoot", SubResource("AnimationNodeStateMachineTransition_krbav"), "1H_Ranged_Shoot", "Movement", SubResource("AnimationNodeStateMachineTransition_m85yt"), "1H_Ranged_Aiming", "AttackMoveBlend", SubResource("AnimationNodeStateMachineTransition_efeyq"), "AttackMoveBlend", "Movement", SubResource("AnimationNodeStateMachineTransition_0i7xr"), "1H_Ranged_Aiming", "Movement", SubResource("AnimationNodeStateMachineTransition_p6lv8")]
+transitions = ["Start", "Movement", SubResource("AnimationNodeStateMachineTransition_rv6dh"), "Movement", "1H_Ranged_Aiming", SubResource("AnimationNodeStateMachineTransition_bp8a1"), "1H_Ranged_Aiming", "1H_Ranged_Shoot", SubResource("AnimationNodeStateMachineTransition_krbav"), "1H_Ranged_Shoot", "Movement", SubResource("AnimationNodeStateMachineTransition_m85yt"), "1H_Ranged_Aiming", "AttackMoveBlend", SubResource("AnimationNodeStateMachineTransition_efeyq"), "AttackMoveBlend", "Movement", SubResource("AnimationNodeStateMachineTransition_0i7xr"), "Movement", "AttackMoveBlend", SubResource("AnimationNodeStateMachineTransition_5q2vg")]
 graph_offset = Vector2(-257, 64)
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_otsca"]
@@ -503,39 +516,39 @@ libraries = {
 transform = Transform3D(-0.45, 0, -6.79481e-08, 0, 0.45, 0, 6.79481e-08, 0, -0.45, 0, -0.678362, 0)
 
 [node name="GeneralSkeleton" parent="mc_rabbit_2_3/metarig" index="0"]
-bones/0/position = Vector3(-8.35355e-29, 1.36472, 0)
+bones/0/position = Vector3(-8.35355e-29, 1.4325, 0)
 bones/0/rotation = Quaternion(-1.11122e-10, 0.0431579, 2.57241e-09, 0.999068)
 bones/4/rotation = Quaternion(-5.80618e-11, -0.0313417, -1.88012e-09, 0.999509)
 bones/6/rotation = Quaternion(2.11758e-22, 0, -1.50463e-36, 1)
-bones/14/rotation = Quaternion(-0.0766279, 0.0596614, 0.991656, -0.084777)
-bones/15/rotation = Quaternion(-8.733e-08, 0.963624, -0.267262, 2.95067e-09)
-bones/16/rotation = Quaternion(0.0320506, 0.540835, -0.813241, 0.212389)
+bones/14/rotation = Quaternion(-0.072077, -0.00561833, 0.993758, -0.0849596)
+bones/15/rotation = Quaternion(-6.52361e-08, 0.995737, -0.092239, -5.63228e-09)
+bones/16/rotation = Quaternion(0.059978, 0.62813, -0.748102, 0.205425)
 bones/17/rotation = Quaternion(2.35514e-15, 1, 0, -2.35514e-15)
-bones/19/rotation = Quaternion(-0.0306255, 0.0964769, 0.994343, 0.0322037)
-bones/20/rotation = Quaternion(1.73427e-07, 0.948716, -0.31613, 3.06481e-09)
-bones/21/rotation = Quaternion(-0.03465, 0.532044, -0.83889, -0.109512)
+bones/19/rotation = Quaternion(-0.0320097, 0.0427062, 0.998155, 0.0289482)
+bones/20/rotation = Quaternion(1.41425e-07, 0.985152, -0.171684, 1.73455e-08)
+bones/21/rotation = Quaternion(-0.0462684, 0.60862, -0.785107, -0.105104)
 bones/22/rotation = Quaternion(1.50729e-14, 1, 5.96047e-08, 5.0243e-15)
-bones/24/rotation = Quaternion(0.652964, 0.514092, -0.551516, 0.0719517)
-bones/25/rotation = Quaternion(0.330325, -0.625209, 0.330325, 0.625208)
+bones/24/rotation = Quaternion(0.658881, 0.498803, -0.557806, 0.0769708)
+bones/25/rotation = Quaternion(0.314892, -0.633122, 0.314892, 0.633121)
 bones/26/rotation = Quaternion(-2.32831e-09, 0.707107, -2.32831e-09, 0.707107)
-bones/28/rotation = Quaternion(0.626979, -0.476128, 0.609329, 0.0944323)
-bones/29/rotation = Quaternion(0.346666, 0.616298, -0.346666, 0.616298)
+bones/28/rotation = Quaternion(0.631775, -0.46068, 0.615577, 0.098484)
+bones/29/rotation = Quaternion(0.331837, 0.624408, -0.331837, 0.624407)
 bones/30/rotation = Quaternion(2.39861e-08, -0.707107, 6.03076e-08, 0.707107)
 
 [node name="spine_001" parent="mc_rabbit_2_3/metarig/GeneralSkeleton" index="0"]
-transform = Transform3D(0.99972, -1.40144e-09, 0.0236466, 1.39341e-09, 1, 3.55688e-10, -0.0236466, -3.22639e-10, 0.99972, 0.00620893, 0.820671, 0.09206)
+transform = Transform3D(0.99972, -1.40144e-09, 0.0236466, 1.39341e-09, 1, 3.55688e-10, -0.0236466, -3.22639e-10, 0.99972, 0.00620893, 0.888453, 0.09206)
 bone_idx = 7
 
 [node name="Sphere_004" parent="mc_rabbit_2_3/metarig/GeneralSkeleton" index="1"]
-transform = Transform3D(-0.136922, 0.750732, -0.646261, 0.592002, -0.461065, -0.661024, -0.79422, -0.473097, -0.381305, 0.215025, 2.40045, -0.0631299)
+transform = Transform3D(-0.119903, 0.743173, -0.658269, 0.571434, -0.490543, -0.657899, -0.811842, -0.455041, -0.365856, 0.215856, 2.39992, -0.0641141)
 bone_idx = 27
 
 [node name="Sphere_005" parent="mc_rabbit_2_3/metarig/GeneralSkeleton" index="2"]
-transform = Transform3D(-0.19596, -0.712125, 0.674149, -0.481964, -0.528769, -0.698652, 0.853997, -0.461824, -0.2396, -0.220946, 2.41104, -0.0659933)
+transform = Transform3D(-0.182322, -0.703341, 0.687073, -0.460843, -0.556149, -0.691608, 0.868552, -0.442729, -0.222732, -0.221962, 2.41034, -0.0672862)
 bone_idx = 31
 
 [node name="sword" type="BoneAttachment3D" parent="mc_rabbit_2_3/metarig/GeneralSkeleton" index="15"]
-transform = Transform3D(0.506819, -0.537267, 0.67415, 0.201606, -0.68647, -0.698651, 0.838146, 0.490002, -0.2396, -0.27862, 1.70344, -0.0316342)
+transform = Transform3D(0.480916, -0.544656, 0.687074, 0.203081, -0.693136, -0.691607, 0.852923, 0.472136, -0.222731, -0.277469, 1.69363, -0.0210704)
 bone_name = "RightHand"
 bone_idx = 30
 
@@ -570,6 +583,15 @@ unique_name_in_owner = true
 script = ExtResource("4_01k2c")
 sword_model = NodePath("../../mc_rabbit_2_3/metarig/GeneralSkeleton/sword/MeshInstance3D")
 
+[node name="MeleeCombat" type="Node" parent="Behaviours"]
+script = ExtResource("9_4n0ca")
+
+[node name="PreparingPhaseTimer" type="Timer" parent="Behaviours/MeleeCombat"]
+
+[node name="DamagingPhaseTimer" type="Timer" parent="Behaviours/MeleeCombat"]
+
+[node name="CompletingPhaseTimer" type="Timer" parent="Behaviours/MeleeCombat"]
+
 [node name="JumpControls" type="Node" parent="Behaviours"]
 script = ExtResource("6_pxows")
 
@@ -589,21 +611,16 @@ parameters/conditions/is_dead = false
 parameters/conditions/is_hit = false
 parameters/Core/conditions/has_released_shot = false
 parameters/Core/AttackMoveBlend/Hit1/Blend2/blend_amount = 0.0
-parameters/Core/AttackMoveBlend/Hit1/TimeScale/scale = 2.0
+parameters/Core/AttackMoveBlend/Hit1/TimeScale/scale = 1.2
 parameters/Core/AttackMoveBlend/Hit2/Blend2/blend_amount = 0
-parameters/Core/AttackMoveBlend/Hit2/TimeScale/scale = 1.2
-parameters/Core/AttackMoveBlend/Hit3/Blend2/blend_amount = 0
-parameters/Core/AttackMoveBlend/Hit3/TimeScale/scale = 3.0
+parameters/Core/AttackMoveBlend/Hit2/TimeScale/scale = 2.0
+parameters/Core/AttackMoveBlend/Hit3/TimeScale/scale = 2.0
 parameters/Core/Movement/conditions/is_dodging = false
 parameters/Core/Movement/conditions/is_dodging_completed = false
 parameters/Core/Movement/conditions/is_jumping = false
 parameters/Core/Movement/conditions/is_jumping_completed = false
 parameters/Core/Movement/IdleAndMovement/blend_position = Vector2(0, 0)
 script = ExtResource("9_sq6q5")
-
-[node name="ActivateAttackTimer" type="Timer" parent="animations"]
-
-[node name="DeactivateAttackTimer" type="Timer" parent="animations"]
 
 [node name="MouseDetectionLayer" parent="." instance=ExtResource("5_w6gfs")]
 visible = false
@@ -642,6 +659,10 @@ omni_attenuation = 0.138696
 
 [node name="Ubershader" parent="." instance=ExtResource("17_7kt5q")]
 transform = Transform3D(0.230544, 0, 0, 0, 0.230544, 0, 0, 0, 0.230544, 0.765364, -0.728296, 0)
+
+[connection signal="timeout" from="Behaviours/MeleeCombat/PreparingPhaseTimer" to="Behaviours/MeleeCombat" method="_on_preparing_state_finished"]
+[connection signal="timeout" from="Behaviours/MeleeCombat/DamagingPhaseTimer" to="Behaviours/MeleeCombat" method="_on_damaging_state_finished"]
+[connection signal="timeout" from="Behaviours/MeleeCombat/CompletingPhaseTimer" to="Behaviours/MeleeCombat" method="_on_completing_state_finished"]
 
 [editable path="Knight"]
 [editable path="mc_rabbit_2_3"]
