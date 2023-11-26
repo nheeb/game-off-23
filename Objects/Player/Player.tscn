@@ -1,11 +1,11 @@
 [gd_scene load_steps=103 format=3 uid="uid://d1t8v3yidk6mp"]
 
 [ext_resource type="Script" path="res://Objects/Player/Player.gd" id="1_5pkqn"]
-[ext_resource type="PackedScene" uid="uid://cn65k1b6rqpes" path="res://Assets/Models/Placeholders/Knight.fbx" id="1_ox3sj"]
 [ext_resource type="Script" path="res://Objects/Player/MovementControls.gd" id="2_cr4bx"]
 [ext_resource type="Script" path="res://Objects/Player/DodgingControls.gd" id="3_84egt"]
 [ext_resource type="AnimationLibrary" uid="uid://bhff8hay7cj6x" path="res://Objects/Player/knight_animations.res" id="3_derl1"]
 [ext_resource type="PackedScene" uid="uid://bx1tf4bkvvp53" path="res://Assets/Models/mc_rabbit.blend" id="3_spv6e"]
+[ext_resource type="PackedScene" uid="uid://bbx2qbiej1858" path="res://Assets/Models/Objects/sword3.blend" id="3_wuv1k"]
 [ext_resource type="Script" path="res://Objects/Player/AttackControls.gd" id="4_01k2c"]
 [ext_resource type="Script" path="res://Objects/Player/HealthSystem.gd" id="5_dhqn6"]
 [ext_resource type="Animation" uid="uid://cypsn5n1u7kfk" path="res://Objects/Player/2H_Melee_Attack_Spin.res" id="5_tfu67"]
@@ -427,146 +427,53 @@ collision_layer = 65536
 collision_mask = 19
 script = ExtResource("1_5pkqn")
 
-[node name="Knight" parent="." instance=ExtResource("1_ox3sj")]
-transform = Transform3D(-0.65, 0, -5.68248e-08, 0, 0.65, 0, 5.68248e-08, 0, -0.65, 0, -0.836309, 0)
-visible = false
-
-[node name="GeneralSkeleton" parent="Knight/RootNode/Rig" index="0"]
-bones/0/rotation = Quaternion(-3.00927e-36, 0, -2.52435e-29, 1)
-bones/1/position = Vector3(-2.28474e-29, 0.392064, 1.39289e-15)
-bones/1/rotation = Quaternion(-1.11122e-10, 0.0431579, 2.57241e-09, 0.999068)
-bones/2/rotation = Quaternion(2.08167e-17, -7.10543e-15, -2.498e-16, 1)
-bones/3/rotation = Quaternion(6.93889e-18, 6.93889e-18, -2.22045e-16, 1)
-bones/5/rotation = Quaternion(0.658546, 0.499115, -0.557932, 0.0768994)
-bones/6/rotation = Quaternion(0.315311, -0.632914, 0.315311, 0.632913)
-bones/7/rotation = Quaternion(-2.32831e-09, 0.707107, -2.32831e-09, 0.707107)
-bones/8/rotation = Quaternion(0.321064, -0.32532, -0.145731, 0.877409)
-bones/9/position = Vector3(-2.7994e-09, 0.0961251, 0.0575)
-bones/9/rotation = Quaternion(0, 0, -7.45058e-08, 1)
-bones/15/rotation = Quaternion(-0.631479, 0.460968, -0.615677, -0.0984109)
-bones/16/rotation = Quaternion(0.332238, 0.624194, -0.332237, 0.624194)
-bones/17/rotation = Quaternion(2.39861e-08, -0.707107, 6.03076e-08, 0.707107)
-bones/18/rotation = Quaternion(0.31929, 0.300526, 0.227355, 0.86951)
-bones/19/position = Vector3(-4.20572e-09, 0.0961252, 0.0575)
-bones/19/rotation = Quaternion(1.49012e-08, -2.98023e-08, 7.45058e-08, 1)
-bones/22/rotation = Quaternion(-5.80618e-11, -0.0313417, -1.88012e-09, 0.999509)
-bones/23/rotation = Quaternion(2.11758e-22, 0, -1.50463e-36, 1)
-bones/24/rotation = Quaternion(-0.0558017, -0.0632391, 0.995237, -0.0488905)
-bones/25/rotation = Quaternion(-4.00208e-08, 0.99824, -0.0593114, -2.0205e-09)
-bones/26/rotation = Quaternion(0.122998, 0.601163, -0.755339, 0.230083)
-bones/27/rotation = Quaternion(2.35514e-15, 1, 0, -2.35514e-15)
-bones/28/rotation = Quaternion(-0.0320363, 0.0417126, 0.998198, 0.0289052)
-bones/29/rotation = Quaternion(1.41106e-07, 0.985393, -0.170298, 1.7479e-08)
-bones/30/rotation = Quaternion(-0.0463709, 0.609308, -0.784574, -0.105059)
-bones/31/rotation = Quaternion(1.50729e-14, 1, 5.96046e-08, 5.0243e-15)
-bones/32/rotation = Quaternion(2.14345e-14, 1.42109e-14, 7.10542e-15, 1)
-bones/33/position = Vector3(0.213918, 0.0259903, 0.173866)
-bones/33/rotation = Quaternion(-5.96046e-08, 0.0754279, 7.45059e-09, 0.997151)
-bones/34/position = Vector3(5.33163e-09, 9.09079e-08, -0.362833)
-bones/34/rotation = Quaternion(-6.66134e-16, 0.168398, 4.47035e-08, 0.985719)
-bones/35/position = Vector3(2.32161e-08, -5.03161e-08, 0.213436)
-bones/35/rotation = Quaternion(2.98023e-08, -1.77636e-14, 7.10543e-15, 1)
-bones/36/position = Vector3(-3.30204e-08, 0.119247, -0.114979)
-bones/39/rotation = Quaternion(-1.07764e-14, -1.42109e-14, 1.77636e-14, 1)
-bones/40/position = Vector3(-0.170945, 0.0259903, 0.245789)
-bones/40/rotation = Quaternion(-5.96046e-08, -1.42109e-14, -8.88179e-16, 1)
-bones/41/position = Vector3(5.33163e-09, 9.09079e-08, -0.362833)
-bones/41/rotation = Quaternion(5.55112e-16, -0.101756, -2.23517e-08, 0.994809)
-bones/42/position = Vector3(2.32161e-08, -5.03161e-08, 0.213436)
-bones/42/rotation = Quaternion(2.98023e-08, -1.77636e-14, 7.10543e-15, 1)
-bones/43/position = Vector3(-3.21804e-09, 0.119247, -0.114979)
-bones/46/position = Vector3(0.453507, 1.10676, -0.588859)
-bones/46/rotation = Quaternion(-1.77636e-15, -1.57772e-30, 8.88178e-16, 1)
-bones/47/position = Vector3(0.520841, 0.788312, -0.0576375)
-bones/47/rotation = Quaternion(-0.0937643, 0.0937643, -0.700863, 0.700863)
-bones/48/position = Vector3(-0.453507, 1.10676, -0.588859)
-bones/48/rotation = Quaternion(-1.77636e-15, -1.57772e-30, 8.88178e-16, 1)
-bones/49/position = Vector3(-0.510844, 0.788312, 0.059737)
-bones/49/rotation = Quaternion(-0.0531458, -0.0531461, 0.705107, 0.705107)
-
-[node name="Knight_Cape" parent="Knight/RootNode/Rig/GeneralSkeleton" index="0"]
-transform = Transform3D(0.996275, -5.14962e-09, 0.0862354, 5.13044e-09, 1, 4.44077e-10, -0.0862354, 2.74948e-15, 0.996275, -1.63023e-08, 1.20229, -1.40136e-07)
-bone_idx = 4
-
-[node name="Rectangle_Shield" parent="Knight/RootNode/Rig/GeneralSkeleton" index="1"]
-transform = Transform3D(-0.262864, 7.05888e-07, -0.964833, -1.42109e-14, -1, -8.04663e-07, -0.964833, -1.88475e-07, 0.262864, 0.662643, 0.636705, -0.0430843)
-bone_idx = 10
-
-[node name="Round_Shield" parent="Knight/RootNode/Rig/GeneralSkeleton" index="2"]
-transform = Transform3D(-0.262864, 7.05888e-07, -0.964833, -1.42109e-14, -1, -8.04663e-07, -0.964833, -1.88475e-07, 0.262864, 0.662643, 0.636705, -0.0430843)
-bone_idx = 11
-
-[node name="Spike_Shield" parent="Knight/RootNode/Rig/GeneralSkeleton" index="3"]
-transform = Transform3D(-0.262864, 7.05888e-07, -0.964833, -1.42109e-14, -1, -8.04663e-07, -0.964833, -1.88475e-07, 0.262864, 0.662643, 0.636705, -0.0430843)
-bone_idx = 12
-
-[node name="Badge_Shield" parent="Knight/RootNode/Rig/GeneralSkeleton" index="4"]
-transform = Transform3D(-0.262864, 7.05888e-07, -0.964833, -1.42109e-14, -1, -8.04663e-07, -0.964833, -1.88475e-07, 0.262864, 0.662643, 0.636705, -0.0430843)
-bone_idx = 13
-
-[node name="1H_Sword_Offhand" parent="Knight/RootNode/Rig/GeneralSkeleton" index="5"]
-transform = Transform3D(-0.262864, 7.05888e-07, -0.964833, -1.42109e-14, -1, -8.04663e-07, -0.964833, -1.88475e-07, 0.262864, 0.51224, 0.636706, -0.00210766)
-bone_idx = 14
-
-[node name="2H_Sword" parent="Knight/RootNode/Rig/GeneralSkeleton" index="6"]
-transform = Transform3D(-0.149896, 1.39291e-06, 0.988702, -2.32458e-06, -1, 1.07288e-06, 0.988702, -2.21412e-06, 0.149896, -0.496053, 0.64103, 0.139528)
-bone_idx = 20
-
-[node name="1H_Sword" parent="Knight/RootNode/Rig/GeneralSkeleton" index="7"]
-transform = Transform3D(-0.149896, 1.39291e-06, 0.988702, -2.32458e-06, -1, 1.07288e-06, 0.988702, -2.21412e-06, 0.149896, -0.496053, 0.64103, 0.139528)
-bone_idx = 21
-
-[node name="Knight_Helmet" parent="Knight/RootNode/Rig/GeneralSkeleton" index="8"]
-transform = Transform3D(0.99972, -1.40145e-09, 0.0236468, 1.39343e-09, 1, 3.55688e-10, -0.0236468, -3.22638e-10, 0.99972, 4.69869e-07, 1.20229, -1.19779e-07)
-
-[node name="AnimationPlayer" parent="Knight" index="1"]
-libraries = {
-"": ExtResource("3_derl1")
-}
-
 [node name="mc_rabbit_2_3" parent="." instance=ExtResource("3_spv6e")]
 transform = Transform3D(-0.45, 0, -6.79481e-08, 0, 0.45, 0, 6.79481e-08, 0, -0.45, 0, -0.678362, 0)
 
 [node name="GeneralSkeleton" parent="mc_rabbit_2_3/metarig" index="0"]
-bones/0/position = Vector3(-8.35355e-29, 1.4187, 0)
+bones/0/position = Vector3(-8.35355e-29, 1.34754, 0)
 bones/0/rotation = Quaternion(-1.11122e-10, 0.0431579, 2.57241e-09, 0.999068)
 bones/4/rotation = Quaternion(-5.80618e-11, -0.0313417, -1.88012e-09, 0.999509)
 bones/6/rotation = Quaternion(2.11758e-22, 0, -1.50463e-36, 1)
-bones/14/rotation = Quaternion(-0.0733803, 0.0122958, 0.993634, -0.0845864)
-bones/15/rotation = Quaternion(-7.13895e-08, 0.9902, -0.139659, -3.33855e-09)
-bones/16/rotation = Quaternion(0.0529764, 0.605746, -0.766296, 0.207499)
+bones/14/rotation = Quaternion(-0.0774421, 0.0710672, 0.99081, -0.08514)
+bones/15/rotation = Quaternion(-9.11579e-08, 0.954229, -0.299076, 4.5465e-09)
+bones/16/rotation = Quaternion(0.0262614, 0.523402, -0.82451, 0.213412)
 bones/17/rotation = Quaternion(2.35514e-15, 1, 0, -2.35514e-15)
-bones/19/rotation = Quaternion(-0.0316822, 0.0559048, 0.997492, 0.0296816)
-bones/20/rotation = Quaternion(1.49629e-07, 0.978182, -0.207751, 1.38508e-08)
-bones/21/rotation = Quaternion(-0.0435478, 0.590449, -0.798863, -0.106265)
+bones/19/rotation = Quaternion(-0.0303425, 0.106872, 0.993264, 0.0329396)
+bones/20/rotation = Quaternion(1.79482e-07, 0.938703, -0.344728, 1.44032e-10)
+bones/21/rotation = Quaternion(-0.0320884, 0.515528, -0.849138, -0.1103)
 bones/22/rotation = Quaternion(1.50729e-14, 1, 5.96047e-08, 5.0243e-15)
-bones/24/rotation = Quaternion(0.666287, 0.492122, -0.554718, 0.07852)
-bones/25/rotation = Quaternion(0.305697, -0.637613, 0.305697, 0.637612)
+bones/24/rotation = Quaternion(0.653553, 0.51564, -0.549327, 0.0722795)
+bones/25/rotation = Quaternion(0.330432, -0.625152, 0.330432, 0.625151)
 bones/26/rotation = Quaternion(-2.32831e-09, 0.707107, -2.32831e-09, 0.707107)
-bones/28/rotation = Quaternion(0.638358, -0.454566, 0.613066, 0.100095)
-bones/29/rotation = Quaternion(0.323046, 0.629001, -0.323045, 0.629)
+bones/28/rotation = Quaternion(0.627886, -0.477478, 0.60732, 0.094526)
+bones/29/rotation = Quaternion(0.346769, 0.61624, -0.346769, 0.61624)
 bones/30/rotation = Quaternion(2.39861e-08, -0.707107, 6.03076e-08, 0.707107)
 
 [node name="spine_001" parent="mc_rabbit_2_3/metarig/GeneralSkeleton" index="0"]
-transform = Transform3D(0.99972, -1.40144e-09, 0.0236466, 1.39341e-09, 1, 3.55688e-10, -0.0236466, -3.22639e-10, 0.99972, 0.00620893, 0.874653, 0.09206)
+transform = Transform3D(0.99972, -1.40144e-09, 0.0236466, 1.39341e-09, 1, 3.55688e-10, -0.0236466, -3.22639e-10, 0.99972, 0.00620893, 0.803496, 0.09206)
 bone_idx = 7
 
 [node name="Sphere_004" parent="mc_rabbit_2_3/metarig/GeneralSkeleton" index="1"]
-transform = Transform3D(-0.0997925, 0.742902, -0.66192, 0.568676, -0.503301, -0.650612, -0.816486, -0.441344, -0.372245, 0.21626, 2.39939, -0.0637036)
+transform = Transform3D(-0.135289, 0.753406, -0.643488, 0.594586, -0.457782, -0.660987, -0.792568, -0.472033, -0.386031, 0.21489, 2.40049, -0.0628279)
 bone_idx = 27
 
 [node name="Sphere_005" parent="mc_rabbit_2_3/metarig/GeneralSkeleton" index="2"]
-transform = Transform3D(-0.16496, -0.703082, 0.691711, -0.457622, -0.566701, -0.685151, 0.873711, -0.429565, -0.228263, -0.222429, 2.40984, -0.0669198)
+transform = Transform3D(-0.193647, -0.71442, 0.672388, -0.484789, -0.526158, -0.698668, 0.852924, -0.461261, -0.244454, -0.220841, 2.41106, -0.0656394)
 bone_idx = 31
 
 [node name="sword" type="BoneAttachment3D" parent="mc_rabbit_2_3/metarig/GeneralSkeleton" index="15"]
-transform = Transform3D(0.475353, -0.543669, 0.691711, 0.194011, -0.702088, -0.685151, 0.858137, 0.459888, -0.228262, -0.276301, 1.68743, -0.0211255)
+transform = Transform3D(0.510161, -0.536311, 0.672388, 0.198137, -0.687463, -0.698668, 0.836945, 0.489658, -0.244453, -0.279249, 1.70349, -0.033574)
 bone_name = "RightHand"
 bone_idx = 30
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="mc_rabbit_2_3/metarig/GeneralSkeleton/sword"]
 transform = Transform3D(149.966, -3.10942, 0.709061, 3.12088, 149.947, -2.50818, -0.656815, 2.52236, 149.977, 0, 0, 0)
+visible = false
 mesh = SubResource("ArrayMesh_40811")
+
+[node name="sword3" parent="mc_rabbit_2_3/metarig/GeneralSkeleton/sword" instance=ExtResource("3_wuv1k")]
+transform = Transform3D(0.199598, -0.00786821, 0.00993184, 0.00790677, 0.199843, -0.000580845, -0.00990123, 0.000972204, 0.199752, -0.0211294, 0.328426, 0.107731)
 
 [node name="AnimationPlayer" parent="mc_rabbit_2_3" index="2"]
 libraries = {
@@ -693,5 +600,4 @@ transform = Transform3D(0.230544, 0, 0, 0, 0.230544, 0, 0, 0, 0.230544, 0.765364
 [connection signal="timeout" from="Behaviours/MeleeCombat/CompletingPhaseTimer" to="Behaviours/MeleeCombat" method="_on_completing_state_finished"]
 [connection signal="timeout" from="Behaviours/MagicCasting/Timer" to="Behaviours/MagicCasting" method="_on_cooldown_reset"]
 
-[editable path="Knight"]
 [editable path="mc_rabbit_2_3"]
