@@ -19,6 +19,9 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 func apply_knockback(knockback: Vector3):
 	knockback_value += knockback
 
+var last_frame_global_pos : Vector3 = Vector3.ZERO
+var last_frame_global_movement : Vector3
+
 func _physics_process(delta):
 	handle_movement_intent(delta)
 	handle_knockback(delta)
@@ -26,6 +29,8 @@ func _physics_process(delta):
 	player.move_and_slide()
 	
 	dust_track.emitting = player.velocity.length_squared() > .1 and player.is_on_floor()
+	last_frame_global_movement = player.global_position - last_frame_global_pos
+	last_frame_global_pos = player.global_position
 
 func get_player_intent_movement_direction():
 	return movement_intent
