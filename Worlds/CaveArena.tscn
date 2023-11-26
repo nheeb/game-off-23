@@ -1,14 +1,20 @@
-[gd_scene load_steps=10 format=3 uid="uid://6scktaj5atmu"]
+[gd_scene load_steps=14 format=3 uid="uid://6scktaj5atmu"]
 
 [ext_resource type="Script" path="res://Worlds/World.gd" id="1_4gn8l"]
 [ext_resource type="PackedScene" uid="uid://d1t8v3yidk6mp" path="res://Objects/Player/Player.tscn" id="2_hplb1"]
 [ext_resource type="PackedScene" uid="uid://q0ul6kun0gv4" path="res://Objects/Player/PlayerCamera.tscn" id="3_aaqen"]
 [ext_resource type="Environment" uid="uid://bagmablituwcd" path="res://Assets/WorldEnv/PrototypeArena.tres" id="4_m4eml"]
-[ext_resource type="PackedScene" uid="uid://nsvtq3nres6s" path="res://Assets/Models/dragon_cave.blend" id="5_bivoa"]
 [ext_resource type="PackedScene" uid="uid://cu0j2oc2nfkvl" path="res://Objects/Dragon/Dragon.tscn" id="5_lpixg"]
 [ext_resource type="PackedScene" uid="uid://smdy3b4ihych" path="res://Objects/Props/Stalagmite1.tscn" id="8_30q0f"]
 [ext_resource type="PackedScene" uid="uid://bvkdm0loqtmtj" path="res://Objects/Props/Stalagmite2.tscn" id="9_2n3e5"]
 [ext_resource type="PackedScene" uid="uid://byv4wdjmbf0mp" path="res://Objects/Props/Stalagmite3.tscn" id="9_6r43u"]
+[ext_resource type="PackedScene" uid="uid://dc31xhpqxj0d2" path="res://Objects/Props/House1.tscn" id="10_tybvf"]
+[ext_resource type="PackedScene" uid="uid://cgtes18a4nj6w" path="res://Objects/Props/Townhall.tscn" id="11_m2284"]
+[ext_resource type="PackedScene" uid="uid://dk4wsvjjr8v6m" path="res://Assets/Models/dragon_cave2.blend" id="12_bypli"]
+[ext_resource type="Script" path="res://Worlds/IntroCutscene.gd" id="12_q01xk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_4bf1o"]
+size = Vector3(1000, 10, 10)
 
 [node name="PrototypeArena" type="Node3D"]
 script = ExtResource("1_4gn8l")
@@ -18,7 +24,7 @@ transform = Transform3D(0.639546, 0.606149, 0.472826, 0, -0.615056, 0.788483, 0.
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("2_hplb1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.55645, 15.7711)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.55531, 3.55645, 27.3107)
 
 [node name="PlayerCamera" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_aaqen")]
 target_distance_from_player = 6.0
@@ -31,17 +37,98 @@ environment = ExtResource("4_m4eml")
 transform = Transform3D(0.909541, -0.229514, 0.346495, -0.415614, -0.502274, 0.758278, 0, -0.833693, -0.552228, 0, 10.8668, 0)
 
 [node name="Dragon" parent="." instance=ExtResource("5_lpixg")]
-transform = Transform3D(0.436566, 0, -0.899672, 0, 1, 0, 0.899672, 0, 0.436566, 5.03567, 2.35794, -21.6246)
+transform = Transform3D(-0.966079, 0, 0.258246, 0, 1, 0, -0.258246, 0, -0.966079, -1.11006, 1.30633, -16.8192)
 
 [node name="level" type="Node3D" parent="."]
 
-[node name="dragon_cave" parent="level" instance=ExtResource("5_bivoa")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 54.9095)
+[node name="dragon_cave2" parent="level" instance=ExtResource("12_bypli")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 54.8018)
 
 [node name="Stalagmite3" parent="level" instance=ExtResource("9_6r43u")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 8.00925)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.2894, 0, -27.0384)
+
+[node name="Stalagmite5" parent="level" instance=ExtResource("9_6r43u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 23.1537, -0.282866, -12.5251)
+
+[node name="Stalagmite7" parent="level" instance=ExtResource("9_6r43u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.5332, -0.282866, 4.09336)
+
+[node name="Stalagmite9" parent="level" instance=ExtResource("9_6r43u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.8746, -0.282866, 18.991)
+
+[node name="Stalagmite10" parent="level" instance=ExtResource("9_6r43u")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -18.751, 0.467932, 20.8761)
+
+[node name="Stalagmite4" parent="level" instance=ExtResource("9_6r43u")]
+transform = Transform3D(0.999836, 0, -0.0181155, 0, 1, 0, 0.0181155, 0, 0.999836, 8.72237, 0, 12.6367)
 
 [node name="Stalagmite1" parent="level" instance=ExtResource("8_30q0f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.7186, 0, -28.1765)
+
+[node name="Stalagmite6" parent="level" instance=ExtResource("8_30q0f")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.9378, 0, -0.0235195)
 
 [node name="Stalagmite2" parent="level" instance=ExtResource("9_2n3e5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.3363, 0, -16.601)
+
+[node name="Stalagmite8" parent="level" instance=ExtResource("9_2n3e5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.6557, 0, 13.6206)
+
+[node name="House1" parent="level" instance=ExtResource("10_tybvf")]
+transform = Transform3D(-0.731639, 0, 0.681692, 0, 1, 0, -0.681692, 0, -0.731639, -18.2313, 0.408249, 9.83732)
+
+[node name="House2" parent="level" instance=ExtResource("10_tybvf")]
+transform = Transform3D(-0.154848, 0, -0.987938, 0, 1, 0, 0.987938, 0, -0.154848, 29.6559, 0.556394, 11.125)
+
+[node name="House3" parent="level" instance=ExtResource("10_tybvf")]
+transform = Transform3D(-0.699987, 0, -0.714155, 0, 1, 0, 0.714155, 0, -0.699987, 24.5154, 0.556393, 21.0976)
+
+[node name="House5" parent="level" instance=ExtResource("10_tybvf")]
+transform = Transform3D(0.432275, 0, 0.901742, 0, 1, 0, -0.901742, 0, 0.432275, -22.0943, 0.675522, -21.4772)
+
+[node name="House7" parent="level" instance=ExtResource("10_tybvf")]
+transform = Transform3D(-0.856447, 0, 0.516234, 0, 1, 0, -0.516234, 0, -0.856447, -27.1876, 0.675522, -7.25363)
+
+[node name="House6" parent="level" instance=ExtResource("10_tybvf")]
+transform = Transform3D(0.875717, 0, 0.482824, 0, 1, 0, -0.482824, 0, 0.875717, -10.1248, 0.614496, -29.5514)
+
+[node name="House4" parent="level" instance=ExtResource("10_tybvf")]
+transform = Transform3D(-0.950201, 0, -0.311639, 0, 1, 0, 0.311639, 0, -0.950201, 13.635, 0.042408, 26.4574)
+
+[node name="Townhall" parent="level" instance=ExtResource("11_m2284")]
+transform = Transform3D(0.995946, 0, 0.0899546, 0, 1, 0, -0.0899546, 0, 0.995946, 22.7225, 0.936445, -6.00089)
+collision_mask = 0
+
+[node name="PositionsForCutscene" type="Node3D" parent="."]
+visible = false
+
+[node name="PlayerSpawnIntro" type="Marker3D" parent="PositionsForCutscene"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.11581, 3.09316, 29.5044)
+
+[node name="PlayerSpawnBattle" type="Marker3D" parent="PositionsForCutscene"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.47722, 2.80077, 22.8299)
+
+[node name="AreaStartCutscene" type="Area3D" parent="PositionsForCutscene"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14.1002)
+collision_layer = 0
+collision_mask = 65536
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="PositionsForCutscene/AreaStartCutscene"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.60405, 0)
+shape = SubResource("BoxShape3D_4bf1o")
+
+[node name="IntroCutScene" type="Node3D" parent="PositionsForCutscene" node_paths=PackedStringArray("focus")]
+visible = false
+script = ExtResource("12_q01xk")
+focus = NodePath("../../Dragon")
+
+[node name="CameraStart" type="Marker3D" parent="PositionsForCutscene/IntroCutScene"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.07431, 12.3535, -5.65257)
+
+[node name="CameraEnd" type="Marker3D" parent="PositionsForCutscene/IntroCutScene"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.98902, 3.97219, 36.3085)
+
+[node name="CameraControl" type="Marker3D" parent="PositionsForCutscene/IntroCutScene"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.07431, 0.210772, -11.4103)
+
+[node name="Camera3D" type="Camera3D" parent="PositionsForCutscene/IntroCutScene"]
