@@ -37,8 +37,8 @@ shader_parameter/tex_displace = SubResource("NoiseTexture2D_flapi")
 
 [sub_resource type="TorusMesh" id="TorusMesh_jq7o4"]
 resource_local_to_scene = true
-inner_radius = 0.1
-outer_radius = 1.2
+inner_radius = 20.0
+outer_radius = 21.1
 rings = 16
 ring_segments = 16
 
@@ -73,7 +73,14 @@ tracks/2/enabled = true
 tracks/2/path = NodePath("PlayerDamageArea/CollisionShape3D")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
-tracks/2/keys = PackedFloat32Array(0, 1, 0.05, 1, 0.05, 5, 1, 1, 1, 1)
+tracks/2/keys = PackedFloat32Array(0, 1, 0.05, 1, 0.05, 4.3, 1, 0.85, 1, 0.85, 5, 1, 1, 1, 1)
+tracks/3/type = "position_3d"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("PlayerDamageArea/CollisionShape3D")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = PackedFloat32Array(0, 1, 0, 0.130331, 0, 4.3, 1, 0, 0.130331, 0, 5, 1, 0, -0.965228, 0)
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_auxnd"]
 _data = {
@@ -90,13 +97,14 @@ active = true
 perishable = false
 
 [node name="ring" type="MeshInstance3D" parent="PlayerDamageArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 material_override = SubResource("ShaderMaterial_5vyxh")
 mesh = SubResource("TorusMesh_jq7o4")
 script = ExtResource("4_aal2m")
-state = 0.1
+state = 20.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PlayerDamageArea"]
-transform = Transform3D(0.05, 0, 0, 0, 1, 0, 0, 0, 0.05, 0, -1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.965228, 0)
 shape = SubResource("ConcavePolygonShape3D_pqk00")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
