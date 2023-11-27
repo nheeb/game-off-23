@@ -32,6 +32,9 @@ func take_damage(source: Node3D, amount: int):
 	health = max(0, health)
 	if health == 0:
 		emit_signal("death", source)
+		
+func heal(amount: int):
+	health = min(max_health, health + amount)
 
 func can_take_damage():
 	return invulnerable_time_remaining <= 0.0

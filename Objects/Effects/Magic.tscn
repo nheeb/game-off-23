@@ -33,6 +33,7 @@ hue_variation_min = -1.0
 hue_variation_max = 1.0
 
 [sub_resource type="QuadMesh" id="QuadMesh_3isml"]
+size = Vector2(3, 3)
 
 [node name="Magic" type="GPUParticles3D"]
 material_override = SubResource("StandardMaterial3D_nuckv")

@@ -22,7 +22,7 @@ var jump_height: float
 const RESET_DODGE_BOOST_SPEED = 10.0
 var dodge_boost_speed: float
 
-enum SPELL_TYPE {None, Water}
+enum SPELL_TYPE {None, Water, Carrot}
 var active_spell: SPELL_TYPE = SPELL_TYPE.None
 
 func reset():

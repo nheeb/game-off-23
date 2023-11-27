@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://bgbemoovy7w08"]
+
+[ext_resource type="Script" path="res://Objects/Pickups/CarrotPickup.gd" id="1_5tyyr"]
+[ext_resource type="PackedScene" uid="uid://dn7o5cjlac44m" path="res://Assets/Models/Objects/carrot2.blend" id="2_dbblv"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_2i40d"]
+height = 1.69765
+radius = 0.375972
+
+[sub_resource type="Animation" id="Animation_x4ipb"]
+resource_name = "default"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "position_3d"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("carrot2")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = PackedFloat32Array(0, 1, 0, -0.889354, -0.137186, 1, 1, 0, -0.272928, -0.137186, 2, 1, 0, -0.889354, -0.137186)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ve4qd"]
+_data = {
+"default": SubResource("Animation_x4ipb")
+}
+
+[node name="CarrotPickup" type="Area3D"]
+collision_layer = 0
+collision_mask = 65536
+script = ExtResource("1_5tyyr")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-1, -8.74228e-08, 7.64274e-15, -8.74228e-08, 1, -8.74226e-08, -3.81165e-21, -8.74226e-08, -1, -9.33546e-09, -0.60422, -0.126331)
+shape = SubResource("CylinderShape3D_2i40d")
+
+[node name="carrot2" parent="." instance=ExtResource("2_dbblv")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, -0.463056, -0.137186)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+autoplay = "default"
+libraries = {
+"": SubResource("AnimationLibrary_ve4qd")
+}
