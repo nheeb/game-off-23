@@ -8,6 +8,7 @@ var is_available = true
 @export var magic_particles: GPUParticles3D
 
 const PICKUP_CARROT = preload("res://Objects/Pickups/CarrotPickup.tscn")
+const SPELLBOOK_EFFECT = preload("res://Objects/Effects/SpellbookEffect.tscn")
 
 func cast():
 	if not is_available:
@@ -26,8 +27,13 @@ func apply_cooldown(amount: float):
 	timer.start()
 
 func cast_water():
-	magic_particles.emitting = true
 	apply_cooldown(30)
+	
+	var book = SPELLBOOK_EFFECT.instantiate()
+	Game.world.add_child(book)
+	await book.spell_cast
+	
+	magic_particles.emitting = true
 	await get_tree().create_timer(0.5).timeout
 	bubble_mesh.visible = true
 	health_system.armour = 1
@@ -36,8 +42,13 @@ func cast_water():
 	health_system.armour = 0
 	
 func cast_carrot():
-	magic_particles.emitting = true
 	apply_cooldown(30)
+	
+	var book = SPELLBOOK_EFFECT.instantiate()
+	Game.world.add_child(book)
+	await book.spell_cast
+	
+	magic_particles.emitting = true
 	await get_tree().create_timer(0.5).timeout
 	for i in range(1):
 		var pos = Game.player.global_position \
