@@ -17,12 +17,14 @@ func effect_start(index):
 	hint.global_position = dragon.head_position.global_position
 	hint.global_rotation = dragon.head_position.global_rotation
 	await get_tree().create_timer(.9).timeout
+	dragon.animations.is_spitting_fire = true
 	var fire_cone = FIRE_CONE.instantiate()
 	Game.world.add_child(fire_cone)
 	fire_cone.global_position = dragon.head_position.global_position
 	fire_cone.global_rotation = dragon.head_position.global_rotation
 	fire_cone.hint_can_fade.connect(hint.start_closing)
 	await get_tree().create_timer(1.1).timeout
+	dragon.animations.is_spitting_fire = false
 	next_state = "Idle"
 
 func effect_process(delta):
