@@ -1,0 +1,52 @@
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://cjs1et11o0sk8"]
+
+[ext_resource type="Texture2D" uid="uid://dk0grtgpofr8" path="res://Assets/Textures/page_text.png" id="1_wf1g6"]
+
+[sub_resource type="Shader" id="Shader_cd5ma"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.1.1.stable's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_disabled,diffuse_burley,specular_schlick_ggx;
+uniform vec4 albedo : source_color;
+uniform vec4 text_col_base : source_color;
+uniform vec4 text_col_magic : source_color;
+uniform sampler2D texture_albedo : source_color,filter_linear_mipmap,repeat_enable;
+uniform float roughness : hint_range(0,1);
+uniform float magic : hint_range(0,1);
+uniform vec3 uv1_scale;
+uniform vec3 uv1_offset;
+uniform vec3 uv2_scale;
+uniform vec3 uv2_offset;
+
+#include \"res://Shaders/lib.gdshaderinc\"
+
+void vertex() {
+	UV=UV*uv1_scale.xy+uv1_offset.xy;
+}
+
+void fragment() {
+	vec2 base_uv = UV;
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	float text = clamp_and_map(albedo_tex.a, .2, .6, 0.0, 1.0);
+	vec3 text_col = mix(text_col_base.rgb, text_col_magic.rgb, magic);
+	ALBEDO = mix(albedo.rgb, text_col.rgb, text);
+	//ALBEDO = albedo.rgb * albedo_tex.rgb;
+	ROUGHNESS = roughness;
+	EMISSION = magic * text * text_col * 5.0;
+}
+"
+
+[resource]
+resource_name = "Paper"
+render_priority = 0
+shader = SubResource("Shader_cd5ma")
+shader_parameter/albedo = Color(0.7636, 0.8, 0.632, 1)
+shader_parameter/text_col_base = null
+shader_parameter/text_col_magic = Color(0.494118, 0.984314, 1, 1)
+shader_parameter/roughness = 0.271739
+shader_parameter/magic = 0.0
+shader_parameter/uv1_scale = Vector3(-1.36, 0.95, 1)
+shader_parameter/uv1_offset = Vector3(0, 0, 0)
+shader_parameter/uv2_scale = Vector3(1, 1, 1)
+shader_parameter/uv2_offset = Vector3(0, 0, 0)
+shader_parameter/texture_albedo = ExtResource("1_wf1g6")
