@@ -112,7 +112,7 @@ script = ExtResource("1_ghchr")
 
 [node name="Background" type="TextureRect" parent="."]
 unique_name_in_owner = true
-modulate = Color(1, 1, 1, 0.4)
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -134,8 +134,8 @@ layout_mode = 1
 anchor_top = -2.07099
 anchor_right = 1.0
 anchor_bottom = -1.07099
-offset_top = 1329.0
-offset_bottom = 1329.0
+offset_top = 749.002
+offset_bottom = 749.001
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
@@ -172,7 +172,7 @@ offset_right = 14.0
 offset_bottom = 51.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(15.4766, 1)
+scale = Vector2(20, 1)
 pivot_offset = Vector2(20, 40)
 texture = ExtResource("3_j2j2a")
 expand_mode = 1
@@ -208,7 +208,6 @@ rotation = 3.92699
 texture = ExtResource("6_pmi03")
 
 [node name="TextureRect3" type="TextureRect" parent="VictoryScreenIcon"]
-modulate = Color(1, 1, 1, 0.1)
 layout_mode = 0
 offset_left = 355.0
 offset_top = 270.0
@@ -222,8 +221,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 654.0
-offset_bottom = 653.888
+offset_top = 535.942
+offset_bottom = 535.782
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -254,7 +253,6 @@ theme_override_constants/separation = 20
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Nitai
-
 Sam
 Borhan
 Niels
@@ -274,8 +272,7 @@ text_direction = 2
 [node name="RichTextLabel2" type="RichTextLabel" parent="Credits/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Coding   3D - Art    Management
-
+text = "Coding   3D - Art
 Coding   3D - Art
 Coding
 Coding   3D - Art
@@ -284,10 +281,10 @@ Coding   3D - Art
 
 3D - Art
 3D - Art
-3D - Art   Story - Writing
+3D - Art 
 2D - Art
 
-Sound     Music
+Music
 Sound     Voices"
 
 [node name="Label2" type="Label" parent="Credits/MarginContainer/VBoxContainer"]
