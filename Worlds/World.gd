@@ -47,6 +47,9 @@ func make_everything_ready_for_intro():
 	everything_ready.emit()
 
 func make_everything_ready_for_battle():
+	if has_node("EntranceBlockage"):
+		$EntranceBlockage.visible = true
+		$EntranceBlockage/StaticBody3D/CollisionShape3D.disabled = false
 	Game.dragon.force_state_change("PreCutscene")
 	Game.player.global_position = player_spawn_battle.global_position
 	if Game.current_game_state == Game.GAME_STATE.Loading:

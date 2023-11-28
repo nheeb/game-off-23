@@ -30,14 +30,14 @@ func apply_changes(item_data: ItemData):
 				for i in range(stat_value):
 					var icon = Sprite2D.new()
 					icon.texture = load("res://Assets/Sprites/placeholder/icon_"+stat+".png")
-					icon.transform.origin.x = $Tooltip.size.x - i*16
-					icon.transform.origin.y += y*16
+					icon.transform.origin.x = $Tooltip.size.x - i*64
+					icon.transform.origin.y += y*64
 					$Tooltip.add_child(icon)
 				y += 1
 		if len(item_data.tooltip) > 0:
 			var l = Label.new()
 			l.text = item_data.tooltip
-			l.position.y = y*16
+			l.position.y = y*64
 			l.size.x = $Tooltip.size.x
 			l.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 			# l.position.x = $Tooltip.size.x - l.font.GetMultilineStringSize()

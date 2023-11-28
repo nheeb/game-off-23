@@ -71,11 +71,11 @@ var scale_meshes : Array[MeshInstance3D] = []
 @onready var colors: DragonColors = %DragonColors
 
 # Constanst
-const DEFAULT_MOVEMENT_SPEED = 4.0
-const DEFAULT_ANGULAR_SPEED = 1.35
+const DEFAULT_MOVEMENT_SPEED = 4.6
+const DEFAULT_ANGULAR_SPEED = 1.55
 const GRAVITY = 3.5
-const MOVEMENT_TARGET_RANGE = 2.0
-const FLY_HEIGHT = 3.6
+const MOVEMENT_TARGET_RANGE = 2.5
+const FLY_HEIGHT = 3.5
 
 func _ready():
 	Game.dragon = self
