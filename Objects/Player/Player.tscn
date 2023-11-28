@@ -431,39 +431,39 @@ script = ExtResource("1_5pkqn")
 transform = Transform3D(-0.45, 0, -6.79481e-08, 0, 0.45, 0, 6.79481e-08, 0, -0.45, 0, -0.678362, 0)
 
 [node name="GeneralSkeleton" parent="mc_rabbit_2_3/metarig" index="0"]
-bones/0/position = Vector3(-8.35355e-29, 1.37928, 0)
+bones/0/position = Vector3(-8.35355e-29, 1.38779, 0)
 bones/0/rotation = Quaternion(-1.11122e-10, 0.0431579, 2.57241e-09, 0.999068)
 bones/4/rotation = Quaternion(-5.80618e-11, -0.0313417, -1.88012e-09, 0.999509)
 bones/6/rotation = Quaternion(2.11758e-22, 0, -1.50463e-36, 1)
-bones/14/rotation = Quaternion(-0.0759026, 0.0488175, 0.992323, -0.0845588)
-bones/15/rotation = Quaternion(-8.37243e-08, 0.971329, -0.237739, 1.47994e-09)
-bones/16/rotation = Quaternion(0.0371984, 0.55653, -0.802631, 0.211362)
+bones/14/rotation = Quaternion(-0.075442, 0.0419645, 0.992679, -0.0844784)
+bones/15/rotation = Quaternion(-8.14318e-08, 0.975684, -0.21918, 5.60322e-10)
+bones/16/rotation = Quaternion(0.0403338, 0.566174, -0.795885, 0.210682)
 bones/17/rotation = Quaternion(2.35514e-15, 1, 0, -2.35514e-15)
-bones/19/rotation = Quaternion(-0.0308856, 0.0867783, 0.995249, 0.0315544)
-bones/20/rotation = Quaternion(1.67817e-07, 0.957018, -0.290028, 5.70273e-09)
-bones/21/rotation = Quaternion(-0.0369031, 0.546684, -0.829425, -0.108766)
+bones/19/rotation = Quaternion(-0.0310443, 0.0807542, 0.995763, 0.0311667)
+bones/20/rotation = Quaternion(1.64307e-07, 0.961764, -0.27388, 7.32172e-09)
+bones/21/rotation = Quaternion(-0.0382601, 0.555549, -0.823513, -0.108292)
 bones/22/rotation = Quaternion(1.50729e-14, 1, 5.96047e-08, 5.0243e-15)
-bones/24/rotation = Quaternion(0.670175, 0.492657, -0.549606, 0.0780274)
-bones/25/rotation = Quaternion(0.304001, -0.638423, 0.304001, 0.638422)
+bones/24/rotation = Quaternion(0.67185, 0.489549, -0.55021, 0.0789152)
+bones/25/rotation = Quaternion(0.300628, -0.640019, 0.300628, 0.640017)
 bones/26/rotation = Quaternion(-2.32831e-09, 0.707107, -2.32831e-09, 0.707107)
-bones/28/rotation = Quaternion(0.642152, -0.455433, 0.60848, 0.0998691)
-bones/29/rotation = Quaternion(0.321427, 0.629829, -0.321427, 0.629829)
+bones/28/rotation = Quaternion(0.643517, -0.452464, 0.609116, 0.100693)
+bones/29/rotation = Quaternion(0.318208, 0.631462, -0.318207, 0.631462)
 bones/30/rotation = Quaternion(2.39861e-08, -0.707107, 6.03076e-08, 0.707107)
 
 [node name="spine_001" parent="mc_rabbit_2_3/metarig/GeneralSkeleton" index="0"]
-transform = Transform3D(0.99972, -1.40144e-09, 0.0236466, 1.39341e-09, 1, 3.55688e-10, -0.0236466, -3.22639e-10, 0.99972, 0.00620893, 0.835238, 0.09206)
+transform = Transform3D(0.99972, -1.40144e-09, 0.0236466, 1.39341e-09, 1, 3.55688e-10, -0.0236466, -3.22639e-10, 0.99972, 0.00620893, 0.843749, 0.09206)
 bone_idx = 7
 
 [node name="Sphere_004" parent="mc_rabbit_2_3/metarig/GeneralSkeleton" index="1"]
-transform = Transform3D(-0.0895554, 0.746101, -0.659783, 0.574563, -0.502402, -0.646118, -0.813546, -0.43695, -0.383689, 0.216247, 2.39918, -0.0629724)
+transform = Transform3D(-0.0847797, 0.744647, -0.662052, 0.570968, -0.508228, -0.644748, -0.816583, -0.432672, -0.382082, 0.216418, 2.39903, -0.063073)
 bone_idx = 27
 
 [node name="Sphere_005" parent="mc_rabbit_2_3/metarig/GeneralSkeleton" index="2"]
-transform = Transform3D(-0.155334, -0.706451, 0.690506, -0.463378, -0.565214, -0.682506, 0.872441, -0.425981, -0.239557, -0.222423, 2.4097, -0.0661036)
+transform = Transform3D(-0.151492, -0.705004, 0.692834, -0.459669, -0.570274, -0.680802, 0.875074, -0.421611, -0.237677, -0.222617, 2.40955, -0.0662532)
 bone_idx = 31
 
 [node name="sword" type="BoneAttachment3D" parent="mc_rabbit_2_3/metarig/GeneralSkeleton" index="15"]
-transform = Transform3D(0.480926, -0.540288, 0.690506, 0.185816, -0.706865, -0.682506, 0.856845, 0.456542, -0.239556, -0.275934, 1.68595, -0.0253199)
+transform = Transform3D(0.476508, -0.541221, 0.692834, 0.184863, -0.708756, -0.680801, 0.859515, 0.452487, -0.237676, -0.275603, 1.68385, -0.0237655)
 bone_name = "RightHand"
 bone_idx = 30
 
@@ -526,6 +526,7 @@ unique_name_in_owner = true
 script = ExtResource("7_qkk7j")
 
 [node name="MagicCasting" type="Node" parent="Behaviours" node_paths=PackedStringArray("bubble_mesh", "magic_particles")]
+unique_name_in_owner = true
 script = ExtResource("14_nj4sf")
 bubble_mesh = NodePath("../../WaterBubble")
 magic_particles = NodePath("../../Magic")

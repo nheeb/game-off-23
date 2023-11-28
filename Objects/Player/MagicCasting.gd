@@ -20,16 +20,19 @@ func cast():
 		cast_carrot()
 	elif spell == PlayerStats.SPELL_TYPE.None:
 		pass
-		
+
+var last_applied_cooldown : float
 func apply_cooldown(amount: float):
+	last_applied_cooldown = amount
 	is_available = false
 	timer.wait_time = amount
 	timer.start()
 
 func cast_water():
-	apply_cooldown(30)
+	apply_cooldown(25)
 	
 	var book = SPELLBOOK_EFFECT.instantiate()
+	book.set_color(Color.AQUA)
 	Game.world.add_child(book)
 	await book.spell_cast
 	
@@ -42,9 +45,10 @@ func cast_water():
 	health_system.armour = 0
 	
 func cast_carrot():
-	apply_cooldown(30)
+	apply_cooldown(25)
 	
 	var book = SPELLBOOK_EFFECT.instantiate()
+	book.set_color(Color.ORANGE)
 	Game.world.add_child(book)
 	await book.spell_cast
 	
@@ -64,3 +68,8 @@ func cast_carrot():
 func _on_cooldown_reset():
 	is_available = true
 	timer.stop()
+	Game.player_ui.woop()
+
+func _physics_process(delta):
+	if not timer.is_stopped():
+		Game.player_ui.set_item_cooldown(1.0 - (timer.time_left / last_applied_cooldown))

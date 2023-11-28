@@ -67,7 +67,7 @@ height = 8.08714
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_yh2b4"]
 radius = 2.77803
-height = 7.6376
+height = 8.29934
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_fi5rd"]
 height = 3.10338
@@ -608,11 +608,11 @@ knockback_force = 1.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.101023, 1.28531)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DamageAreas/JumpLandingArea"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1.83059, -0.0584454, 1.18611, 3.60953)
+transform = Transform3D(-4.37114e-08, -1, -7.10543e-15, 1, -4.37114e-08, 0, 0, 0, 1.23321, -0.0584454, 1.18611, 3.60113)
 shape = SubResource("CapsuleShape3D_thx3e")
 
 [node name="VisualIndicator" type="MeshInstance3D" parent="DamageAreas/JumpLandingArea"]
-transform = Transform3D(-1.80843e-07, 4.13722, -7.85778e-07, -4.13722, -1.80843e-07, -7.85778e-07, -3.61686e-07, 3.61686e-07, 8.98829, -0.0725749, 1.12575, 3.55802)
+transform = Transform3D(-1.80843e-07, 4.13722, -5.29355e-07, -4.13722, -1.80843e-07, -5.29355e-07, -3.61686e-07, 3.61686e-07, 6.05514, -0.0725749, 1.12575, 3.56642)
 material_override = ExtResource("16_yafp0")
 mesh = SubResource("CapsuleMesh_31bqf")
 
@@ -627,13 +627,13 @@ knockback_force = 3.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.101023, 1.28531)
 
 [node name="VisualIndicator" type="MeshInstance3D" parent="DamageAreas/TailArea"]
-transform = Transform3D(2.16201e-07, -3.91998, 8.7643e-07, -4.94611, -1.71348e-07, -4.38214e-07, 4.32403e-07, -6.85392e-07, -5.01258, 0.0725739, 1.12575, 4.28627)
+transform = Transform3D(2.16201e-07, -4.12951, 9.53213e-07, -4.94611, -1.80507e-07, -4.76605e-07, 4.32403e-07, -7.22028e-07, -5.45173, 0.0725739, 1.12575, 4.28627)
 material_override = ExtResource("16_yafp0")
 mesh = SubResource("CapsuleMesh_31bqf")
 skeleton = NodePath("../../BiteArea")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DamageAreas/TailArea"]
-transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.0584453, 1.18611, 3.97323)
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, -0.0584454, 1.18611, 4.42464)
 shape = SubResource("CapsuleShape3D_yh2b4")
 
 [node name="BodyArea" parent="DamageAreas" instance=ExtResource("6_qsmee")]
@@ -653,7 +653,7 @@ mesh = SubResource("CylinderMesh_ic1fu")
 
 [node name="AirKnockbackArea" parent="DamageAreas" instance=ExtResource("6_qsmee")]
 unique_name_in_owner = true
-knockback_force = 4.0
+knockback_force = 2.5
 default_lifetime = 2.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DamageAreas/AirKnockbackArea"]
