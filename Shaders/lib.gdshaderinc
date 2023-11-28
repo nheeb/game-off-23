@@ -47,3 +47,11 @@ float clamp_and_map_and_pow(float value, float istart, float istop, float ostart
 	float middle_value = ((value - istart) / (istop - istart));
     return ostart + (ostop - ostart) * ((value - istart) / (istop - istart));
 }
+
+float positive_direction_of_vec2(vec2 v) {
+	return PI/2.0 + atan(v.y / v.x) + PI * float(v.x < 0.0);
+}
+
+float is_in_range_as_float(float value, float a, float b) {
+	return float( (value >= a && value <= b) || (value <= a && value >= b) );
+}

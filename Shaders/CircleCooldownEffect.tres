@@ -12,10 +12,6 @@ uniform float saturation: hint_range(0.0, 1.0);
 
 #include \"res://Shaders/lib.gdshaderinc\"
 
-float positive_direction_of_vec2(vec2 v) {
-	return PI/2.0 + atan(v.y / v.x) + PI * float(v.x < 0.0);
-}
-
 void fragment() {
 	vec3 disabled = mix(length(COLOR.rgb)*vec3(darkness), COLOR.rgb, saturation);
 	COLOR = mix(vec4(disabled, COLOR.a), COLOR,float(positive_direction_of_vec2(UV-vec2(.5)) < progress * 2.0 * PI));

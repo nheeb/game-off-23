@@ -21,13 +21,13 @@ func deactivate():
 	completed.emit()
 
 func _process(delta):
-	if not visible and progress < 1.0:
+	if (not visible) or (progress >= 1.0):
 		return
 	progress += delta / path_time
 	camera.global_position = quadratic_bezier(start.global_position, control.global_position, end.global_position, progress)
 	camera.look_at(focus.global_position)
 	if progress >= 1.0:
-		await get_tree().create_timer(4).timeout
+		await get_tree().create_timer(4.0).timeout
 		deactivate()
 
 func quadratic_bezier(p0: Vector3, p1: Vector3, p2: Vector3, t: float):
