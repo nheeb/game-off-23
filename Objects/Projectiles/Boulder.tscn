@@ -44,7 +44,7 @@ shape = SubResource("ConcavePolygonShape3D_xt7c0")
 
 [node name="PlayerDamageArea" parent="." instance=ExtResource("2_lceue")]
 damage = 1
-knockback_force = 7.0
+knockback_force = 3.0
 delete_on_perish = true
 delete_on_player_hit = true
 
@@ -67,12 +67,11 @@ wait_time = 20.0
 autostart = true
 
 [node name="DragonDetection" type="Area3D" parent="."]
-collision_layer = 8
+collision_layer = 0
 collision_mask = 16
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="DragonDetection"]
 shape = SubResource("SphereShape3D_jkhyg")
 
 [connection signal="timeout" from="Timer" to="." method="crush"]
-[connection signal="area_entered" from="DragonDetection" to="." method="crush"]
-[connection signal="body_entered" from="DragonDetection" to="." method="crush"]
+[connection signal="body_entered" from="DragonDetection" to="." method="_on_dragon_detection_body_entered"]

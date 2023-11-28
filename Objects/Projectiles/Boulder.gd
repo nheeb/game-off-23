@@ -21,3 +21,5 @@ func crush():
 	$GPUParticles3D.emitting = true
 	get_tree().create_timer($GPUParticles3D.lifetime).timeout.connect(queue_free)
 
+func _on_dragon_detection_body_entered(body):
+	crush()
