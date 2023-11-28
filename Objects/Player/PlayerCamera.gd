@@ -8,6 +8,13 @@ class_name PlayerCamera extends Node3D
 @export var boss_focus: Node3D
 @export var projectile_focus: Node3D
 
+var current = null : set = _set_current, get = _get_current
+
+func _set_current(new_state):
+	%Camera3D.current = new_state
+func _get_current():
+	return %Camera3D.current
+	
 func _ready():
 	Game.main_cam = self
 

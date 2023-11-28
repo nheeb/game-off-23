@@ -58,7 +58,6 @@ func make_everything_ready_for_battle():
 var cutscene_running := false
 var cutscene_tooltip := false
 func start_cutscene():
-	var player_cam = get_viewport().get_camera_3d()
 	cutscene_running = true
 	Game.current_game_state = Game.GAME_STATE.Cutscene
 	Game.dragon.force_state_change("Cutscene")
@@ -66,13 +65,13 @@ func start_cutscene():
 	cutscene.activate()
 	await Signal(cutscene, 'completed')
 	await get_tree().create_timer(4.0).timeout
-	player_cam.current = true
 	end_cutscene()
 
 func end_cutscene():
 	if cutscene_running:
 		cutscene_running = false
 		cutscene_tooltip = false
+		Game.main_cam.current = true
 		PlayerUI.set_cutscene_tooltip_visible(false)
 		make_everything_ready_for_battle()
 

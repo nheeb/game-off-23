@@ -1,8 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://dxysk5l2bkakx"]
+[gd_scene load_steps=7 format=3 uid="uid://cyfa5yhwh8dq8"]
 
 [ext_resource type="PackedScene" uid="uid://g20lfc8ai7ur" path="res://Assets/Models/Objects/book.blend" id="1_qtkfl"]
 [ext_resource type="Script" path="res://Objects/Effects/SpellbookEffect.gd" id="1_x0b88"]
-[ext_resource type="Material" uid="uid://cjs1et11o0sk8" path="res://Shaders/ShaderPageMat.tres" id="2_eg7ql"]
+[ext_resource type="Material" uid="uid://d4fhokecjbaba" path="res://Shaders/ShaderPageMat.tres" id="2_eg7ql"]
 
 [sub_resource type="Animation" id="Animation_f3h4t"]
 length = 0.001
