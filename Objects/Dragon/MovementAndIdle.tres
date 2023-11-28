@@ -1,13 +1,10 @@
-[gd_resource type="AnimationNodeBlendSpace2D" load_steps=6 format=3 uid="uid://7o48gnm7j66d"]
+[gd_resource type="AnimationNodeBlendSpace2D" load_steps=8 format=3 uid="uid://7o48gnm7j66d"]
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_bm12b"]
 animation = &"wait"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_38ukc"]
 animation = &"walk"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lse2m"]
-animation = &"side_walk_left"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_53kfe"]
 animation = &"side_walk_left"
@@ -16,14 +13,27 @@ animation = &"side_walk_left"
 animation = &"walk"
 play_mode = 1
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_6cquc"]
+animation = &"side_walk_left"
+
+[sub_resource type="AnimationNodeTimeScale" id="AnimationNodeTimeScale_b3mwl"]
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_y3sog"]
+nodes/Animation/node = SubResource("AnimationNodeAnimation_6cquc")
+nodes/Animation/position = Vector2(240, 152)
+nodes/TimeScale/node = SubResource("AnimationNodeTimeScale_b3mwl")
+nodes/TimeScale/position = Vector2(460, 240)
+nodes/output/position = Vector2(740, 140)
+node_connections = [&"output", 0, &"TimeScale", &"TimeScale", 0, &"Animation"]
+
 [resource]
 blend_point_0/node = SubResource("AnimationNodeAnimation_bm12b")
 blend_point_0/pos = Vector2(0, 0)
 blend_point_1/node = SubResource("AnimationNodeAnimation_38ukc")
 blend_point_1/pos = Vector2(0, 1)
-blend_point_2/node = SubResource("AnimationNodeAnimation_lse2m")
-blend_point_2/pos = Vector2(1, 0)
-blend_point_3/node = SubResource("AnimationNodeAnimation_53kfe")
-blend_point_3/pos = Vector2(-1, 0)
-blend_point_4/node = SubResource("AnimationNodeAnimation_1ip62")
-blend_point_4/pos = Vector2(0, -1)
+blend_point_2/node = SubResource("AnimationNodeAnimation_53kfe")
+blend_point_2/pos = Vector2(-1, 0)
+blend_point_3/node = SubResource("AnimationNodeAnimation_1ip62")
+blend_point_3/pos = Vector2(0, -1)
+blend_point_4/node = SubResource("AnimationNodeBlendTree_y3sog")
+blend_point_4/pos = Vector2(1, 0)
