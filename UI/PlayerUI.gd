@@ -9,8 +9,6 @@ func _ready():
 	Game.player_ui = self
 
 func _process(delta):
-	if (Input.is_action_just_pressed("jump")):
-		set_item_visible(true)
 	if (player_health_system != null):
 		update_health(null)
 
