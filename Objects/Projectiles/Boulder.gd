@@ -4,7 +4,7 @@ const ATTACK_HINT_BALL = preload("res://Objects/Effects/AttackHintFallingDebris.
 
 func fall_down(target_pos: Vector3):
 	var tween := get_tree().create_tween()
-	tween.tween_property(self, "global_position", Functions.get_nearest_ground(target_pos), 1.0).from(target_pos + Vector3.UP * 20.0).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_QUAD)
+	tween.tween_property(self, "global_position", Functions.get_nearest_ground(target_pos), 1.0).from(target_pos + Vector3.UP * 20.0).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
 	var hint = ATTACK_HINT_BALL.instantiate()
 	Game.world.add_child(hint)
 	hint.size = 4
@@ -15,3 +15,9 @@ func fall_down(target_pos: Vector3):
 	await tween.finished
 	$PlayerDamageArea.activate()
 	Game.main_cam.screen_shake(.6)
+
+func crush():
+	$Model.queue_free()
+	$GPUParticles3D.emitting = true
+	get_tree().create_timer($GPUParticles3D.lifetime).timeout.connect(queue_free)
+
