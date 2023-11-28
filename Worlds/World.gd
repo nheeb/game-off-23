@@ -72,6 +72,7 @@ func start_cutscene():
 	end_cutscene()
 
 func end_cutscene():
+	print("asdf")
 	if cutscene_running:
 		cutscene_running = false
 		cutscene_tooltip = false

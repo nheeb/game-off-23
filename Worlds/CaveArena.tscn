@@ -151,6 +151,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.21533, 2.60405, 2.45305)
 shape = SubResource("BoxShape3D_4bf1o")
 
 [node name="IntroCutScene" type="Node3D" parent="PositionsForCutscene" node_paths=PackedStringArray("focus")]
+visible = false
 script = ExtResource("12_q01xk")
 focus = NodePath("../../Dragon")
 
