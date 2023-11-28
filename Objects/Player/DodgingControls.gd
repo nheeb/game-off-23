@@ -12,6 +12,8 @@ var dodge_remaining_time = 0.0
 func _physics_process(delta):
 	if player.is_dead():
 		return
+	if PlayerStats.dodge_boost_speed <= 0:
+		return
 	if dodge_remaining_time > 0:
 		dodge_remaining_time -= delta
 		if dodge_remaining_time <= 0:

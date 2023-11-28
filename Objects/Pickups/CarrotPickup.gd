@@ -1,9 +1,12 @@
 class_name CarrotPickup extends Area3D
 var picked_up = false
 
+@export var persist = false
+
 func _ready():
 	connect('body_entered', _on_body_entered)
-	call_deferred("lifetime")
+	if not persist:
+		call_deferred("lifetime")
 
 
 func _on_body_entered(_body):
@@ -17,6 +20,6 @@ func pick_up():
 	if picked_up:
 		return
 	picked_up = true
-	Game.player.get_health_system().heal(1)
+	Game.player.get_eating_system().eat()
 	queue_free()
 

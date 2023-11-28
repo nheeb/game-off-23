@@ -25,6 +25,9 @@ var dodge_boost_speed: float
 enum SPELL_TYPE {None, Water, Carrot}
 var active_spell: SPELL_TYPE = SPELL_TYPE.None
 
+const RESET_CARROTS_PER_HEALTH = 3
+var carrots_per_health: int
+
 func reset():
 	movement_speed_modifier = RESET_MOVEMENT_SPEED_MODIFIER
 	sword_slash_damage = RESET_SWORD_SLASH_DAMAGE
@@ -32,6 +35,7 @@ func reset():
 	dodge_range = RESET_DODGE_RANGE
 	jump_height = RESET_JUMP_HEIGHT
 	dodge_boost_speed = RESET_DODGE_BOOST_SPEED
+	carrots_per_health = RESET_CARROTS_PER_HEALTH
 
 func reset_and_render_equipped_items():
 	reset()

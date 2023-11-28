@@ -54,7 +54,7 @@ func cast_carrot():
 	
 	magic_particles.emitting = true
 	await get_tree().create_timer(0.5).timeout
-	for i in range(1):
+	for i in range(3):
 		var pos = Game.player.global_position \
 		+ Vector3(randf() * 10 - 5, 0.0, randf() * 10 - 5)
 		pos = Functions.get_nearest_ground(pos) + Vector3.UP
