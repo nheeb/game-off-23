@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://6scktaj5atmu"]
+[gd_scene load_steps=25 format=3 uid="uid://6scktaj5atmu"]
 
 [ext_resource type="Script" path="res://Worlds/World.gd" id="1_4gn8l"]
 [ext_resource type="PackedScene" uid="uid://d1t8v3yidk6mp" path="res://Objects/Player/Player.tscn" id="2_hplb1"]
@@ -14,6 +14,10 @@
 [ext_resource type="PackedScene" uid="uid://h17umd2nsktn" path="res://Assets/Models/Buildings/farm.blend" id="12_j4u7p"]
 [ext_resource type="Script" path="res://Worlds/IntroCutscene.gd" id="12_q01xk"]
 [ext_resource type="PackedScene" uid="uid://dfl7h5wb3i10a" path="res://UI/Tutorial/TutorialMessage.tscn" id="14_nrihq"]
+[ext_resource type="PackedScene" uid="uid://bgbemoovy7w08" path="res://Objects/Pickups/CarrotPickup.tscn" id="15_knxhg"]
+[ext_resource type="PackedScene" uid="uid://wkuvk8a37glh" path="res://Objects/Props/House2.tscn" id="16_8jxxt"]
+[ext_resource type="PackedScene" uid="uid://bhe1erf0qkl1e" path="res://Objects/Props/House3.tscn" id="17_imf02"]
+[ext_resource type="PackedScene" uid="uid://cua8geyfluloy" path="res://Assets/Models/Buildings/House2.gltf" id="18_fpyce"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7al5n"]
 albedo_color = Color(0.478431, 0.403922, 0.337255, 1)
@@ -110,17 +114,8 @@ transform = Transform3D(-0.154848, 0, -0.987938, 0, 1, 0, 0.987938, 0, -0.154848
 [node name="House3" parent="level" instance=ExtResource("10_tybvf")]
 transform = Transform3D(-0.699987, 0, -0.714155, 0, 1, 0, 0.714155, 0, -0.699987, 24.5154, 0.556393, 21.0976)
 
-[node name="House5" parent="level" instance=ExtResource("10_tybvf")]
-transform = Transform3D(0.432275, 0, 0.901742, 0, 1, 0, -0.901742, 0, 0.432275, -22.0943, 0.675522, -21.4772)
-
-[node name="House7" parent="level" instance=ExtResource("10_tybvf")]
-transform = Transform3D(-0.856447, 0, 0.516234, 0, 1, 0, -0.516234, 0, -0.856447, -27.1876, 0.675522, -7.25363)
-
 [node name="House6" parent="level" instance=ExtResource("10_tybvf")]
 transform = Transform3D(0.875717, 0, 0.482824, 0, 1, 0, -0.482824, 0, 0.875717, -10.1248, 0.614496, -29.5514)
-
-[node name="House4" parent="level" instance=ExtResource("10_tybvf")]
-transform = Transform3D(-0.950201, 0, -0.311639, 0, 1, 0, 0.311639, 0, -0.950201, 13.635, 0.042408, 26.4574)
 
 [node name="Townhall" parent="level" instance=ExtResource("11_m2284")]
 transform = Transform3D(0.995946, 0, 0.0899546, 0, 1, 0, -0.0899546, 0, 0.995946, 22.7225, 0.936445, -6.00089)
@@ -131,6 +126,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.3461, 1.70437, 99.8923)
 
 [node name="farm2" parent="level" instance=ExtResource("12_j4u7p")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 16.2518, -2.36948, 113.008)
+
+[node name="House4" parent="level" instance=ExtResource("16_8jxxt")]
+transform = Transform3D(0.88571, 0, 0.464239, 0, 1, 0, -0.464239, 0, 0.88571, -24.6956, 0.633398, -26.4574)
+
+[node name="House5" parent="level" instance=ExtResource("17_imf02")]
+transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, -25.6489, 0.620988, -6.7887)
+
+[node name="House7" parent="level" instance=ExtResource("18_fpyce")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.4357, 0.532379, 24.3477)
 
 [node name="PositionsForCutscene" type="Node3D" parent="."]
 visible = false
@@ -202,5 +206,41 @@ collision_mask = 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -5.80252)
 shape = SubResource("BoxShape3D_smvkx")
 disabled = true
+
+[node name="CarrotPickup" parent="." instance=ExtResource("15_knxhg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.9995, 2.69848, 1.52865)
+persist = true
+
+[node name="CarrotPickup4" parent="." instance=ExtResource("15_knxhg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.9995, 3.61244, -21.9462)
+persist = true
+
+[node name="CarrotPickup7" parent="." instance=ExtResource("15_knxhg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.2022, 3.61244, -32.045)
+persist = true
+
+[node name="CarrotPickup5" parent="." instance=ExtResource("15_knxhg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.7698, 2.69848, -28.5184)
+persist = true
+
+[node name="CarrotPickup6" parent="." instance=ExtResource("15_knxhg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.8595, 6.23825, -5.2646)
+persist = true
+
+[node name="CarrotPickup2" parent="." instance=ExtResource("15_knxhg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.1123, 3.22637, 1.2422)
+persist = true
+
+[node name="CarrotPickup3" parent="." instance=ExtResource("15_knxhg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.5517, 2.87559, 16.2615)
+persist = true
+
+[node name="CarrotPickup8" parent="." instance=ExtResource("15_knxhg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.8962, 2.87559, 25.4233)
+persist = true
+
+[node name="CarrotPickup9" parent="." instance=ExtResource("15_knxhg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.9331, 2.87559, 16.6478)
+persist = true
 
 [editable path="level/dragon_cave2"]
