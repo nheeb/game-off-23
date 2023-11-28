@@ -47,6 +47,9 @@ func make_everything_ready_for_intro():
 	everything_ready.emit()
 
 func make_everything_ready_for_battle():
+	if has_node("EntranceBlockage"):
+		$EntranceBlockage.visible = true
+		$EntranceBlockage/StaticBody3D/CollisionShape3D.disabled = false
 	Game.dragon.force_state_change("PreCutscene")
 	Game.player.global_position = player_spawn_battle.global_position
 	if Game.current_game_state == Game.GAME_STATE.Loading:
@@ -68,6 +71,7 @@ func start_cutscene():
 	end_cutscene()
 
 func end_cutscene():
+	print("asdf")
 	if cutscene_running:
 		cutscene_running = false
 		cutscene_tooltip = false
@@ -79,7 +83,7 @@ func _input(event):
 	if cutscene_running:
 		if event.is_action_pressed("skip_cutscene"):
 			if cutscene_tooltip:
-				end_cutscene()
+				cutscene.deactivate()
 			else:
 				cutscene_tooltip = true
 				PlayerUI.set_cutscene_tooltip_visible(true)

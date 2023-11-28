@@ -13,7 +13,7 @@ var player_health_system : HealthSystem :
 
 var player_ui : CanvasLayer
 var dragon: Dragon
-var world: Node3D
+var world: World
 var shop: Shop
 
 enum GRAPHICS {Potato = 0, Low = 1, Medium = 2, High = 3, Ultra = 4}
@@ -40,9 +40,11 @@ func hit_pause():
 func load_shop():
 	get_tree().change_scene_to_file(shop_scene_path)
 	current_game_state = GAME_STATE.Shop
+	player_ui.visible = false
 
 func load_game(with_intro : bool = true):
 	get_tree().change_scene_to_file(scene_path)
 	start_game_with_state = GAME_STATE.Intro if with_intro else GAME_STATE.Battle
 	current_game_state = GAME_STATE.Loading
+	player_ui.visible = true
 	PlayerStats.reset_and_render_equipped_items()

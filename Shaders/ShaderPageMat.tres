@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://d4fhokecjbaba"]
+[gd_resource type="ShaderMaterial" load_steps=3 format=3 uid="uid://cidjeb21r43u4"]
 
 [ext_resource type="Texture2D" uid="uid://dk0grtgpofr8" path="res://Assets/Textures/page_text.png" id="1_wf1g6"]
 
@@ -32,7 +32,7 @@ void fragment() {
 	ALBEDO = mix(albedo.rgb, text_col.rgb, text);
 	//ALBEDO = albedo.rgb * albedo_tex.rgb;
 	ROUGHNESS = roughness;
-	EMISSION = magic * text * text_col * 5.0;
+	EMISSION = magic * text * text_col * 10.0;
 }
 "
 
@@ -42,7 +42,7 @@ render_priority = 0
 shader = SubResource("Shader_cd5ma")
 shader_parameter/albedo = Color(0.7636, 0.8, 0.632, 1)
 shader_parameter/text_col_base = null
-shader_parameter/text_col_magic = Color(0.494118, 0.984314, 1, 1)
+shader_parameter/text_col_magic = Color(0, 1, 1, 1)
 shader_parameter/roughness = 0.271739
 shader_parameter/magic = 0.0
 shader_parameter/uv1_scale = Vector3(-1.36, 0.95, 1)

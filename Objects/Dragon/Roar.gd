@@ -4,9 +4,11 @@ func get_probability() -> float:
 	return 0.1
 
 const BOULDER = preload("res://Objects/Projectiles/Boulder.tscn")
+const ROAR_EFFECT = preload("res://Objects/Effects/RoarEffect.tscn")
 
 var last_y_pos: float
 func effect_start(index):
+	Functions.spawn_instance(ROAR_EFFECT, dragon.head_position.global_position, dragon.head_position)
 	last_y_pos = dragon.model.global_position.y
 	Game.main_cam.screen_shake()
 	await get_tree().create_timer(1.5).timeout

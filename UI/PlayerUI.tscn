@@ -1,14 +1,16 @@
-[gd_scene load_steps=8 format=3 uid="uid://dbecnm0hqqsap"]
+[gd_scene load_steps=10 format=3 uid="uid://dbecnm0hqqsap"]
 
 [ext_resource type="PackedScene" uid="uid://5qhqt64jasu" path="res://UI/DragonHealthBar.tscn" id="1_dttwr"]
 [ext_resource type="Script" path="res://UI/PlayerUI.gd" id="1_mh6lv"]
 [ext_resource type="Texture2D" uid="uid://dvaxgp8156v3y" path="res://Assets/Textures/mineral-heart.png" id="2_6fy3d"]
 [ext_resource type="Texture2D" uid="uid://y7bfv6boyrs6" path="res://Assets/Sprites/placeholder/carrot.png" id="4_x7fqd"]
 [ext_resource type="Texture2D" uid="uid://cv7kfn6v7w866" path="res://Assets/Sprites/placeholder/circle.png" id="4_xg3ak"]
+[ext_resource type="Material" uid="uid://darfpt4wawtqq" path="res://Shaders/CircleCooldownEffect.tres" id="4_xmr43"]
 
 [sub_resource type="Animation" id="Animation_k6ba0"]
 resource_name = "ItemIconWoop"
 length = 0.8
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -16,15 +18,43 @@ tracks/0/path = NodePath("Sprite2D:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.3, 0.8),
+"times": PackedFloat32Array(0, 0.25, 0.6),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(1.5, 1.5), Vector2(1, 1)]
+"values": [Vector2(1, 1), Vector2(1.6, 1.6), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("%ItemIcon:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.65),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1.7, 1.7, 1.7, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_glrk4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("%ItemIcon:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_26om7"]
 _data = {
-"ItemIconWoop": SubResource("Animation_k6ba0")
+"ItemIconWoop": SubResource("Animation_k6ba0"),
+"RESET": SubResource("Animation_glrk4")
 }
 
 [node name="PlayerUI" type="CanvasLayer"]
@@ -82,6 +112,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="ItemBackground" type="Sprite2D" parent="Item"]
+material = ExtResource("4_xmr43")
 scale = Vector2(0.212, 0.212)
 texture = ExtResource("4_xg3ak")
 
@@ -91,6 +122,7 @@ texture = ExtResource("4_xg3ak")
 
 [node name="ItemIcon" type="Sprite2D" parent="Item/ItemSlot/Sprite2D"]
 unique_name_in_owner = true
+material = ExtResource("4_xmr43")
 scale = Vector2(0.367, 0.367)
 texture = ExtResource("4_x7fqd")
 

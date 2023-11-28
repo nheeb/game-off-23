@@ -42,7 +42,9 @@ void fragment() {
 	float v2 = sin(c+1.0)+wave_thickness;
 	ALBEDO = v2>v ? color_wave.rgb * v : color_highlight.rgb*v2;
 	ALPHA = float(distance(UV.x,0.5) < (1.0- UV.y) * .5 && (1.0-UV.y) < progress);
+//	ALPHA = float((1.0-UV.y) < progress);
 	ALPHA = min(transparency_cap, ALPHA * min(v, v2));
+
 	//ALPHA = ALPHA*clamp_and_map(distance(UV, vec2(.5, 1.0)), .8, .9, 1.0, 0.0);
 }
 "
@@ -54,7 +56,7 @@ shader_parameter/roughness = 1.0
 shader_parameter/specular = 0.5
 shader_parameter/metallic = 0.0
 shader_parameter/progress = 1.0
-shader_parameter/transparency_cap = 0.75
+shader_parameter/transparency_cap = 0.22
 shader_parameter/color_main = Color(0.705882, 0, 0, 1)
 shader_parameter/color_wave = Color(1, 0.878431, 0.0431373, 1)
 shader_parameter/color_highlight = Color(1, 0, 0, 1)

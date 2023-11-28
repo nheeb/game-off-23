@@ -46,7 +46,7 @@ func do_damage():
 	var player_motion = Game.player.get_motion()
 	if health_system.can_take_damage():
 		health_system.take_damage(self, damage)
-		var knockback = (Game.player.global_position - global_position).normalized() * knockback_force
+		var knockback = (Game.player.global_position - knockback_origin.global_position).normalized() * knockback_force
 		knockback.y = 0
 		player_motion.apply_knockback(knockback)
 		

@@ -1,0 +1,57 @@
+[gd_resource type="ShaderMaterial" load_steps=4 format=3 uid="uid://c03gqcdiciubx"]
+
+[sub_resource type="Shader" id="Shader_0txtl"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.1.3.stable's StandardMaterial3D.
+
+shader_type spatial;
+render_mode blend_mix,depth_draw_opaque,cull_back,diffuse_burley,specular_schlick_ggx,unshaded;
+uniform vec4 albedo : source_color;
+uniform sampler2D texture_albedo : source_color,filter_linear_mipmap,repeat_enable;
+uniform sampler2D noise;
+uniform float inner_circle;
+uniform float noise_scale;
+uniform float progress : hint_range(0.0, 1.0);
+uniform float noise_offset;
+
+#include \"res://Shaders/lib.gdshaderinc\"
+
+void vertex() {
+	MODELVIEW_MATRIX = VIEW_MATRIX * mat4(INV_VIEW_MATRIX[0], INV_VIEW_MATRIX[1], INV_VIEW_MATRIX[2], MODEL_MATRIX[3]);
+	MODELVIEW_MATRIX = MODELVIEW_MATRIX * mat4(vec4(length(MODEL_MATRIX[0].xyz), 0.0, 0.0, 0.0), vec4(0.0, length(MODEL_MATRIX[1].xyz), 0.0, 0.0), vec4(0.0, 0.0, length(MODEL_MATRIX[2].xyz), 0.0), vec4(0.0, 0.0, 0.0, 1.0));
+	MODELVIEW_NORMAL_MATRIX = mat3(MODELVIEW_MATRIX);
+}
+
+
+void fragment() {
+	vec2 base_uv = UV;
+	vec4 albedo_tex = texture(texture_albedo,base_uv);
+	ALBEDO = albedo.rgb * albedo_tex.rgb;
+	float circle = positive_direction_of_vec2(UV - vec2(.5)) + noise_offset;
+	float dist = distance(UV, vec2(.5));
+	float noise_value = texture(noise, vec2(TIME * .2, circle / (2.0 * PI) ) ).r;
+	float blend_noise = texture(noise, vec2(circle / (10.0 * PI), TIME * .1 ) ).r;
+	float noise_height = noise_scale * pow(noise_value, 6.0);
+	float noise_blend = clamp_and_map(blend_noise, .5, .8, .0, 1.0);
+	float noised_inner_circle = inner_circle + blend_noise * .1;
+	ALPHA = is_in_range_as_float(dist, noised_inner_circle, noised_inner_circle + progress * (noise_height + noise_scale * .1) * noise_blend);
+}
+"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_6he41"]
+frequency = 0.1775
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vmmeg"]
+width = 128
+height = 128
+seamless = true
+noise = SubResource("FastNoiseLite_6he41")
+
+[resource]
+render_priority = 0
+shader = SubResource("Shader_0txtl")
+shader_parameter/albedo = Color(1, 1, 1, 1)
+shader_parameter/inner_circle = 0.27
+shader_parameter/noise_scale = 0.385
+shader_parameter/progress = 0.0
+shader_parameter/noise_offset = null
+shader_parameter/noise = SubResource("NoiseTexture2D_vmmeg")

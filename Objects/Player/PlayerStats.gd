@@ -38,3 +38,7 @@ func reset_and_render_equipped_items():
 	for item in Items.get_equiped_items():
 		print("Activating Item Effect: " + item.name)
 		item.render_item_effect()
+	Game.player_ui.set_item_visible(active_spell != SPELL_TYPE.None)
+	await get_tree().process_frame
+	Game.world.everything_ready.connect(func (): Game.player.get_magic_casting().apply_cooldown(8), CONNECT_ONE_SHOT)
+		
