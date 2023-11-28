@@ -14,7 +14,7 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 @export var move_speed = 5.0
 @export var turn_sensitivity = 10.0
-@export var knockback_decay = 3.0
+@export var knockback_decay = 0.15
 
 func apply_knockback(knockback: Vector3):
 	knockback_value += knockback
@@ -49,7 +49,7 @@ func handle_movement_intent(delta):
 
 func handle_knockback(delta):
 	player.velocity += knockback_value
-	knockback_value = lerp(knockback_value, Vector3.ZERO, knockback_decay * delta)
+	knockback_value = lerp(knockback_value, Vector3.ZERO, 1.0 - pow(knockback_decay, delta))
 
 func handle_gravity(delta):
 	if not player.is_on_floor():

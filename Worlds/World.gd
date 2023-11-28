@@ -65,7 +65,6 @@ func start_cutscene():
 	# Disable player input
 	cutscene.activate()
 	await Signal(cutscene, 'completed')
-	await get_tree().create_timer(4.0).timeout
 	player_cam.current = true
 	end_cutscene()
 
@@ -80,7 +79,7 @@ func _input(event):
 	if cutscene_running:
 		if event.is_action_pressed("skip_cutscene"):
 			if cutscene_tooltip:
-				end_cutscene()
+				cutscene.deactivate()
 			else:
 				cutscene_tooltip = true
 				PlayerUI.set_cutscene_tooltip_visible(true)

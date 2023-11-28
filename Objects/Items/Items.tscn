@@ -1,17 +1,20 @@
-[gd_scene load_steps=13 format=3 uid="uid://bfj13h30f3jol"]
+[gd_scene load_steps=16 format=3 uid="uid://bfj13h30f3jol"]
 
 [ext_resource type="Script" path="res://Objects/Items/Items.gd" id="1_g1uul"]
 [ext_resource type="Script" path="res://Objects/Items/TrashSword.gd" id="2_6k677"]
 [ext_resource type="Texture2D" uid="uid://4nb41jhrseld" path="res://Assets/Sprites/sword-1.png" id="3_vavyp"]
 [ext_resource type="Texture2D" uid="uid://s551vaxnhb2r" path="res://Assets/Sprites/placeholder/bootspng.png" id="4_s08l1"]
 [ext_resource type="Texture2D" uid="uid://jfi0ea521n7f" path="res://Assets/Sprites/placeholder/spiked_boots.png" id="5_2u0hr"]
-[ext_resource type="Texture2D" uid="uid://y7bfv6boyrs6" path="res://Assets/Sprites/placeholder/carrot.png" id="5_sv4m8"]
 [ext_resource type="Texture2D" uid="uid://5n20u4mcv1uy" path="res://Assets/Sprites/placeholder/pyroboots.png" id="6_opfi4"]
 [ext_resource type="Script" path="res://Objects/Items/BoomerangSword.gd" id="6_tp5em"]
 [ext_resource type="Texture2D" uid="uid://dncjtdcybaj07" path="res://Assets/Sprites/placeholder/ak47.png" id="6_y255t"]
 [ext_resource type="Texture2D" uid="uid://bmfvd2lay74b4" path="res://Assets/Sprites/placeholder/carrotnomicon.png" id="7_4jtph"]
 [ext_resource type="Texture2D" uid="uid://b1yjfmle3slik" path="res://Assets/Sprites/placeholder/boomerang_sword.png" id="7_df167"]
 [ext_resource type="Texture2D" uid="uid://oqfj8vc5a4ou" path="res://Assets/Sprites/placeholder/winged_boots.png" id="7_iawet"]
+[ext_resource type="Script" path="res://Objects/Items/Wingedboots.gd" id="7_nb6es"]
+[ext_resource type="Script" path="res://Objects/Items/Carrotnomicon.gd" id="9_ynruq"]
+[ext_resource type="Texture2D" uid="uid://bu2jrxmu6q5tp" path="res://Assets/Sprites/placeholder/bookofwater.png" id="11_i81vn"]
+[ext_resource type="Script" path="res://Objects/Items/BookOfWater.gd" id="11_wu33j"]
 
 [node name="Items" type="Node"]
 script = ExtResource("1_g1uul")
@@ -105,16 +108,9 @@ scale = Vector2(0.169903, 0.169903)
 polygon = PackedVector2Array(-36, -209.8, -36, -199.5, -29.6, -179.6, 5, -192.3, 5, -183.1, 16.5, -177.4, 29.1, -200, 37.4, -200, 97, -203.6, 97, -71.6, 158.3, 18.4, 219, 48.8, 219, 58.7, 234.9, 121, 222.4, 121, 133, 146.8, 103.7, 182, 90.9, 182, 52.8, 196, 46.2, 196, 31.6, 187, 23.5, 200, -17.9, 200, -23.9, 184, -45.3, 198.7, -56, 193, -56, 189.8, -70.2, 174.2, -110, 178, -110, 167.2, -116.5, 141.3, -161, 151.6, -161, 145, -228, 121, -228, 110.6, -220.1, 23, -212.4, 23, -202.7, 17.9, -197, -37, -189.2, -37, -184.1, -39.4, -187.2, -170, -178.1, -170, -80, -209.8, -80, -215.3)
 
 [node name="Wingedboots" type="Node" parent="."]
-script = ExtResource("2_6k677")
-order_index = 1
+script = ExtResource("7_nb6es")
 slot = 1
-price = 3
-stats = {
-"armor": 0,
-"damage": 0,
-"speed": 3
-}
-tooltip = "+Dash speed"
+price = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="Wingedboots"]
 visible = false
@@ -126,51 +122,95 @@ visible = false
 scale = Vector2(0.169903, 0.169903)
 polygon = PackedVector2Array(-137.3, -140.2, -83.6, -98.5, -57.9, -115, -48.3, -115, -4.60001, -100.1, 8.60001, -120, 18.2, -120, 58.2, -118.2, 129, -148.1, 129, -131.6, 119.1, -22, 111.8, -22, 88.6, -8.10001, 85.2, 5, 122.1, 57, 173, 82.9, 173, 89.6, 183.3, 125, 172.3, 125, 148.2, 142, 140.2, 142, 108.1, 136.7, 55.5, 165, 49.9, 165, -6, 169.9, -6, 164.3, -102, 117.2, -102, 111.8, -114.5, 79, -106.5, 79, -98.5, 52.5, -116, 56.7, -116, 39.1, -111.7, 28, -124, 33.8, -124, 24.1, -167, 9.10001, -167, -2.5, -159.1, -12.3, -175.8, -27.1, -170.9, -40, -165.1, -40, -162.2, -41.2, -193, -65.1, -193, -79.5, -180.2, -81.6, -202.5, -124, -182.4, -124, -176.8, -120.9, -183, -129.8, -183, -136, -185, -180.8, -185, -189.5, -170.5, -193.7)
 
-[node name="Carrot" type="Node" parent="."]
-script = ExtResource("2_6k677")
-order_index = 2
-slot = 2
-price = 2
-tooltip = "Heals you"
-
-[node name="Sprite2D" type="Sprite2D" parent="Carrot"]
-visible = false
-scale = Vector2(0.366924, 0.366924)
-texture = ExtResource("5_sv4m8")
-
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Carrot"]
-visible = false
-scale = Vector2(0.366924, 0.366924)
-polygon = PackedVector2Array(150, -74.5, 150, -56, 144.3, -56, 85.8, -29, 75.8, 10, 70.4, 10, 23.4, 46, 19.3, 46, -98.5, 101, -128.9, 101, -150, 97.5, -150, 78, -148.6, 78, 11.4, -52, 16.8, -52, 62.1, -57.2, 101.2, -92, 105.2, -92, 123, -94.6, 138.6, -98.5)
-
 [node name="Carrotnomicon" type="Node" parent="."]
-script = ExtResource("2_6k677")
-order_index = 2
+script = ExtResource("9_ynruq")
 slot = 2
-price = 2
-tooltip = "Summons carrots"
+price = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="Carrotnomicon"]
 visible = false
 scale = Vector2(0.366924, 0.366924)
 texture = ExtResource("7_4jtph")
 
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Carrotnomicon"]
+visible = false
+scale = Vector2(0.366924, 0.366924)
+polygon = PackedVector2Array(28, -167.4, 28, -154.6, 25.1, -148, 26.1, -148, 31.3, -140.1, 30.2, -138, 29.1, -138, 25.9, -132.1, 28, -130.7, 34.1, -138, 41.2, -138, 44.9, -131.5, 50.3, -136, 54.7, -136, 63, -137.4, 63, -135, 67, -132, 67, -122, 65.4, -122, 63.6, -116.4, 72, -110, 72, -103.9, 64.8, -99.4, 68, -97, 68, -94.7, 66.9, -91.3, 72, -92.6, 72, -90.3, 79, -87.3, 79, -85.9, 89, -76.9, 89, -74.2, 80.8, -66, 77.3, -66, 76, -65.6, 76, -63.9, 74.8, -54, 64.4, -54, 57.6, -58.8, 56, -57.2, 56, -49.7, 55.8, -49, 67, -38.9, 67, -36.6, 74, -25.6, 74, -22, 75.8, -1, 101.2, -1, 136, 6.39999, 136, 7.60001, 174, 22.6, 174, 24.5, 179.4, 34, 176.3, 34, 170.8, 44.9, 181, 52, 181, 58, 181.6, 58, 198, 68.9, 198, 81, 195.7, 81, 135.6, 122, 133.5, 122, 43, 175.3, 41, 174.2, 41, 173.3, -50, 133.3, -50, 132.3, -62, 127.3, -62, 125.8, -68.8, 119, -71.5, 119, -83.5, 113, -88.8, 113, -103, 114.2, -103, 112.3, -176, 80.3, -176, 79.4, -186, 75.4, -186, 73.6, -191.3, 65.1, -190.2, 63, -189, 63, -183, 55, -180.6, 55, -174, 50.9, -174, 50.3, -184, 21.3, -184, 16.2, -178.8, 11, -176.5, 11, -136.5, -12, -131.3, -12, -130.5, -6.7, -119.1, -11.4, -122, -12.6, -122, -16.8, -116.8, -22, -114.5, -22, -104.6, -29, -101.3, -29, -74, -40.3, -60.2, -57.5, -64.9, -63, -66.3, -63, -73, -65.2, -85.2, -53, -87.6, -53, -99, -47.9, -99, -51, -103, -54, -103, -59.2, -102.5, -61, -107.8, -61, -112, -65.2, -112, -71.8, -105, -78.8, -105, -79.8, -106.8, -85, -103.6, -85, -97.6, -89, -83.5, -89, -78.5, -86.1, -87, -97, -90.5, -97, -106, -105.8, -106, -110.1, -97, -116.1, -102, -122.3, -102, -128, -103.6, -134, -101, -134, -98, -138, -90, -138, -90, -136.2, -79.7, -131.1, -75.9, -135.6, -80.6, -153, -77.5, -153, -72, -156.3, -70, -155.2, -70, -154.3, -60.9, -150.4, -63.2, -155, -60.7, -155, -58.6, -165, -56.8, -165, -52.8, -169, -50.6, -169, -37, -163.3, -37, -161.7, -32.3, -156.3, -24.2, -162.3, -22, -161.2, -22, -159.9, -13.1, -151.7, -4.8, -160, 0.600006, -160, 2.20001, -158.9, 15, -169, 15, -171.8)
+
 [node name="BookOfWater" type="Node" parent="."]
-script = ExtResource("2_6k677")
-order_index = 2
+script = ExtResource("11_wu33j")
 slot = 2
-price = 2
-tooltip = "Summons carrots"
+price = 1
 
 [node name="Sprite2D" type="Sprite2D" parent="BookOfWater"]
 visible = false
 scale = Vector2(0.366924, 0.366924)
-texture = ExtResource("7_4jtph")
+texture = ExtResource("11_i81vn")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="BookOfWater"]
 visible = false
 scale = Vector2(0.366924, 0.366924)
-polygon = PackedVector2Array(-13.3, -149, 9.5, -168.6, 15.1, -162, 16, -162, 25.9, -160.4, 21.1, -130.5, 67, -141.7, 67, -127.2, 63.1, -101.4, 89, -80.8, 89, -70.3, 57.9, -44.9, 75.9, -3.39999, 174, 17.9, 174, 44.9, 202.8, 73.7, 197.7, 86, 192.9, 86, 43.3, 178.6, 33, 172.9, -194.5, 71.9, -191.1, 56, -186.8, 56, -170.3, 35.8, -176.6, 9, -164.3, 9, -78.8, -32.4, -63, -56.9, -63, -57.6, -61.6, -69.9, -103, -103.2, -103, -109, -104.6, -137, -91.5, -137, -79.7, -133.3, -54.2, -170, -43.9, -170)
+polygon = PackedVector2Array(-63.6, -173.7, -64.6, -171, -66.1, -171, -80, -156.1, -80, -154.4, -76.1, -144, -78.9, -144, -86, -131.5, -86, -128.3, -85.6, -127, -81.9, -127, -69.8, -138, -63, -138, -57.7, -142, -55.7, -142, -47.7, -139.6, -33, -143.6, -33, -141.1, -30, -139.1, -30, -135.9, -49, -123.9, -49, -122.5, -54, -113.5, -54, -105.4, -52.6, -98, -55.5, -98, -64, -94.6, -64, -93.4, -66, -90.4, -66, -86.8, -66.6, -84.5, -62.9, -79, -60.7, -79, -53, -76.4, -53, -68.9, -58, -65.9, -58, -63.7, -58.3, -62.9, -57.3, -57, -53.3, -54, -44, -66.6, -44, -79.3, -37.4, -99, -36, -99, -25, -114, -22.6, -114, -9, -123.1, -9, -124.4, -5.39999, -134, 1.89999, -134, 4.10001, -88, 1.79999, -88, -7.2, -79, -9.7, -79, -11, -78.6, -11, -76.4, -9.8, -74, -7.7, -74, 3, -70.4, 3, -68, 4.5, -63, 5.79999, -63, 9, -59.8, 9, -55, 9.5, -53, 10.5, -53, 14.2, -51.1, 22.1, -60, 24.5, -60, 36, -66.2, 36, -67.1, 28.3, -74, 26.3, -74, 17, -70, 17, -72.8, 11, -75.8, 11, -88, 8.79999, -111, 10.1, -111, 11.1, -124, 12.8, -124, 14.8, -128, 17.4, -128, 35, -120.3, 35, -118.9, 48, -107.9, 48, -105.7, 54, -98.7, 54, -95.4, 59.4, -80, 60.2, -80, 64.3, -79.3, 67, -81.1, 67, -82.2, 68.3, -90, 73.8, -90, 78.7, -85.1, 82, -87.1, 82, -88.6, 85, -93.5, 85, -99.4, 81, -105.4, 81, -108.3, 82.4, -112.6, 77.7, -123, 76.3, -123, 61, -120.7, 61, -122.8, 52, -127.8, 52, -131, 47.5, -150, 50.2, -150, 52.5, -152.4, 55, -151.3, 55, -150.4, 82, -140.4, 82, -139.1, 99, -129.1, 99, -126, 102.6, -113, 100.7, -113, 98.5, -103, 99, -100, 100.4, -100, 107, -97.4, 107, -94.2, 98.8, -85.1, 108, -81.4, 108, -77.3, 104, -72.3, 104, -69, 122, -66.3, 143, -72.7, 143, -69.8, 146, -66.8, 146, -61.4, 125, -56.5, 115, -46.2, 115, -39, 148, -35.8, 148, -33.6, 152.1, -27, 153.7, -27, 170.7, -14, 173.4, -14, 191, -6.3, 191, -2, 218.3, 175, 215, 175, 36.9, 177, 17.8, 195, 14.1, 195, -3, 196.1, -3, 194.4, -14, 190.4, -14, 188.5, -22, 177, -175.3, 177, -180.7, 181.3, -183, 180.3, -183, 179.5, -203, 174.6, -203, 167.8, -193, 104.7, -193, 100.6, -198.3, 93.2, -197.2, 91, -195.8, 91, -190, 85.2, -190, 78.9, -177.7, -7, -175.3, -7, -159, -12.4, -159, -14, -143, -26, -143, -27.4, -139.3, -36, -127, -36, -80, -37.9, -76.3, -40.3, -98, -49.7, -98, -54, -91.2, -58.9, -92.3, -61, -93.5, -61, -100.5, -65, -110.7, -65, -116, -63.2, -116, -66.5, -119, -72.5, -119, -75.3, -112, -78.3, -112, -80, -114.2, -102, -112, -102, -105, -110.7, -105, -112, -104, -154, -102.2, -154, -95.2, -167, -93.9, -167, -80, -181.9, -80, -183.2, -77.8, -184.3)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="BookOfWater"]
+visible = false
+scale = Vector2(0.366924, 0.366924)
+polygon = PackedVector2Array(-106.6, -178.5, -107.7, -176, -116, -176, -116, -180.2, -114, -181.2, -114, -182.3, -111.5, -183.4)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="BookOfWater"]
+visible = false
+scale = Vector2(0.366924, 0.366924)
+polygon = PackedVector2Array(22, -177.8, 22, -175.9, 29.4, -169.6, 28.4, -167, 26.9, -167, 18, -156.3, 18, -153.4, 15, -148.5, 15, -144, 16.6, -138, 14.1, -138, 10.9, -132.7, 8, -133.5, 8, -135.5, -8, -165.5, -8, -167.7, -1, -177, 0.799988, -177, 7, -177.8, 7, -179.2)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="BookOfWater"]
+visible = false
+scale = Vector2(0.366924, 0.366924)
+polygon = PackedVector2Array(-17.6, -160.5, -18.7, -158, -20.2, -158, -22.5, -155.6, -25, -156.7, -25, -157.5, -37, -160.4, -37, -164.2, -30, -168.1, -30, -169.3, -27.5, -170.4)
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="BookOfWater"]
+visible = false
+scale = Vector2(0.366924, 0.366924)
+polygon = PackedVector2Array(104.4, -164.7, 103.4, -162, 101.6, -162, 98.1, -159.7, 96, -160.8, 96, -161.9, 93, -163.9, 93, -167.2, 95, -168.2, 95, -169.3, 97.3, -170.3)
+
+[node name="CollisionPolygon2D6" type="CollisionPolygon2D" parent="BookOfWater"]
+visible = false
+scale = Vector2(0.366924, 0.366924)
+polygon = PackedVector2Array(83, -160.1, 83, -155.2, 79.8, -152, 77, -152, 72.7, -157.8, 73.8, -160, 75.2, -160, 76, -160.8, 76, -162.2, 78.1, -163.3)
+
+[node name="CollisionPolygon2D7" type="CollisionPolygon2D" parent="BookOfWater"]
+visible = false
+scale = Vector2(0.366924, 0.366924)
+polygon = PackedVector2Array(-114.6, -147.5, -115.7, -145, -117, -145, -120, -141, -122.8, -141, -126, -144.2, -126, -149.1, -123, -151.1, -123, -152.3, -120.5, -153.4)
+
+[node name="CollisionPolygon2D8" type="CollisionPolygon2D" parent="BookOfWater"]
+visible = false
+scale = Vector2(0.366924, 0.366924)
+polygon = PackedVector2Array(105.3, -147.2, 104.2, -145, 96, -145, 96, -150.2, 98, -151.2, 98, -152.4, 100.7, -153.4)
+
+[node name="CollisionPolygon2D9" type="CollisionPolygon2D" parent="BookOfWater"]
+visible = false
+scale = Vector2(0.366924, 0.366924)
+polygon = PackedVector2Array(30.4, -143.7, 29.4, -141, 27.7, -141, 23.2, -137.7, 21, -138.8, 21, -148.3, 23.3, -149.3)
+
+[node name="CollisionPolygon2D10" type="CollisionPolygon2D" parent="BookOfWater"]
+visible = false
+scale = Vector2(0.366924, 0.366924)
+polygon = PackedVector2Array(151.4, -122.6, 150.4, -120, 148.9, -120, 137.5, -107.6, 135, -108.6, 135, -110.1, 122, -121.1, 122, -124.9, 133, -133.9, 133, -135.3, 135.3, -136.4)
+
+[node name="CollisionPolygon2D11" type="CollisionPolygon2D" parent="BookOfWater"]
+visible = false
+scale = Vector2(0.366924, 0.366924)
+polygon = PackedVector2Array(129.4, -78.3, 128.3, -76, 127.1, -76, 125.1, -73, 122.2, -73, 119, -76.2, 119, -80.3, 120, -83.3, 120, -85.4, 122.6, -86.4)
+
+[node name="CollisionPolygon2D12" type="CollisionPolygon2D" parent="BookOfWater"]
+visible = false
+scale = Vector2(0.366924, 0.366924)
+polygon = PackedVector2Array(-119, -78.6, -119, -76.8, -116.6, -74.5, -117.7, -72, -119.3, -72, -129.7, -63.7, -132, -64.7, -132, -66.3, -135, -70.3, -135, -78.2, -133, -79.2, -133, -81.4)
+
+[node name="CollisionPolygon2D13" type="CollisionPolygon2D" parent="BookOfWater"]
+visible = false
+scale = Vector2(0.366924, 0.366924)
+polygon = PackedVector2Array(156.3, -60.1, 155.6, -57, 153.7, -57, 148.3, -52.7, 146, -53.7, 146, -65.2)
 
 [node name="BoomerangSword" type="Node" parent="."]
 script = ExtResource("6_tp5em")

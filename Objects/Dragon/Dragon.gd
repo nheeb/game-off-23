@@ -21,6 +21,7 @@ signal victory
 @onready var head_position : Node3D = %HeadPosition
 @onready var tail_position : Node3D = %TailPosition
 @onready var model : Node3D = %Model
+@onready var animations : DragonAnimations = $AnimationTree
 
 # State Machine
 var states : Array[DragonState]# = ($States.get_children().filter(func (x): return x is DragonState)) as Array[DragonState]
@@ -184,14 +185,14 @@ func choose_action():
 			break
 	if new_state == "":
 		printerr("No state was chosen")
-#	if DebugInfo.debug_visible:
-#		var sorted_index = range(len(state_names))
-#		sorted_index.sort_custom(func(a,b): return flat_chances[a] > flat_chances[b])
-#		var debug_states_chances_string := ""
-#		for index in sorted_index:
-#			debug_states_chances_string = debug_states_chances_string + str(state_names[index]) + ": " + "%.2f" % (flat_chances[index] / running_total * 100.0) + "%\n"
-#		DebugInfo.refresh_info("State Chances", debug_states_chances_string)
-#		print(debug_states_chances_string)
+	if DebugInfo.debug_visible:
+		var sorted_index = range(len(state_names))
+		sorted_index.sort_custom(func(a,b): return flat_chances[a] > flat_chances[b])
+		var debug_states_chances_string := ""
+		for index in sorted_index:
+			debug_states_chances_string = debug_states_chances_string + str(state_names[index]) + ": " + "%.2f" % (flat_chances[index] / running_total * 100.0) + "%\n"
+		DebugInfo.refresh_info("State Chances", debug_states_chances_string)
+		print(debug_states_chances_string)
 
 var last_movement_vector : Vector3
 func movement_process(delta: float):
@@ -212,6 +213,7 @@ func movement_process(delta: float):
 			move_vector = global_position.direction_to(movement_pivot_position).cross(Vector3.UP).normalized() * movement_speed
 		MovementType.STANDING:
 			move_vector = Vector3.ZERO
+	animations.set('parameters/MovementAndIdle/blend_position', global_transform.basis * move_vector)
 	$CollisionBody.velocity = move_vector
 	if has_gravity and not is_flying:
 		$CollisionBody.velocity.y -= GRAVITY

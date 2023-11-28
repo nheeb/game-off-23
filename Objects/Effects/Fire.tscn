@@ -1,7 +1,8 @@
-[gd_scene load_steps=26 format=3 uid="uid://c6fi4uotdsqog"]
+[gd_scene load_steps=27 format=3 uid="uid://c6fi4uotdsqog"]
 
 [ext_resource type="Texture2D" uid="uid://pcywtafrx0sa" path="res://Assets/Textures/Flame02.png" id="2_645sc"]
 [ext_resource type="Shader" path="res://Shaders/fire_particle.gdshader" id="3_uh3s8"]
+[ext_resource type="PackedScene" uid="uid://bqt11ve8iqv6q" path="res://Objects/Effects/Magic.tscn" id="4_8a0my"]
 [ext_resource type="Texture2D" uid="uid://1kslui81daew" path="res://Assets/Textures/Flare00.PNG" id="4_tyc4p"]
 
 [sub_resource type="Shader" id="Shader_ik1nb"]
@@ -260,3 +261,5 @@ lifetime = 2.0
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_irfi7")
 draw_pass_1 = SubResource("QuadMesh_wyn5k")
+
+[node name="magic" parent="." instance=ExtResource("4_8a0my")]

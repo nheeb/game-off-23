@@ -43,12 +43,15 @@ func set_cutscene_tooltip_visible(_visible: bool):
 
 func set_item_texture(texture:Texture2D,_scale:float=0.367) -> Sprite2D:
 	%ItemIcon.texture = texture
-	%ItemIcon.scale = _scale
+	%ItemIcon.scale = Vector2.ONE * _scale
 	return %ItemIcon
+#
+#func set_item_material(material:Material) -> Sprite2D:
+#	%ItemIcon.material = material
+#	return %ItemIcon
 
-func set_item_material(material:Material) -> Sprite2D:
-	%ItemIcon.material = material
-	return %ItemIcon
+func set_item_cooldown(progress: float):
+	%ItemIcon.material.set("shader_parameter/progress", progress)
 
 func set_item_visible(visibility:bool=!(%Item.visible)) -> bool:
 	%Item.visible = visibility

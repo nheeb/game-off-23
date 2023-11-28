@@ -3,6 +3,8 @@ class_name HealthSystem extends Node
 var health = 0
 var invulnerable_time_remaining = 0.0
 
+var armour = 0
+
 signal damage_taken(source)
 signal death(source)
 
@@ -19,6 +21,9 @@ func _physics_process(delta):
 		take_damage(Game.player, 20)
 
 func take_damage(source: Node3D, amount: int):
+	amount -= armour
+	if amount <= 0:
+		return
 	if not can_take_damage():
 		return
 	invulnerable_time_remaining = after_hit_invulnerability_duration
@@ -27,6 +32,9 @@ func take_damage(source: Node3D, amount: int):
 	health = max(0, health)
 	if health == 0:
 		emit_signal("death", source)
+		
+func heal(amount: int):
+	health = min(max_health, health + amount)
 
 func can_take_damage():
 	return invulnerable_time_remaining <= 0.0

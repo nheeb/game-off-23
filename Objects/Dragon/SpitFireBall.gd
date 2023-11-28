@@ -12,6 +12,7 @@ func effect_start(index):
 	dragon.body_direction_target_position = Game.player.global_position
 	await get_tree().create_timer(1.0).timeout
 	if not is_active(): return
+	dragon.animations.is_spitting_fire = true
 	var fire_ball = FIRE_BALL.instantiate()
 	Game.world.add_child(fire_ball)
 	fire_ball.start(dragon.head_position.global_position, Game.player.global_position)
@@ -23,6 +24,7 @@ func effect_start(index):
 	Functions.align_node(hint, Vector3.UP, hint_normal)
 	fire_ball.fireball_explode.connect(hint.queue_free)
 	await get_tree().create_timer(2.0).timeout
+	dragon.animations.is_spitting_fire = false
 	if is_active(index): next_state = "Idle"
 
 func effect_process(delta):

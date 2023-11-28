@@ -6,7 +6,7 @@ class_name AttackControls extends Node
 @onready var mouse_detection_layer: MouseDetectionLayer = $"../../MouseDetectionLayer"
 @onready var melee_combat: MeleeCombat = $"../MeleeCombat"
 @export var max_charge = 2.0
-@export var sword_model: MeshInstance3D
+@export var sword_model: Node3D
 
 var sword_count = 1
 var is_charging = false

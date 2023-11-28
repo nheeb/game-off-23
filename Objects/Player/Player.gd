@@ -18,3 +18,6 @@ func get_health_system() -> HealthSystem:
 
 func get_motion() -> PlayerMotion:
 	return %PlayerMotion
+
+func get_magic_casting() -> MagicCasting:
+	return %MagicCasting
