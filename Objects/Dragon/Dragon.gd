@@ -106,6 +106,8 @@ func refresh_hp():
 		else:
 			force_state_change("Dead", true)
 			victory.emit()
+			var victory_screen = load("res://UI/VictoryScreen.tscn").instantiate()
+			get_tree().root.add_child(victory_screen)
 
 func scale_area_destroyed():
 	pass
