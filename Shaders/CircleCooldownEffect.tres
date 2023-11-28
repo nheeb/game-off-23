@@ -1,4 +1,4 @@
-[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://bmobp823vlhha"]
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://darfpt4wawtqq"]
 
 [sub_resource type="Shader" id="Shader_nlmfc"]
 code = "// NOTE: Shader automatically converted from Godot Engine 4.1.3.stable's CanvasItemMaterial.

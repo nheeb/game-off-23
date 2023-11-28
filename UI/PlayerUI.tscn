@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dvaxgp8156v3y" path="res://Assets/Textures/mineral-heart.png" id="2_6fy3d"]
 [ext_resource type="Texture2D" uid="uid://y7bfv6boyrs6" path="res://Assets/Sprites/placeholder/carrot.png" id="4_x7fqd"]
 [ext_resource type="Texture2D" uid="uid://cv7kfn6v7w866" path="res://Assets/Sprites/placeholder/circle.png" id="4_xg3ak"]
-[ext_resource type="Material" uid="uid://bmobp823vlhha" path="res://Shaders/CircleCooldownEffect.tres" id="4_xmr43"]
+[ext_resource type="Material" uid="uid://darfpt4wawtqq" path="res://Shaders/CircleCooldownEffect.tres" id="4_xmr43"]
 
 [sub_resource type="Animation" id="Animation_k6ba0"]
 resource_name = "ItemIconWoop"
