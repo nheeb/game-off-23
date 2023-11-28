@@ -19,7 +19,7 @@ var dodge_range: float
 const RESET_JUMP_HEIGHT = 1.0
 var jump_height: float
 
-const RESET_DODGE_BOOST_SPEED = 10.0
+const RESET_DODGE_BOOST_SPEED = 0.0
 var dodge_boost_speed: float
 
 enum SPELL_TYPE {None, Water, Carrot}

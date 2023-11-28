@@ -5,5 +5,5 @@ func can_be_obtained():
 	return super.can_be_obtained()
 
 func render_item_effect():
-	PlayerStats.dodge_boost_speed = 14.0
+	PlayerStats.dodge_boost_speed = 9.0
 
