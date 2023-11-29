@@ -10,3 +10,6 @@ func eat():
 	if progress >= PlayerStats.carrots_per_health:
 		progress -= PlayerStats.carrots_per_health
 		health_system.heal(1)
+		
+func use_up(count: int):
+	progress  = max(0, progress - count)

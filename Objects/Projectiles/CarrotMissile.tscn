@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://cmki5r3mr81w8"]
+
+[ext_resource type="Script" path="res://Objects/Projectiles/CarrotMissile.gd" id="1_ox45l"]
+[ext_resource type="PackedScene" uid="uid://dn7o5cjlac44m" path="res://Assets/Models/Objects/carrot2.blend" id="2_oteuu"]
+[ext_resource type="Script" path="res://Objects/Player/PlayerHurtArea.gd" id="2_tjmkd"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_o6fp7"]
+height = 1.67892
+radius = 0.366568
+
+[node name="CarrotMissile" type="CharacterBody3D"]
+collision_layer = 0
+collision_mask = 3
+script = ExtResource("1_ox45l")
+
+[node name="player_hurt_box" type="Area3D" parent="."]
+transform = Transform3D(0.999997, 0.00246557, -0.000292295, -0.00246755, 0.999973, -0.00697103, 0.000275095, 0.00697164, 0.999976, 0.000114128, 0.00025487, 0.00171542)
+collision_layer = 4
+collision_mask = 0
+script = ExtResource("2_tjmkd")
+attack_state = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="player_hurt_box"]
+transform = Transform3D(0.999997, -0.00140086, 0.00224523, 0.00224963, 0.00313091, -0.999992, 0.00139373, 0.999994, 0.00313399, 1.18353e-05, 0.0129093, -0.00206757)
+shape = SubResource("CylinderShape3D_o6fp7")
+
+[node name="carrot2" parent="." instance=ExtResource("2_oteuu")]
+transform = Transform3D(0.1, 0, 0, 0, -4.37114e-09, 0.1, 0, -0.1, -4.37114e-09, 0, 0, -0.253221)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(0.999997, -0.00140086, 0.00224523, 0.00224963, 0.00313091, -0.999992, 0.00139373, 0.999994, 0.00313399, 1.18353e-05, 0.0129093, -0.00206757)
+shape = SubResource("CylinderShape3D_o6fp7")

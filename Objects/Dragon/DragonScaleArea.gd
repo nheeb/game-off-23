@@ -28,7 +28,7 @@ func _physics_process(delta):
 func _on_hit(hit_object: PlayerHurtArea):
 	if dead: return
 	if $Timer.is_stopped() and not Game.dragon.invincible:
-		take_damage(PlayerStats.sword_slash_damage)
+		take_damage(hit_object.damage)
 		hit_object.set_attacking(false)
 		$Timer.start(INVINC_TIME)
 

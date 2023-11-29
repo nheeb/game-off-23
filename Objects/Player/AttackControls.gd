@@ -5,6 +5,7 @@ class_name AttackControls extends Node
 @onready var player_motion: PlayerMotion = $"../PlayerMotion"
 @onready var mouse_detection_layer: MouseDetectionLayer = $"../../MouseDetectionLayer"
 @onready var melee_combat: MeleeCombat = $"../MeleeCombat"
+@onready var eating_system: EatingSystem = $"../EatingSystem"
 @export var max_charge = 2.0
 @export var sword_model: Node3D
 
@@ -14,8 +15,10 @@ var is_range_charging = false
 var is_performing_melee = false
 var charge = 0.0
 var projectile_scene = preload("res://Objects/Projectiles/PlayerArrow.tscn")
+var carrot_missile_scene = preload('res://Objects/Projectiles/CarrotMissile.tscn')
 
 func _physics_process(delta):
+	PlayerStats.charged_attack_type = PlayerStats.CHARGED_ATTACK.CarrotMissile
 	if player.is_dead():
 		return
 	if sword_count < 1:
@@ -34,6 +37,17 @@ func _physics_process(delta):
 				perform_melee()
 			elif PlayerStats.charged_attack_type == PlayerStats.CHARGED_ATTACK.Throw:
 				perform_shoot()
+			elif PlayerStats.charged_attack_type == PlayerStats.CHARGED_ATTACK.HeavySlash:
+				if charge > 0.8:
+					perform_melee_heavy()
+				else:
+					perform_melee()
+			elif PlayerStats.charged_attack_type == PlayerStats.CHARGED_ATTACK.CarrotMissile:
+				if eating_system.progress > 0:
+					perform_shoot_carrot_missile()
+					eating_system.use_up(1)
+				else:
+					perform_melee()
 	if Input.is_action_just_pressed("melee"):
 		start_shoot()
 		
@@ -58,10 +72,20 @@ func perform_shoot():
 	create_projectile()
 	reset_charge()
 	sword_thrown()
+	
+func perform_shoot_carrot_missile():
+	animation_tree.set("parameters/Core/conditions/is_aiming", false)
+	animation_tree.set("parameters/Core/conditions/has_released_shot", true)
+	create_carrot_missile()
+	reset_charge()
 
 func perform_melee():
 	reset_charge()
-	melee_combat.attack()
+	melee_combat.attack(1)
+
+func perform_melee_heavy():
+	reset_charge()
+	melee_combat.attack(3)
 	
 func create_projectile():
 	var target_position = mouse_detection_layer.get_global_layer_mouse_position()
@@ -77,6 +101,13 @@ func create_projectile():
 	projectile.path_time = distance * 0.09 * (1.0 - (charge / max_charge) * 0.5)
 	get_tree().root.add_child(projectile)
 	Game.main_cam.projectile_focus = projectile
+	
+func create_carrot_missile():
+	var target_position = mouse_detection_layer.get_global_layer_mouse_position()
+	var missile: CarrotMissile = carrot_missile_scene.instantiate()
+	missile.position = player.global_position
+	get_tree().root.add_child(missile)
+	missile.look_at(target_position)
 
 func get_projectile_speed():
 	return 15.0 + (charge * 15.0)

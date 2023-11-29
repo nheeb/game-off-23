@@ -5,4 +5,5 @@ func can_be_obtained():
 	return super.can_be_obtained()
 
 func render_item_effect():
-	PlayerStats.CHARGED_ATTACK.HeavySlash
+	PlayerStats.charged_attack_type = PlayerStats.CHARGED_ATTACK.CarrotMissile
+

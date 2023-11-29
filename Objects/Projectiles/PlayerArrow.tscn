@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://de8aywd6qx838"]
+[gd_scene load_steps=7 format=3 uid="uid://de8aywd6qx838"]
 
 [ext_resource type="Script" path="res://Objects/Projectiles/Projectile.gd" id="1_tvxjg"]
+[ext_resource type="Script" path="res://Objects/Player/PlayerHurtArea.gd" id="2_rk273"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_djqbc"]
 emission_enabled = true
@@ -50,6 +51,8 @@ transform = Transform3D(0.999997, 0.00246557, -0.000292295, -0.00246755, 0.99997
 collision_layer = 4
 collision_mask = 0
 monitoring = false
+script = ExtResource("2_rk273")
+attack_state = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="RotationPoint/player_hurt_box"]
 transform = Transform3D(0.999997, -0.00140086, 0.00224523, 0.00224963, 0.00313091, -0.999992, 0.00139373, 0.999994, 0.00313399, 1.18353e-05, 0.0129093, -0.00206757)

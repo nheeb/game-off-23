@@ -9,7 +9,7 @@ var movement_speed_modifier : float
 const RESET_SWORD_SLASH_DAMAGE = 1
 var sword_slash_damage: int
 
-enum CHARGED_ATTACK {None, Throw, HeavySlash}
+enum CHARGED_ATTACK {None, Throw, HeavySlash, CarrotMissile}
 const RESET_CHARGED_ATTACK = CHARGED_ATTACK.None
 var charged_attack_type: CHARGED_ATTACK
 

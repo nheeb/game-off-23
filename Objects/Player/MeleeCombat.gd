@@ -10,8 +10,10 @@ enum ATTACK_STATE {None, Preparing, Damaging, Completing }
 var attack_state = ATTACK_STATE.None
 var combo_state = 0
 var additional_attack_pending = false
+var current_damage: int = 0
 	
-func attack():
+func attack(damage: int):
+	current_damage = damage
 	if attack_state == ATTACK_STATE.None:
 		print('start attack '+str(combo_state))
 		_start_attack()
@@ -37,7 +39,8 @@ func _on_preparing_state_finished():
 	
 	print('damaging')
 	attack_state = ATTACK_STATE.Damaging
-	hurt_area.set_attacking(true)
+	hurt_area.set_attacking(true, current_damage)
+	current_damage = 0
 	damaging_phase_timer.wait_time = 0.05
 	damaging_phase_timer.start()
 	
