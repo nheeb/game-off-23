@@ -28,10 +28,12 @@ func take_damage(source: Node3D, amount: int):
 		return
 	invulnerable_time_remaining = after_hit_invulnerability_duration
 	emit_signal("damage_taken", source)
+	Game.player.play_sound(Game.player.SoundType.Hurt)
 	health -= amount
 	health = max(0, health)
 	if health == 0:
 		emit_signal("death", source)
+		Game.player.play_sound(Game.player.SoundType.Death)
 		
 func heal(amount: int):
 	health = min(max_health, health + amount)
