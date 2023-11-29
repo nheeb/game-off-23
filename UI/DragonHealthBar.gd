@@ -61,6 +61,7 @@ func render():
 func _physics_process(delta):
 	if Game.current_game_state == Game.GAME_STATE.Battle:
 		visible = true
+		stage = Game.dragon.stage
 		last_health_change = max(0, last_health_change - delta)
 		if last_health_change == 0:
 			if displayed_health < health:

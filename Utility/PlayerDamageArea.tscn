@@ -10,3 +10,4 @@ script = ExtResource("1_cjtmc")
 [node name="KnockbackOrigin" type="Node3D" parent="."]
 
 [node name="Timer" type="Timer" parent="."]
+one_shot = true

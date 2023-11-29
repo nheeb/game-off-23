@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://dbecnm0hqqsap"]
+[gd_scene load_steps=15 format=3 uid="uid://dbecnm0hqqsap"]
 
 [ext_resource type="PackedScene" uid="uid://5qhqt64jasu" path="res://UI/DragonHealthBar.tscn" id="1_dttwr"]
 [ext_resource type="Script" path="res://UI/PlayerUI.gd" id="1_mh6lv"]
@@ -6,6 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://y7bfv6boyrs6" path="res://Assets/Sprites/placeholder/carrot.png" id="4_x7fqd"]
 [ext_resource type="Texture2D" uid="uid://cv7kfn6v7w866" path="res://Assets/Sprites/placeholder/circle.png" id="4_xg3ak"]
 [ext_resource type="Material" uid="uid://darfpt4wawtqq" path="res://Shaders/CircleCooldownEffect.tres" id="4_xmr43"]
+[ext_resource type="Texture2D" uid="uid://14qfgrnwxrtd" path="res://Assets/Sprites/carrot_life_base_2.png" id="7_glm3t"]
+[ext_resource type="Texture2D" uid="uid://bjbcehno885ty" path="res://Assets/Sprites/carrot_life_1.png" id="8_buvc7"]
+[ext_resource type="Texture2D" uid="uid://pc5glenxgxp8" path="res://Assets/Sprites/carrot_life_base_3.png" id="8_u8w6m"]
+[ext_resource type="Texture2D" uid="uid://bituv2ocbiliq" path="res://Assets/Sprites/carrot_life_2.png" id="9_73gqw"]
+[ext_resource type="Texture2D" uid="uid://df8nqmhaqwlq8" path="res://Assets/Sprites/carrot_life_3.png" id="10_0arrg"]
 
 [sub_resource type="Animation" id="Animation_k6ba0"]
 resource_name = "ItemIconWoop"
@@ -131,3 +136,38 @@ unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_26om7")
 }
+
+[node name="Carrot" type="Control" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_left = 730.0
+offset_top = 582.0
+offset_right = 770.0
+offset_bottom = 622.0
+
+[node name="carrot_base_2" type="Sprite2D" parent="Carrot"]
+visible = false
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("7_glm3t")
+
+[node name="carrot_base_3" type="Sprite2D" parent="Carrot"]
+visible = false
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("8_u8w6m")
+
+[node name="carrot_1" type="Sprite2D" parent="Carrot"]
+visible = false
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("8_buvc7")
+
+[node name="carrot_2" type="Sprite2D" parent="Carrot"]
+visible = false
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("9_73gqw")
+
+[node name="carrot_3" type="Sprite2D" parent="Carrot"]
+visible = false
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("10_0arrg")

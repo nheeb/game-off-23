@@ -14,9 +14,10 @@ script = ExtResource("1_yksaf")
 visible = false
 layout_mode = 3
 anchors_preset = 0
-offset_left = -263.0
-offset_right = -43.0
-offset_bottom = 82.0
+offset_left = -280.0
+offset_top = -9.0
+offset_right = -89.0
+offset_bottom = 93.0
 
 [connection signal="input_event" from="Area2D" to="." method="_on_area_input"]
 [connection signal="mouse_entered" from="Area2D" to="." method="_on_hover"]

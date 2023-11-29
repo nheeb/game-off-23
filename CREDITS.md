@@ -5,3 +5,7 @@ https://www.1001freefonts.com/immortal.font
 
 icon speed: https://static.thenounproject.com/png/12193-200.png
 https://game-icons.net
+https://game-icons.net/1x1/lorc/frozen-orb.html
+https://game-icons.net/1x1/delapouite/carrot.html
+https://game-icons.net/1x1/sbed/shield.html
+https://thenounproject.com/icon/carrots-1466019/
