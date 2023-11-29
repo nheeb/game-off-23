@@ -24,3 +24,31 @@ func get_motion() -> PlayerMotion:
 
 func get_magic_casting() -> MagicCasting:
 	return %MagicCasting
+
+
+@export var sound_attack : Array
+@export var sound_hurt : Array
+@export var sound_dash : Array
+@export var sound_death : Array
+
+enum SoundType {Attack,Hurt,Dash,Death}
+
+func play_sound(type:SoundType) -> void:
+	match(type):
+		SoundType.Attack:
+			%AudioPlayerAttack.stream = sound_attack.pick_random()
+			%AudioPlayerAttack.play()
+			return
+		SoundType.Hurt:
+			%AudioPlayerHurt.stream = sound_hurt.pick_random()
+			%AudioPlayerHurt.play()
+			return
+		SoundType.Dash:
+			%AudioPlayerDash.stream = sound_dash.pick_random()
+			%AudioPlayerDash.play()
+			return
+		SoundType.Death:
+			%AudioPlayerDeath.stream = sound_death.pick_random()
+			%AudioPlayerDeath.play()
+			return
+	
