@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://6scktaj5atmu"]
+[gd_scene load_steps=26 format=3 uid="uid://6scktaj5atmu"]
 
 [ext_resource type="Script" path="res://Worlds/World.gd" id="1_4gn8l"]
 [ext_resource type="PackedScene" uid="uid://d1t8v3yidk6mp" path="res://Objects/Player/Player.tscn" id="2_hplb1"]
@@ -18,6 +18,7 @@
 [ext_resource type="PackedScene" uid="uid://wkuvk8a37glh" path="res://Objects/Props/House2.tscn" id="16_8jxxt"]
 [ext_resource type="PackedScene" uid="uid://bhe1erf0qkl1e" path="res://Objects/Props/House3.tscn" id="17_imf02"]
 [ext_resource type="PackedScene" uid="uid://cua8geyfluloy" path="res://Assets/Models/Buildings/House2.gltf" id="18_fpyce"]
+[ext_resource type="PackedScene" uid="uid://dwtwqt3k2jlmw" path="res://Objects/Props/Path.tscn" id="19_xxqcy"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7al5n"]
 albedo_color = Color(0.478431, 0.403922, 0.337255, 1)
@@ -224,7 +225,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.7698, 2.69848, -28.5184)
 persist = true
 
 [node name="CarrotPickup6" parent="." instance=ExtResource("15_knxhg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.8595, 6.23825, -5.2646)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.8595, 3.46927, -1.96143)
+persist = true
+
+[node name="CarrotPickup10" parent="." instance=ExtResource("15_knxhg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.4991, 6.55893, 10.1554)
 persist = true
 
 [node name="CarrotPickup2" parent="." instance=ExtResource("15_knxhg")]
@@ -242,5 +247,40 @@ persist = true
 [node name="CarrotPickup9" parent="." instance=ExtResource("15_knxhg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.9331, 2.87559, 16.6478)
 persist = true
+
+[node name="Path" parent="." instance=ExtResource("19_xxqcy")]
+
+[node name="Path2" parent="." instance=ExtResource("19_xxqcy")]
+transform = Transform3D(-0.258819, 0, -0.965926, 0, 0.5, 0, 0.965926, 0, -0.258819, -7.8437, 1.12606, 30.9251)
+
+[node name="Path3" parent="." instance=ExtResource("19_xxqcy")]
+transform = Transform3D(-0.5, 0, 0.866025, 0, 0.5, 0, -0.866025, 0, -0.5, -11.9015, 0.755696, -6.99465)
+
+[node name="Path4" parent="." instance=ExtResource("19_xxqcy")]
+transform = Transform3D(0.707107, 0, 0.707107, 0, 0.5, 0, -0.707107, 0, 0.707107, 10.0985, 0.755696, -9.99465)
+
+[node name="Stalagmite2" parent="." instance=ExtResource("9_2n3e5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.94679, 0.898686, 68.5908)
+
+[node name="Stalagmite3" parent="." instance=ExtResource("9_6r43u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.7943, 0.857014, 60.2308)
+
+[node name="Stalagmite4" parent="." instance=ExtResource("9_6r43u")]
+transform = Transform3D(0.8, 0, 0, 0, -0.8, 1.20797e-07, 0, -1.20797e-07, -0.8, -6.77205, 16.1734, 60.5615)
+
+[node name="Stalagmite1" parent="." instance=ExtResource("8_30q0f")]
+transform = Transform3D(-1.31134e-07, -3, 0, 3, -1.31134e-07, 0, 0, 0, 3, 11.9872, -0.842808, 52.8274)
+
+[node name="Stalagmite8" parent="." instance=ExtResource("8_30q0f")]
+transform = Transform3D(2.99828, 0.101611, 0, -0.101611, 2.99828, 0, 0, 0, 3, 12.4407, -6.51666, 32.6989)
+
+[node name="Stalagmite9" parent="." instance=ExtResource("8_30q0f")]
+transform = Transform3D(2.80864, 0.0951842, 1.04998, -0.101611, 2.99828, 0, -1.04938, -0.0355633, 2.81025, -11.8161, -6.51666, 31.3074)
+
+[node name="Stalagmite5" parent="." instance=ExtResource("9_6r43u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.38763, 0.938148, 38.8587)
+
+[node name="Stalagmite6" parent="." instance=ExtResource("9_2n3e5")]
+transform = Transform3D(0.702426, 0.711756, 0, -0.711756, 0.702426, 0, 0, 0, 1, -10.5096, 0.823363, 36.8718)
 
 [editable path="level/dragon_cave2"]
