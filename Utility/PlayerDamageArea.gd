@@ -21,14 +21,14 @@ func _ready():
 		get_node("VisualIndicator").visible = active
 
 func _physics_process(delta):
-	if active and $Timer.is_stopped():
+	if active:
 		if perishable:
 			lifetime -= delta
 			if lifetime <= 0.0:
 				self.active = false
 				if delete_on_perish:
 					queue_free()
-		if has_overlapping_areas():
+		if has_overlapping_areas() and $Timer.is_stopped():
 			do_damage()
 			if delete_on_player_hit:
 				queue_free()
