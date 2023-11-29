@@ -12,6 +12,10 @@ signal movement_done
 signal stage_defeated
 signal victory
 
+# Sounds
+@export var sound_dragon_damage : Array
+@export var sound_scale_drop : Array
+
 # Areas & Positions
 @onready var bite_area : PlayerDamageArea = %BiteArea
 @onready var tail_area : PlayerDamageArea = %TailArea

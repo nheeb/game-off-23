@@ -7,6 +7,8 @@ const ATTACK_HINT_BALL = preload("res://Objects/Effects/AttackHintFallingDebris.
 func get_probability() -> float:
 	return 0.28 if dragon.player_distance >= MIN_DIST and dragon.player_in_sight else 0.0
 
+@export var fireball_sound : Array
+
 func effect_start(index):
 	dragon.turn_type = Dragon.TurnType.TURN
 	dragon.body_direction_target_position = Game.player.global_position

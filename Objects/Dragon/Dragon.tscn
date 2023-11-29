@@ -1,18 +1,26 @@
-[gd_scene load_steps=65 format=3 uid="uid://cu0j2oc2nfkvl"]
+[gd_scene load_steps=70 format=3 uid="uid://cu0j2oc2nfkvl"]
 
 [ext_resource type="Script" path="res://Objects/Dragon/Dragon.gd" id="1_b10y7"]
 [ext_resource type="Script" path="res://Objects/Dragon/Idle.gd" id="2_3qwwn"]
+[ext_resource type="AudioStream" uid="uid://ndwfpe5qv6bv" path="res://Assets/Audio/SFX/Dragon/Dragon_dmg_01.ogg" id="2_43dik"]
 [ext_resource type="PackedScene" uid="uid://xapkp0pvo6fr" path="res://Assets/Models/Dragon/dragonmesh.rigged_1.4.6_export_28.11.blend" id="2_n2l6b"]
 [ext_resource type="Script" path="res://Objects/Dragon/Wait.gd" id="3_8bdho"]
+[ext_resource type="AudioStream" uid="uid://3mg30gu6pt62" path="res://Assets/Audio/SFX/Dragon/Dragon_dmg_02.ogg" id="3_x0yb6"]
+[ext_resource type="AudioStream" uid="uid://hh8gbw3jifdx" path="res://Assets/Audio/SFX/Dragon/Dragon_dmg_03.ogg" id="4_5jtxu"]
 [ext_resource type="Script" path="res://Objects/Dragon/Strife.gd" id="4_au1tx"]
 [ext_resource type="Script" path="res://Objects/Dragon/PreCutscene.gd" id="4_eke7i"]
 [ext_resource type="Script" path="res://Objects/Dragon/Wander.gd" id="5_bnqeg"]
 [ext_resource type="Script" path="res://Objects/Dragon/Cutscene.gd" id="5_mg6ba"]
+[ext_resource type="AudioStream" uid="uid://drs4yldej52wh" path="res://Assets/Audio/SFX/Dragon/Dragon_dmg_04.ogg" id="5_qjxp3"]
 [ext_resource type="Script" path="res://Objects/Dragon/Bite.gd" id="6_3a564"]
+[ext_resource type="AudioStream" uid="uid://r6ivdtmxs4a7" path="res://Assets/Audio/SFX/Dragon/Scale_drop_01.ogg" id="6_jqxf1"]
 [ext_resource type="PackedScene" uid="uid://bfw4se6ttoft7" path="res://Utility/PlayerDamageArea.tscn" id="6_qsmee"]
+[ext_resource type="AudioStream" uid="uid://mqv2pqmyipnt" path="res://Assets/Audio/SFX/Dragon/Scale_drop_02.ogg" id="7_3lhu6"]
 [ext_resource type="Script" path="res://Objects/Dragon/Approach.gd" id="7_3xdce"]
+[ext_resource type="AudioStream" uid="uid://d0agjg2ffk6h5" path="res://Assets/Audio/SFX/Dragon/Scale_drop_03.ogg" id="8_5xgkh"]
 [ext_resource type="Script" path="res://Objects/Dragon/TailSwing.gd" id="8_u8nhm"]
 [ext_resource type="Script" path="res://Objects/Dragon/SpitFireBall.gd" id="9_ev16w"]
+[ext_resource type="AudioStream" uid="uid://cbqy3m1nvpvut" path="res://Assets/Audio/SFX/Dragon/Scale_drop_04.ogg" id="9_ihi7a"]
 [ext_resource type="Script" path="res://Objects/Dragon/SpitFireCone.gd" id="10_b6fvh"]
 [ext_resource type="Script" path="res://Objects/Dragon/Roar.gd" id="11_5ddqa"]
 [ext_resource type="Script" path="res://Objects/Dragon/Shockwave.gd" id="11_dt8fd"]
@@ -20,11 +28,14 @@
 [ext_resource type="Script" path="res://Objects/Dragon/QuickTurn.gd" id="12_kl28g"]
 [ext_resource type="Script" path="res://Objects/Dragon/AirGrab.gd" id="13_3xwwt"]
 [ext_resource type="Script" path="res://Objects/Dragon/JumpAttack.gd" id="13_jpjs2"]
+[ext_resource type="AudioStream" uid="uid://d4njkpfc11t8f" path="res://Assets/Audio/SFX/Dragon/Dragon_fire_cone.ogg" id="14_0k7we"]
 [ext_resource type="Script" path="res://Objects/Dragon/Dead.gd" id="14_8ti8k"]
 [ext_resource type="Script" path="res://Objects/Dragon/SlowLanding.gd" id="14_bvvsy"]
 [ext_resource type="Script" path="res://Objects/Dragon/AirWander.gd" id="14_im864"]
 [ext_resource type="PackedScene" uid="uid://dh2syk58pnldt" path="res://Objects/Dragon/DragonScaleArea.tscn" id="15_0h3lm"]
+[ext_resource type="AudioStream" uid="uid://cwiccs7ib43pe" path="res://Assets/Audio/SFX/Dragon/Dragon_radial_fire.ogg" id="16_5posu"]
 [ext_resource type="Script" path="res://Objects/Dragon/AirFireBalls.gd" id="16_a1ca1"]
+[ext_resource type="AudioStream" uid="uid://biw611rsjhikd" path="res://Assets/Audio/SFX/Dragon/Dragon_roar.ogg" id="16_a1283"]
 [ext_resource type="Material" uid="uid://se0l8mkv0wwa" path="res://Assets/Materials/DamageIndicator.tres" id="16_yafp0"]
 [ext_resource type="Script" path="res://Objects/Dragon/LandingAttack.gd" id="18_qyu4h"]
 [ext_resource type="Script" path="res://Objects/Dragon/AirFireCone.gd" id="21_r26lx"]
@@ -150,6 +161,8 @@ graph_offset = Vector2(102, -104)
 
 [node name="Dragon" type="Node3D"]
 script = ExtResource("1_b10y7")
+sound_dragon_damage = [ExtResource("2_43dik"), ExtResource("3_x0yb6"), ExtResource("4_5jtxu"), ExtResource("5_qjxp3")]
+sound_scale_drop = [ExtResource("6_jqxf1"), ExtResource("7_3lhu6"), ExtResource("8_5xgkh"), ExtResource("9_ihi7a")]
 fly_wave_curve = SubResource("Curve_hfnbm")
 
 [node name="Model" type="Node3D" parent="."]
@@ -650,15 +663,19 @@ script = ExtResource("8_u8nhm")
 
 [node name="SpitFireBall" type="Node" parent="States"]
 script = ExtResource("9_ev16w")
+fireball_sound = [null]
 
 [node name="SpitFireCone" type="Node" parent="States"]
 script = ExtResource("10_b6fvh")
+firecone_sound = [ExtResource("14_0k7we")]
 
 [node name="Shockwave" type="Node" parent="States"]
 script = ExtResource("11_dt8fd")
+radialfire_sound = [ExtResource("16_5posu")]
 
 [node name="Roar" type="Node" parent="States"]
 script = ExtResource("11_5ddqa")
+roar_sound = [ExtResource("16_a1283")]
 
 [node name="QuickTurn" type="Node" parent="States"]
 script = ExtResource("12_kl28g")
@@ -944,6 +961,21 @@ active = true
 parameters/MovementAndIdle/blend_position = Vector2(-0.00202018, 0.00641024)
 parameters/MovementAndIdle/4/TimeScale/scale = -1.0
 script = ExtResource("38_6jqdu")
+
+[node name="AudioDragonHead" type="AudioStreamPlayer3D" parent="."]
+unique_name_in_owner = true
+bus = &"SFX"
+
+[node name="AudioDragonWings" type="AudioStreamPlayer3D" parent="."]
+bus = &"SFX"
+
+[node name="AudioDragonBody" type="AudioStreamPlayer3D" parent="."]
+unique_name_in_owner = true
+bus = &"SFX"
+
+[node name="AudioDragonScales" type="AudioStreamPlayer3D" parent="."]
+unique_name_in_owner = true
+bus = &"SFX"
 
 [editable path="Model/FlyWavePivot/dragonmesh"]
 [editable path="DamageAreas/BiteArea"]
