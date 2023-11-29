@@ -12,6 +12,8 @@ var dodge_remaining_time = 0.0
 func _physics_process(delta):
 	if player.is_dead():
 		return
+	if PlayerStats.dodge_boost_speed <= 0:
+		return
 	if dodge_remaining_time > 0:
 		dodge_remaining_time -= delta
 		if dodge_remaining_time <= 0:
@@ -24,7 +26,7 @@ func start_dodge():
 	dodge_remaining_time = dodge_duration
 	animation_tree.set("parameters/Core/Movement/conditions/is_dodging_completed", false)
 	animation_tree.set("parameters/Core/Movement/conditions/is_dodging", true)
-	player.velocity.y = jump_velocity
+	player.velocity.y = jump_velocity + PlayerStats.dodge_jump_speed
 	player_motion.dodge_boost_speed = PlayerStats.dodge_boost_speed
 	player_motion.dash_lock = true
 	

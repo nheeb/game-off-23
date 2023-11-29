@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://5n20u4mcv1uy"
-path="res://.godot/imported/pyroboots.png-736fb4396bc846693ffd5d17b530f0f3.ctex"
+uid="uid://c120akeckmmqq"
+path="res://.godot/imported/carrot_boots.png-f4e6a415216fa39d734472f4ae88498f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Sprites/placeholder/pyroboots.png"
-dest_files=["res://.godot/imported/pyroboots.png-736fb4396bc846693ffd5d17b530f0f3.ctex"]
+source_file="res://Assets/Sprites/placeholder/carrot_boots.png"
+dest_files=["res://.godot/imported/carrot_boots.png-f4e6a415216fa39d734472f4ae88498f.ctex"]
 
 [params]
 
