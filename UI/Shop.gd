@@ -274,8 +274,7 @@ func setup_equipment():
 		item.equipment_object = true
 		item.apply_changes(item_data)
 		if item_data.is_equiped():
-			var slot = shop_slots[item_data.slot]
-			slot.visual_equip(item)
+			visually_equip_item(item)
 		else:
 			place_in_stash(item)
 

@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://b62j6yjwux6fs"]
+
+[ext_resource type="Texture2D" uid="uid://cskdxsoxcqw05" path="res://Assets/Sprites/sparkle.png" id="1_ffjnk"]
+
+[sub_resource type="Curve" id="Curve_sw2q0"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.501701, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="CurveTexture_qc2s2"]
+curve = SubResource("Curve_sw2q0")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_0q1ph"]
+emission_shape = 1
+emission_sphere_radius = 3.0
+spread = 60.0
+gravity = Vector3(0, 2, 0)
+initial_velocity_max = 1.0
+angular_velocity_max = 10.0
+radial_accel_min = 1.0
+radial_accel_max = 1.0
+angle_max = 720.0
+scale_curve = SubResource("CurveTexture_qc2s2")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7kmrp"]
+transparency = 1
+shading_mode = 0
+disable_ambient_light = true
+albedo_color = Color(0.356863, 1, 0.160784, 1)
+albedo_texture = ExtResource("1_ffjnk")
+billboard_mode = 3
+billboard_keep_scale = true
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="QuadMesh" id="QuadMesh_dgv1s"]
+material = SubResource("StandardMaterial3D_7kmrp")
+
+[node name="HealEffect" type="GPUParticles3D"]
+emitting = false
+amount = 16
+lifetime = 1.5
+one_shot = true
+explosiveness = 0.67
+visibility_aabb = AABB(-4.12475, -2.94498, -4.27211, 8.83492, 9.29557, 7.90407)
+process_material = SubResource("ParticleProcessMaterial_0q1ph")
+draw_pass_1 = SubResource("QuadMesh_dgv1s")
