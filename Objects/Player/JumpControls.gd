@@ -8,18 +8,22 @@ class_name JumpControls extends Node
 @export var forward_boost_velocity = 1.0
 
 var is_jumping = false
+var is_jump_available = false
 
 func _physics_process(delta):
 	if player.is_dead():
 		return
 	if is_jumping and player.is_on_floor():
 		stop_jump()
+	if not is_jump_available and player.is_on_floor():
+		is_jump_available = true
 	
-	if Input.is_action_just_pressed("jump") and player.is_on_floor():
+	if Input.is_action_just_pressed("jump") and is_jump_available:
 		start_jump()
 		
 func start_jump():
 	is_jumping = true
+	is_jump_available = false
 	animation_tree.set("parameters/Core/Movement/conditions/is_jumping_completed", false)
 	animation_tree.set("parameters/Core/Movement/conditions/is_jumping", true)
 	player.velocity.y = jump_velocity
