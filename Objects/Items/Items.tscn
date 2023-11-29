@@ -24,6 +24,14 @@ script = ExtResource("1_g1uul")
 script = ExtResource("5_jyel1")
 slot = 1
 price = 1
+stats = {
+"armor": 0,
+"carrot": 0,
+"damage": 0,
+"frozen": 0,
+"shield": 0,
+"speed": 1
+}
 tooltip = "+Bounce dodge"
 
 [node name="Sprite2D" type="Sprite2D" parent="BouncyBoots"]
@@ -38,7 +46,15 @@ polygon = PackedVector2Array(-20, -164.8, -20, -162.6, -16, -157, -13.3, -157, 1
 [node name="CarrotBoots" type="Node" parent="."]
 script = ExtResource("6_1vl7i")
 slot = 1
-price = 1
+price = 3
+stats = {
+"armor": 0,
+"carrot": 1,
+"damage": 0,
+"frozen": 0,
+"shield": 0,
+"speed": 1
+}
 
 [node name="Sprite2D" type="Sprite2D" parent="CarrotBoots"]
 visible = false
@@ -59,6 +75,15 @@ polygon = PackedVector2Array(-253, 252, -252, 252, -252, 253, -251, 253, -251, 2
 script = ExtResource("7_nb6es")
 slot = 1
 price = 1
+stats = {
+"armor": 0,
+"carrot": 0,
+"damage": 0,
+"frozen": 0,
+"shield": 0,
+"speed": 3
+}
+tooltip = "Fast dash"
 
 [node name="Sprite2D" type="Sprite2D" parent="Wingedboots"]
 visible = false
@@ -95,7 +120,16 @@ polygon = PackedVector2Array(19.5, -140.4, 19.5, -132.4, 11.5, -121.4, 10.6, -90
 [node name="Carrotnomicon" type="Node" parent="."]
 script = ExtResource("9_ynruq")
 slot = 2
-price = 1
+price = 5
+stats = {
+"armor": 0,
+"carrot": 3,
+"damage": 0,
+"frozen": 0,
+"shield": 0,
+"speed": 0
+}
+tooltip = "Spawns Carrots"
 
 [node name="Sprite2D" type="Sprite2D" parent="Carrotnomicon"]
 visible = false
@@ -110,7 +144,16 @@ polygon = PackedVector2Array(28, -167.4, 28, -154.6, 25.1, -148, 26.1, -148, 31.
 [node name="BookOfWater" type="Node" parent="."]
 script = ExtResource("11_wu33j")
 slot = 2
-price = 1
+price = 4
+stats = {
+"armor": 0,
+"carrot": 0,
+"damage": 0,
+"frozen": 0,
+"shield": 1,
+"speed": 0
+}
+tooltip = "Creates a shield"
 
 [node name="Sprite2D" type="Sprite2D" parent="BookOfWater"]
 visible = false

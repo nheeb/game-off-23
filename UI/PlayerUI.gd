@@ -59,3 +59,15 @@ func set_item_visible(visibility:bool=!(%Item.visible)) -> bool:
 
 func woop():
 	%AnimationPlayer.play("ItemIconWoop")
+
+func set_carrot(carrots: int):
+	%Carrot.visible = true
+	$Carrot/carrot_base_3.visible = PlayerStats.carrots_per_health == 3
+	$Carrot/carrot_base_2.visible = PlayerStats.carrots_per_health == 2
+	for c in %Carrot.get_children():
+		if "base" in c.name: continue
+		c.visible = c.name.ends_with(str(carrots))
+	if carrots == PlayerStats.carrots_per_health:
+		await get_tree().create_timer(.3).timeout
+		set_carrot(0)
+	

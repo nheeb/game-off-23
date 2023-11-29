@@ -1,4 +1,4 @@
-[gd_scene load_steps=113 format=3 uid="uid://d1t8v3yidk6mp"]
+[gd_scene load_steps=114 format=3 uid="uid://d1t8v3yidk6mp"]
 
 [ext_resource type="Script" path="res://Objects/Player/Player.gd" id="1_5pkqn"]
 [ext_resource type="Script" path="res://Objects/Player/MovementControls.gd" id="2_cr4bx"]
@@ -32,7 +32,8 @@
 [ext_resource type="Script" path="res://Objects/Player/PlayerHurtArea.gd" id="14_ora01"]
 [ext_resource type="Script" path="res://Objects/Player/EatingSystem.gd" id="15_1ory6"]
 [ext_resource type="PackedScene" uid="uid://dxad0qhxford7" path="res://Objects/Effects/Ubershader.tscn" id="17_7kt5q"]
-[ext_resource type="PackedScene" path="res://Objects/Effects/Magic.tscn" id="21_ysipw"]
+[ext_resource type="PackedScene" uid="uid://bqt11ve8iqv6q" path="res://Objects/Effects/Magic.tscn" id="21_ysipw"]
+[ext_resource type="PackedScene" uid="uid://b62j6yjwux6fs" path="res://Objects/Effects/HealEffect.tscn" id="34_0uun1"]
 
 [sub_resource type="Animation" id="Animation_dn5ev"]
 resource_name = "CubeAction_001"
@@ -423,39 +424,39 @@ sound_death = [ExtResource("12_obmrw")]
 transform = Transform3D(-0.45, 0, -6.79481e-08, 0, 0.45, 0, 6.79481e-08, 0, -0.45, 0, -0.678362, 0)
 
 [node name="GeneralSkeleton" parent="mc_rabbit_2_3/metarig" index="0"]
-bones/0/position = Vector3(-8.35355e-29, 1.42964, 0)
+bones/0/position = Vector3(-8.35355e-29, 1.34656, 0)
 bones/0/rotation = Quaternion(-1.11122e-10, 0.0431579, 2.57241e-09, 0.999068)
 bones/4/rotation = Quaternion(-5.80618e-11, -0.0313417, -1.88012e-09, 0.999509)
 bones/6/rotation = Quaternion(2.11758e-22, 0, -1.50463e-36, 1)
-bones/14/rotation = Quaternion(-0.0723749, -0.00104703, 0.993762, -0.0848443)
-bones/15/rotation = Quaternion(-6.6811e-08, 0.994547, -0.104287, -5.05167e-09)
-bones/16/rotation = Quaternion(0.0582346, 0.622522, -0.752764, 0.205963)
+bones/14/rotation = Quaternion(-0.0773875, 0.0698447, 0.990885, -0.0853237)
+bones/15/rotation = Quaternion(-9.1366e-08, 0.953681, -0.300821, 4.63436e-09)
+bones/16/rotation = Quaternion(0.0259366, 0.52243, -0.825122, 0.213465)
 bones/17/rotation = Quaternion(2.35514e-15, 1, 0, -2.35514e-15)
-bones/19/rotation = Quaternion(-0.0319562, 0.0455966, 0.998024, 0.0291135)
-bones/20/rotation = Quaternion(1.43448e-07, 0.983571, -0.180524, 1.64933e-08)
-bones/21/rotation = Quaternion(-0.0456117, 0.60422, -0.788499, -0.105392)
+bones/19/rotation = Quaternion(-0.0303628, 0.10577, 0.993383, 0.0328951)
+bones/20/rotation = Quaternion(1.79813e-07, 0.938121, -0.346308, -1.82361e-11)
+bones/21/rotation = Quaternion(-0.0319441, 0.514601, -0.8497, -0.110342)
 bones/22/rotation = Quaternion(1.50729e-14, 1, 5.96047e-08, 5.0243e-15)
-bones/24/rotation = Quaternion(0.657894, 0.500523, -0.557431, 0.0769606)
-bones/25/rotation = Quaternion(0.316364, -0.632388, 0.316364, 0.632387)
+bones/24/rotation = Quaternion(0.656197, 0.512956, -0.548604, 0.0728991)
+bones/25/rotation = Quaternion(0.326837, -0.627039, 0.326837, 0.627038)
 bones/26/rotation = Quaternion(-2.32831e-09, 0.707107, -2.32831e-09, 0.707107)
-bones/28/rotation = Quaternion(0.630936, -0.462409, 0.615127, 0.0985731)
-bones/29/rotation = Quaternion(0.333245, 0.623657, -0.333245, 0.623657)
+bones/28/rotation = Quaternion(0.630293, -0.474819, 0.606823, 0.0950977)
+bones/29/rotation = Quaternion(0.34332, 0.618168, -0.34332, 0.618168)
 bones/30/rotation = Quaternion(2.39861e-08, -0.707107, 6.03076e-08, 0.707107)
 
 [node name="spine_001" parent="mc_rabbit_2_3/metarig/GeneralSkeleton" index="0"]
-transform = Transform3D(0.99972, -1.40144e-09, 0.0236466, 1.39341e-09, 1, 3.55688e-10, -0.0236466, -3.22639e-10, 0.99972, 0.00620893, 0.885597, 0.09206)
+transform = Transform3D(0.99972, -1.40145e-09, 0.0236468, 1.39343e-09, 1, 3.55688e-10, -0.0236468, -3.22638e-10, 0.99972, 0.00620894, 0.802514, 0.09206)
 bone_idx = 7
 
 [node name="Sphere_004" parent="mc_rabbit_2_3/metarig/GeneralSkeleton" index="1"]
-transform = Transform3D(-0.122506, 0.744382, -0.65642, 0.572782, -0.487108, -0.659278, -0.810502, -0.456751, -0.366695, 0.215729, 2.40003, -0.0640611)
+transform = Transform3D(-0.128182, 0.753187, -0.645197, 0.593216, -0.463123, -0.658493, -0.794774, -0.467148, -0.387438, 0.215057, 2.4003, -0.0627384)
 bone_idx = 27
 
 [node name="Sphere_005" parent="mc_rabbit_2_3/metarig/GeneralSkeleton" index="2"]
-transform = Transform3D(-0.184406, -0.70477, 0.68505, -0.46223, -0.552923, -0.693267, 0.867374, -0.444494, -0.223804, -0.221803, 2.41047, -0.0672026)
+transform = Transform3D(-0.187374, -0.713965, 0.674644, -0.483135, -0.531007, -0.696141, 0.855261, -0.456383, -0.245445, -0.221051, 2.41086, -0.0655822)
 bone_idx = 31
 
 [node name="sword" type="BoneAttachment3D" parent="mc_rabbit_2_3/metarig/GeneralSkeleton" index="15"]
-transform = Transform3D(0.483399, -0.545006, 0.68505, 0.202755, -0.691572, -0.693267, 0.851596, 0.474022, -0.223803, -0.278447, 1.6947, -0.0217803)
+transform = Transform3D(0.507065, -0.536414, 0.674644, 0.195431, -0.690793, -0.696141, 0.839459, 0.484835, -0.245445, -0.278816, 1.70099, -0.0331833)
 bone_name = "RightHand"
 bone_idx = 30
 
@@ -586,6 +587,8 @@ mesh = SubResource("SphereMesh_dls2k")
 transform = Transform3D(0.230544, 0, 0, 0, 0.230544, 0, 0, 0, 0.230544, 0.765364, -0.728296, 0)
 
 [node name="Magic" parent="." instance=ExtResource("21_ysipw")]
+
+[node name="HealEffect" parent="." instance=ExtResource("34_0uun1")]
 
 [node name="AudioPlayerAttack" type="AudioStreamPlayer3D" parent="."]
 unique_name_in_owner = true

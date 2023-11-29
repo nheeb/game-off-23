@@ -30,10 +30,16 @@ func defeat_animation(_source):
 	await get_tree().create_timer(.8).timeout
 	get_tree().call_group("fallen_scale", "start_contracting")
 	await get_tree().physics_frame
+	
+	%AudioStreamPlayer.play()
+	
 	var all_scales = get_tree().get_nodes_in_group("fallen_scale")
 	all_scales.sort_custom(func (a, b): return Game.player.global_position.distance_squared_to(a.global_position) > Game.player.global_position.distance_squared_to(b.global_position))
 	if all_scales.size() > 0:
 		await all_scales[0].tree_exited
+#	%AudioStreamPlayer.stop()
+	var tween_audio := get_tree().create_tween()
+	tween_audio.tween_property(%AudioStreamPlayer,"volume_db", -80 ,1.5)
 	await get_tree().create_timer(1).timeout
 	# Fade black screen
 	Game.load_shop()
@@ -62,6 +68,7 @@ var cutscene_running := false
 var cutscene_tooltip := false
 func start_cutscene():
 	cutscene_running = true
+	Game.player.global_position = $PositionsForCutscene/PlayerPositionCutscene.global_position
 	Game.current_game_state = Game.GAME_STATE.Cutscene
 	Game.dragon.force_state_change("Cutscene")
 	# Disable player input

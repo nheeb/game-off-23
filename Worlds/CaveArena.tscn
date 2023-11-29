@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://6scktaj5atmu"]
+[gd_scene load_steps=28 format=3 uid="uid://6scktaj5atmu"]
 
 [ext_resource type="Script" path="res://Worlds/World.gd" id="1_4gn8l"]
 [ext_resource type="PackedScene" uid="uid://d1t8v3yidk6mp" path="res://Objects/Player/Player.tscn" id="2_hplb1"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://bsmlfnjqi70jl" path="res://Assets/Models/cave/boulder.blend" id="18_dt1lb"]
 [ext_resource type="PackedScene" uid="uid://cua8geyfluloy" path="res://Assets/Models/Buildings/House2.gltf" id="18_fpyce"]
 [ext_resource type="PackedScene" uid="uid://dwtwqt3k2jlmw" path="res://Objects/Props/Path.tscn" id="19_xxqcy"]
+[ext_resource type="AudioStream" uid="uid://ceklk0jowui6d" path="res://Assets/Audio/SFX/Player/Scales_post_death_absorb.ogg" id="21_ucbpe"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7al5n"]
 albedo_color = Color(0.478431, 0.403922, 0.337255, 1)
@@ -122,7 +123,7 @@ transform = Transform3D(0.995946, 0, 0.0899546, 0, 1, 0, -0.0899546, 0, 0.995946
 collision_mask = 0
 
 [node name="farm" parent="level" instance=ExtResource("12_j4u7p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.698, 1.70437, 103.01)
+transform = Transform3D(0.871488, 0, -0.490417, 0, 1, 0, 0.490417, 0, 0.871488, -21.4052, 1.46297, 100.698)
 
 [node name="farm2" parent="level" instance=ExtResource("12_j4u7p")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 16.2518, -2.36948, 113.008)
@@ -226,13 +227,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.8841, 0, 109.394)
 shape = SubResource("BoxShape3D_f34qc")
 
 [node name="PositionsForCutscene" type="Node3D" parent="."]
-visible = false
 
 [node name="PlayerSpawnIntro" type="Marker3D" parent="PositionsForCutscene"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.74173, 3.09316, 95.8972)
 
+[node name="PlayerPositionCutscene" type="Marker3D" parent="PositionsForCutscene"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.69893, 2.69795, 21.363)
+
 [node name="PlayerSpawnBattle" type="Marker3D" parent="PositionsForCutscene"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.47722, 2.80077, 13.2627)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.89776, 2.80077, 19.9793)
 
 [node name="AreaStartCutscene" type="Area3D" parent="PositionsForCutscene"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14.1002)
@@ -240,7 +243,7 @@ collision_layer = 0
 collision_mask = 65536
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PositionsForCutscene/AreaStartCutscene"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.21533, 2.60405, 2.45305)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.21533, 2.60405, 6.99392)
 shape = SubResource("BoxShape3D_4bf1o")
 
 [node name="IntroCutScene" type="Node3D" parent="PositionsForCutscene" node_paths=PackedStringArray("focus")]
@@ -252,7 +255,7 @@ focus = NodePath("../../Dragon")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.07431, 12.3535, -5.65257)
 
 [node name="CameraEnd" type="Marker3D" parent="PositionsForCutscene/IntroCutScene"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.98902, 3.97219, 36.3085)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.98902, 3.97219, 26.9203)
 
 [node name="CameraControl" type="Marker3D" parent="PositionsForCutscene/IntroCutScene"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.07431, 0.210772, -11.4103)
@@ -309,5 +312,10 @@ transform = Transform3D(1.16305, 0, 3.0582, 0, 5.03381, 0, -2.7618, 0, 1.28787, 
 
 [node name="boulder3" parent="EntranceBlockage" instance=ExtResource("18_dt1lb")]
 transform = Transform3D(1.43981, 0.351143, 4.102, 4.96323, 0.424007, -1.23936, -0.836293, 3.12093, -0.293146, 1.22798, 1.71286, -5.04432)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("21_ucbpe")
+bus = &"SFX"
 
 [editable path="level/dragon_cave2"]
