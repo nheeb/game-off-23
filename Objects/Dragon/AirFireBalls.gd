@@ -17,7 +17,7 @@ func effect_start(index):
 	dragon.turn_type = Dragon.TurnType.FOLLOW
 	dragon.body_direction_target_node = Game.player
 
-	for i in range(3 if dragon.stage == 1 else 5):
+	for i in range(3 if dragon.stage >= 1 else 5):
 		await get_tree().create_timer(.8).timeout
 		var target_pos := Functions.no_y_normalized(Game.player.get_motion().last_frame_global_movement) * 4.5 + Game.player.global_position
 		var fire_ball = FIRE_BALL.instantiate()

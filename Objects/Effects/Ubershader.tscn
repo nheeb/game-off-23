@@ -8,10 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://cjqrmxkllndkj" path="res://Objects/Effects/HitEffect.tscn" id="5_meh68"]
 [ext_resource type="Shader" uid="uid://cna3me7fd2pn7" path="res://Shaders/fire_ball_hint.tres" id="5_u7owr"]
 [ext_resource type="PackedScene" uid="uid://1cykcp6mro38" path="res://Objects/Effects/CircularAir.tscn" id="7_0731f"]
-[ext_resource type="Material" uid="uid://cjs1et11o0sk8" path="res://Shaders/ShaderPageMat.tres" id="9_x5uo6"]
+[ext_resource type="Material" uid="uid://cidjeb21r43u4" path="res://Shaders/ShaderPageMat.tres" id="9_x5uo6"]
 [ext_resource type="PackedScene" uid="uid://dnuqnunqdjtaq" path="res://Objects/Effects/RoarEffect.tscn" id="10_7kjaq"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8w1vk"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q7gfr"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("5_u7owr")
@@ -41,7 +41,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="AttackHintFallingDebris" parent="Pivot" instance=ExtResource("2_m4ji4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1029, 0, 0.00934958)
-material_override = SubResource("ShaderMaterial_8w1vk")
+material_override = SubResource("ShaderMaterial_q7gfr")
 skeleton = NodePath("../..")
 
 [node name="AttackHintFireCone" parent="Pivot" instance=ExtResource("3_rjqw1")]
