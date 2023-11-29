@@ -39,6 +39,13 @@ class_name DragonColors extends Node
 @export var stage_3_scale: Color
 @export var stage_3_yolk: Color
 
+@export var fallen_mat_scale_1: Material
+@export var fallen_mat_yolk_1: Material
+@export var fallen_mat_scale_2: Material
+@export var fallen_mat_yolk_2: Material
+@export var fallen_mat_scale_3: Material
+@export var fallen_mat_yolk_3: Material
+
 func make_everything_ready():
 	insert_own_materials()
 	transition_to_stage(1, 1.0)

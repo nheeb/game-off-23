@@ -91,3 +91,15 @@ func start_contracting():
 	await get_tree().create_timer(dist_to_player * CONTRACT_WAIT_FACTOR).timeout
 	contracting = true
 	contract_direction = Functions.no_y_normalized(global_position.direction_to(Game.player.global_position))
+
+func _ready():
+	match Game.dragon.stage:
+		1:
+			$Plane.set_surface_override_material(1, Game.dragon.colors.fallen_mat_scale_1)
+			$Plane.set_surface_override_material(0, Game.dragon.colors.fallen_mat_yolk_1)
+		2:
+			$Plane.set_surface_override_material(1, Game.dragon.colors.fallen_mat_scale_2)
+			$Plane.set_surface_override_material(0, Game.dragon.colors.fallen_mat_yolk_2)
+		3:
+			$Plane.set_surface_override_material(1, Game.dragon.colors.fallen_mat_scale_3)
+			$Plane.set_surface_override_material(0, Game.dragon.colors.fallen_mat_yolk_3)

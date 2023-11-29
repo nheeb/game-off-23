@@ -16,7 +16,7 @@ func effect_start(index):
 		await get_tree().create_timer(randf_range(.2, .8)).timeout
 		var boulder = BOULDER.instantiate()
 		Game.world.add_child(boulder)
-		boulder.fall_down(dragon.global_position + Vector3(randf() * 10.0, 5.0, randf() * 10.0))
+		boulder.fall_down(dragon.global_position + Vector3(randf_range(-1, 1) * 13.0, 5.0, randf_range(-1, 1) * 13.0))
 	await get_tree().create_timer(1).timeout
 	if is_active(index):
 		next_state = "Idle"

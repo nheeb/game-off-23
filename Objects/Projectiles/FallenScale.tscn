@@ -55,7 +55,7 @@ visible = false
 size = Vector3(0.3, 0.01, 0.6)
 material = SubResource("StandardMaterial3D_rqag2")
 
-[node name="Plane_004" type="MeshInstance3D" parent="."]
+[node name="Plane" type="MeshInstance3D" parent="."]
 transform = Transform3D(0.551085, 0, 0, 0, -0.0690583, 0.451427, 0, -0.558726, -0.0557963, 0, 0.0698026, -0.0549321)
 layers = 3
 mesh = SubResource("ArrayMesh_txobp")

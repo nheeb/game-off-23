@@ -261,13 +261,17 @@ func setup_equipment():
 		else:
 			place_in_stash(item)
 
-func place_in_stash(item: ShopItem):
+func place_in_stash(item: ShopItem, hide_tooltip := false):
 	if not item.equipment_object:
 		printerr("Wrong item state: Not equipment")
 	item.global_position = %EquipmentItemSpawn.global_position + Vector2.RIGHT * randi_range(-200, 200)
+	if hide_tooltip:
+		var slot = shop_slots[item.item_data_node.slot]
+		slot.show_tooltip(false)
 
 func visually_equip_item(item: ShopItem):
 	var slot = shop_slots[item.item_data_node.slot]
+	slot.show_tooltip(true)
 	slot.visual_equip(item)
 
 var shop_slots := {}

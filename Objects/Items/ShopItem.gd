@@ -8,6 +8,8 @@ var on_scale := false
 var shelf_location : Vector2
 var item_data_node: ItemData
 
+const ICON_SIZE = 32
+
 func apply_changes(item_data: ItemData):
 	item_data_node = item_data
 	for child in item_data.get_children():
@@ -30,14 +32,15 @@ func apply_changes(item_data: ItemData):
 				for i in range(stat_value):
 					var icon = Sprite2D.new()
 					icon.texture = load("res://Assets/Sprites/placeholder/icon_"+stat+".png")
-					icon.transform.origin.x = $Tooltip.size.x - i*64
-					icon.transform.origin.y += y*64
+					icon.scale = Vector2.ONE * float(ICON_SIZE) / 64
+					icon.transform.origin.x = $Tooltip.size.x - i*ICON_SIZE
+					icon.transform.origin.y += y*ICON_SIZE
 					$Tooltip.add_child(icon)
 				y += 1
 		if len(item_data.tooltip) > 0:
 			var l = Label.new()
 			l.text = item_data.tooltip
-			l.position.y = y*64
+			l.position.y = y*ICON_SIZE
 			l.size.x = $Tooltip.size.x
 			l.horizontal_alignment = HORIZONTAL_ALIGNMENT_RIGHT
 			# l.position.x = $Tooltip.size.x - l.font.GetMultilineStringSize()
@@ -55,7 +58,7 @@ func _on_area_input(viewport, event, shape_idx):
 		if equipment_object:
 			if item_data_node.is_equiped():
 				item_data_node.active_unequip()
-				Game.shop.place_in_stash(self)
+				Game.shop.place_in_stash(self, true)
 			else:
 				item_data_node.equip()
 				Game.shop.visually_equip_item(self)

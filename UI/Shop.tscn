@@ -257,18 +257,21 @@ unique_name_in_owner = true
 position = Vector2(0, -70)
 scale = Vector2(0.654661, 0.654661)
 caption = "Weapon"
+tooltip = "Hold LMB to charge"
 
 [node name="BootsSlot" parent="Equipment" instance=ExtResource("8_d5gcj")]
 unique_name_in_owner = true
 position = Vector2(-300, 0)
 scale = Vector2(0.654661, 0.654661)
 caption = "Boots"
+tooltip = "Press SHIFT to dash"
 
 [node name="ConsumableSlot" parent="Equipment" instance=ExtResource("8_d5gcj")]
 unique_name_in_owner = true
 position = Vector2(300, 0)
 scale = Vector2(0.654661, 0.654661)
-caption = "Item"
+caption = "Spell"
+tooltip = "Press E to cast"
 
 [node name="TriangleButtons" type="Node2D" parent="."]
 
