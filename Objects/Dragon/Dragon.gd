@@ -15,6 +15,7 @@ signal victory
 # Sounds
 @export var sound_dragon_damage : Array
 @export var sound_scale_drop : Array
+@export var sound_dragon_wing : Array
 
 # Areas & Positions
 @onready var bite_area : PlayerDamageArea = %BiteArea

@@ -16,6 +16,8 @@ func effect_start(index):
 	dragon.movement_type = Dragon.MovementType.CURVED_CLOCKWISE if randi() % 2 == 0 else Dragon.MovementType.CURVED_COUNTERCLOCKWISE
 	dragon.turn_type = Dragon.TurnType.FOLLOW
 	dragon.body_direction_target_node = Game.player
+	%AudioDragonWings.stream = Game.dragon.sound_dragon_wing.pick_random()
+	%AudioDragonWings.play()
 
 	for i in range(3 if dragon.stage >= 1 else 5):
 		await get_tree().create_timer(.8).timeout

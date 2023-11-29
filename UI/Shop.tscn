@@ -7,8 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://bgjitr5girrb" path="res://Assets/Sprites/placeholder/firesprite.png" id="4_b1whx"]
 [ext_resource type="Texture2D" uid="uid://dsy5m87xkhbe3" path="res://Assets/Sprites/placeholder/shop_buy_enabled.png" id="6_2kpmp"]
 [ext_resource type="Texture2D" uid="uid://b8hgq30xt4aak" path="res://Assets/Sprites/placeholder/shop_buy_disabled.png" id="7_1yekj"]
-[ext_resource type="PackedScene" uid="uid://b42unfgrjpgta" path="res://UI/ShopSlot.tscn" id="8_d5gcj"]
-[ext_resource type="PackedScene" uid="uid://b3ux2ipqcro62" path="res://UI/ShopTriangleButton.tscn" id="9_2vunc"]
+[ext_resource type="PackedScene" path="res://UI/ShopSlot.tscn" id="8_d5gcj"]
+[ext_resource type="PackedScene" path="res://UI/ShopTriangleButton.tscn" id="9_2vunc"]
 [ext_resource type="AudioStream" uid="uid://bxkpu8u5pbmq1" path="res://Assets/Audio/SFX/Other/Push_button.ogg" id="10_i4hxo"]
 [ext_resource type="AudioStream" uid="uid://pvux7ata0wv0" path="res://Assets/Audio/SFX/Other/Scale_pickup.ogg" id="11_uswxo"]
 
@@ -259,21 +259,18 @@ unique_name_in_owner = true
 position = Vector2(0, -70)
 scale = Vector2(0.654661, 0.654661)
 caption = "Weapon"
-tooltip = "Hold LMB to charge"
 
 [node name="BootsSlot" parent="Equipment" instance=ExtResource("8_d5gcj")]
 unique_name_in_owner = true
 position = Vector2(-300, 0)
 scale = Vector2(0.654661, 0.654661)
 caption = "Boots"
-tooltip = "Press SHIFT to dash"
 
 [node name="ConsumableSlot" parent="Equipment" instance=ExtResource("8_d5gcj")]
 unique_name_in_owner = true
 position = Vector2(300, 0)
 scale = Vector2(0.654661, 0.654661)
 caption = "Spell"
-tooltip = "Press E to cast"
 
 [node name="TriangleButtons" type="Node2D" parent="."]
 

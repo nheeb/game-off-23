@@ -8,6 +8,8 @@ const RISE_TIME = 2.7
 const AIR = preload("res://Objects/Effects/CircularAir.tscn")
 
 func effect_start(index):
+	%AudioDragonWings.stream = Game.dragon.sound_dragon_wing.pick_random()
+	%AudioDragonWings.play()
 	dragon.body_direction_target_node = Game.player
 	dragon.turn_type = Dragon.TurnType.FOLLOW
 	dragon.angular_speed *= .4

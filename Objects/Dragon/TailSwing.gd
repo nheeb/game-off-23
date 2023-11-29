@@ -1,5 +1,8 @@
 extends DragonState
 
+
+@export var sound_impact : Array
+
 func get_probability() -> float:
 	if dragon.player_distance <= 6.2 and dragon.player_face_angle > 120.0:
 		return .4
@@ -9,6 +12,8 @@ func get_probability() -> float:
 func effect_start(index):
 	await get_tree().create_timer(0.8).timeout
 	dragon.tail_area.activate()
+	%AudioDragonBody.stream = sound_impact.pick_random()
+	%AudioDragonBody.play()
 	await get_tree().create_timer(2.2).timeout
 	if is_active():
 		next_state = "Idle"
