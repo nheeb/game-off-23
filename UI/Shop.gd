@@ -93,10 +93,23 @@ func item_weight():
 func catch_fire():
 	pass
 
+var isSelected : bool = false
+var active_scale : :
+	set(new_scale):
+		if (new_scale == null): return
+		if (new_scale == active_scale): return
+		else:
+			active_scale = new_scale
+			isSelected = false
+
 func handle_scale_dragging(delta):
 	var mousePos = get_local_mouse_position()
 	if Input.is_action_pressed("ShopInteract"):
 		if selected_scale != null:
+			active_scale = selected_scale
+			if (!isSelected):
+				%AudioStreamScale.play()
+				isSelected = true
 			scale_in_hand = selected_scale
 			selected_scale.gravity_scale = 0
 			selected_scale.linear_damp = 10
@@ -105,6 +118,7 @@ func handle_scale_dragging(delta):
 			if abs(distance.x) + abs(distance.y) > 15:
 				selected_scale.apply_central_impulse(SPRING_CONSTANT * (mousePos - selected_scale.transform.origin).normalized())
 	else:
+		isSelected = false
 		if scale_in_hand != null:
 			selected_scale.gravity_scale = 1
 			selected_scale.linear_damp = 0
@@ -169,6 +183,7 @@ func handle_fire(delta):
 			$Scale/Right/Fire.stop()
 
 func _on_buy_pressed():
+	%AudioStreamPlayer.play()
 	if transition: return
 	if scale_weight() >= item_weight():
 		fire_duration_left = 1.5
@@ -208,9 +223,11 @@ var transition := false
 var item_cursor := 0
 
 func _on_shop_triangle_button_up_click():
+	%AudioStreamPlayer.play()
 	scroll_items(1)
 
 func _on_shop_triangle_button_down_click():
+	%AudioStreamPlayer.play()
 	scroll_items(-1)
 
 func scroll_items(direction: int):
@@ -233,6 +250,7 @@ func scroll_items(direction: int):
 var equipment_menu := false
 
 func _on_exit_pressed():
+	%AudioStreamPlayer.play()
 	if transition: return
 	if not equipment_menu:
 		transition = true
@@ -277,6 +295,7 @@ func setup_shop_slots():
 	shop_slots[ItemData.SLOTS.CONSUMABLE] = %ConsumableSlot
 
 func _on_fight_pressed():
+	%AudioStreamPlayer.play()
 	if transition: return
 	transition = true
 	BlackScreen.fade_in()
