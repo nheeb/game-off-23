@@ -39,7 +39,10 @@ func take_damage(damage: int = 1):
 	var hit_effect = HIT_EFFECT.instantiate()
 	Game.world.add_child(hit_effect)
 	hit_effect.global_position = global_position
-	
+	%AudioDragonBody.stream = Game.dragon.sound_dragon_damage.pick_random()
+	%AudioDragonBody.play()
+	%AudioDragonScales.stream = Game.dragon.sound_scale_drop.pick_random()
+	%AudioDragonScales.play()
 	Game.hit_pause()
 	
 	# Make scales invis placeholder
