@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://c38hoie1etfii"]
+[gd_scene load_steps=18 format=3 uid="uid://c38hoie1etfii"]
 
 [ext_resource type="PackedScene" uid="uid://bfw4se6ttoft7" path="res://Utility/PlayerDamageArea.tscn" id="1_0d1ls"]
 [ext_resource type="Script" path="res://Objects/Projectiles/Firecone.gd" id="1_4vrij"]
@@ -81,6 +81,9 @@ height = 0.1
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_r72pl"]
 points = PackedVector3Array(-4.76837e-07, -8, 8, -3.06186, -8, 7.39076, 3.0603, -8, 7.39076, -4.76837e-07, 8, 0, -5.65701, -8, 5.65544, -2.04229, -2.66719, 4.92717, -4.40094, -4.44479, 4.39937, 5.65544, -8, 5.65544, 4.39937, -4.44479, 4.39937, 2.04072, -2.66719, 4.92717, 1.01958, 2.66562, -2.46515, -4.76837e-07, 4.44323, -1.77917, -0.341426, 6.22083, -0.822239, -0.629601, 6.22083, -0.629601, -0.82224, 6.22083, -0.341425, -1.77917, 4.44323, 0, -2.46515, 2.66562, 1.01958, -4.92874, -2.66719, 2.04072, 4.92717, -2.66719, 2.04072, 7.39076, -8, 3.0603, 8, -8, 0, 7.39076, -8, -3.06186, 4.92717, -2.66719, -2.04229, 4.39937, -4.44479, -4.40094, 2.04072, -2.66719, -4.92874, -7.39233, -8, 3.0603, -1.02114, 2.66562, -2.46515, -4.76837e-07, -6.2224, -7.11198, -2.04229, -2.66719, -4.92874, -4.40094, -4.44479, -4.40094, -2.46515, 2.66562, -1.02114, -4.92874, -2.66719, -2.04229, -7.11198, -6.2224, 0, 5.65544, -8, -5.65701, 3.0603, -8, -7.39233, -8, -8, 0, -4.76837e-07, -8, -8, -3.06186, -8, -7.39233, -5.65701, -8, -5.65701, -7.39233, -8, -3.06186)
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_ddbse"]
+radius = 2.5846
+
 [sub_resource type="Animation" id="Animation_wm15i"]
 resource_name = "main"
 length = 2.0
@@ -128,7 +131,7 @@ active = true
 perishable = false
 
 [node name="Cone" type="MeshInstance3D" parent="PlayerDamageArea"]
-transform = Transform3D(0.00999999, 0, 0, 0, -4.37113e-10, -0.00999999, 0, 0.00999999, -4.37113e-10, 0, 0, -0.05)
+transform = Transform3D(0.6, 0, 0, 0, -4.37114e-08, -0.4, 0, 1, -1.74846e-08, 0, 0, -8)
 material_override = SubResource("ShaderMaterial_qvxsq")
 mesh = SubResource("CylinderMesh_fxt6h")
 skeleton = NodePath("../..")
@@ -139,8 +142,12 @@ material_override = SubResource("ShaderMaterial_ev0qq")
 mesh = SubResource("CylinderMesh_hkdlp")
 
 [node name="HitShape" type="CollisionShape3D" parent="PlayerDamageArea"]
-transform = Transform3D(0.000999987, 0, 0, 0, -4.37108e-11, -0.000999987, 0, 0.000999987, -4.37108e-11, 0, 0, 0)
+transform = Transform3D(0.6, 0, 0, 0, -4.37114e-08, -0.4, 0, 1, -1.74846e-08, 0, 0, -8)
 shape = SubResource("ConvexPolygonShape3D_r72pl")
+
+[node name="HeatRadiusShape" type="CollisionShape3D" parent="PlayerDamageArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -3.16822, -2.65796)
+shape = SubResource("SphereShape3D_ddbse")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "main"
