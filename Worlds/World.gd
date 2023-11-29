@@ -67,7 +67,6 @@ func start_cutscene():
 	# Disable player input
 	cutscene.activate()
 	await Signal(cutscene, 'completed')
-	await get_tree().create_timer(4.0).timeout
 	end_cutscene()
 
 func end_cutscene():
