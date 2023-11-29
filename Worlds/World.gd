@@ -68,6 +68,7 @@ var cutscene_running := false
 var cutscene_tooltip := false
 func start_cutscene():
 	cutscene_running = true
+	Game.player.global_position = $PositionsForCutscene/PlayerPositionCutscene.global_position
 	Game.current_game_state = Game.GAME_STATE.Cutscene
 	Game.dragon.force_state_change("Cutscene")
 	# Disable player input

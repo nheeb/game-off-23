@@ -123,7 +123,7 @@ transform = Transform3D(0.995946, 0, 0.0899546, 0, 1, 0, -0.0899546, 0, 0.995946
 collision_mask = 0
 
 [node name="farm" parent="level" instance=ExtResource("12_j4u7p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.698, 1.70437, 103.01)
+transform = Transform3D(0.871488, 0, -0.490417, 0, 1, 0, 0.490417, 0, 0.871488, -21.4052, 1.46297, 100.698)
 
 [node name="farm2" parent="level" instance=ExtResource("12_j4u7p")]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 16.2518, -2.36948, 113.008)
@@ -227,13 +227,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.8841, 0, 109.394)
 shape = SubResource("BoxShape3D_f34qc")
 
 [node name="PositionsForCutscene" type="Node3D" parent="."]
-visible = false
 
 [node name="PlayerSpawnIntro" type="Marker3D" parent="PositionsForCutscene"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.74173, 3.09316, 95.8972)
 
+[node name="PlayerPositionCutscene" type="Marker3D" parent="PositionsForCutscene"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.69893, 2.69795, 21.363)
+
 [node name="PlayerSpawnBattle" type="Marker3D" parent="PositionsForCutscene"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.47722, 2.80077, 13.2627)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.89776, 2.80077, 19.9793)
 
 [node name="AreaStartCutscene" type="Area3D" parent="PositionsForCutscene"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 14.1002)
@@ -241,7 +243,7 @@ collision_layer = 0
 collision_mask = 65536
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="PositionsForCutscene/AreaStartCutscene"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.21533, 2.60405, 2.45305)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.21533, 2.60405, 6.99392)
 shape = SubResource("BoxShape3D_4bf1o")
 
 [node name="IntroCutScene" type="Node3D" parent="PositionsForCutscene" node_paths=PackedStringArray("focus")]
@@ -253,7 +255,7 @@ focus = NodePath("../../Dragon")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.07431, 12.3535, -5.65257)
 
 [node name="CameraEnd" type="Marker3D" parent="PositionsForCutscene/IntroCutScene"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.98902, 3.97219, 36.3085)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.98902, 3.97219, 26.9203)
 
 [node name="CameraControl" type="Marker3D" parent="PositionsForCutscene/IntroCutScene"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.07431, 0.210772, -11.4103)

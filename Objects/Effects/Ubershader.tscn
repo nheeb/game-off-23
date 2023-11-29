@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://dnuqnunqdjtaq" path="res://Objects/Effects/RoarEffect.tscn" id="10_7kjaq"]
 [ext_resource type="PackedScene" uid="uid://b62j6yjwux6fs" path="res://Objects/Effects/HealEffect.tscn" id="11_d7lor"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mnk4d"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_de5j3"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("5_u7owr")
@@ -43,7 +43,7 @@ visible = false
 
 [node name="AttackHintFallingDebris" parent="Pivot" instance=ExtResource("2_m4ji4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1029, 0, 0.00934958)
-material_override = SubResource("ShaderMaterial_mnk4d")
+material_override = SubResource("ShaderMaterial_de5j3")
 skeleton = NodePath("../..")
 
 [node name="AttackHintFireCone" parent="Pivot" instance=ExtResource("3_rjqw1")]
