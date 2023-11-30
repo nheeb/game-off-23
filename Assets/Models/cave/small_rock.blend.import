@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://4sodlgg8f2df"
-path="res://.godot/imported/altar.blend-b9720749d58e3091d751d0988f3aa95d.scn"
+uid="uid://c8ofk4lg4njsq"
+path="res://.godot/imported/small_rock.blend-d5c76c3ed66dde37587a52f5f3d3fb3a.scn"
 
 [deps]
 
-source_file="res://Assets/Models/Buildings/altar.blend"
-dest_files=["res://.godot/imported/altar.blend-b9720749d58e3091d751d0988f3aa95d.scn"]
+source_file="res://Assets/Models/cave/small_rock.blend"
+dest_files=["res://.godot/imported/small_rock.blend-d5c76c3ed66dde37587a52f5f3d3fb3a.scn"]
 
 [params]
 
@@ -28,13 +28,7 @@ animation/fps=30
 animation/trimming=false
 animation/remove_immutable_tracks=true
 import_script/path=""
-_subresources={
-"nodes": {
-"PATH:Cube_003": {
-"import/skip_import": true
-}
-}
-}
+_subresources={}
 gltf/embedded_image_handling=1
 blender/nodes/visible=0
 blender/nodes/punctual_lights=true
