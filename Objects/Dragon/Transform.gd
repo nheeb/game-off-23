@@ -7,6 +7,7 @@ func get_z_relative_to_dragon(node: Node3D) -> float:
 	return dragon.to_local(node.global_position).z
 
 func effect_start(index):
+	
 	await get_tree().create_timer(1.0).timeout
 	dragon.colors.transition_to_stage(dragon.stage, 4.0)
 	
@@ -19,10 +20,12 @@ func effect_start(index):
 		tween.tween_callback(func (): scale_mesh.visible = true; scale_mesh.scale = Vector3.ONE * .1)
 		tween.tween_property(scale_mesh, "scale", Vector3.ONE, 1.5).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BACK)
 	
+	dragon.animations.reset()
 	await get_tree().create_timer(1.5).timeout
 	dragon.revive_hp()
+	dragon.animations.is_roaring = true
 	await get_tree().create_timer(4.5).timeout
-	
+	dragon.animations.is_roaring = false
 	next_state = "Idle"
 
 func effect_process(delta):
