@@ -5,5 +5,6 @@ func can_be_obtained():
 	return super.can_be_obtained()
 
 func render_item_effect():
-	pass
+	PlayerStats.active_spell = PlayerStats.SPELL_TYPE.Ice
+	Game.player_ui.set_item_texture($Sprite2D.texture)
 

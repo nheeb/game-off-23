@@ -16,7 +16,10 @@ func fall_down(target_pos: Vector3):
 	$PlayerDamageArea.activate()
 	Game.main_cam.screen_shake(.6)
 
+var crushing := false
 func crush():
+	if crushing: return
+	crushing = true
 	$Model.queue_free()
 	$GPUParticles3D.emitting = true
 	get_tree().create_timer($GPUParticles3D.lifetime).timeout.connect(queue_free)

@@ -25,7 +25,7 @@ var dodge_boost_speed: float
 const RESET_DODGE_JUMP_SPEED = 0.0
 var dodge_jump_speed: float
 
-enum SPELL_TYPE {None, Water, Carrot}
+enum SPELL_TYPE {None, Water, Carrot, Ice}
 const RESET_ACTIVE_SPELL = SPELL_TYPE.None
 var active_spell: SPELL_TYPE = SPELL_TYPE.None
 

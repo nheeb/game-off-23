@@ -18,6 +18,8 @@ func cast():
 		cast_water()
 	elif spell == PlayerStats.SPELL_TYPE.Carrot:
 		cast_carrot()
+	elif spell == PlayerStats.SPELL_TYPE.Ice:
+		cast_ice()
 	elif spell == PlayerStats.SPELL_TYPE.None:
 		pass
 
@@ -32,7 +34,7 @@ func cast_water():
 	apply_cooldown(25)
 	
 	var book = SPELLBOOK_EFFECT.instantiate()
-	book.set_color(Color.AQUA)
+	book.set_color(Color.ROYAL_BLUE)
 	Game.world.add_child(book)
 	await book.spell_cast
 	
@@ -61,6 +63,18 @@ func cast_carrot():
 		var pickup: CarrotPickup = PICKUP_CARROT.instantiate()
 		get_tree().get_root().add_child(pickup)
 		pickup.transform = Transform3D(Basis(), pos)
+	
+func cast_ice():
+	apply_cooldown(25)
+	
+	var book = SPELLBOOK_EFFECT.instantiate()
+	book.set_color(Color.WHITE)
+	Game.world.add_child(book)
+	await book.spell_cast
+	
+	magic_particles.emitting = true
+	Game.dragon.force_state_change("Freeze")
+
 
 func _on_cooldown_reset():
 	is_available = true

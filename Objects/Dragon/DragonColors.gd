@@ -46,9 +46,21 @@ class_name DragonColors extends Node
 @export var fallen_mat_scale_3: Material
 @export var fallen_mat_yolk_3: Material
 
+@export var freeze_mat: Material
+
+var freeze_effect := 0:
+	set(x):
+		freeze_effect = x
+		freeze_mat.set("shader_parameter/progress", x)
+
+func create_freeze_effect():
+	main_mesh.material_overlay = freeze_mat
+	second_mesh.material_overlay = freeze_mat
+
 func make_everything_ready():
 	insert_own_materials()
 	transition_to_stage(1, 1.0)
+	create_freeze_effect()
 
 func insert_own_materials():
 	main_mesh.set_surface_override_material(slot_skin, mat_skin)

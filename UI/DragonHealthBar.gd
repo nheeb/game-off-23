@@ -47,6 +47,7 @@ func render():
 		s.texture = textures[(stage-1)*variant_count+baked_randomness[i]]
 		s.position.x = offset_x + scale_offset * i
 		s.position.y = scale_offset
+		s.scale = Vector2.ONE * .2
 		add_child(s)
 	if displayed_health%health_per_scale > 0:
 		var s = Sprite2D.new()
@@ -56,6 +57,7 @@ func render():
 		var falling = (1-(float(displayed_health%health_per_scale) / health_per_scale))
 		s.position.y = scale_offset + falling * 16
 		s.rotation_degrees = falling * 70
+		s.scale = Vector2.ONE * .2
 		add_child(s)
 
 
