@@ -49,11 +49,11 @@
 [ext_resource type="Script" path="res://Objects/Dragon/Disrespect.gd" id="22_1tqa8"]
 [ext_resource type="Script" path="res://Objects/Dragon/Transform.gd" id="26_0a6bo"]
 [ext_resource type="Script" path="res://Objects/Dragon/DragonColors.gd" id="29_c323v"]
-[ext_resource type="Material" uid="uid://d2rcaqcr0v56j" path="res://Assets/Materials/dragon_skin.tres" id="30_6midm"]
-[ext_resource type="Material" uid="uid://c8vscq8ib10aa" path="res://Assets/Materials/dragon_dark.tres" id="31_2ge1n"]
-[ext_resource type="Material" uid="uid://cbjbyfq17gyqr" path="res://Assets/Materials/dragon_wings.tres" id="32_nwrji"]
-[ext_resource type="Material" uid="uid://c34vcbxgh2e8f" path="res://Assets/Materials/dragon_scale.tres" id="33_p63q4"]
-[ext_resource type="Material" uid="uid://mp6sgss4eiob" path="res://Assets/Materials/dragon_yolk.tres" id="34_jysc7"]
+[ext_resource type="Material" path="res://Assets/Materials/dragon_skin.tres" id="30_6midm"]
+[ext_resource type="Material" path="res://Assets/Materials/dragon_dark.tres" id="31_2ge1n"]
+[ext_resource type="Material" path="res://Assets/Materials/dragon_wings.tres" id="32_nwrji"]
+[ext_resource type="Material" path="res://Assets/Materials/dragon_scale.tres" id="33_p63q4"]
+[ext_resource type="Material" path="res://Assets/Materials/dragon_yolk.tres" id="34_jysc7"]
 [ext_resource type="AudioStream" uid="uid://cvts5jw4jicas" path="res://Assets/Audio/SFX/Dragon/Dragon_impact.ogg" id="35_05x6o"]
 [ext_resource type="AnimationNodeBlendSpace2D" uid="uid://7o48gnm7j66d" path="res://Objects/Dragon/MovementAndIdle.tres" id="37_753c5"]
 [ext_resource type="Script" path="res://Objects/Dragon/DragonAnimations.gd" id="38_6jqdu"]
@@ -191,39 +191,39 @@ unique_name_in_owner = true
 transform = Transform3D(-0.282, 0, 2.46532e-08, 0, 0.282, 0, -2.46532e-08, 0, -0.282, 0, 0, 0)
 
 [node name="Skeleton3D" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon" index="0"]
-bones/0/rotation = Quaternion(0.849193, 0.00486383, 0.0103354, 0.527959)
-bones/1/rotation = Quaternion(0.990693, 0.00144023, 6.67378e-06, 0.136104)
-bones/2/rotation = Quaternion(0.0657077, -0.000212014, 0.000992354, 0.997838)
-bones/3/rotation = Quaternion(-0.112332, -1.92107e-06, 0.000537651, 0.993671)
-bones/4/rotation = Quaternion(-0.144432, -0.000914012, 0.0014346, 0.989513)
-bones/18/rotation = Quaternion(-0.165779, 0.00636696, -0.00163337, 0.986141)
-bones/19/rotation = Quaternion(-0.0355506, 0.00689216, 0.0053278, 0.99933)
-bones/20/rotation = Quaternion(-0.0554458, -0.00691761, 0.00239368, 0.998435)
-bones/21/rotation = Quaternion(-0.428789, -0.000425946, -0.00015963, 0.903404)
-bones/23/rotation = Quaternion(0.236457, 0.00036638, 7.38319e-05, 0.971642)
+bones/0/rotation = Quaternion(0.849513, 0.00526345, 0.0106307, 0.527435)
+bones/1/rotation = Quaternion(0.990858, -0.00520395, -0.00147156, 0.1348)
+bones/2/rotation = Quaternion(0.0656348, 0.00027399, -0.000522026, 0.997844)
+bones/3/rotation = Quaternion(-0.113211, 0.00453409, -0.00993095, 0.993511)
+bones/4/rotation = Quaternion(-0.144489, 0.0054866, -0.00667017, 0.989469)
+bones/18/rotation = Quaternion(-0.166412, 0.00625438, -0.00137091, 0.986036)
+bones/19/rotation = Quaternion(-0.0363596, 0.00671411, 0.00521307, 0.999303)
+bones/20/rotation = Quaternion(-0.0531414, -0.0072915, 0.00256653, 0.998557)
+bones/21/rotation = Quaternion(-0.429719, -0.00120942, -0.000715991, 0.902962)
+bones/23/rotation = Quaternion(0.237298, 0.000204743, 4.12864e-05, 0.971437)
 bones/24/rotation = Quaternion(0.651335, 2.0062e-13, 3.10581e-07, 0.75879)
 bones/25/rotation = Quaternion(0.161979, -8.59443e-14, 7.72378e-08, 0.986794)
 bones/26/rotation = Quaternion(-0.158019, 1.99804e-06, -4.14512e-07, 0.987436)
 bones/27/rotation = Quaternion(-0.158019, -2.47494e-06, 3.01299e-07, 0.987436)
-bones/28/rotation = Quaternion(0.867525, 0.000380483, -7.07143e-05, 0.497394)
+bones/28/rotation = Quaternion(0.867558, 1.63152e-05, -5.76177e-06, 0.497336)
 bones/29/rotation = Quaternion(0.609715, -6.39997e-06, -3.90554e-06, 0.792621)
-bones/29/scale = Vector3(1.00013, 1.00013, 1.00013)
-bones/30/rotation = Quaternion(0.207152, 0.883221, 0.420672, -0.00661817)
-bones/31/rotation = Quaternion(-0.224385, 0.283719, 0.0153035, 0.932159)
-bones/32/rotation = Quaternion(-0.0727512, -0.0207264, -0.133186, 0.9882)
-bones/33/rotation = Quaternion(0.483818, -0.123328, -0.0748361, 0.863198)
+bones/29/scale = Vector3(1.00434, 1.00434, 1.00434)
+bones/30/rotation = Quaternion(0.206924, 0.88373, 0.419711, -0.00686603)
+bones/31/rotation = Quaternion(-0.223447, 0.283712, 0.0154299, 0.932385)
+bones/32/rotation = Quaternion(-0.0725212, -0.0208617, -0.133323, 0.988196)
+bones/33/rotation = Quaternion(0.483529, -0.123316, -0.0748206, 0.863363)
 bones/35/rotation = Quaternion(-0.298746, -0.0160535, 0.163362, 0.940109)
 bones/37/rotation = Quaternion(-0.315072, -0.0057585, -0.117104, 0.941798)
 bones/38/rotation = Quaternion(0.136278, 0.045421, 0.334214, 0.931486)
 bones/39/rotation = Quaternion(-0.181431, -0.00579888, -0.0679471, 0.981036)
 bones/40/rotation = Quaternion(0.179095, -0.00652144, -0.494568, 0.850461)
 bones/41/rotation = Quaternion(0.124299, -0.0360595, -0.147878, 0.980501)
-bones/50/rotation = Quaternion(0.486049, 0.0640847, 0.583972, 0.647014)
-bones/51/rotation = Quaternion(-0.188057, -0.00698936, 0.107111, 0.976275)
-bones/52/rotation = Quaternion(-0.00726174, 0.00768626, -0.0869981, 0.996152)
+bones/50/rotation = Quaternion(0.486055, 0.0644892, 0.58414, 0.646817)
+bones/51/rotation = Quaternion(-0.189178, -0.00693318, 0.106813, 0.976092)
+bones/52/rotation = Quaternion(-0.00756076, 0.00705056, -0.0879241, 0.996074)
 bones/53/rotation = Quaternion(-0.534743, 0.0828175, -0.000254228, 0.840946)
-bones/54/rotation = Quaternion(-0.0547759, 0.0245116, 0.0185021, 0.998026)
-bones/55/rotation = Quaternion(0.377139, -0.0357632, -0.184095, 0.906971)
+bones/54/rotation = Quaternion(-0.0540694, 0.022456, 0.0210327, 0.998063)
+bones/55/rotation = Quaternion(0.379137, -0.0375907, -0.178299, 0.907222)
 bones/56/rotation = Quaternion(-0.334135, 0.0914439, 0.379308, 0.857973)
 bones/57/rotation = Quaternion(-0.29952, 0.159761, 0.0220068, 0.940362)
 bones/58/rotation = Quaternion(-0.287714, 0.218032, -0.0417137, 0.931634)
@@ -231,24 +231,24 @@ bones/59/rotation = Quaternion(-0.642567, -0.0257656, 0.316713, 0.697235)
 bones/60/rotation = Quaternion(0.0815145, 0.0259223, 0.197794, 0.976504)
 bones/61/rotation = Quaternion(-0.304575, 0.107264, 0.328748, 0.887498)
 bones/63/rotation = Quaternion(-0.159717, 0.00665329, 0.0672508, 0.984847)
-bones/66/rotation = Quaternion(-0.46875, -0.042225, 0.493617, 0.731323)
-bones/74/rotation = Quaternion(-0.211931, 0.885672, 0.412707, 0.0185344)
-bones/75/rotation = Quaternion(-0.219812, -0.287314, -0.0276002, 0.931865)
-bones/76/rotation = Quaternion(-0.0715024, 0.0208067, 0.128004, 0.988974)
-bones/77/rotation = Quaternion(0.476259, 0.149582, 0.122149, 0.857836)
+bones/66/rotation = Quaternion(-0.469924, -0.0414362, 0.493327, 0.73081)
+bones/74/rotation = Quaternion(-0.211544, 0.886081, 0.412044, 0.0181502)
+bones/75/rotation = Quaternion(-0.219215, -0.287138, -0.027111, 0.932074)
+bones/76/rotation = Quaternion(-0.0710072, 0.0208838, 0.128112, 0.988994)
+bones/77/rotation = Quaternion(0.47899, 0.149626, 0.121539, 0.856393)
 bones/79/rotation = Quaternion(-0.298746, 0.0160534, -0.163362, 0.940109)
 bones/80/rotation = Quaternion(0.248921, -0.0309726, -0.219108, 0.942906)
 bones/81/rotation = Quaternion(-0.315072, 0.0057585, 0.117104, 0.941798)
 bones/83/rotation = Quaternion(-0.181431, 0.00579891, 0.067947, 0.981036)
-bones/84/rotation = Quaternion(0.181965, 0.0157519, 0.542266, 0.820115)
-bones/85/rotation = Quaternion(0.124299, 0.0360595, 0.147878, 0.980501)
+bones/84/rotation = Quaternion(0.182009, 0.0157742, 0.542317, 0.820071)
+bones/85/rotation = Quaternion(0.124371, 0.0360274, 0.147445, 0.980558)
 bones/86/rotation = Quaternion(0.014421, -0.0032481, -0.0429729, 0.998967)
-bones/94/rotation = Quaternion(0.485198, -0.0629017, -0.583444, 0.648243)
+bones/94/rotation = Quaternion(0.4863, -0.0637523, -0.584531, 0.646353)
 bones/95/rotation = Quaternion(-0.187836, 0.00700038, -0.107169, 0.976311)
 bones/97/rotation = Quaternion(-0.534743, -0.0828175, 0.000254219, 0.840946)
-bones/98/rotation = Quaternion(-0.0548682, -0.024694, -0.0183072, 0.99802)
-bones/99/rotation = Quaternion(0.377125, 0.0357449, 0.184145, 0.906967)
-bones/100/rotation = Quaternion(-0.334163, -0.0911875, -0.379398, 0.857949)
+bones/98/rotation = Quaternion(-0.0545202, -0.023887, -0.0191223, 0.998044)
+bones/99/rotation = Quaternion(0.381183, 0.0394125, 0.175076, 0.906915)
+bones/100/rotation = Quaternion(-0.33418, -0.0910394, -0.37945, 0.857935)
 bones/101/rotation = Quaternion(-0.29952, -0.159761, -0.0220068, 0.940362)
 bones/102/rotation = Quaternion(-0.287714, -0.218032, 0.0417136, 0.931634)
 bones/103/rotation = Quaternion(-0.642567, 0.0257655, -0.316713, 0.697235)
@@ -256,391 +256,391 @@ bones/105/rotation = Quaternion(-0.304575, -0.107264, -0.328748, 0.887498)
 bones/106/rotation = Quaternion(-0.394263, -0.0189913, -0.117372, 0.911274)
 bones/107/rotation = Quaternion(-0.159717, -0.00665334, -0.0672508, 0.984847)
 bones/109/rotation = Quaternion(-0.191043, -0.172777, -0.202489, 0.944801)
-bones/110/rotation = Quaternion(-0.46874, 0.0422054, -0.493624, 0.731326)
+bones/110/rotation = Quaternion(-0.469438, 0.041558, -0.493485, 0.731008)
 bones/111/rotation = Quaternion(0.00589085, -0.0185857, 0.107242, 0.994042)
 bones/113/rotation = Quaternion(0.00871579, -0.0136268, -0.360458, 0.932635)
 bones/118/rotation = Quaternion(0.12509, -4.86113e-13, 2.08767e-07, 0.992145)
-bones/118/scale = Vector3(1.00155, 1.00155, 1.00155)
-bones/146/rotation = Quaternion(0.653468, 0.00616114, -0.00624369, 0.756903)
+bones/118/scale = Vector3(1.00479, 1.00479, 1.00479)
+bones/146/rotation = Quaternion(0.654123, 0.00570033, -0.00584647, 0.756344)
 bones/147/rotation = Quaternion(0.180936, -0.15249, -0.630884, 0.738914)
 bones/147/scale = Vector3(0.886891, 0.886891, 0.886891)
 bones/158/rotation = Quaternion(-0.66262, 0.671799, 0.0367939, -0.329039)
-bones/168/rotation = Quaternion(-0.269438, -0.0279543, -0.403808, 0.87382)
-bones/169/rotation = Quaternion(-0.163627, 0.560094, 0.716076, -0.383087)
-bones/170/rotation = Quaternion(-0.197823, 0.150773, -0.126551, 0.96027)
-bones/171/rotation = Quaternion(0.34386, -0.0937271, -0.0616026, 0.932299)
-bones/172/rotation = Quaternion(0.549441, -0.0416924, 0.0137054, 0.834379)
+bones/168/rotation = Quaternion(-0.269587, -0.0283323, -0.403801, 0.873765)
+bones/169/rotation = Quaternion(-0.163846, 0.560372, 0.716042, -0.38265)
+bones/170/rotation = Quaternion(-0.19721, 0.150567, -0.126934, 0.960378)
+bones/171/rotation = Quaternion(0.344038, -0.0937047, -0.0616836, 0.93223)
+bones/172/rotation = Quaternion(0.548711, -0.0416767, 0.0137871, 0.834859)
 bones/176/rotation = Quaternion(0.0785907, -0.00330079, 0.143296, 0.986549)
 bones/182/rotation = Quaternion(-0.164516, -5.34165e-09, 0.694804, 0.70013)
-bones/183/rotation = Quaternion(-0.24188, 0.0183879, 0.415657, 0.876576)
-bones/184/rotation = Quaternion(0.154485, 0.58067, 0.683793, 0.413985)
-bones/185/rotation = Quaternion(-0.172125, -0.149641, 0.0760063, 0.970672)
-bones/186/rotation = Quaternion(0.30872, 0.101173, 0.0399646, 0.944912)
-bones/187/rotation = Quaternion(0.650437, 0.0580248, -0.0184931, 0.757115)
+bones/183/rotation = Quaternion(-0.241987, 0.0182593, 0.415803, 0.87648)
+bones/184/rotation = Quaternion(0.154541, 0.581124, 0.683228, 0.41426)
+bones/185/rotation = Quaternion(-0.171922, -0.149694, 0.0756895, 0.970724)
+bones/186/rotation = Quaternion(0.308793, 0.10119, 0.0399627, 0.944886)
+bones/187/rotation = Quaternion(0.651, 0.0580262, -0.018476, 0.756631)
 bones/188/rotation = Quaternion(0.0479883, -0.0435371, -0.266956, 0.961528)
 bones/189/rotation = Quaternion(0.0401303, -0.0294214, 0.22297, 0.973554)
 bones/191/rotation = Quaternion(0.0785907, 0.00330081, -0.143296, 0.986549)
 bones/197/rotation = Quaternion(0.509916, -2.05094e-07, 1.21574e-07, 0.860224)
-bones/198/position = Vector3(0.0644507, 0.0132336, -0.222732)
+bones/198/position = Vector3(0.0645724, 0.0132624, -0.222623)
 bones/198/rotation = Quaternion(-0.654889, -0.391504, -0.352094, 0.542103)
-bones/199/position = Vector3(-0.0995534, 0.0132361, -0.22373)
+bones/199/position = Vector3(-0.0996158, 0.0131918, -0.22379)
 bones/199/rotation = Quaternion(-0.666268, 0.361681, 0.326718, 0.564385)
-bones/200/position = Vector3(0.108973, 0.0249896, 0.105579)
+bones/200/position = Vector3(0.108935, 0.0250028, 0.105733)
 bones/200/rotation = Quaternion(-0.624997, -0.317551, -0.321426, 0.636573)
-bones/201/position = Vector3(-0.117891, 0.0229433, 0.103004)
-bones/201/rotation = Quaternion(-0.594962, 0.343719, 0.356822, 0.632895)
+bones/201/position = Vector3(-0.117742, 0.0228705, 0.102909)
+bones/201/rotation = Quaternion(-0.594957, 0.343723, 0.356816, 0.6329)
 bones/202/rotation = Quaternion(0.997489, 8.44314e-09, 1.1891e-07, 0.0708262)
 
 [node name="Plane_047" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="0"]
-transform = Transform3D(-0.0236487, -0.00104081, -0.00687743, 0.000585763, 0.0239883, -0.00564453, -0.00693104, 0.00557859, 0.0229888, -0.0278703, 0.259921, -0.334039)
+transform = Transform3D(-0.0237131, -0.00114262, -0.00663517, 0.000459047, 0.023962, -0.00576698, -0.00671717, 0.00567127, 0.0230296, -0.0301007, 0.260374, -0.333658)
 bone_idx = 5
 
 [node name="Plane_063" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="1"]
-transform = Transform3D(-0.0236487, -0.00104081, -0.00687743, 0.000585763, 0.0239883, -0.00564453, -0.00693104, 0.00557859, 0.0229888, -0.0479328, 0.238331, -0.235855)
+transform = Transform3D(-0.0237131, -0.00114262, -0.00663517, 0.000459047, 0.023962, -0.00576698, -0.00671717, 0.00567127, 0.0230296, -0.049145, 0.238321, -0.235375)
 bone_idx = 6
 
 [node name="Plane_064" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="2"]
-transform = Transform3D(-0.0236487, -0.00104081, -0.00687743, 0.000585763, 0.0239883, -0.00564453, -0.00693104, 0.00557859, 0.0229888, -0.0388532, 0.241223, -0.258007)
+transform = Transform3D(-0.0237131, -0.00114262, -0.00663517, 0.000459047, 0.023962, -0.00576698, -0.00671717, 0.00567127, 0.0230296, -0.0402829, 0.241346, -0.257597)
 bone_idx = 7
 
 [node name="Plane_068" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="3"]
-transform = Transform3D(-0.0236487, -0.00104081, -0.00687743, 0.000585763, 0.0239883, -0.00564453, -0.00693104, 0.00557859, 0.0229888, -0.0331711, 0.250182, -0.275865)
+transform = Transform3D(-0.0237131, -0.00114262, -0.00663517, 0.000459047, 0.023962, -0.00576698, -0.00671717, 0.00567127, 0.0230296, -0.034818, 0.250403, -0.275474)
 bone_idx = 8
 
 [node name="Plane_070" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="4"]
-transform = Transform3D(-0.0236487, -0.00104081, -0.00687743, 0.000585763, 0.0239883, -0.00564453, -0.00693104, 0.00557859, 0.0229888, -0.0307377, 0.256389, -0.30048)
+transform = Transform3D(-0.0237131, -0.00114262, -0.00663517, 0.000459047, 0.023962, -0.00576698, -0.00671717, 0.00567127, 0.0230296, -0.0326447, 0.25671, -0.300087)
 bone_idx = 9
 
 [node name="Plane_045" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="5"]
-transform = Transform3D(0.023798, -1.61928e-05, 0.00642655, 0.00147419, 0.0240068, -0.00539856, -0.0062552, 0.00559622, 0.0231776, 0.0500781, 0.24016, -0.23446)
+transform = Transform3D(0.0237108, -0.000143626, 0.00673949, 0.00168791, 0.0239863, -0.00542721, -0.00652628, 0.00568183, 0.0230818, 0.0489754, 0.240849, -0.234981)
 bone_idx = 12
 
 [node name="Plane_073" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="6"]
-transform = Transform3D(0.023798, -1.61928e-05, 0.00642655, 0.00147419, 0.0240068, -0.00539856, -0.0062552, 0.00559622, 0.0231776, 0.041531, 0.242724, -0.256862)
+transform = Transform3D(0.0237108, -0.000143626, 0.00673949, 0.00168791, 0.0239863, -0.00542721, -0.00652628, 0.00568183, 0.0230818, 0.0401473, 0.243422, -0.257274)
 bone_idx = 13
 
 [node name="Plane_075" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="7"]
-transform = Transform3D(0.023798, -1.61928e-05, 0.00642655, 0.00147419, 0.0240068, -0.00539856, -0.0062552, 0.00559622, 0.0231776, 0.0374544, 0.250821, -0.273334)
+transform = Transform3D(0.0237108, -0.000143626, 0.00673949, 0.00168791, 0.0239863, -0.00542721, -0.00652628, 0.00568183, 0.0230818, 0.0358142, 0.251543, -0.273667)
 bone_idx = 14
 
 [node name="Plane_078" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="8"]
-transform = Transform3D(0.023798, -1.61928e-05, 0.00642655, 0.00147419, 0.0240068, -0.00539856, -0.0062552, 0.00559622, 0.0231776, 0.0382627, 0.25157, -0.295179)
+transform = Transform3D(0.0237108, -0.000143626, 0.00673949, 0.00168791, 0.0239863, -0.00542721, -0.00652628, 0.00568183, 0.0230818, 0.0363616, 0.252375, -0.295518)
 bone_idx = 15
 
 [node name="Plane_079" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="9"]
-transform = Transform3D(0.023798, -1.61928e-05, 0.00642655, 0.00147419, 0.0240068, -0.00539856, -0.0062552, 0.00559622, 0.0231776, 0.0335085, 0.257843, -0.321192)
+transform = Transform3D(0.0237108, -0.000143626, 0.00673949, 0.00168791, 0.0239863, -0.00542721, -0.00652628, 0.00568183, 0.0230818, 0.0312542, 0.258699, -0.321451)
 bone_idx = 16
 
 [node name="Plane_081" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="10"]
-transform = Transform3D(0.023798, -1.61928e-05, 0.00642655, 0.00147419, 0.0240068, -0.00539856, -0.0062552, 0.00559622, 0.0231776, 0.0445758, 0.244291, -0.273334)
+transform = Transform3D(0.0237108, -0.000143626, 0.00673949, 0.00168791, 0.0239863, -0.00542721, -0.00652628, 0.00568183, 0.0230818, 0.0429872, 0.24507, -0.273774)
 bone_idx = 17
 
 [node name="Plane_030" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="11"]
-transform = Transform3D(0.021056, 0.00272991, 0.0166998, 0.000466858, 0.0265551, -0.0049296, -0.016915, 0.00413118, 0.0206521, 0.0988917, 0.148296, 0.0671019)
+transform = Transform3D(0.0210881, 0.00270444, 0.0166635, 0.000466258, 0.0265604, -0.00490077, -0.0168751, 0.00411352, 0.0206882, 0.0989599, 0.148291, 0.0673927)
 bone_idx = 43
 
 [node name="Plane_031" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="12"]
-transform = Transform3D(0.0136045, -0.00552576, -0.0226732, 0.00485248, 0.0263408, -0.00350801, 0.0228268, -0.00230616, 0.0142587, 0.0813918, 0.158975, 0.13117)
+transform = Transform3D(0.0135575, -0.00553875, -0.0226982, 0.00488113, 0.0263352, -0.00351077, 0.0228486, -0.00233942, 0.0142183, 0.0813303, 0.159014, 0.131418)
 bone_idx = 44
 
 [node name="Plane_032" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="13"]
-transform = Transform3D(0.0266152, -0.00387911, 0.00250524, 0.00360627, 0.0266138, 0.00289666, -0.0028842, -0.00251953, 0.02674, 0.0816702, 0.187602, 0.091127)
+transform = Transform3D(0.0266183, -0.00389187, 0.00245211, 0.00362142, 0.0266091, 0.00292132, -0.00283635, -0.00254988, 0.0267422, 0.0816664, 0.187606, 0.0913508)
 bone_idx = 45
 
 [node name="Plane_033" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="14"]
-transform = Transform3D(0.0268113, -0.00169606, 0.0028232, 0.00151756, 0.0269129, 0.0017563, -0.00292304, -0.00158456, 0.0268074, 0.113061, 0.122067, 0.105902)
+transform = Transform3D(0.0268158, -0.00171081, 0.0027707, 0.00153281, 0.0269104, 0.00178123, -0.00287301, -0.00161099, 0.0268113, 0.113072, 0.122105, 0.106242)
 bone_idx = 46
 
 [node name="Plane_034" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="15"]
-transform = Transform3D(0.0266342, -0.0037823, 0.00245074, 0.00352708, 0.0266371, 0.0027783, -0.00280567, -0.00241933, 0.0267576, 0.103062, 0.15789, 0.0987408)
+transform = Transform3D(0.0266372, -0.00379527, 0.00239766, 0.00354231, 0.0266325, 0.00280294, -0.00275771, -0.00244951, 0.0267598, 0.103064, 0.157916, 0.0990312)
 bone_idx = 47
 
 [node name="Plane_035" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="16"]
-transform = Transform3D(0.0223018, 0.00103824, 0.0152067, 0.00303959, 0.0261058, -0.00624021, -0.0149359, 0.00686306, 0.0214362, 0.112851, 0.12341, 0.0760686)
+transform = Transform3D(0.0223284, 0.00100784, 0.0151697, 0.00304152, 0.0261124, -0.00621169, -0.0148958, 0.00684254, 0.0214706, 0.112919, 0.123422, 0.0764075)
 bone_idx = 48
 
 [node name="Plane_036" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="17"]
-transform = Transform3D(0.0140812, -0.00345666, -0.0227917, 0.00307133, 0.0267506, -0.00215955, 0.0228468, -0.00146563, 0.0143376, 0.0913906, 0.123151, 0.138331)
+transform = Transform3D(0.0140354, -0.00347153, -0.0228177, 0.00310032, 0.0267471, -0.00216232, 0.0228711, -0.00149529, 0.0142958, 0.091339, 0.123203, 0.138629)
 bone_idx = 49
 
 [node name="Plane_048" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="18"]
-transform = Transform3D(0.00754387, -0.0158945, 0.034784, 0.0168733, 0.0394451, 0.00884219, -0.0331729, 0.016449, 0.0124078, 0.0454868, 0.189372, 0.157286)
+transform = Transform3D(0.00758512, -0.015927, 0.0347647, 0.0169071, 0.0394252, 0.00883897, -0.0331463, 0.0164651, 0.012464, 0.0453919, 0.189278, 0.157428)
 bone_idx = 70
 
 [node name="Plane_049" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="19"]
-transform = Transform3D(-0.000853898, -0.0106416, 0.036916, 0.0188202, 0.0383876, 0.00811049, -0.0329717, 0.0221871, 0.00367339, 0.0467935, 0.180723, 0.138301)
+transform = Transform3D(-0.000813402, -0.0106817, 0.0369088, 0.0188517, 0.0383636, 0.00811622, -0.0329547, 0.0222094, 0.00373186, 0.0467269, 0.180648, 0.138436)
 bone_idx = 71
 
 [node name="Plane_050" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="20"]
-transform = Transform3D(-0.00146649, -0.00644055, 0.0375651, 0.0189283, 0.0389985, 0.00537651, -0.0328882, 0.0227322, 0.00141933, 0.0445035, 0.163436, 0.138118)
+transform = Transform3D(-0.00142613, -0.00648158, 0.0375618, 0.0189596, 0.038975, 0.00538458, -0.0328719, 0.0227609, 0.00147606, 0.0444415, 0.163359, 0.138234)
 bone_idx = 72
 
 [node name="Plane_051" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="21"]
-transform = Transform3D(0.00911679, -0.0109996, 0.0357075, 0.0196726, 0.0388039, 0.00326802, -0.0311759, 0.0212694, 0.0125042, 0.0455166, 0.168459, 0.155683)
+transform = Transform3D(0.0091546, -0.0110385, 0.0356895, 0.0197049, 0.0387806, 0.00326495, -0.0311444, 0.0212916, 0.0125563, 0.0454292, 0.168366, 0.155805)
 bone_idx = 73
 
 [node name="Plane_037" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="22"]
-transform = Transform3D(-0.0264436, 0.00373097, -0.00406284, 0.00326114, 0.0266211, 0.00322101, -0.0044488, -0.00266262, 0.0265106, -0.113287, 0.155663, 0.0936112)
+transform = Transform3D(-0.0264498, 0.00369977, -0.00405123, 0.00323155, 0.0266252, 0.00321719, -0.00443372, -0.00266546, 0.0265128, -0.11324, 0.15557, 0.0937078)
 bone_idx = 87
 
 [node name="Plane_038" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="23"]
-transform = Transform3D(-0.0200118, -0.00315982, -0.0178671, 2.63634e-06, 0.0265995, -0.00470711, -0.0181444, 0.00348892, 0.0197054, -0.107167, 0.145557, 0.0624522)
+transform = Transform3D(-0.0200222, -0.00318746, -0.0178506, -2.01473e-05, 0.0265961, -0.00472649, -0.0181329, 0.00349003, 0.0197157, -0.107127, 0.14547, 0.0625456)
 bone_idx = 88
 
 [node name="Plane_039" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="24"]
-transform = Transform3D(-0.0149766, 0.00546662, 0.0218062, 0.00513601, 0.0263411, -0.00307606, 0.0218865, -0.0024406, 0.0156435, -0.0935982, 0.157485, 0.127249)
+transform = Transform3D(-0.0149697, 0.00543587, 0.0218186, 0.00511991, 0.0263471, -0.00305134, 0.0218949, -0.00244442, 0.0156311, -0.0935344, 0.157415, 0.127334)
 bone_idx = 89
 
 [node name="Plane_041" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="25"]
-transform = Transform3D(-0.0264205, 0.00383374, -0.00411702, 0.00333911, 0.0265969, 0.0033386, -0.00452746, -0.00275645, 0.0264877, -0.0916894, 0.185412, 0.0867581)
+transform = Transform3D(-0.0264268, 0.00380252, -0.00410555, 0.00330954, 0.0266011, 0.00333472, -0.0045124, -0.00275935, 0.02649, -0.09168, 0.185342, 0.0868416)
 bone_idx = 90
 
 [node name="Plane_043" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="26"]
-transform = Transform3D(-0.0265992, 0.00159672, -0.00443035, 0.00124851, 0.0268944, 0.00219703, -0.00454079, -0.00195858, 0.0265563, -0.123441, 0.119889, 0.100799)
+transform = Transform3D(-0.0266031, 0.00156562, -0.00441757, 0.00121875, 0.0268961, 0.0021928, -0.00452557, -0.00196021, 0.0265588, -0.12335, 0.119785, 0.100903)
 bone_idx = 91
 
 [node name="Plane_044" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="27"]
-transform = Transform3D(-0.0213918, -0.00163105, -0.0164142, 0.00259902, 0.0262114, -0.00599176, -0.016289, 0.00632423, 0.0206002, -0.12146, 0.120717, 0.0710124)
+transform = Transform3D(-0.021404, -0.00165663, -0.0163957, 0.00257475, 0.0262097, -0.00600949, -0.0162768, 0.00632448, 0.0206097, -0.121388, 0.120615, 0.0711147)
 bone_idx = 92
 
 [node name="Plane_046" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="28"]
-transform = Transform3D(-0.015441, 0.0033482, 0.0219102, 0.00335166, 0.0267485, -0.00172551, 0.0219097, -0.00173218, 0.0157054, -0.103752, 0.121711, 0.134437)
+transform = Transform3D(-0.0154322, 0.00331739, 0.0219211, 0.00333504, 0.0267522, -0.00170068, 0.0219185, -0.0017348, 0.0156928, -0.103644, 0.12163, 0.134529)
 bone_idx = 93
 
 [node name="Plane_052" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="29"]
-transform = Transform3D(-0.00616266, 0.0135707, -0.035726, 0.0162628, 0.0401346, 0.00776878, -0.033758, 0.0168573, 0.0102645, -0.0575296, 0.188021, 0.154982)
+transform = Transform3D(-0.00616869, 0.0135601, -0.0357278, 0.0163042, 0.0401168, 0.00774559, -0.033737, 0.016908, 0.0102759, -0.057528, 0.187897, 0.155037)
 bone_idx = 114
 
 [node name="Plane_053" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="30"]
-transform = Transform3D(0.00213873, 0.00803095, -0.0373196, 0.018499, 0.0389562, 0.00687466, -0.033095, 0.0222943, 0.00143096, -0.0574357, 0.179138, 0.13606)
+transform = Transform3D(0.0021321, 0.00802095, -0.0373215, 0.0185419, 0.03893, 0.00686232, -0.0330714, 0.0223437, 0.00144135, -0.0574325, 0.179038, 0.136104)
 bone_idx = 115
 
 [node name="Plane_054" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="31"]
-transform = Transform3D(0.00274141, 0.00378713, -0.0377439, 0.0186289, 0.039428, 0.004097, -0.0329774, 0.0225877, -0.000823251, -0.0545576, 0.161938, 0.136222)
+transform = Transform3D(0.00273474, 0.00377701, -0.0377451, 0.0186719, 0.0394002, 0.00408743, -0.0329537, 0.022638, -0.000816397, -0.0545495, 0.161839, 0.136244)
 bone_idx = 116
 
 [node name="Plane_055" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="32"]
-transform = Transform3D(-0.00794271, 0.00842758, -0.0364652, 0.0190267, 0.0393751, 0.00216746, -0.0318898, 0.0213938, 0.0103755, -0.0567611, 0.167104, 0.153636)
+transform = Transform3D(-0.00794943, 0.00841742, -0.0364654, 0.0190653, 0.0393501, 0.00214392, -0.0318651, 0.0214437, 0.0103798, -0.0567538, 0.166981, 0.153665)
 bone_idx = 117
 
 [node name="Plane_001" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="33"]
-transform = Transform3D(0.027674, -0.000731213, 0.00576246, 0.00060553, 0.0339418, 7.92472e-05, -0.00576282, 5.50826e-05, 0.0276806, 0.005117, 0.192217, 0.207376)
+transform = Transform3D(0.0277668, -0.000721014, 0.00576691, 0.000614385, 0.0340517, -5.30295e-06, -0.00576545, 0.000156246, 0.0277733, 0.00505, 0.191817, 0.20755)
 bone_idx = 119
 
 [node name="Plane_002" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="34"]
-transform = Transform3D(0.0262054, -0.00594935, 0.00938901, 0.00441442, 0.0334131, 0.00236398, -0.00965485, -0.000870634, 0.0265647, 0.0160973, 0.193276, 0.206323)
+transform = Transform3D(0.0262968, -0.00595576, 0.00940663, 0.00444776, 0.0335259, 0.0022888, -0.00965944, -0.00077672, 0.0266625, 0.0160668, 0.192878, 0.206503)
 bone_idx = 120
 
 [node name="Plane_003" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="35"]
-transform = Transform3D(0.0267251, -0.019413, 0.0243112, 0.0171534, 0.042464, 0.00466214, -0.023626, 0.00887102, 0.030885, 0.0267498, 0.192221, 0.197282)
+transform = Transform3D(0.0268301, -0.0194646, 0.0243758, 0.0172694, 0.042582, 0.00457593, -0.0236374, 0.00901655, 0.0310113, 0.0267581, 0.191843, 0.197435)
 bone_idx = 121
 
 [node name="Plane_004" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="36"]
-transform = Transform3D(0.0268086, -0.00100944, -0.000791761, 0.000838347, 0.032204, -9.14722e-05, 0.000794236, 8.00649e-05, 0.0268216, -0.00685071, 0.192066, 0.212671)
+transform = Transform3D(0.0268953, -0.0010008, -0.000808142, 0.000828698, 0.0323082, -0.000171567, 0.000813055, 0.000175975, 0.0269076, -0.00695923, 0.191654, 0.212856)
 bone_idx = 122
 
 [node name="Plane_005" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="37"]
-transform = Transform3D(0.0254123, 0.000693383, 0.00834184, 0.000723321, 0.0317438, -0.00403361, -0.00833047, 0.00487148, 0.0250968, -0.00111271, 0.173524, 0.204176)
+transform = Transform3D(0.0254991, 0.000704902, 0.00835445, 0.000741068, 0.0318316, -0.0041247, -0.00834221, 0.00498238, 0.0251702, -0.00120517, 0.173075, 0.204281)
 bone_idx = 123
 
 [node name="Plane_006" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="38"]
-transform = Transform3D(0.026729, -0.00110013, 0.00917329, 0.00246006, 0.0334079, -0.0043892, -0.00888464, 0.00594064, 0.026382, 0.0113128, 0.174815, 0.200411)
+transform = Transform3D(0.026821, -0.00109435, 0.0091878, 0.00248459, 0.0334985, -0.00448558, -0.00889231, 0.00605904, 0.0264589, 0.011263, 0.174376, 0.200514)
 bone_idx = 124
 
 [node name="Plane_007" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="39"]
-transform = Transform3D(0.0249426, -0.00183418, 0.0132272, 0.00359864, 0.0333991, -0.00357369, -0.0128196, 0.00580693, 0.0247325, 0.0207996, 0.175803, 0.198458)
+transform = Transform3D(0.0250313, -0.00183071, 0.013256, 0.00363926, 0.0334904, -0.00366403, -0.0128375, 0.0059245, 0.0248086, 0.0207818, 0.17537, 0.198563)
 bone_idx = 125
 
 [node name="Plane_008" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="40"]
-transform = Transform3D(0.0267151, -0.00306871, 0.00889941, 0.00379633, 0.0333923, -0.00340985, -0.00844506, 0.00530336, 0.0266195, 0.0166253, 0.16107, 0.188878)
+transform = Transform3D(0.0268073, -0.00306898, 0.00891327, 0.00382386, 0.0334855, -0.00350368, -0.00844733, 0.00541865, 0.0267, 0.0165935, 0.16062, 0.188905)
 bone_idx = 126
 
 [node name="Plane_009" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="41"]
-transform = Transform3D(0.0278759, -0.00327957, 0.00386003, 0.00348012, 0.0329914, -0.00569064, -0.00320135, 0.00730723, 0.0274252, 0.00526761, 0.160355, 0.19168)
+transform = Transform3D(0.0279691, -0.0032817, 0.00385632, 0.00349054, 0.0330775, -0.00579237, -0.00318701, 0.00742769, 0.0274989, 0.00519734, 0.159898, 0.191709)
 bone_idx = 127
 
 [node name="Plane_010" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="42"]
-transform = Transform3D(0.0281074, -0.0018708, 0.00264103, 0.00191142, 0.033554, -0.00385686, -0.00239771, 0.00481816, 0.0278851, -0.00717346, 0.163104, 0.195377)
+transform = Transform3D(0.0282003, -0.00186688, 0.00263382, 0.00191428, 0.0336488, -0.00395358, -0.00238534, 0.00493298, 0.027965, -0.00728488, 0.162649, 0.195419)
 bone_idx = 128
 
 [node name="Plane_011" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="43"]
-transform = Transform3D(0.0273172, -0.000733761, 0.00726783, 0.00168187, 0.0335524, -0.00397204, -0.00709691, 0.00512709, 0.0270338, -0.00171838, 0.150154, 0.189578)
+transform = Transform3D(0.0274099, -0.000726322, 0.00727599, 0.00169832, 0.0336458, -0.00406831, -0.00710082, 0.00524348, 0.0271131, -0.00181397, 0.149673, 0.189566)
 bone_idx = 129
 
 [node name="Plane_012" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="44"]
-transform = Transform3D(0.0273172, -0.000733761, 0.00726783, 0.00168187, 0.0335524, -0.00397204, -0.00709691, 0.00512709, 0.0270338, 0.0117509, 0.147021, 0.184135)
+transform = Transform3D(0.0274099, -0.000726322, 0.00727599, 0.00169832, 0.0336458, -0.00406831, -0.00710082, 0.00524348, 0.0271131, 0.0117006, 0.146541, 0.184103)
 bone_idx = 130
 
 [node name="Plane_013" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="45"]
-transform = Transform3D(0.0270857, 4.21995e-05, 0.00811099, 0.00303037, 0.0314384, -0.010233, -0.00752372, 0.0128145, 0.0250783, 0.00532985, 0.13909, 0.181863)
+transform = Transform3D(0.0271784, 4.74153e-05, 0.00812056, 0.00305254, 0.0315017, -0.010344, -0.0075251, 0.0129499, 0.025133, 0.00525694, 0.138593, 0.181797)
 bone_idx = 131
 
 [node name="Plane_014" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="46"]
-transform = Transform3D(0.0270857, 4.21995e-05, 0.00811099, 0.00303037, 0.0314384, -0.010233, -0.00752372, 0.0128145, 0.0250783, -0.00261369, 0.135161, 0.180662)
+transform = Transform3D(0.0271784, 4.74153e-05, 0.00812056, 0.00305254, 0.0315017, -0.010344, -0.0075251, 0.0129499, 0.025133, -0.00271316, 0.134658, 0.180576)
 bone_idx = 132
 
 [node name="Plane_015" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="47"]
-transform = Transform3D(0.0270107, 0.000171733, 0.00835646, 0.00543776, 0.0254164, -0.0179388, -0.00634679, 0.022507, 0.0201939, 0.000940608, 0.122168, 0.174499)
+transform = Transform3D(0.0271034, 0.000170153, 0.00836647, 0.00546423, 0.0254313, -0.0180602, -0.00633721, 0.0226557, 0.0202099, 0.000850991, 0.121641, 0.174355)
 bone_idx = 133
 
 [node name="Plane_016" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="48"]
-transform = Transform3D(-0.0272684, -0.00139365, -0.00738316, -0.00111261, 0.0339211, -0.000331839, -0.00739056, 3.5462e-05, 0.0272911, -0.0175625, 0.191508, 0.206704)
+transform = Transform3D(-0.0273533, -0.00138559, -0.00742121, -0.00108397, 0.0340312, -0.000411658, -0.00743176, 0.000136159, 0.0273746, -0.0177029, 0.191116, 0.206863)
 bone_idx = 134
 
 [node name="Plane_017" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="49"]
-transform = Transform3D(-0.0258129, 0.00389292, -0.0110729, 0.00278772, 0.0337209, 0.0017241, -0.011196, -0.000579048, 0.0259585, -0.028506, 0.191881, 0.205001)
+transform = Transform3D(-0.0258897, 0.00391833, -0.0111215, 0.00283978, 0.0338301, 0.00165629, -0.0112371, -0.000478224, 0.0260419, -0.0286807, 0.191499, 0.20515)
 bone_idx = 135
 
 [node name="Plane_018" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="50"]
-transform = Transform3D(-0.0262996, 0.0161655, -0.0263388, 0.0154952, 0.0435766, 0.00307823, -0.0251969, 0.00992508, 0.0293845, -0.0385185, 0.19018, 0.195348)
+transform = Transform3D(-0.0263661, 0.0162289, -0.026438, 0.0156303, 0.0436818, 0.00301024, -0.0252456, 0.0100956, 0.0294752, -0.0387213, 0.189825, 0.195456)
 bone_idx = 136
 
 [node name="Plane_019" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="51"]
-transform = Transform3D(-0.0248706, -0.0029606, -0.00954343, -0.000849107, 0.0316295, -0.00459291, -0.00982016, 0.00476323, 0.0245669, -0.00999967, 0.173246, 0.203913)
+transform = Transform3D(-0.0249464, -0.0029609, -0.00958865, -0.000813261, 0.0317186, -0.00467756, -0.0098672, 0.00487156, 0.0246277, -0.0101209, 0.1728, 0.204012)
 bone_idx = 137
 
 [node name="Plane_020" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="52"]
-transform = Transform3D(-0.0262581, -0.00134085, -0.0104256, 0.000803075, 0.0334003, -0.00500208, -0.0104544, 0.0059335, 0.0258014, -0.022237, 0.173765, 0.199417)
+transform = Transform3D(-0.0263374, -0.00133585, -0.0104745, 0.000846673, 0.0334911, -0.00509141, -0.0104993, 0.00605173, 0.0258645, -0.0223953, 0.173339, 0.199496)
 bone_idx = 138
 
 [node name="Plane_021" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="53"]
-transform = Transform3D(-0.0243167, -0.00060107, -0.0144178, 0.00205822, 0.0334377, -0.0044382, -0.0142789, 0.00584346, 0.0239135, -0.0316349, 0.174164, 0.196904)
+transform = Transform3D(-0.0243873, -0.000593612, -0.0144784, 0.00211657, 0.0335286, -0.00451858, -0.0143314, 0.0059619, 0.0239702, -0.0318222, 0.17375, 0.196972)
 bone_idx = 139
 
 [node name="Plane_022" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="54"]
-transform = Transform3D(-0.0215789, -0.00185977, -0.0182038, 0.00181533, 0.0334419, -0.0045216, -0.0181792, 0.00554703, 0.0211566, -0.0264823, 0.159722, 0.187601)
+transform = Transform3D(-0.0216387, -0.00185623, -0.0182753, 0.00188353, 0.0335341, -0.00459261, -0.0182436, 0.00566387, 0.0212022, -0.0266534, 0.159287, 0.187598)
 bone_idx = 140
 
 [node name="Plane_023" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="55"]
-transform = Transform3D(-0.0246486, -0.00240949, -0.0137056, 0.00132559, 0.0330271, -0.00641118, -0.0137882, 0.0074826, 0.0238847, -0.0152878, 0.159713, 0.191071)
+transform = Transform3D(-0.0247208, -0.00240888, -0.0137647, 0.00138023, 0.0331124, -0.00649812, -0.0138415, 0.00760418, 0.0239357, -0.0154245, 0.159263, 0.191085)
 bone_idx = 141
 
 [node name="Plane_024" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="56"]
-transform = Transform3D(-0.0269013, -0.00166677, -0.00859179, -1.36335e-05, 0.0335232, -0.004468, -0.0087032, 0.00509945, 0.026564, -0.00758989, 0.149971, 0.189404)
+transform = Transform3D(-0.0269839, -0.00166235, -0.00863491, 2.23343e-05, 0.0336169, -0.00455856, -0.00874517, 0.00521519, 0.0266321, -0.00770447, 0.149492, 0.189388)
 bone_idx = 142
 
 [node name="Plane_025" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="57"]
-transform = Transform3D(-0.0269013, -0.00166677, -0.00859179, -1.36335e-05, 0.0335232, -0.004468, -0.0087032, 0.00509945, 0.026564, -0.0204917, 0.146012, 0.18318)
+transform = Transform3D(-0.0269839, -0.00166235, -0.00863491, 2.23343e-05, 0.0336169, -0.00455856, -0.00874517, 0.00521519, 0.0266321, -0.0206463, 0.145544, 0.183125)
 bone_idx = 143
 
 [node name="Plane_026" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="58"]
-transform = Transform3D(-0.0267296, -0.00276254, -0.00892533, 0.00134748, 0.0313507, -0.0107658, -0.00911806, 0.0127314, 0.0245736, -0.013465, 0.138502, 0.181306)
+transform = Transform3D(-0.0268109, -0.00276639, -0.00897084, 0.00138902, 0.031415, -0.0108706, -0.00915722, 0.0128648, 0.0246163, -0.0135987, 0.138012, 0.181227)
 bone_idx = 144
 
 [node name="Plane_027" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="59"]
-transform = Transform3D(-0.0268747, -0.0030889, -0.00839996, 0.00375268, 0.0253145, -0.0184628, -0.00794321, 0.0224104, 0.0196975, -0.00760006, 0.121901, 0.174245)
+transform = Transform3D(-0.0269562, -0.00310102, -0.00844412, 0.00379855, 0.0253305, -0.0185782, -0.00797146, 0.0225568, 0.0197017, -0.00771729, 0.121377, 0.174096)
 bone_idx = 145
 
 [node name="Plane_057" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="60"]
-transform = Transform3D(0.0239201, -0.000535553, -0.00122561, 0.000336693, 0.0236571, -0.00376629, 0.00129444, 0.00374321, 0.0236278, 0.0670072, 0.166713, 0.0161023)
+transform = Transform3D(0.0239192, -0.000552123, -0.00123602, 0.000351463, 0.0236569, -0.00376599, 0.00130731, 0.00374185, 0.0236273, 0.0670064, 0.166675, 0.0160988)
 bone_idx = 148
 
 [node name="Plane_065" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="61"]
-transform = Transform3D(0.0239201, -0.000535553, -0.00122561, 0.000336693, 0.0236571, -0.00376629, 0.00129444, 0.00374321, 0.0236278, 0.0527492, 0.202462, 0.00931431)
+transform = Transform3D(0.0239192, -0.000552123, -0.00123602, 0.000351463, 0.0236569, -0.00376599, 0.00130731, 0.00374185, 0.0236273, 0.0527301, 0.202415, 0.00930148)
 bone_idx = 149
 
 [node name="Plane_072" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="62"]
-transform = Transform3D(0.0239201, -0.000535553, -0.00122561, 0.000336693, 0.0236571, -0.00376629, 0.00129444, 0.00374321, 0.0236278, 0.059863, 0.199964, -0.0251904)
+transform = Transform3D(0.0239192, -0.000552123, -0.00123602, 0.000351463, 0.0236569, -0.00376599, 0.00130731, 0.00374185, 0.0236273, 0.059864, 0.199919, -0.0251993)
 bone_idx = 151
 
 [node name="Plane_074" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="63"]
-transform = Transform3D(0.0239201, -0.000535553, -0.00122561, 0.000336693, 0.0236571, -0.00376629, 0.00129444, 0.00374321, 0.0236278, 0.0680658, 0.171832, -0.0222323)
+transform = Transform3D(0.0239192, -0.000552123, -0.00123602, 0.000351463, 0.0236569, -0.00376599, 0.00130731, 0.00374185, 0.0236273, 0.0680825, 0.171793, -0.0222355)
 bone_idx = 152
 
 [node name="Plane_080" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="64"]
-transform = Transform3D(0.0239201, -0.000535553, -0.00122561, 0.000336693, 0.0236571, -0.00376629, 0.00129444, 0.00374321, 0.0236278, 0.0658227, 0.179862, -0.0470845)
+transform = Transform3D(0.0239192, -0.000552123, -0.00123602, 0.000351463, 0.0236569, -0.00376599, 0.00130731, 0.00374185, 0.0236273, 0.0658479, 0.17982, -0.0470892)
 bone_idx = 153
 
 [node name="Plane_086" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="65"]
-transform = Transform3D(0.0239201, -0.000535553, -0.00122561, 0.000336693, 0.0236571, -0.00376629, 0.00129444, 0.00374321, 0.0236278, 0.0633638, 0.169717, 0.00776739)
+transform = Transform3D(0.0239192, -0.000552123, -0.00123602, 0.000351463, 0.0236569, -0.00376599, 0.00130731, 0.00374185, 0.0236273, 0.0633657, 0.169676, 0.00776177)
 bone_idx = 154
 
 [node name="Plane_093" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="66"]
-transform = Transform3D(0.0239201, -0.000535553, -0.00122561, 0.000336693, 0.0236571, -0.00376629, 0.00129444, 0.00374321, 0.0236278, 0.0535326, 0.137964, -0.00382237)
+transform = Transform3D(0.0239192, -0.000552123, -0.00123602, 0.000351463, 0.0236569, -0.00376599, 0.00130731, 0.00374185, 0.0236273, 0.0535602, 0.137916, -0.00383185)
 bone_idx = 155
 
 [node name="Plane_102" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="67"]
-transform = Transform3D(0.0239201, -0.000535553, -0.00122561, 0.000336693, 0.0236571, -0.00376629, 0.00129444, 0.00374321, 0.0236278, 0.0602532, 0.152098, -0.0345894)
+transform = Transform3D(0.0239192, -0.000552123, -0.00123602, 0.000351463, 0.0236569, -0.00376599, 0.00130731, 0.00374185, 0.0236273, 0.0602887, 0.152054, -0.0345959)
 bone_idx = 156
 
 [node name="Plane_106" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="68"]
-transform = Transform3D(0.0239201, -0.000535553, -0.00122561, 0.000336693, 0.0236571, -0.00376629, 0.00129444, 0.00374321, 0.0236278, 0.0647843, 0.185416, -0.074926)
+transform = Transform3D(0.0239192, -0.000552123, -0.00123602, 0.000351463, 0.0236569, -0.00376599, 0.00130731, 0.00374185, 0.0236273, 0.064821, 0.185372, -0.0749316)
 bone_idx = 157
 
 [node name="Plane_060" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="69"]
-transform = Transform3D(-0.0268427, 0.00116397, 0.00279425, 0.00116429, 0.0269876, -5.73765e-05, 0.00279412, -6.33937e-05, 0.0268678, -0.0645766, 0.18262, 0.0281183)
+transform = Transform3D(-0.0268449, 0.0011474, 0.00277983, 0.00114791, 0.0269883, -5.44321e-05, 0.00277963, -6.40084e-05, 0.0268694, -0.0645936, 0.182502, 0.0280432)
 bone_idx = 159
 
 [node name="Plane_069" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="70"]
-transform = Transform3D(-0.0268427, 0.00116397, 0.00279425, 0.00116429, 0.0269876, -5.73765e-05, 0.00279412, -6.33937e-05, 0.0268678, -0.0484506, 0.220893, 0.0133897)
+transform = Transform3D(-0.0268449, 0.0011474, 0.00277983, 0.00114791, 0.0269883, -5.44321e-05, 0.00277963, -6.40084e-05, 0.0268694, -0.0484832, 0.220784, 0.0133215)
 bone_idx = 160
 
 [node name="Plane_076" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="71"]
-transform = Transform3D(-0.0268427, 0.00116397, 0.00279425, 0.00116429, 0.0269876, -5.73765e-05, 0.00279412, -6.33937e-05, 0.0268678, -0.0586357, 0.212197, -0.024114)
+transform = Transform3D(-0.0268449, 0.0011474, 0.00277983, 0.00114791, 0.0269883, -5.44321e-05, 0.00277963, -6.40084e-05, 0.0268694, -0.0586428, 0.212079, -0.0241872)
 bone_idx = 161
 
 [node name="Plane_077" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="72"]
-transform = Transform3D(-0.0268427, 0.00116397, 0.00279425, 0.00116429, 0.0269876, -5.73765e-05, 0.00279412, -6.33937e-05, 0.0268678, -0.0659079, 0.181589, -0.0153533)
+transform = Transform3D(-0.0268449, 0.0011474, 0.00277983, 0.00114791, 0.0269883, -5.44321e-05, 0.00277963, -6.40084e-05, 0.0268694, -0.0659009, 0.181468, -0.0154291)
 bone_idx = 162
 
 [node name="Plane_084" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="73"]
-transform = Transform3D(-0.0268427, 0.00116397, 0.00279425, 0.00116429, 0.0269876, -5.73765e-05, 0.00279412, -6.33937e-05, 0.0268678, -0.0609508, 0.184411, 0.0181023)
+transform = Transform3D(-0.0268449, 0.0011474, 0.00277983, 0.00114791, 0.0269883, -5.44321e-05, 0.00277963, -6.40084e-05, 0.0268694, -0.0609635, 0.184294, 0.0180291)
 bone_idx = 163
 
 [node name="Plane_089" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="74"]
-transform = Transform3D(-0.0268427, 0.00116397, 0.00279425, 0.00116429, 0.0269876, -5.73765e-05, 0.00279412, -6.33937e-05, 0.0268678, -0.0510441, 0.146782, 0.0102632)
+transform = Transform3D(-0.0268449, 0.0011474, 0.00277983, 0.00114791, 0.0269883, -5.44321e-05, 0.00277963, -6.40084e-05, 0.0268694, -0.0510295, 0.146671, 0.010197)
 bone_idx = 164
 
 [node name="Plane_091" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="75"]
-transform = Transform3D(-0.0268427, 0.00116397, 0.00279425, 0.00116429, 0.0269876, -5.73765e-05, 0.00279412, -6.33937e-05, 0.0268678, -0.0603235, 0.157254, -0.0260564)
+transform = Transform3D(-0.0268449, 0.0011474, 0.00277983, 0.00114791, 0.0269883, -5.44321e-05, 0.00277963, -6.40084e-05, 0.0268694, -0.0602958, 0.157136, -0.026128)
 bone_idx = 165
 
 [node name="Plane_095" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="76"]
-transform = Transform3D(-0.0268427, 0.00116397, 0.00279425, 0.00116429, 0.0269876, -5.73765e-05, 0.00279412, -6.33937e-05, 0.0268678, -0.0669833, 0.186095, -0.0445427)
+transform = Transform3D(-0.0268449, 0.0011474, 0.00277983, 0.00114791, 0.0269883, -5.44321e-05, 0.00277963, -6.40084e-05, 0.0268694, -0.0669633, 0.185972, -0.0446193)
 bone_idx = 166
 
 [node name="Plane_096" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="77"]
-transform = Transform3D(-0.0268427, 0.00116397, 0.00279425, 0.00116429, 0.0269876, -5.73765e-05, 0.00279412, -6.33937e-05, 0.0268678, -0.0674656, 0.187347, -0.0765467)
+transform = Transform3D(-0.0268449, 0.0011474, 0.00277983, 0.00114791, 0.0269883, -5.44321e-05, 0.00277963, -6.40084e-05, 0.0268694, -0.0674292, 0.187222, -0.0766236)
 bone_idx = 167
 
 [node name="Plane_040" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="78"]
-transform = Transform3D(0.0253754, -0.00812971, 0.00443711, -0.00507004, -0.00136296, 0.0264976, -0.00775082, -0.0257244, -0.00280617, 0.0884524, 0.164044, -0.152038)
+transform = Transform3D(0.0253658, -0.00814913, 0.00445652, -0.00510281, -0.001397, 0.0264896, -0.00776084, -0.0257164, -0.00285118, 0.0884008, 0.163958, -0.152016)
 bone_idx = 177
 
 [node name="Plane_042" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="79"]
-transform = Transform3D(0.0253754, -0.00812971, 0.00443711, -0.00507004, -0.00136296, 0.0264976, -0.00775082, -0.0257244, -0.00280617, 0.0834552, 0.118836, -0.181159)
+transform = Transform3D(0.0253658, -0.00814913, 0.00445652, -0.00510281, -0.001397, 0.0264896, -0.00776084, -0.0257164, -0.00285118, 0.0833462, 0.118707, -0.181062)
 bone_idx = 178
 
 [node name="Plane_056" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="80"]
-transform = Transform3D(0.0253754, -0.00812971, 0.00443711, -0.00507004, -0.00136296, 0.0264976, -0.00775082, -0.0257244, -0.00280617, 0.0744951, 0.166947, -0.172867)
+transform = Transform3D(0.0253658, -0.00814913, 0.00445652, -0.00510281, -0.001397, 0.0264896, -0.00776084, -0.0257164, -0.00285118, 0.0744309, 0.166839, -0.17284)
 bone_idx = 179
 
 [node name="Plane_058" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="81"]
-transform = Transform3D(0.0253754, -0.00812971, 0.00443711, -0.00507004, -0.00136296, 0.0264976, -0.00775082, -0.0257244, -0.00280617, 0.0846033, 0.145077, -0.14196)
+transform = Transform3D(0.0253658, -0.00814913, 0.00445652, -0.00510281, -0.001397, 0.0264896, -0.00776084, -0.0257164, -0.00285118, 0.0845435, 0.14501, -0.141905)
 bone_idx = 180
 
 [node name="Plane_059" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="82"]
-transform = Transform3D(0.0253754, -0.00812971, 0.00443711, -0.00507004, -0.00136296, 0.0264976, -0.00775082, -0.0257244, -0.00280617, 0.0725974, 0.129725, -0.20906)
+transform = Transform3D(0.0253658, -0.00814913, 0.00445652, -0.00510281, -0.001397, 0.0264896, -0.00776084, -0.0257164, -0.00285118, 0.0724773, 0.129561, -0.208972)
 bone_idx = 181
 
 [node name="Plane_029" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="83"]
-transform = Transform3D(-0.026397, 0.00548639, -0.0016708, -0.00211747, -0.00200969, 0.0268546, -0.00532996, -0.0263734, -0.0023939, -0.102603, 0.118374, -0.179674)
+transform = Transform3D(-0.0264042, 0.00545612, -0.00165585, -0.00210129, -0.00201878, 0.0268552, -0.00530053, -0.0263789, -0.00239769, -0.10273, 0.118346, -0.179612)
 bone_idx = 192
 
 [node name="Plane_061" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="84"]
-transform = Transform3D(-0.026397, 0.00548639, -0.0016708, -0.00211747, -0.00200969, 0.0268546, -0.00532996, -0.0263734, -0.0023939, -0.0875528, 0.165093, -0.172291)
+transform = Transform3D(-0.0264042, 0.00545612, -0.00165585, -0.00210129, -0.00201878, 0.0268552, -0.00530053, -0.0263789, -0.00239769, -0.0876408, 0.165057, -0.172255)
 bone_idx = 193
 
 [node name="Plane_062" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="85"]
-transform = Transform3D(-0.026397, 0.00548639, -0.0016708, -0.00211747, -0.00200969, 0.0268546, -0.00532996, -0.0263734, -0.0023939, -0.0997411, 0.163566, -0.150241)
+transform = Transform3D(-0.0264042, 0.00545612, -0.00165585, -0.00210129, -0.00201878, 0.0268552, -0.00530053, -0.0263789, -0.00239769, -0.0998059, 0.163543, -0.150192)
 bone_idx = 194
 
 [node name="Plane_066" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="86"]
-transform = Transform3D(-0.026397, 0.00548639, -0.0016708, -0.00211747, -0.00200969, 0.0268546, -0.00532996, -0.0263734, -0.0023939, -0.0971258, 0.144188, -0.140557)
+transform = Transform3D(-0.0264042, 0.00545612, -0.00165585, -0.00210129, -0.00201878, 0.0268552, -0.00530053, -0.0263789, -0.00239769, -0.0971926, 0.144164, -0.140506)
 bone_idx = 195
 
 [node name="Plane_067" parent="Model/FlyWavePivot/dragonmesh/metarig_dragon/Skeleton3D" index="87"]
-transform = Transform3D(-0.026397, 0.00548639, -0.0016708, -0.00211747, -0.00200969, 0.0268546, -0.00532996, -0.0263734, -0.0023939, -0.0932428, 0.128254, -0.208478)
+transform = Transform3D(-0.0264042, 0.00545612, -0.00165585, -0.00210129, -0.00201878, 0.0268552, -0.00530053, -0.0263789, -0.00239769, -0.0933947, 0.128214, -0.208428)
 bone_idx = 196
 
 [node name="States" type="Node" parent="."]
@@ -786,7 +786,7 @@ unique_name_in_owner = true
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 visible = false
 damage = 1
-knockback_force = 6.0
+knockback_force = 5.0
 
 [node name="KnockbackOrigin" parent="DamageAreas/BiteArea" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.101023, 1.28531)
