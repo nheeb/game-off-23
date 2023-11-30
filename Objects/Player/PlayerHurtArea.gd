@@ -3,9 +3,9 @@ class_name PlayerHurtArea extends Area3D
 @export var attack_state: bool = false
 var damage: int = 1
 
-func set_attacking(value: bool, damage: int = 0):
+func set_attacking(value: bool, _damage: int = 0):
 	attack_state = value
-	self.damage = damage 
+	self.damage = _damage 
 
 func is_attacking():
 	return attack_state

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://by3wimbhhfsey"
+path="res://.godot/imported/dragonmesh.rigged_1.4.6_export_28.11.obj-ef7506040f548d17d900a8fe5bc0e5bf.mesh"
+
+[deps]
+
+files=["res://.godot/imported/dragonmesh.rigged_1.4.6_export_28.11.obj-ef7506040f548d17d900a8fe5bc0e5bf.mesh"]
+
+source_file="res://Assets/Models/Dragon/dragonmesh.rigged_1.4.6_export_28.11.obj"
+dest_files=["res://.godot/imported/dragonmesh.rigged_1.4.6_export_28.11.obj-ef7506040f548d17d900a8fe5bc0e5bf.mesh", "res://.godot/imported/dragonmesh.rigged_1.4.6_export_28.11.obj-ef7506040f548d17d900a8fe5bc0e5bf.mesh"]
+
+[params]
+
+generate_tangents=true
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+optimize_mesh=true

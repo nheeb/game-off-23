@@ -6,7 +6,7 @@ func _process(delta):
 	var mouse_position := get_viewport().get_mouse_position()
 	var viewport_size = get_viewport().size
 	var vector : Vector2
-	vector = mouse_position
+	vector = Vector2(viewport_size) - mouse_position
 	
 	if (mouse_position.x < 0):
 		return

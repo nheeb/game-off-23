@@ -15,7 +15,7 @@ func _ready():
 		for item in get_children():
 			item.price = 1
 		await get_tree().process_frame
-		scale_bank = [90, 90, 90]
+		scale_bank = [18, 18, 18]
 		Game.player_ui.get_node("Cheats").visible = true
 
 func get_items_for_shop() -> Array[ItemData]:

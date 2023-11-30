@@ -37,7 +37,7 @@ func take_damage(source: Node3D, amount: int):
 		
 func heal(amount: int):
 	health = min(max_health, health + amount)
-	Game.player.get_node("HealEffect").emitting = true
+	Game.player.get_node("HealEffect").play()
 
 func can_take_damage():
 	return invulnerable_time_remaining <= 0.0

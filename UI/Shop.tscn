@@ -1,14 +1,15 @@
-[gd_scene load_steps=25 format=3 uid="uid://bkjep3xq6tfxs"]
+[gd_scene load_steps=26 format=3 uid="uid://bkjep3xq6tfxs"]
 
-[ext_resource type="Texture2D" uid="uid://bgxfs4owgftqh" path="res://Assets/Sprites/placeholder/Stand.png" id="1_dbt80"]
 [ext_resource type="Script" path="res://UI/Shop.gd" id="1_hwity"]
-[ext_resource type="Texture2D" uid="uid://m6g8gyy7gye0" path="res://Assets/Sprites/placeholder/Left.png" id="2_ocnwg"]
-[ext_resource type="Texture2D" uid="uid://dexvv0faoka5p" path="res://Assets/Sprites/placeholder/Shaft.png" id="3_brkt0"]
+[ext_resource type="Texture2D" uid="uid://dn2uq5dybbnd0" path="res://Assets/Sprites/Shop/background.png" id="2_0th4s"]
+[ext_resource type="Texture2D" uid="uid://cyspqkxui2oas" path="res://Assets/Sprites/Shop/Scales/centre.png" id="2_b28qb"]
 [ext_resource type="Texture2D" uid="uid://bgjitr5girrb" path="res://Assets/Sprites/placeholder/firesprite.png" id="4_b1whx"]
+[ext_resource type="Texture2D" uid="uid://dg7dmv5tloixc" path="res://Assets/Sprites/Shop/Scales/scale.png" id="5_aglen"]
 [ext_resource type="Texture2D" uid="uid://dsy5m87xkhbe3" path="res://Assets/Sprites/placeholder/shop_buy_enabled.png" id="6_2kpmp"]
+[ext_resource type="Texture2D" uid="uid://bgbjg4r3naft7" path="res://Assets/Sprites/Shop/Scales/arm.png" id="6_5jn5a"]
 [ext_resource type="Texture2D" uid="uid://b8hgq30xt4aak" path="res://Assets/Sprites/placeholder/shop_buy_disabled.png" id="7_1yekj"]
 [ext_resource type="PackedScene" uid="uid://b42unfgrjpgta" path="res://UI/ShopSlot.tscn" id="8_d5gcj"]
-[ext_resource type="PackedScene" path="res://UI/ShopTriangleButton.tscn" id="9_2vunc"]
+[ext_resource type="PackedScene" uid="uid://b3ux2ipqcro62" path="res://UI/ShopTriangleButton.tscn" id="9_2vunc"]
 [ext_resource type="AudioStream" uid="uid://bxkpu8u5pbmq1" path="res://Assets/Audio/SFX/Other/Push_button.ogg" id="10_i4hxo"]
 [ext_resource type="AudioStream" uid="uid://pvux7ata0wv0" path="res://Assets/Audio/SFX/Other/Scale_pickup.ogg" id="11_uswxo"]
 
@@ -87,7 +88,7 @@ animations = [{
 }]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ce5ek"]
-size = Vector2(37, 145)
+size = Vector2(23, 122)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sqyin"]
 size = Vector2(1135.75, 59.5)
@@ -98,33 +99,43 @@ scale_count_yellow = 20
 scale_count_red = 10
 scale_count_black = 5
 
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(583, 328)
+
+[node name="Background" type="Sprite2D" parent="Camera2D"]
+position = Vector2(-626.36, -328)
+scale = Vector2(0.685173, 0.685173)
+texture = ExtResource("2_0th4s")
+centered = false
+
 [node name="Scale" type="Node2D" parent="."]
 position = Vector2(276, 247)
 
 [node name="ScaleStand" type="Sprite2D" parent="Scale"]
 texture_filter = 1
 position = Vector2(343, 200.5)
-scale = Vector2(7, 7)
-texture = ExtResource("1_dbt80")
+scale = Vector2(0.459716, 0.459716)
+texture = ExtResource("2_b28qb")
 
 [node name="Left" type="AnimatableBody2D" parent="Scale"]
 position = Vector2(96, 200.5)
 
 [node name="Sprite2D" type="Sprite2D" parent="Scale/Left"]
 texture_filter = 1
-scale = Vector2(7, 7)
-texture = ExtResource("2_ocnwg")
+position = Vector2(33, -1.5)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("5_aglen")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Scale/Left"]
 position = Vector2(-10, 94.5)
 build_mode = 1
-polygon = PackedVector2Array(-87, -27, -64, -35, -41, -9, 69, -10, 80, -35, 106, -34, 85, 14, -51, 15)
+polygon = PackedVector2Array(-74, -13, -70, -15, -27, -3, 87, -1, 134, -14, 141, -5, 93, 15, -34, 14)
 one_way_collision = true
 
 [node name="scales_paid" type="Area2D" parent="Scale/Left"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Scale/Left/scales_paid"]
-position = Vector2(0, -11.5)
+position = Vector2(23, 19.5)
 shape = SubResource("RectangleShape2D_mi0mg")
 
 [node name="Fire" type="AnimatedSprite2D" parent="Scale/Left"]
@@ -141,19 +152,19 @@ position = Vector2(592, 200.5)
 
 [node name="Sprite2D" type="Sprite2D" parent="Scale/Right"]
 texture_filter = 1
-scale = Vector2(7, 7)
-texture = ExtResource("2_ocnwg")
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("5_aglen")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Scale/Right"]
 position = Vector2(-10, 94.5)
 build_mode = 1
-polygon = PackedVector2Array(-87, -27, -64, -35, -41, -9, 69, -10, 80, -35, 106, -34, 85, 14, -51, 15)
+polygon = PackedVector2Array(-107, -8, -103, -17, -51, 0, 57, 1, 103, -12, 111, -9, 70, 15, -66, 16)
 one_way_collision = true
 
 [node name="scales_paid" type="Area2D" parent="Scale/Right"]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Scale/Right/scales_paid"]
-position = Vector2(0, -11.5)
+position = Vector2(-14, 8.5)
 shape = SubResource("RectangleShape2D_mi0mg")
 
 [node name="Fire" type="AnimatedSprite2D" parent="Scale/Right"]
@@ -169,13 +180,23 @@ frame_progress = 0.423143
 texture_filter = 1
 position = Vector2(343, 84.5)
 scale = Vector2(7, 7)
-texture = ExtResource("3_brkt0")
 
 [node name="left_connect" type="Node2D" parent="Scale/ScaleShaft"]
 position = Vector2(-35.5714, 1.78571)
 
 [node name="right_connect" type="Node2D" parent="Scale/ScaleShaft"]
 position = Vector2(35.2857, 1.78571)
+
+[node name="Sprite2D" type="Sprite2D" parent="Scale/ScaleShaft"]
+position = Vector2(17.714, 1)
+scale = Vector2(0.0336281, 0.0336281)
+texture = ExtResource("6_5jn5a")
+
+[node name="Sprite2D2" type="Sprite2D" parent="Scale/ScaleShaft"]
+position = Vector2(-17, 1)
+scale = Vector2(0.0336281, 0.0336281)
+texture = ExtResource("6_5jn5a")
+flip_h = true
 
 [node name="DragonScale" type="Node2D" parent="."]
 
@@ -185,7 +206,7 @@ position = Vector2(35.2857, 1.78571)
 position = Vector2(364, 473)
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="Boundary/StaticBody2D"]
-position = Vector2(-102, 107.5)
+position = Vector2(-90.5, 119)
 shape = SubResource("RectangleShape2D_ce5ek")
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="Boundary/StaticBody2D"]
@@ -239,9 +260,6 @@ offset_bottom = 625.0
 texture_normal = ExtResource("6_2kpmp")
 texture_disabled = ExtResource("7_1yekj")
 stretch_mode = 0
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(583, 328)
 
 [node name="scale_spawn_point" type="Node2D" parent="."]
 position = Vector2(140, -258)

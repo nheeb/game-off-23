@@ -20,10 +20,9 @@ var textures = [
 	load("res://Assets/Sprites/Scales/dragon scales red.png"),
 	load("res://Assets/Sprites/Scales/dragon scales red.png"),
 	load("res://Assets/Sprites/Scales/dragon scales red.png"),
-	
-	load("res://Assets/Sprites/placeholder/dragon_scale_black_1.png"),
-	load("res://Assets/Sprites/placeholder/dragon_scale_black_2.png"),
-	load("res://Assets/Sprites/placeholder/dragon_scale_black_3.png"),
+	load("res://Assets/Sprites/Scales/dragon scales blue.png"),
+	load("res://Assets/Sprites/Scales/dragon scales blue.png"),
+	load("res://Assets/Sprites/Scales/dragon scales blue.png"),
 ]
 
 func set_stage(s):
@@ -34,9 +33,9 @@ func set_stage(s):
 		price_weight = 3
 	elif stage == 3:
 		price_weight = 5
-	var size:float = 1.0+(s-1.0)/2.0
-	$Sprite.scale = Vector2(size, size)
-	$Collision.scale = Vector2(size, size)
+#	var size:float = 1.0+(s-1.0)/2.0
+#	$Sprite.scale *= size
+#	$Collision.scale *= size
 	apply_changes()
 
 func set_variant(v):
