@@ -60,9 +60,6 @@ func cast_carrot():
 		pos = Functions.get_nearest_ground(pos) + Vector3.UP
 		var pickup: CarrotPickup = PICKUP_CARROT.instantiate()
 		get_tree().get_root().add_child(pickup)
-		print(pickup)
-		print(pickup.position)
-		print(pos)
 		pickup.transform = Transform3D(Basis(), pos)
 
 func _on_cooldown_reset():

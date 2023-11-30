@@ -24,7 +24,9 @@ func get_motion() -> PlayerMotion:
 
 func get_magic_casting() -> MagicCasting:
 	return %MagicCasting
-
+	
+func get_after_hit_system() -> AfterHitSystem:
+	return %AfterHitSystem
 
 @export var sound_attack : Array
 @export var sound_hurt : Array

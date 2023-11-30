@@ -26,7 +26,12 @@ const RESET_DODGE_JUMP_SPEED = 0.0
 var dodge_jump_speed: float
 
 enum SPELL_TYPE {None, Water, Carrot}
+const RESET_ACTIVE_SPELL = SPELL_TYPE.None
 var active_spell: SPELL_TYPE = SPELL_TYPE.None
+
+enum AFTER_HIT_DRAGON_EFFECT {None, CarrotProc}
+const RESET_AFTER_HIT_DRAGON_EFFECT = AFTER_HIT_DRAGON_EFFECT.None
+var after_hit_dragon_effect: AFTER_HIT_DRAGON_EFFECT = AFTER_HIT_DRAGON_EFFECT.None
 
 const RESET_CARROTS_PER_HEALTH = 3
 var carrots_per_health: int
@@ -40,6 +45,9 @@ func reset():
 	dodge_boost_speed = RESET_DODGE_BOOST_SPEED
 	dodge_jump_speed = RESET_DODGE_JUMP_SPEED
 	carrots_per_health = RESET_CARROTS_PER_HEALTH
+	carrots_per_health = RESET_CARROTS_PER_HEALTH
+	active_spell = RESET_ACTIVE_SPELL
+	after_hit_dragon_effect = RESET_AFTER_HIT_DRAGON_EFFECT
 
 func reset_and_render_equipped_items():
 	reset()

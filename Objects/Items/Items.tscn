@@ -233,7 +233,6 @@ texture = ExtResource("11_i81vn")
 [node name="CarrotSword" type="Node" parent="."]
 script = ExtResource("15_hirvj")
 order_index = 7
-slot = null
 price = 7
 stats = {
 "armor": 0,
@@ -244,7 +243,6 @@ stats = {
 "speed": 0
 }
 tooltip = "Fight with Carrots"
-not_obtainable = null
 
 [node name="Sprite2D" type="Sprite2D" parent="CarrotSword"]
 visible = false

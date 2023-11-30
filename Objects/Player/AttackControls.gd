@@ -18,7 +18,6 @@ var projectile_scene = preload("res://Objects/Projectiles/PlayerArrow.tscn")
 var carrot_missile_scene = preload('res://Objects/Projectiles/CarrotMissile.tscn')
 
 func _physics_process(delta):
-	PlayerStats.charged_attack_type = PlayerStats.CHARGED_ATTACK.CarrotMissile
 	if player.is_dead():
 		return
 	if sword_count < 1:

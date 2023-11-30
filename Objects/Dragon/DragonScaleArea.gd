@@ -35,6 +35,9 @@ func _on_hit(hit_object: PlayerHurtArea):
 const FALLEN_SCALE = preload("res://Objects/Projectiles/FallenScale.tscn")
 const HIT_EFFECT = preload("res://Objects/Effects/HitEffect.tscn")
 func take_damage(damage: int = 1):
+	# Player after hit hook
+	Game.player.get_after_hit_system().player_hit_dragon()
+	
 	# Hit effect
 	var hit_effect = HIT_EFFECT.instantiate()
 	Game.world.add_child(hit_effect)
