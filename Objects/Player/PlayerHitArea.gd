@@ -11,9 +11,6 @@ func _ready():
 	
 func _on_damage_taken(source: Node3D):
 	animation_tree.set("parameters/conditions/is_hit", true)
-	#var knockback = (player.global_position - source.global_position).normalized() * 3.0
-	#knockback.y = 0
-	#player_motion.apply_knockback(knockback)
 	await get_tree().create_timer(0.25).timeout
 	reset_animation()
 	
