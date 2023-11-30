@@ -674,7 +674,7 @@ script = ExtResource("8_u8nhm")
 
 [node name="SpitFireBall" type="Node" parent="States"]
 script = ExtResource("9_ev16w")
-fireball_sound = [null]
+fireball_sound = [ExtResource("16_5posu")]
 
 [node name="SpitFireCone" type="Node" parent="States"]
 script = ExtResource("10_b6fvh")
@@ -707,6 +707,7 @@ natural_state = false
 
 [node name="AirFireBalls" type="Node" parent="States"]
 script = ExtResource("16_a1ca1")
+fireball_sound = [ExtResource("16_5posu")]
 air_state = true
 
 [node name="AirFireCone" type="Node" parent="States"]
@@ -1004,6 +1005,17 @@ collision_mask = 1024
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="BoulderArea"]
 shape = SubResource("SphereShape3D_v1vee")
+[node name="AudioFireball" type="AudioStreamPlayer3D" parent="Audio"]
+unique_name_in_owner = true
+bus = &"SFX"
+
+[node name="AudioFireball2" type="AudioStreamPlayer3D" parent="Audio"]
+unique_name_in_owner = true
+bus = &"SFX"
+
+[node name="AudioFireball3" type="AudioStreamPlayer3D" parent="Audio"]
+unique_name_in_owner = true
+bus = &"SFX"
 
 [editable path="Model/FlyWavePivot/dragonmesh"]
 [editable path="DamageAreas/BiteArea"]

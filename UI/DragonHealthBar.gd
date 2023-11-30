@@ -14,10 +14,10 @@ var health_reduce_delay = 0.05
 var last_health_change = 0
 
 var textures = [
-	load("res://Assets/Sprites/placeholder/dragon_health_y1.png"),
-	load("res://Assets/Sprites/placeholder/dragon_health_y2.png"),
-	load("res://Assets/Sprites/placeholder/dragon_health_r1.png"),
-	load("res://Assets/Sprites/placeholder/dragon_health_r2.png"),
+	load("res://Assets/Sprites/Scales/dragon scales yellow.png"),
+	load("res://Assets/Sprites/Scales/dragon scales yellow.png"),
+	load("res://Assets/Sprites/Scales/dragon scales red.png"),
+	load("res://Assets/Sprites/Scales/dragon scales red.png"),
 	load("res://Assets/Sprites/placeholder/dragon_health_b1.png"),
 	load("res://Assets/Sprites/placeholder/dragon_health_b2.png"),
 ]
@@ -58,7 +58,15 @@ func render():
 		s.rotation_degrees = falling * 70
 		add_child(s)
 
+
+var latest_scale_amount : int = 0 :
+	set(value):
+		if (value > latest_scale_amount):
+			Music.play_scale_build_up_sound(value)
+		latest_scale_amount = value
+
 func _physics_process(delta):
+	latest_scale_amount = get_child_count()
 	if Game.current_game_state == Game.GAME_STATE.Battle:
 		visible = true
 		stage = Game.dragon.stage

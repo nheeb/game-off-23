@@ -10,6 +10,8 @@ const DURATION_PLAYER_MAX_DIST = 17.0
 const FIRE_BALL = preload("res://Objects/Projectiles/Fireball.tscn")
 const ATTACK_HINT_BALL = preload("res://Objects/Effects/AttackHintFallingDebris.tscn")
 
+@export var fireball_sound : Array
+
 func effect_start(index):
 	duration = 2.3 + min(1.0, dragon.player_distance / DURATION_PLAYER_MAX_DIST) * 2.0
 	timer = duration
@@ -21,6 +23,15 @@ func effect_start(index):
 
 	for i in range(3 if dragon.stage >= 1 else 5):
 		await get_tree().create_timer(.8).timeout
+		if (i % 3 == 0):
+			%AudioFireball.stream = fireball_sound.pick_random()
+			%AudioFireball.play()
+		if (i % 3 == 1):
+			%AudioFireball2.stream = fireball_sound.pick_random()
+			%AudioFireball2.play()
+		if (i % 3 == 2):
+			%AudioFireball3.stream = fireball_sound.pick_random()
+			%AudioFireball3.play()
 		var target_pos := Functions.no_y_normalized(Game.player.get_motion().last_frame_global_movement) * 4.5 + Game.player.global_position
 		var fire_ball = FIRE_BALL.instantiate()
 		Game.world.add_child(fire_ball)

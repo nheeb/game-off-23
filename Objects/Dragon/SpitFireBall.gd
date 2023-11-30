@@ -15,6 +15,8 @@ func effect_start(index):
 	await get_tree().create_timer(1.0).timeout
 	if not is_active(): return
 	dragon.animations.is_spitting_fire = true
+	%AudioDragonHead.stream = fireball_sound.pick_random()
+	%AudioDragonHead.play()
 	var fire_ball = FIRE_BALL.instantiate()
 	Game.world.add_child(fire_ball)
 	fire_ball.start(dragon.head_position.global_position, Game.player.global_position)

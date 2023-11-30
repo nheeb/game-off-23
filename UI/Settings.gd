@@ -2,8 +2,8 @@ extends Control
 
 
 func _ready():
-	Game.active_graphics_settings = %HSGraphicQuality.value
-	%LBGraphicsSettings.text = convert_graphics_to_string(%HSGraphicQuality.value)
+#	Game.active_graphics_settings = %HSGraphicQuality.value
+#	%LBGraphicsSettings.text = convert_graphics_to_string(%HSGraphicQuality.value)
 	
 	%MusicValue.text = str(%HSMusic.value)
 	%SFXValue.text = str(%HSSFX.value)

@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://bkkqlygjabdy5"]
+[gd_scene load_steps=5 format=3 uid="uid://bkkqlygjabdy5"]
 
 [ext_resource type="Script" path="res://UI/ParallaxBackgroundMenu.gd" id="1_buylq"]
-[ext_resource type="Texture2D" uid="uid://dyshfyg7xdrv2" path="res://Assets/Textures/butt_bunney.png" id="1_fre4g"]
+[ext_resource type="Texture2D" uid="uid://dnkpl5yk1w8ml" path="res://UI/2D Art/background.png" id="2_8heai"]
 [ext_resource type="Texture2D" uid="uid://dhvrkeoicqusy" path="res://icon.svg" id="2_uclcc"]
+[ext_resource type="Texture2D" uid="uid://cl78bjr8eihh6" path="res://UI/2D Art/rabbit.png" id="4_cyvcf"]
 
 [node name="ParallaxBackground" type="ParallaxBackground"]
 script = ExtResource("1_buylq")
@@ -13,9 +14,10 @@ motion_scale = Vector2(0.1, 0.1)
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxLayerBackground"]
 position = Vector2(574, 338)
 scale = Vector2(0.680112, 0.680112)
-texture = ExtResource("1_fre4g")
+texture = ExtResource("2_8heai")
 
 [node name="ParallaxLayerMidRange" type="ParallaxLayer" parent="."]
+visible = false
 motion_scale = Vector2(0.25, 0.25)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxLayerMidRange"]
@@ -34,6 +36,6 @@ texture = ExtResource("2_uclcc")
 motion_scale = Vector2(0.75, 0.75)
 
 [node name="Sprite2D4" type="Sprite2D" parent="ParallaxLayerForeground"]
-position = Vector2(397, 430)
-scale = Vector2(2.07813, 2.07813)
-texture = ExtResource("2_uclcc")
+position = Vector2(498.333, 368)
+scale = Vector2(0.67037, 0.67037)
+texture = ExtResource("4_cyvcf")
