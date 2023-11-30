@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b3gt4bse7nko4"]
+[gd_scene load_steps=3 format=3 uid="uid://b3gt4bse7nko4"]
 
 [ext_resource type="Script" path="res://UI/Settings.gd" id="1_v2pwj"]
+[ext_resource type="Texture2D" uid="uid://cdlqg0pcxoxmn" path="res://UI/2D Art/title screen.png" id="2_8lfac"]
 
 [node name="Settings" type="Control"]
 layout_mode = 3
@@ -11,7 +12,17 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_v2pwj")
 
+[node name="Baackground" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_8lfac")
+
 [node name="Background" type="ColorRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -29,51 +40,7 @@ grow_horizontal = 2
 grow_vertical = 2
 tab_alignment = 1
 
-[node name="Graphics" type="TabBar" parent="TabContainer"]
-layout_mode = 2
-tab_alignment = 1
-
-[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Graphics"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 300
-theme_override_constants/margin_top = 100
-theme_override_constants/margin_right = 300
-theme_override_constants/margin_bottom = 300
-
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Graphics/MarginContainer"]
-layout_mode = 2
-theme_override_constants/separation = 0
-
-[node name="HBGraphics" type="HBoxContainer" parent="TabContainer/Graphics/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_constants/separation = 10
-
-[node name="Label" type="Label" parent="TabContainer/Graphics/MarginContainer/VBoxContainer/HBGraphics"]
-layout_mode = 2
-text = "Quality"
-
-[node name="HSGraphicQuality" type="HSlider" parent="TabContainer/Graphics/MarginContainer/VBoxContainer/HBGraphics"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 1
-max_value = 4.0
-value = 2.0
-tick_count = 5
-ticks_on_borders = true
-
-[node name="LBGraphicsSettings" type="Label" parent="TabContainer/Graphics/MarginContainer/VBoxContainer/HBGraphics"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-
 [node name="Sound" type="TabBar" parent="TabContainer"]
-visible = false
 layout_mode = 2
 tab_alignment = 1
 
@@ -133,11 +100,6 @@ value = 50.0
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Controls" type="TabBar" parent="TabContainer"]
-visible = false
-layout_mode = 2
-tab_alignment = 1
-
 [node name="bt_return" type="Button" parent="."]
 layout_mode = 0
 anchor_left = 0.84375
@@ -147,7 +109,6 @@ anchor_bottom = 0.944444
 text = "Return"
 metadata/_edit_use_anchors_ = true
 
-[connection signal="value_changed" from="TabContainer/Graphics/MarginContainer/VBoxContainer/HBGraphics/HSGraphicQuality" to="." method="_on_hs_graphic_quality_value_changed"]
 [connection signal="value_changed" from="TabContainer/Sound/MarginContainer/VBoxContainer/HBMusic/HSMusic" to="." method="_on_hs_music_value_changed"]
 [connection signal="value_changed" from="TabContainer/Sound/MarginContainer/VBoxContainer/HBMusic2/HSSFX" to="." method="_on_hssfx_value_changed"]
 [connection signal="pressed" from="bt_return" to="." method="_on_bt_return_pressed"]

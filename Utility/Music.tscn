@@ -1,15 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://d37nrxxcr5mq8"]
+[gd_scene load_steps=8 format=3 uid="uid://d37nrxxcr5mq8"]
 
 [ext_resource type="Script" path="res://Utility/Music.gd" id="1_c3bne"]
 [ext_resource type="AudioStream" uid="uid://d1opaw7is7kk1" path="res://Assets/Audio/Music/ANOTHER_EPIC_BATTLE.mp3" id="2_nehde"]
 [ext_resource type="AudioStream" uid="uid://bf3b5l6es7nbn" path="res://Assets/Audio/Music/GAMEJAM_ETHNIC_BATTLE_MUSIC_noguitar.mp3" id="3_pi5k0"]
+[ext_resource type="AudioStream" uid="uid://r6ivdtmxs4a7" path="res://Assets/Audio/SFX/Dragon/Scale_drop_01.ogg" id="4_oge2w"]
+[ext_resource type="AudioStream" uid="uid://mqv2pqmyipnt" path="res://Assets/Audio/SFX/Dragon/Scale_drop_02.ogg" id="5_s0nvc"]
+[ext_resource type="AudioStream" uid="uid://d0agjg2ffk6h5" path="res://Assets/Audio/SFX/Dragon/Scale_drop_03.ogg" id="6_staao"]
+[ext_resource type="AudioStream" uid="uid://cbqy3m1nvpvut" path="res://Assets/Audio/SFX/Dragon/Scale_drop_04.ogg" id="7_e07n4"]
 
 [node name="Music" type="Node" node_paths=PackedStringArray("audio_player")]
 script = ExtResource("1_c3bne")
 audio_player = NodePath("AudioStreamPlayer")
 playlist = [ExtResource("2_nehde"), ExtResource("3_pi5k0")]
+scale_sound = [ExtResource("4_oge2w"), ExtResource("5_s0nvc"), ExtResource("6_staao"), ExtResource("7_e07n4")]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 bus = &"Music"
+
+[node name="AudioStreamScale" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+
+[node name="AudioStreamScale2" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+
+[node name="AudioStreamScale3" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
 
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

@@ -5,6 +5,7 @@ extends Node
 @export var continue_music : bool = true
 
 @export var playlist : Array
+@export var scale_sound : Array
 
 @onready var MUSIC_BUS_ID = AudioServer.get_bus_index("Music")
 @onready var SFX_BUS_ID = AudioServer.get_bus_index("SFX")
@@ -19,7 +20,7 @@ var current_track : :
 		audio_player.play()
 
 func _ready():
-	# current_track = playlist.pick_random()
+	current_track = playlist.pick_random()
 	set_volume(Music.MUSIC_BUS_ID,0.2) # .5 was way to loud for me
 	set_volume(Music.SFX_BUS_ID,0.5)
 
@@ -36,6 +37,16 @@ func set_volume(bus_index:int,value:float) -> float: #range between 0 and 1
 	AudioServer.set_bus_volume_db(bus_index,linear_to_db(new_value))
 	return new_value
 
+func play_scale_build_up_sound(count:int) -> void:
+	if(count % 3 == 1): 
+		%AudioStreamScale.stream = scale_sound.pick_random()
+		%AudioStreamScale.play()
+	if(count % 3 == 2):
+		%AudioStreamScale2.stream = scale_sound.pick_random()
+		%AudioStreamScale2.play()
+	if(count % 3 == 0):
+		%AudioStreamScale3.stream = scale_sound.pick_random()
+		%AudioStreamScale3.play()
 
 func _on_audio_stream_player_finished():
 	if (loop):

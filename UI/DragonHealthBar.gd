@@ -57,8 +57,16 @@ func render():
 		s.position.y = scale_offset + falling * 16
 		s.rotation_degrees = falling * 70
 		add_child(s)
+	print("finished")
+
+var latest_scale_amount : int = 0 :
+	set(value):
+		if (value > latest_scale_amount):
+			Music.play_scale_build_up_sound(value)
+		latest_scale_amount = value
 
 func _physics_process(delta):
+	latest_scale_amount = get_child_count()
 	if Game.current_game_state == Game.GAME_STATE.Battle:
 		visible = true
 		stage = Game.dragon.stage
