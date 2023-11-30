@@ -180,13 +180,13 @@ persist = true
 [node name="Path" parent="level" instance=ExtResource("19_xxqcy")]
 
 [node name="Path2" parent="level" instance=ExtResource("19_xxqcy")]
-transform = Transform3D(-0.258819, 0, -0.965926, 0, 0.5, 0, 0.965926, 0, -0.258819, -7.8437, 1.12606, 30.9251)
+transform = Transform3D(-0.258819, 0, -0.965926, 0, 0.247181, 0, 0.965926, 0, -0.258819, -7.8437, 0.862055, 30.9251)
 
 [node name="Path3" parent="level" instance=ExtResource("19_xxqcy")]
-transform = Transform3D(-0.5, 0, 0.866025, 0, 0.5, 0, -0.866025, 0, -0.5, -11.9015, 0.755696, -6.99465)
+transform = Transform3D(-0.5, 0, 0.866025, 0, 0.20025, 0, -0.866025, 0, -0.5, -11.9015, 0.649266, -6.99465)
 
 [node name="Path4" parent="level" instance=ExtResource("19_xxqcy")]
-transform = Transform3D(0.707107, 0, 0.707107, 0, 0.5, 0, -0.707107, 0, 0.707107, 10.0985, 0.755696, -9.99465)
+transform = Transform3D(0.707107, 0, 0.707107, 0, 0.13907, 0, -0.707107, 0, 0.707107, 10.0985, 0.671729, -9.99465)
 
 [node name="Stalagmite11" parent="level" instance=ExtResource("9_2n3e5")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.94679, 0.898686, 68.5908)

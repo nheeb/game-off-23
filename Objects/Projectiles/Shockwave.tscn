@@ -92,7 +92,7 @@ script = ExtResource("1_v80lk")
 
 [node name="PlayerDamageArea" parent="." instance=ExtResource("2_q0mu4")]
 damage = 1
-knockback_force = 0.7
+knockback_force = 6.0
 active = true
 perishable = false
 

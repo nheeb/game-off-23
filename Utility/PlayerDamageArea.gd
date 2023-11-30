@@ -29,9 +29,10 @@ func _physics_process(delta):
 				if delete_on_perish:
 					queue_free()
 		if has_overlapping_areas() and $Timer.is_stopped():
-			do_damage()
-			if delete_on_player_hit:
-				queue_free()
+			if get_overlapping_areas().any(func (x): return x.name!="DragonDetection"):
+				do_damage()
+				if delete_on_player_hit:
+					queue_free()
 
 func activate(_lifetime := 0.0):
 	self.active = true

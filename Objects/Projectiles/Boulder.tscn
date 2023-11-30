@@ -77,7 +77,7 @@ shape = SubResource("SphereShape3D_nbyre")
 
 [node name="PlayerDamageArea" parent="." instance=ExtResource("2_lceue")]
 damage = 1
-knockback_force = 3.0
+knockback_force = 7.0
 delete_on_perish = true
 delete_on_player_hit = true
 

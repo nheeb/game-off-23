@@ -56,5 +56,6 @@ mesh = SubResource("ArrayMesh_4f54b")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("ConvexPolygonShape3D_8r2sp")
+disabled = true
 
 [editable path="path"]

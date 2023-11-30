@@ -231,6 +231,7 @@ func _on_shop_triangle_button_down_click():
 	scroll_items(-1)
 
 func scroll_items(direction: int):
+	if transition: return
 	item_cursor += - direction * 3
 	%ShopTriangleButtonUp.set_enabled(true if item_cursor > 0 else false)
 	%ShopTriangleButtonDown.set_enabled(true if item_cursor + 3 < item_count else false)
