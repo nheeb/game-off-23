@@ -8,12 +8,19 @@ const variant_count = 3
 @onready var sprite : Sprite2D = $Sprite
 
 var textures = [
-	load("res://Assets/Sprites/placeholder/dragon_scale_yellow_1.png"),
-	load("res://Assets/Sprites/placeholder/dragon_scale_yellow_2.png"),
-	load("res://Assets/Sprites/placeholder/dragon_scale_yellow_3.png"),
-	load("res://Assets/Sprites/placeholder/dragon_scale_red_1.png"),
-	load("res://Assets/Sprites/placeholder/dragon_scale_red_2.png"),
-	load("res://Assets/Sprites/placeholder/dragon_scale_red_3.png"),
+#	load("res://Assets/Sprites/placeholder/dragon_scale_yellow_1.png"),
+#	load("res://Assets/Sprites/placeholder/dragon_scale_yellow_2.png"),
+#	load("res://Assets/Sprites/placeholder/dragon_scale_yellow_3.png"),
+#	load("res://Assets/Sprites/placeholder/dragon_scale_red_1.png"),
+#	load("res://Assets/Sprites/placeholder/dragon_scale_red_2.png"),
+#	load("res://Assets/Sprites/placeholder/dragon_scale_red_3.png"),
+	load("res://Assets/Sprites/Scales/dragon scales yellow.png"),
+	load("res://Assets/Sprites/Scales/dragon scales yellow.png"),
+	load("res://Assets/Sprites/Scales/dragon scales yellow.png"),
+	load("res://Assets/Sprites/Scales/dragon scales red.png"),
+	load("res://Assets/Sprites/Scales/dragon scales red.png"),
+	load("res://Assets/Sprites/Scales/dragon scales red.png"),
+	
 	load("res://Assets/Sprites/placeholder/dragon_scale_black_1.png"),
 	load("res://Assets/Sprites/placeholder/dragon_scale_black_2.png"),
 	load("res://Assets/Sprites/placeholder/dragon_scale_black_3.png"),
