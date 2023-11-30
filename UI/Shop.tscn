@@ -134,7 +134,7 @@ texture = ExtResource("5_aglen")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Scale/Left"]
 position = Vector2(-10, 94.5)
 build_mode = 1
-polygon = PackedVector2Array(-74, -13, -70, -15, -27, -3, 87, -1, 134, -14, 141, -5, 93, 15, -34, 14)
+polygon = PackedVector2Array(-74, -13, -68, -21, -33, -6, 97, -6, 131, -26, 141, -5, 93, 15, -34, 14)
 one_way_collision = true
 
 [node name="scales_paid" type="Area2D" parent="Scale/Left"]
@@ -163,7 +163,7 @@ texture = ExtResource("5_aglen")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Scale/Right"]
 position = Vector2(-10, 94.5)
 build_mode = 1
-polygon = PackedVector2Array(-107, -8, -103, -17, -51, 0, 57, 1, 103, -12, 111, -9, 70, 15, -66, 16)
+polygon = PackedVector2Array(-107, -8, -96, -21, -54, 2, 57, 1, 95, -17, 111, -9, 70, 15, -66, 16)
 one_way_collision = true
 
 [node name="scales_paid" type="Area2D" parent="Scale/Right"]

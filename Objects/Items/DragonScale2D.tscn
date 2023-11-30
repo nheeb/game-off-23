@@ -1,10 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://ctqcnuwakd7eg"]
+[gd_scene load_steps=3 format=3 uid="uid://ctqcnuwakd7eg"]
 
 [ext_resource type="Script" path="res://Objects/Items/DragonScale2D.gd" id="1_mg0rl"]
 [ext_resource type="Texture2D" uid="uid://cpofh6pkkx7rh" path="res://Assets/Sprites/Scales/dragon scales blue.png" id="2_pnnj0"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_yxevt"]
-radius = 15.5563
 
 [node name="DragonScale" type="RigidBody2D"]
 max_contacts_reported = 5
@@ -13,15 +10,8 @@ can_sleep = false
 script = ExtResource("1_mg0rl")
 
 [node name="Sprite" type="Sprite2D" parent="."]
-scale = Vector2(0.2, 0.2)
+scale = Vector2(0.26, 0.26)
 texture = ExtResource("2_pnnj0")
 
-[node name="Collision" type="CollisionShape2D" parent="."]
-position = Vector2(-2, 5)
-rotation = 0.736762
-shape = SubResource("CircleShape2D_yxevt")
-
-[node name="Collision2" type="CollisionShape2D" parent="."]
-position = Vector2(4, -4)
-rotation = 0.736762
-shape = SubResource("CircleShape2D_yxevt")
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(-25, 13, -21, 21, 9, 25, 27, 3, 20, -22, 3, -25, -17, -9)
