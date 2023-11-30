@@ -5,6 +5,7 @@ class_name DragonAnimations extends Node
 @export var is_flying = false
 @export var is_dead = false
 @export var is_biting = false
+@export var is_spinning = false
 
 func reset():
 	is_roaring = false

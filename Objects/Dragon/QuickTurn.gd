@@ -8,6 +8,7 @@ func get_probability() -> float:
 
 func effect_start(index):
 	dragon.animations.is_flying = false
+	dragon.animations.is_spinning = true
 	dragon.angular_speed *= .33
 	var turn_sign = sign(dragon.player_face_angle_signed_rad)
 	dragon.turn_type = Dragon.TurnType.SPIN
@@ -20,6 +21,7 @@ func effect_start(index):
 	dragon.body_direction_target_direction = (-dragon.global_transform.basis.z).rotated(Vector3.UP, turn_sign * deg_to_rad(170.0))
 	await dragon.turn_done
 	await get_tree().create_timer(.3).timeout
+	dragon.animations.is_spinning = false
 	next_state = "Idle"
 
 func effect_process(delta):
