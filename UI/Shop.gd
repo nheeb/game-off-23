@@ -24,6 +24,8 @@ var spawned_scale_count = [0,0,0]
 @onready var right_scale_original_pos = get_node('Scale/Right').transform.origin
 @onready var right_scale_connect_original_pos = get_node('Scale/ScaleShaft/right_connect').get_relative_transform_to_parent(get_node('Scale')).origin
 
+@export var burn_mat: Material
+
 func set_yellow_scale(new_scale_count):
 	scale_count_yellow = new_scale_count
 	clear_scales()
@@ -91,7 +93,8 @@ func item_weight():
 	return weight
 
 func catch_fire():
-	pass
+	for x in items_in_fire:
+		x.visual_burn()
 
 var isSelected : bool = false
 var active_scale : :
@@ -172,25 +175,26 @@ func _physics_process(delta):
 func handle_fire(delta):
 	if fire_duration_left>0:
 		fire_duration_left = max(0, fire_duration_left - delta)
-		if fire_duration_left < 0.4 and len(items_in_fire) > 0:
+		burn_mat.set("shader_parameter/progress", 1.0 - (fire_duration_left / 2.5))
+		if fire_duration_left < 0.1 and len(items_in_fire) > 0:
 			for x in items_in_fire:
 				x.queue_free()
 			items_in_fire = []
-		if fire_duration_left == 0:
-			$Scale/Left/Fire.hide()
-			$Scale/Left/Fire.stop()
-			$Scale/Right/Fire.hide()
-			$Scale/Right/Fire.stop()
+#		if fire_duration_left == 0:
+#			$Scale/Left/Fire.hide()
+#			$Scale/Left/Fire.stop()
+#			$Scale/Right/Fire.hide()
+#			$Scale/Right/Fire.stop()
 
 func _on_buy_pressed():
 	%AudioStreamPlayer.play()
 	if transition: return
 	if scale_weight() >= item_weight():
-		fire_duration_left = 1.5
-		$Scale/Left/Fire.show()
-		$Scale/Left/Fire.play()
-		$Scale/Right/Fire.show()
-		$Scale/Right/Fire.play()
+		fire_duration_left = 2.5
+#		$Scale/Left/Fire.show()
+#		$Scale/Left/Fire.play()
+#		$Scale/Right/Fire.show()
+#		$Scale/Right/Fire.play()
 		# todo: change player owned items
 		for item in get_node("Scale/Right/scales_paid").get_overlapping_bodies():
 			if item is ShopItem:

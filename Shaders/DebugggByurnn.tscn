@@ -1,0 +1,49 @@
+[gd_scene load_steps=6 format=3 uid="uid://dm0doo8vhx8kb"]
+
+[ext_resource type="Texture2D" uid="uid://dohonxnyc67li" path="res://Assets/Sprites/Scales/dragon scales yellow.png" id="1_wups4"]
+
+[sub_resource type="Shader" id="Shader_af4ab"]
+code = "// NOTE: Shader automatically converted from Godot Engine 4.1.3.stable's CanvasItemMaterial.
+
+shader_type canvas_item;
+render_mode blend_mix;
+
+uniform vec4 color_blaze : source_color;
+uniform vec4 color_dark : source_color;
+uniform sampler2D noise_tex;
+uniform float progress : hint_range(0.0, 1.0);
+
+#include \"res://Shaders/lib.gdshaderinc\"
+
+void fragment() {
+	float noise = texture(noise_tex, UV).r;
+	float p = clamp_and_map(progress, 0.0, 1.0, -.6, 1.2);
+//	float p = mod(TIME * .33, 1.0);
+	COLOR.rgb = mix(color_dark.rgb, COLOR.rgb, clamp_and_map_and_pow(noise, p+.1, p + .8, 0.3, 1.0, 2.0));
+	COLOR.rgb = mix(color_blaze.rgb, COLOR.rgb, clamp_and_map(noise, p, p + .2, 0.0, 1.0));
+	COLOR.a = clamp_and_map(noise, p, p + .04, 0.0, 1.0) * COLOR.a;
+}"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_wkeil"]
+noise_type = 0
+seed = 3
+frequency = 0.012
+fractal_lacunarity = 2.505
+fractal_gain = 0.155
+fractal_weighted_strength = 0.74
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_62gtq"]
+width = 128
+height = 128
+noise = SubResource("FastNoiseLite_wkeil")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lxe8v"]
+shader = SubResource("Shader_af4ab")
+shader_parameter/color_blaze = Color(0.94902, 0.917647, 0, 1)
+shader_parameter/color_dark = null
+shader_parameter/progress = 0.0
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_62gtq")
+
+[node name="Sprite2D" type="Sprite2D"]
+material = SubResource("ShaderMaterial_lxe8v")
+texture = ExtResource("1_wups4")

@@ -64,3 +64,9 @@ func _on_area_input(viewport, event, shape_idx):
 				Game.shop.visually_equip_item(self)
 		else:
 			Game.shop.toggle_item_on_scale(self)
+
+func visual_burn():
+	can_sleep = false
+	sleeping = false
+	sprite.material = Game.shop.burn_mat
+	get_tree().create_tween().tween_property(self, "gravity_scale", -.6, 1.4).from(1.0)

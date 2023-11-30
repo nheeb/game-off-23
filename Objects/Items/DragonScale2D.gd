@@ -48,3 +48,9 @@ func apply_changes():
 
 func _ready():
 	apply_changes()
+
+func visual_burn():
+	can_sleep = false
+	sleeping = false
+	$Sprite.material = Game.shop.burn_mat
+	get_tree().create_tween().tween_property(self, "gravity_scale", -.6, 2.2).from(1.0)

@@ -1,8 +1,9 @@
-[gd_scene load_steps=26 format=3 uid="uid://bkjep3xq6tfxs"]
+[gd_scene load_steps=28 format=3 uid="uid://bkjep3xq6tfxs"]
 
 [ext_resource type="Script" path="res://UI/Shop.gd" id="1_hwity"]
 [ext_resource type="Texture2D" uid="uid://dn2uq5dybbnd0" path="res://Assets/Sprites/Shop/background.png" id="2_0th4s"]
 [ext_resource type="Texture2D" uid="uid://cyspqkxui2oas" path="res://Assets/Sprites/Shop/Scales/centre.png" id="2_b28qb"]
+[ext_resource type="Material" uid="uid://dnp0xhin1lo0l" path="res://Shaders/ItemBurn.tres" id="2_nje68"]
 [ext_resource type="Texture2D" uid="uid://bgjitr5girrb" path="res://Assets/Sprites/placeholder/firesprite.png" id="4_b1whx"]
 [ext_resource type="Texture2D" uid="uid://dg7dmv5tloixc" path="res://Assets/Sprites/Shop/Scales/scale.png" id="5_aglen"]
 [ext_resource type="Texture2D" uid="uid://dsy5m87xkhbe3" path="res://Assets/Sprites/placeholder/shop_buy_enabled.png" id="6_2kpmp"]
@@ -93,11 +94,15 @@ size = Vector2(23, 122)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sqyin"]
 size = Vector2(1135.75, 59.5)
 
+[sub_resource type="Environment" id="Environment_pbr86"]
+glow_enabled = true
+
 [node name="Shop" type="Node2D"]
 script = ExtResource("1_hwity")
 scale_count_yellow = 20
 scale_count_red = 10
 scale_count_black = 5
+burn_mat = ExtResource("2_nje68")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(583, 328)
@@ -315,6 +320,9 @@ bus = &"SFX"
 unique_name_in_owner = true
 stream = ExtResource("11_uswxo")
 bus = &"SFX"
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_pbr86")
 
 [connection signal="pressed" from="Control/Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="Control/Fight" to="." method="_on_fight_pressed"]
