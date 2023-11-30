@@ -1,0 +1,33 @@
+[gd_scene load_steps=3 format=3 uid="uid://d1ksmgvm5voqr"]
+
+[ext_resource type="PackedScene" uid="uid://tu2nkgdh1rfa" path="res://Assets/Models/Furniture/chair.blend" id="1_56cpr"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nh1fh"]
+albedo_color = Color(0.172549, 0.14902, 0.0823529, 1)
+
+[node name="Chair" type="Node3D"]
+transform = Transform3D(-0.973251, 0, 0.229744, 0, 1, 0, -0.229744, 0, -0.973251, -14.2023, 0.619374, 8.29303)
+
+[node name="Chair" parent="." instance=ExtResource("1_56cpr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Cube" parent="Chair" index="0"]
+transform = Transform3D(0.0585261, 0, 0, 0, 0.322296, 0, 0, 0, 0.0585261, -0.268019, 0, -0.274869)
+material_override = SubResource("StandardMaterial3D_nh1fh")
+
+[node name="Cube_001" parent="Chair" index="1"]
+material_override = SubResource("StandardMaterial3D_nh1fh")
+
+[node name="Cube_002" parent="Chair" index="2"]
+material_override = SubResource("StandardMaterial3D_nh1fh")
+
+[node name="Cube_003" parent="Chair" index="3"]
+surface_material_override/0 = SubResource("StandardMaterial3D_nh1fh")
+
+[node name="Cube_004" parent="Chair" index="4"]
+surface_material_override/0 = SubResource("StandardMaterial3D_nh1fh")
+
+[node name="Cube_005" parent="Chair" index="5"]
+surface_material_override/0 = SubResource("StandardMaterial3D_nh1fh")
+
+[editable path="Chair"]
