@@ -18,6 +18,7 @@ func get_probability() -> float:
 		return 0.0
 
 func effect_start(index):
+	dragon.animations.is_flying = false
 	dragon.turn_type = Dragon.TurnType.FOLLOW
 	get_tree().create_tween().tween_property(dragon.model, "rotation_degrees:x", -20, 1.0)
 	await get_tree().create_timer(1.7).timeout

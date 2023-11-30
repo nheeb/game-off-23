@@ -10,6 +10,7 @@ func get_probability() -> float:
 		return 0.0
 
 func effect_start(index):
+	dragon.animations.is_flying = false
 	await get_tree().create_timer(0.8).timeout
 	dragon.tail_area.activate()
 	%AudioDragonBody.stream = sound_impact.pick_random()

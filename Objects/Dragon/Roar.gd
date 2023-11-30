@@ -10,6 +10,7 @@ const ROAR_EFFECT = preload("res://Objects/Effects/RoarEffect.tscn")
 
 var last_y_pos: float
 func effect_start(index):
+	dragon.animations.is_flying = false
 	%AudioDragonHead.stream = roar_sound.pick_random()
 	%AudioDragonHead.play()
 	Functions.spawn_instance(ROAR_EFFECT, dragon.head_position.global_position, dragon.head_position_2)

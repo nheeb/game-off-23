@@ -10,6 +10,7 @@ func get_probability() -> float:
 @export var fireball_sound : Array
 
 func effect_start(index):
+	dragon.animations.is_flying = false
 	dragon.turn_type = Dragon.TurnType.TURN
 	dragon.body_direction_target_position = Game.player.global_position
 	await get_tree().create_timer(1.0).timeout

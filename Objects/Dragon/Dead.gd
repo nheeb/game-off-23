@@ -5,8 +5,10 @@ func get_probability() -> float:
 
 func effect_start(index):
 	dragon.reset_behaviour()
-	dragon.model.rotate(Vector3.RIGHT,deg_to_rad(180))
-	dragon.model.global_position.y += 1.5
+	
+	dragon.animations.is_dead = true
+	#dragon.model.rotate(Vector3.RIGHT,deg_to_rad(180))
+	#dragon.model.global_position.y += 1.5
 
 func effect_process(delta):
 	pass

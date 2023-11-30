@@ -10,6 +10,7 @@ const DIST_TO_PLAYER = 2.3
 @export var sound_impact : Array
 
 func effect_start(index):
+	dragon.animations.is_flying = false
 	%AudioDragonWings.stream = Game.dragon.sound_dragon_wing.pick_random()
 	%AudioDragonWings.play()
 	dragon.is_flying = false

@@ -4,6 +4,7 @@ func get_probability() -> float:
 	return 0.0
 
 func effect_start(index):
+	dragon.animations.is_flying = false
 	dragon.is_flying = false
 	var tween := get_tree().create_tween()
 	tween.tween_property(dragon.colors, "freeze_effect", 1.0, 1.0).from(0.0)

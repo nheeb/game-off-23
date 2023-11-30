@@ -12,6 +12,7 @@ const DURATION_PLAYER_MAX_DIST = 17.0
 const SPEED_MODIFIER = .5
 
 func effect_start(index):
+	dragon.animations.is_flying = false
 	duration = .8 + randf() * 1.2 + min(1.0, dragon.player_distance / DURATION_PLAYER_MAX_DIST) * 3.0
 	timer = duration
 	dragon.movement_type = Dragon.MovementType.CURVED_CLOCKWISE if randi() % 2 == 0 else Dragon.MovementType.CURVED_COUNTERCLOCKWISE

@@ -13,6 +13,7 @@ const ATTACK_HINT_BALL = preload("res://Objects/Effects/AttackHintFallingDebris.
 @export var fireball_sound : Array
 
 func effect_start(index):
+	dragon.animations.is_flying = true
 	duration = 2.3 + min(1.0, dragon.player_distance / DURATION_PLAYER_MAX_DIST) * 2.0
 	timer = duration
 	dragon.movement_type = Dragon.MovementType.CURVED_CLOCKWISE if randi() % 2 == 0 else Dragon.MovementType.CURVED_COUNTERCLOCKWISE
