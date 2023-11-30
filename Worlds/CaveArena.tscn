@@ -197,10 +197,6 @@ transform = Transform3D(-0.5, 0, 0.866025, 0, 1, 0, -0.866025, 0, -0.5, -25.6489
 [node name="House7" parent="level" instance=ExtResource("18_fpyce")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.4357, 0.532379, 24.3477)
 
-[node name="CarrotPickup" parent="level" instance=ExtResource("15_knxhg")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.9995, 2.69848, 1.52865)
-persist = true
-
 [node name="CarrotPickup4" parent="level" instance=ExtResource("15_knxhg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.9995, 3.61244, -21.9462)
 persist = true
