@@ -24,6 +24,7 @@ signal victory
 @onready var air_knockback_area : PlayerDamageArea = %AirKnockbackArea
 @onready var jump_landing_area : PlayerDamageArea = %JumpLandingArea
 @onready var head_position : Node3D = %HeadPosition
+@onready var head_position_2 : Node3D = %HeadPosition2
 @onready var tail_position : Node3D = %TailPosition
 @onready var model : Node3D = %Model
 @onready var animations : DragonAnimations = $AnimationTree

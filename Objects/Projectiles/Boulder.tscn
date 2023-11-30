@@ -4,8 +4,8 @@
 [ext_resource type="PackedScene" uid="uid://bfw4se6ttoft7" path="res://Utility/PlayerDamageArea.tscn" id="2_lceue"]
 [ext_resource type="PackedScene" uid="uid://bsmlfnjqi70jl" path="res://Assets/Models/cave/boulder.blend" id="2_s8kna"]
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_vnwmj"]
-points = PackedVector3Array(-0.198619, 1.04065, 0.0646753, -0.593669, 0.484527, -0.743893, -0.628995, 0.714155, 0.101797, -0.668763, 0.383049, 0.551776, -0.0538815, 0.739024, 0.489782, 0.598345, 0.538675, 0.528034, 0.580177, 0.771513, 0.134961, 0.519012, 0.817238, -0.3642, 0.00748545, 0.747647, -0.69735, -0.802599, -0.356174, -0.441646, -0.890007, -0.188516, -0.287696, -0.90656, 0.338327, -0.093232, -0.225871, 0.248681, -0.937226, -0.102127, -0.286985, -0.989799, -0.593669, -0.439803, 0.418365, -0.380096, 0.0437202, 0.906597, 0.281215, 0.079819, 0.888319, 1.09998, -0.284779, 0.399333, 0.941919, 0.459057, 0.0848378, 0.439881, -0.306639, 0.935239, 1.0263, 0.274953, -0.345922, 0.516993, 0.45645, -0.927239, -0.460236, -0.869179, 0.152862, -0.202454, -0.93917, -0.378144, 0.69524, -0.134568, -0.884653, 0.61409, -0.625111, -0.838675, -0.0958695, -0.706935, 0.757169, 1.15549, -0.172071, -0.0900286, 0.536978, -0.740627, 0.609625, 0.590674, -0.903673, 0.14231, 0.873285, -0.711948, -0.185753, -0.066599, -1.00816, 0.29626)
+[sub_resource type="SphereShape3D" id="SphereShape3D_nbyre"]
+radius = 1.06534
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_b6uh4"]
 radius = 2.26539
@@ -60,19 +60,20 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_qlgdk")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_jkhyg"]
-radius = 2.07394
+radius = 1.55952
 
 [node name="Boulder" type="Node3D"]
 script = ExtResource("1_itrvm")
 
 [node name="Model" parent="." instance=ExtResource("2_s8kna")]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Model/Icosphere" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Model"]
 collision_layer = 2
 collision_mask = 0
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Model/Icosphere/StaticBody3D"]
-shape = SubResource("ConvexPolygonShape3D_vnwmj")
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="Model/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0939355, 0, 0)
+shape = SubResource("SphereShape3D_nbyre")
 
 [node name="PlayerDamageArea" parent="." instance=ExtResource("2_lceue")]
 damage = 1
@@ -95,17 +96,19 @@ process_material = SubResource("ParticleProcessMaterial_s1fh2")
 draw_pass_1 = SubResource("ArrayMesh_l0aup")
 
 [node name="Timer" type="Timer" parent="."]
-wait_time = 20.0
+wait_time = 10.0
+one_shot = true
 autostart = true
 
 [node name="DragonDetection" type="Area3D" parent="."]
-collision_layer = 0
-collision_mask = 16
+collision_layer = 1032
+collision_mask = 1024
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="DragonDetection"]
 shape = SubResource("SphereShape3D_jkhyg")
 
 [connection signal="timeout" from="Timer" to="." method="crush"]
+[connection signal="area_entered" from="DragonDetection" to="." method="_on_dragon_detection_area_entered"]
 [connection signal="body_entered" from="DragonDetection" to="." method="_on_dragon_detection_body_entered"]
 
 [editable path="Model"]

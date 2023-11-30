@@ -61,7 +61,7 @@ var contract_velocity := 0.0
 var contract_direction: Vector3
 const CONTRACT_ACCEL = 2.0
 const CONTRACT_MAX_DIST = 2.6
-const CONTRACT_MAX_VELOCITY = 5.8
+const CONTRACT_MAX_VELOCITY = 12.0
 const CONTRACT_WAIT_FACTOR = .04
 func _physics_process(delta):
 	if falling:
@@ -80,10 +80,11 @@ func _physics_process(delta):
 		contract_velocity += delta * CONTRACT_ACCEL
 		contract_velocity = min(contract_velocity, CONTRACT_MAX_VELOCITY)
 		global_position += contract_direction * contract_velocity * delta
-		if Game.player.global_position.distance_to(global_position) <= CONTRACT_MAX_DIST and not shrinking:
+		if Game.player.global_position.distance_to(global_position) <= CONTRACT_MAX_DIST * contract_velocity / 5.0 and not shrinking:
 			shrinking = true
 			var tween := get_tree().create_tween()
-			tween.tween_property(self, "scale", Vector3.ONE*.2, .35)
+			tween.tween_property(self, "scale", Vector3.ONE*.2, .3)
+			tween.tween_callback(func (): visible = false)
 			tween.tween_callback(queue_free)
 
 func start_contracting():

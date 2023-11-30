@@ -14,6 +14,7 @@ func visual_equip(item: ShopItem):
 		Game.shop.place_in_stash(current_equipped)
 	item.global_position = $ItemSpawn.global_position
 	current_equipped = item
+	show_tooltip(true)
 
 func show_tooltip(x):
 	$LabelTooltip.visible = x

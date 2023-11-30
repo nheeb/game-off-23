@@ -12,7 +12,7 @@ var last_y_pos: float
 func effect_start(index):
 	%AudioDragonHead.stream = roar_sound.pick_random()
 	%AudioDragonHead.play()
-	Functions.spawn_instance(ROAR_EFFECT, dragon.head_position.global_position, dragon.head_position)
+	Functions.spawn_instance(ROAR_EFFECT, dragon.head_position.global_position, dragon.head_position_2)
 	last_y_pos = dragon.model.global_position.y
 	Game.main_cam.screen_shake()
 	await get_tree().create_timer(1.5).timeout

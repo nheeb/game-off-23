@@ -118,12 +118,12 @@ draw_pass_1 = SubResource("13")
 [node name="OmniLight" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.02012, 0)
 light_color = Color(1, 0.945098, 0.494118, 1)
-light_energy = 10.0
-omni_range = 7.51348
+light_energy = 12.0
+omni_range = 10.0
 
 [node name="PlayerDamageArea" parent="." instance=ExtResource("2_jvoci")]
-damage = 2
-knockback_force = 1.5
+damage = 1
+knockback_force = 9.0
 active = true
 default_lifetime = 0.4
 delete_on_perish = true

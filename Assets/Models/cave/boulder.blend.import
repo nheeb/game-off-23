@@ -34,7 +34,6 @@ _subresources={
 "import/skip_import": true
 },
 "PATH:Icosphere": {
-"generate/physics": true,
 "physics/shape_type": 1
 },
 "PATH:Light": {

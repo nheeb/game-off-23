@@ -5,7 +5,7 @@ var equipment: Dictionary = {} # SLOTS -> ItemData
 var scale_bank: Array[int] = [8, 0, 0]
 const SCALE_RATE = 9
 
-const CHEAT_ALL_COSTS_1 = false
+const CHEAT_ALL_COSTS_1 = true
 
 func _ready():
 	items.append_array(get_children().filter(func (x): return x is ItemData))
@@ -14,10 +14,13 @@ func _ready():
 	if CHEAT_ALL_COSTS_1:
 		for item in get_children():
 			item.price = 1
+		await get_tree().process_frame
+		scale_bank = [90, 90, 90]
+		Game.player_ui.get_node("Cheats").visible = true
 
 func get_items_for_shop() -> Array[ItemData]:
 	var item_array: Array[ItemData] = []
-	item_array.append_array(items.filter(func(x): return x.can_be_obtained()))
+	item_array.append_array(items.filter(func(x): return (not x.obtained) and x.can_be_obtained()))
 	item_array.sort_custom(func (a,b): return a.order_index < b.order_index)
 	return item_array
 

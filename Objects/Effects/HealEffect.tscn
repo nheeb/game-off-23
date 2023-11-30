@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://b62j6yjwux6fs"]
+[gd_scene load_steps=8 format=3 uid="uid://b62j6yjwux6fs"]
 
 [ext_resource type="Texture2D" uid="uid://cskdxsoxcqw05" path="res://Assets/Sprites/sparkle.png" id="1_ffjnk"]
+[ext_resource type="Script" path="res://Objects/Effects/HealEffect.gd" id="2_401nl"]
 
 [sub_resource type="Curve" id="Curve_sw2q0"]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.501701, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -37,11 +38,29 @@ particles_anim_loop = false
 material = SubResource("StandardMaterial3D_7kmrp")
 
 [node name="HealEffect" type="GPUParticles3D"]
-emitting = false
 amount = 16
 lifetime = 1.5
-one_shot = true
 explosiveness = 0.67
 visibility_aabb = AABB(-4.12475, -2.94498, -4.27211, 8.83492, 9.29557, 7.90407)
+local_coords = true
 process_material = SubResource("ParticleProcessMaterial_0q1ph")
 draw_pass_1 = SubResource("QuadMesh_dgv1s")
+script = ExtResource("2_401nl")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(0.892908, 0, 0.450239, 0, 1, 0, -0.450239, 0, 0.892908, -1.00124, 1.18901, -0.733567)
+light_color = Color(0.419608, 1, 0.129412, 1)
+omni_range = 3.0
+omni_attenuation = 0.965936
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(0.892908, 0, 0.450239, 0, 1, 0, -0.450239, 0, 0.892908, 1.49019, 2.13646, 0.0676459)
+light_color = Color(0.419608, 1, 0.129412, 1)
+omni_range = 3.0
+omni_attenuation = 0.965936
+
+[node name="OmniLight3D3" type="OmniLight3D" parent="."]
+transform = Transform3D(0.892908, 0, 0.450239, 0, 1, 0, -0.450239, 0, 0.892908, -0.235114, 3.02637, 0.937613)
+light_color = Color(0.419608, 1, 0.129412, 1)
+omni_range = 3.0
+omni_attenuation = 0.965936

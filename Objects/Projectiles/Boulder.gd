@@ -23,3 +23,6 @@ func crush():
 
 func _on_dragon_detection_body_entered(body):
 	crush()
+
+func _on_dragon_detection_area_entered(area):
+	crush()

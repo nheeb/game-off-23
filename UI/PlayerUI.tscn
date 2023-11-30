@@ -171,3 +171,16 @@ texture = ExtResource("9_73gqw")
 visible = false
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("10_0arrg")
+
+[node name="Cheats" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="Cheats"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "CHEATS ACTIVE"
