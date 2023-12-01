@@ -59,7 +59,7 @@ func cast_carrot():
 	for i in range(3):
 		var pos = Game.player.global_position \
 		+ Vector3(randf() * 25 - 12.5, 0.0, randf() * 25 - 12.5)
-		pos = Functions.get_nearest_ground(pos) + Vector3.UP
+		pos = Functions.get_nearest_ground(pos) + Vector3.UP * 2.0
 		var pickup: CarrotPickup = PICKUP_CARROT.instantiate()
 		get_tree().get_root().add_child(pickup)
 		pickup.transform = Transform3D(Basis(), pos)
