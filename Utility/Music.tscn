@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://d37nrxxcr5mq8"]
+[gd_scene load_steps=22 format=3 uid="uid://d37nrxxcr5mq8"]
 
 [ext_resource type="Script" path="res://Utility/Music.gd" id="1_c3bne"]
 [ext_resource type="AudioStream" uid="uid://d1opaw7is7kk1" path="res://Assets/Audio/Music/ANOTHER_EPIC_BATTLE.mp3" id="2_nehde"]
@@ -12,6 +12,15 @@
 [ext_resource type="AudioStream" uid="uid://2po73d84s8sd" path="res://Assets/Audio/Music/GAMEJAM_ETHNIC_BATTLE_MUSIC.mp3" id="10_b10we"]
 [ext_resource type="AudioStream" uid="uid://b7xwlk1eyl408" path="res://Assets/Audio/Music/ANOTHER_EPIC_ETHNIC_BATTLE.mp3" id="11_60f88"]
 [ext_resource type="AudioStream" uid="uid://cyfjihgj0874s" path="res://Assets/Audio/Music/DARK_SOULS_VIBE-EPIC_BATTLE_ORCHESTA.mp3" id="12_gl0tj"]
+[ext_resource type="AudioStream" uid="uid://do8xs8atiw5pb" path="res://Assets/Audio/shop_with_flute_arp_fast.mp3" id="13_k0myr"]
+[ext_resource type="AudioStream" uid="uid://c3o20iepfy1y8" path="res://Assets/Audio/SFX/Player/hit_no_dmg_01.ogg" id="13_uk1c0"]
+[ext_resource type="AudioStream" uid="uid://cuen2xmm1tg7v" path="res://Assets/Audio/SFX/Player/hit_no_dmg_02.ogg" id="14_e7h7g"]
+[ext_resource type="AudioStream" uid="uid://cjvbdm7l7wyhr" path="res://Assets/Audio/SFX/Player/hit_no_dmg_03.ogg" id="15_hu1rf"]
+[ext_resource type="AudioStream" uid="uid://d1i1b3bs55etd" path="res://Assets/Audio/SFX/Player/hit_no_dmg_04.ogg" id="16_lkfbl"]
+[ext_resource type="AudioStream" uid="uid://dne4h4rtuavat" path="res://Assets/Audio/SFX/Player/hit_no_dmg_05.ogg" id="17_pmkru"]
+[ext_resource type="AudioStream" uid="uid://0otfn3q5n1mj" path="res://Assets/Audio/SFX/Player/hit_no_dmg_06.ogg" id="18_o8ydn"]
+[ext_resource type="AudioStream" uid="uid://cm4vrsdnfscob" path="res://Assets/Audio/SFX/Player/hit_no_dmg_07.ogg" id="19_nj188"]
+[ext_resource type="AudioStream" uid="uid://ux4m3tq5hoe8" path="res://Assets/Audio/SFX/Player/hit_no_dmg_08.ogg" id="20_tklbn"]
 
 [node name="Music" type="Node" node_paths=PackedStringArray("audio_player")]
 script = ExtResource("1_c3bne")
@@ -22,17 +31,26 @@ music_ethnic = [ExtResource("3_pi5k0"), ExtResource("9_y5w1y"), ExtResource("10_
 music_anotherepic = [ExtResource("2_nehde"), ExtResource("11_60f88")]
 music_thirdtrack = [ExtResource("12_gl0tj")]
 music_victory = [null]
+sound_hit_no_dmg = [ExtResource("13_uk1c0"), ExtResource("14_e7h7g"), ExtResource("15_hu1rf"), ExtResource("16_lkfbl"), ExtResource("17_pmkru"), ExtResource("18_o8ydn"), ExtResource("19_nj188"), ExtResource("20_tklbn")]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 bus = &"Music"
 
 [node name="AudioStreamScale" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
+bus = &"SFX"
 
 [node name="AudioStreamScale2" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
+bus = &"SFX"
 
 [node name="AudioStreamScale3" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
+bus = &"SFX"
+
+[node name="AudioStreamShop" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("13_k0myr")
+bus = &"Music"
 
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

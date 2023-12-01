@@ -27,6 +27,7 @@ func _physics_process(delta):
 
 func _on_hit(hit_object: PlayerHurtArea):
 	if dead: 
+		Music.play_hit_no_dmg()
 		# TODO NIELS CLONK SOUND JETZT ABSPIELEN
 		return
 	if $Timer.is_stopped() and not Game.dragon.invincible:
