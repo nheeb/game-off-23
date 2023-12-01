@@ -302,6 +302,7 @@ tooltip = "Press E to cast"
 
 [node name="Cheers" type="Label" parent="Equipment"]
 unique_name_in_owner = true
+visible = false
 offset_left = -86.0
 offset_top = 51.0
 offset_right = 89.0
