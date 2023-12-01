@@ -70,7 +70,9 @@ func take_damage(damage: int = 1):
 		next_scale_index += damage * scales_per_damage
 	
 	# Throw fallen scales
-	var fallen_scale_count = randi_range(2,3)
+	var fallen_scale_count = randi_range(2, 3)
+	if randi_range(0, 3) < Game.death_count:
+		fallen_scale_count += 1
 #	if randf_range(0, 5) == 0:
 #		fallen_scale_count -= 1
 	for i in range(fallen_scale_count):
