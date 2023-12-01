@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://6scktaj5atmu"]
+[gd_scene load_steps=48 format=3 uid="uid://6scktaj5atmu"]
 
 [ext_resource type="Script" path="res://Worlds/World.gd" id="1_4gn8l"]
 [ext_resource type="PackedScene" uid="uid://d1t8v3yidk6mp" path="res://Objects/Player/Player.tscn" id="2_hplb1"]
@@ -29,6 +29,12 @@
 [ext_resource type="PackedScene" uid="uid://dkobdwtjrs2gu" path="res://Objects/Altar.tscn" id="26_qw1s6"]
 [ext_resource type="PackedScene" uid="uid://c3b0ys2pkk6dg" path="res://Assets/Models/Buildings/ToolShed.gltf" id="27_jdyar"]
 [ext_resource type="PackedScene" uid="uid://c8ofk4lg4njsq" path="res://Assets/Models/cave/small_rock.blend" id="29_viqwv"]
+[ext_resource type="PackedScene" uid="uid://c0dsol7a6j3ye" path="res://Assets/Models/Objects/wine1.blend" id="30_l2vku"]
+[ext_resource type="PackedScene" uid="uid://cpln5vlxte8g3" path="res://Assets/Models/Objects/wine2.blend" id="31_nsdrx"]
+[ext_resource type="PackedScene" uid="uid://cgwduf2aab2lv" path="res://Assets/Models/Gems/Emerald.glb" id="32_b6c5p"]
+[ext_resource type="PackedScene" uid="uid://bnqv4al4h1h51" path="res://Assets/Models/Gems/PearJem2.glb" id="33_h8dj0"]
+[ext_resource type="PackedScene" uid="uid://dbroxa7cpqa3f" path="res://Assets/Models/Gems/roundgem.glb" id="34_vxkle"]
+[ext_resource type="PackedScene" uid="uid://c1uv3dt7s3cxi" path="res://Assets/Models/Gems/diamondgem3.glb" id="35_gjuhx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7al5n"]
 albedo_color = Color(0.478431, 0.403922, 0.337255, 1)
@@ -271,7 +277,7 @@ transform = Transform3D(0.651489, 0.660143, 0.373862, -0.711756, 0.702426, 0, -0
 [node name="Chair" parent="level" instance=ExtResource("18_60ft8")]
 
 [node name="Chair2" parent="level" instance=ExtResource("18_60ft8")]
-transform = Transform3D(0.999635, 0, -0.026997, 0, 1, 0, 0.026997, 0, 0.999635, 20.8543, 0.619374, -2.52749)
+transform = Transform3D(0.999635, 0, -0.026997, 0, 1, 0, 0.026997, 0, 0.999635, 23.4729, 0.619374, -2.52749)
 
 [node name="Well" type="StaticBody3D" parent="level"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -27.6671, 1.27794, -15.8942)
@@ -434,6 +440,27 @@ multimesh = SubResource("MultiMesh_svpms")
 
 [node name="small_rock" parent="." instance=ExtResource("29_viqwv")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.50398, 0.627246, 7.9131)
+
+[node name="wine1" parent="." instance=ExtResource("30_l2vku")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -24.692, 0.933209, -10.4895)
+
+[node name="wine2" parent="." instance=ExtResource("30_l2vku")]
+transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, -24.5763, 0.933209, -10.3172)
+
+[node name="wine3" parent="." instance=ExtResource("31_nsdrx")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -24.3376, 1.18814, -10.1572)
+
+[node name="Emerald" parent="." instance=ExtResource("32_b6c5p")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 1.91715, 0.884288, -16.6701)
+
+[node name="PearJem2" parent="." instance=ExtResource("33_h8dj0")]
+transform = Transform3D(0.0376645, 0, 0.0926358, 0, 0.1, 0, -0.0926358, 0, 0.0376645, 0.88103, 0.892547, -18.8282)
+
+[node name="roundgem" parent="." instance=ExtResource("34_vxkle")]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, -4.28053, 0.877069, -17.1925)
+
+[node name="diamondgem3" parent="." instance=ExtResource("35_gjuhx")]
+transform = Transform3D(0.1, 0, 0, 0, 0.0287361, 0.0957823, 0, -0.0957823, 0.0287361, -3.45434, 0.887578, -18.7836)
 
 [editable path="level/dragon_cave2"]
 [editable path="level/dragon_cave2/dragon_cave2__floor"]
