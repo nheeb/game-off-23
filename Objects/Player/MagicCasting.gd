@@ -43,11 +43,11 @@ func cast_water():
 	bubble_mesh.visible = true
 	health_system.armour = 1
 	await get_tree().create_timer(5.0).timeout
-	for i in range(3):
+	for i in range(6):
 		bubble_mesh.visible = false
-		await get_tree().create_timer(.5).timeout
+		await get_tree().create_timer(.25).timeout
 		bubble_mesh.visible = true
-		await get_tree().create_timer(.5).timeout
+		await get_tree().create_timer(.25).timeout
 	bubble_mesh.visible = false
 	health_system.armour = 0
  

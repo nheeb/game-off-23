@@ -4,7 +4,7 @@ const ATTACK_HINT_BALL = preload("res://Objects/Effects/AttackHintFallingDebris.
 var roar_reference
 
 func fall_down(target_pos: Vector3):
-	var fall_time = .6 if Game.dragon.stage == 3 else .9
+	var fall_time = .75 if Game.dragon.stage == 3 else 1.0
 	var tween := get_tree().create_tween()
 	tween.tween_property(self, "global_position", Functions.get_nearest_ground(target_pos), fall_time).from(target_pos + Vector3.UP * 20.0).set_ease(Tween.EASE_IN).set_trans(Tween.TRANS_CUBIC)
 	var hint = ATTACK_HINT_BALL.instantiate()

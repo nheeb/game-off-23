@@ -296,12 +296,12 @@ text_direction = 2
 [node name="RichTextLabel2" type="RichTextLabel" parent="VictoryScreen/Credits/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "Coding   3D - Art
-Coding   3D - Art
+text = "Coding
+Coding
 Coding   3D - Art
 Coding
 
-3D Character & Animation
+3D Characters & Animation
 
 3D - Art
 3D - Art
@@ -310,7 +310,7 @@ Coding
 2D - Art
 
 Music
-Sound     Voices"
+Sound"
 
 [node name="Label2" type="Label" parent="VictoryScreen/Credits/MarginContainer/VBoxContainer"]
 layout_mode = 2
