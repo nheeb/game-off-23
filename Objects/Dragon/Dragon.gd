@@ -219,7 +219,10 @@ func movement_process(delta: float):
 			move_vector = global_position.direction_to(movement_pivot_position).cross(Vector3.UP).normalized() * movement_speed
 		MovementType.STANDING:
 			move_vector = Vector3.ZERO
-	animations.set('parameters/MovementAndIdle/blend_position', global_transform.basis * move_vector)
+	var animation_direction = move_vector
+	if animation_direction.length() > 0:
+		animation_direction = animation_direction.normalized()
+	animations.set('parameters/MovementAndIdle/blend_position', global_transform.basis * animation_direction)
 	$CollisionBody.velocity = move_vector
 	if has_gravity and not is_flying:
 		$CollisionBody.velocity.y -= GRAVITY

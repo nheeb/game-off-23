@@ -37,3 +37,4 @@ blend_point_3/node = SubResource("AnimationNodeAnimation_1ip62")
 blend_point_3/pos = Vector2(0, -1)
 blend_point_4/node = SubResource("AnimationNodeBlendTree_y3sog")
 blend_point_4/pos = Vector2(1, 0)
+sync = true

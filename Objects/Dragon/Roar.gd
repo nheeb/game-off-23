@@ -11,6 +11,7 @@ const ROAR_EFFECT = preload("res://Objects/Effects/RoarEffect.tscn")
 var last_y_pos: float
 func effect_start(index):
 	dragon.animations.is_flying = false
+	dragon.animations.is_roaring = true
 	%AudioDragonHead.stream = roar_sound.pick_random()
 	%AudioDragonHead.play()
 	Functions.spawn_instance(ROAR_EFFECT, dragon.head_position.global_position, dragon.head_position_2)
@@ -23,6 +24,7 @@ func effect_start(index):
 		Game.world.add_child(boulder)
 		boulder.fall_down(dragon.global_position + Vector3(randf_range(-1, 1) * 13.0, 5.0, randf_range(-1, 1) * 13.0))
 	await get_tree().create_timer(1).timeout
+	dragon.animations.is_roaring = false
 	if is_active(index):
 		next_state = "Idle"
 		dragon.model.global_position.y = last_y_pos
