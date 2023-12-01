@@ -280,14 +280,15 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Nitai
 Sam
-Borhan
 Niels
+Borhan
 
 Stefan
 
 Harry
 Jacko maddo
 Jackstrident
+
 Vincent
 
 Seymour
@@ -300,14 +301,15 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Coding   3D - Art
 Coding   3D - Art
-Coding
 Coding   3D - Art
+Coding
 
 3D Character & Animation
 
 3D - Art
 3D - Art
 3D - Art 
+
 2D - Art
 
 Music
@@ -315,7 +317,7 @@ Sound     Voices"
 
 [node name="Label2" type="Label" parent="VictoryScreen/Credits/MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "third party assets"
+text = "Press I to enter the shop"
 horizontal_alignment = 1
 
 [node name="RichTextLabel" type="RichTextLabel" parent="VictoryScreen/Credits/MarginContainer/VBoxContainer"]

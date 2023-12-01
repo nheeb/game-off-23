@@ -213,7 +213,7 @@ stats = {
 "throw": 1,
 "wing": 0
 }
-tooltip = "Throw Attack"
+tooltip = "Throw Sword"
 
 [node name="Sprite2D" type="Sprite2D" parent="BoomerangSword"]
 visible = false
