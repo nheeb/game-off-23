@@ -31,6 +31,7 @@ func defeat_animation(_source):
 	get_tree().call_group("fallen_scale", "start_contracting")
 	await get_tree().physics_frame
 	
+	Music.fade_out(1)
 	%AudioStreamPlayer.play()
 	
 	var all_scales = get_tree().get_nodes_in_group("fallen_scale")
@@ -67,6 +68,7 @@ func make_everything_ready_for_battle():
 var cutscene_running := false
 var cutscene_tooltip := false
 func start_cutscene():
+	Music.play_cutscene_music()
 	cutscene_running = true
 	Game.player.global_position = $PositionsForCutscene/PlayerPositionCutscene.global_position
 	Game.current_game_state = Game.GAME_STATE.Cutscene

@@ -1,6 +1,7 @@
 extends Node
 
 @export var audio_player : AudioStreamPlayer
+@export var play_dragonhealthbar_sound : bool = false
 @export var loop : bool = true
 @export var continue_music : bool = true
 
@@ -10,17 +11,26 @@ extends Node
 @onready var MUSIC_BUS_ID = AudioServer.get_bus_index("Music")
 @onready var SFX_BUS_ID = AudioServer.get_bus_index("SFX")
 
+@export var music_titlescreen : Array
+@export var music_ethnic : Array
+@export var music_anotherepic : Array
+@export var music_thirdtrack : Array
+@export var music_victory : Array
+
 var current_track : :
 	set(new_track):
 		if (current_track != null):
-			audio_player.stop()
 			current_track = null
+			audio_player.stop()
 		current_track = new_track
 		audio_player.stream = current_track
-		audio_player.play()
+		audio_player.play(start_at)
 
 func _ready():
-#	current_track = playlist.pick_random()
+	current_track = music_titlescreen.pick_random()
+	playlist.append_array(music_ethnic)
+	playlist.append_array(music_anotherepic)
+	playlist.append_array(music_thirdtrack)
 	set_volume(Music.MUSIC_BUS_ID,0.2) # .5 was way to loud for me
 	set_volume(Music.SFX_BUS_ID,0.5)
 
@@ -38,6 +48,7 @@ func set_volume(bus_index:int,value:float) -> float: #range between 0 and 1
 	return new_value
 
 func play_scale_build_up_sound(count:int) -> void:
+	if (!play_dragonhealthbar_sound): return
 	if(count % 3 == 1): 
 		%AudioStreamScale.stream = scale_sound.pick_random()
 		%AudioStreamScale.play()
@@ -49,6 +60,7 @@ func play_scale_build_up_sound(count:int) -> void:
 		%AudioStreamScale3.play()
 
 func _on_audio_stream_player_finished():
+	start_at = 0
 	if (loop):
 		current_track = current_track
 		return
@@ -60,8 +72,8 @@ func _on_audio_stream_player_finished():
 		current_track = new_track
 
 
-func fade_out(duration:float,new_track=null):
-	var previous_volume = AudioServer.get_bus_volume_db(MUSIC_BUS_ID)
+func fade_out(duration:float,new_track=null,_start_at:float=0):
+	var previous_volume = audio_player.volume_db
 	var tween := get_tree().create_tween()
 	tween.tween_property(audio_player,"volume_db", -80 ,duration)
 	await tween.finished
@@ -70,7 +82,17 @@ func fade_out(duration:float,new_track=null):
 	audio_player.volume_db = previous_volume
 	
 	if (new_track != null):
+		start_at = _start_at
 		current_track = new_track
+	else:
+		audio_player.stop()
 
-func start_track(new_track):
+var start_at :float= 0
+func start_track(new_track,_start_at:float=0):
 	current_track = new_track
+	start_at = _start_at
+
+func play_cutscene_music():
+	#fade_out(1.5,Music.music_ethnic[0],2)
+	start_track(Music.music_ethnic[0])
+	loop = false
