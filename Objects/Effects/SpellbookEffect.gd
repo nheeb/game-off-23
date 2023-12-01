@@ -10,3 +10,7 @@ func _physics_process(delta):
 func set_color(color: Color):
 	$book/BookLeft.mesh.surface_get_material(3).albedo_color = color
 	$book/PageMiddle.material_override.set("shader_parameter/text_col_magic", color)
+
+func _ready():
+	pass
+	# HIER NIELS MAGIC SPELL SOUND
