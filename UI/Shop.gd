@@ -140,11 +140,15 @@ func handle_scale_dragging(delta):
 
 func handle_scale_angle(delta):
 	# todo: make logarithmic scale?
-	var shaft_angle_target = max(-max_scale_angle, min(max_scale_angle, (item_weight()-scale_weight())))
+	var shaft_angle_target
+	if shaft_angle_time_left > 0.0:
+		shaft_angle_target = last_shaft_angle
+	else:
+		shaft_angle_target = max(-max_scale_angle, min(max_scale_angle, (item_weight()-scale_weight())))
 	if shaft_angle_target != last_shaft_angle:
 		last_shaft_angle = shaft_angle_target
 		shaft_angle_time_left = 1
-	shaft_angle_time_left = max(0.0, shaft_angle_time_left - delta)
+	shaft_angle_time_left = max(0.0, shaft_angle_time_left - delta*1.5)
 	shaft_angle = shaft_angle_target * (1 - shaft_angle_time_left) + shaft_angle * shaft_angle_time_left
 	get_node('Scale/ScaleShaft').rotation = deg_to_rad(shaft_angle)
 	var new_pos = get_node('Scale/ScaleShaft/left_connect').get_relative_transform_to_parent(get_node('Scale')).origin
@@ -168,9 +172,9 @@ func spawn_initial_scales():
 func _physics_process(delta):
 	spawn_initial_scales()
 	handle_scale_dragging(delta)
+	handle_fire(delta)
 	handle_scale_angle(delta)
 	handle_buy_button_visuals()
-	handle_fire(delta)
 
 func handle_fire(delta):
 	if fire_duration_left>0:
@@ -200,6 +204,10 @@ func _on_buy_pressed():
 			if item is ShopItem:
 				items_in_fire.append(item)
 				item.item_data_node.obtain()
+			elif item is DragonScaleItem:
+				var _scale = item
+				items_in_fire.append(_scale)
+				Items.scale_bank[_scale.stage-1] -= Items.SCALE_RATE
 		for _scale in get_node("Scale/Left/scales_paid").get_overlapping_bodies():
 			if _scale is DragonScaleItem:
 				items_in_fire.append(_scale)
@@ -242,6 +250,7 @@ func scroll_items(direction: int):
 	transition = true
 	var PAGE_SIZE = get_viewport_rect().size.y
 	var tween := get_tree().create_tween().set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_BACK).set_parallel()
+	tween.tween_interval(1.5)
 	for item in %Items.get_children():
 		item = item as ShopItem
 		if item.on_scale:
@@ -303,9 +312,11 @@ func setup_shop_slots():
 	shop_slots[ItemData.SLOTS.CONSUMABLE] = %ConsumableSlot
 
 func _on_fight_pressed():
+	Game.player_ui.set_carrot(0)
 	%AudioStreamPlayer.play()
 	if transition: return
 	transition = true
 	BlackScreen.fade_in()
 	await BlackScreen.fade_done
 	Game.load_game(false)
+

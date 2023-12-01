@@ -5,6 +5,7 @@
 [node name="ShopItem" type="RigidBody2D"]
 max_contacts_reported = 5
 contact_monitor = true
+can_sleep = false
 freeze = true
 script = ExtResource("1_yksaf")
 

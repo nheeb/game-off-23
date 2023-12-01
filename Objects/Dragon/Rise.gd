@@ -1,7 +1,7 @@
 extends DragonState
 
 func get_probability() -> float:
-	return 0.04
+	return 0.04 if dragon.hp > 6 else 0.013
 
 const RISE_TIME = 2.7
 

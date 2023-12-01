@@ -1,8 +1,10 @@
 extends DragonState
 
+const ARENA_DIST = 19
+
 func get_probability() -> float:
 	var has_made_air_attack : bool = dragon.state_history[-1] in ["AirFireBalls", "AirGrab", "AirFireCone"]
-	if not dragon.player_in_sight:
+	if (not dragon.player_in_sight) or dragon.player_dist_arena > ARENA_DIST:
 		return 0.0
 	return 0.15 if has_made_air_attack else .04
 

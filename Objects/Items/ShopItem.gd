@@ -26,6 +26,7 @@ func apply_changes(item_data: ItemData):
 		for child in $Tooltip.get_children():
 			child.queue_free()
 		var y = 0
+		var x = 0
 		for stat in item_data.stats:
 			var stat_value = item_data.stats[stat]
 			if stat_value > 0:
@@ -33,10 +34,12 @@ func apply_changes(item_data: ItemData):
 					var icon = Sprite2D.new()
 					icon.texture = load("res://Assets/Sprites/placeholder/icon_"+stat+".png")
 					icon.scale = Vector2.ONE * float(ICON_SIZE) / 64
-					icon.transform.origin.x = $Tooltip.size.x - i*ICON_SIZE
+					icon.transform.origin.x = $Tooltip.size.x - (x+i)*ICON_SIZE
 					icon.transform.origin.y += y*ICON_SIZE
 					$Tooltip.add_child(icon)
-				y += 1
+				#y += 1
+				x += stat_value
+		y += 1
 		if len(item_data.tooltip) > 0:
 			var l = Label.new()
 			l.text = item_data.tooltip

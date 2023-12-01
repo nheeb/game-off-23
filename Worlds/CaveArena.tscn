@@ -292,21 +292,21 @@ shape = SubResource("CylinderShape3D_g4nq8")
 [node name="InvisWalls" type="StaticBody3D" parent="level"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="level/InvisWalls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.0952, 0, 109.394)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.4155, 0, 109.394)
 shape = SubResource("BoxShape3D_f34qc")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="level/InvisWalls"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.29675, 0, 134.575)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.29675, 0, 118.645)
 shape = SubResource("BoxShape3D_f34qc")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="level/InvisWalls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.8841, 0, 109.394)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.7178, 0, 109.394)
 shape = SubResource("BoxShape3D_f34qc")
 
 [node name="PositionsForCutscene" type="Node3D" parent="."]
 
 [node name="PlayerSpawnIntro" type="Marker3D" parent="PositionsForCutscene"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.74173, 3.09316, 95.8972)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.74173, 3.09316, 93.2639)
 
 [node name="PlayerPositionCutscene" type="Marker3D" parent="PositionsForCutscene"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.69893, 2.69795, 21.363)

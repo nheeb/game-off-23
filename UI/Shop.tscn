@@ -220,7 +220,7 @@ shape = SubResource("RectangleShape2D_sqyin")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Boundary/StaticBody2D"]
 position = Vector2(-360, -470)
-polygon = PackedVector2Array(-4, -3, -6, 646, 1148, 645, 1148, -3, 277, -3, 277, -435, 149.769, -434.101, 150, -462, 327, -489, 333, -82, 1187, -73, 1185, 701, -45, 696, -49, -461, 150, -461, 148, -433, -6, -433)
+polygon = PackedVector2Array(1, -4, 1, 646, 1148, 645, 1148, -3, 277, -3, 277, -435, 149.769, -434.101, 150, -462, 327, -489, 333, -82, 1187, -73, 1185, 701, -45, 696, -49, -461, 150, -461, 148, -433, -6, -433)
 
 [node name="Label" type="Label" parent="."]
 offset_right = 40.0

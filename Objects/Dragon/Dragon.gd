@@ -47,6 +47,7 @@ var player_distance : float
 var player_direction_clean: Vector3
 var player_face_angle: float
 var player_face_angle_signed_rad: float
+var player_dist_arena: float
 
 # Behaviour
 enum MovementType {STANDING, DIRECTIONAL, CURVED_CLOCKWISE, CURVED_COUNTERCLOCKWISE}
@@ -166,6 +167,7 @@ func analyse_battlefield():
 	var own_direction_clean = Functions.no_y_normalized(to_global(Vector3.FORWARD) - global_position)
 	player_face_angle_signed_rad = own_direction_clean.signed_angle_to(player_direction_clean, Vector3.UP)
 	player_face_angle = rad_to_deg(abs(player_face_angle_signed_rad))
+	player_dist_arena = Game.player.global_position.distance_to(Game.world.global_position)
 #	if DebugInfo.debug_visible:
 #		DebugInfo.refresh_info("Player Dist", player_distance)
 #		DebugInfo.refresh_info("Player Angle", player_face_angle)

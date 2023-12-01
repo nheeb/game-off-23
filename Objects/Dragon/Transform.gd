@@ -7,6 +7,7 @@ func get_z_relative_to_dragon(node: Node3D) -> float:
 	return dragon.to_local(node.global_position).z
 
 func effect_start(index):
+	dragon.is_flying = false
 	dragon.animations.is_flying = false
 	
 	await get_tree().create_timer(1.0).timeout

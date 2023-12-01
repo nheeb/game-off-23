@@ -8,4 +8,6 @@ https://game-icons.net
 https://game-icons.net/1x1/lorc/frozen-orb.html
 https://game-icons.net/1x1/delapouite/carrot.html
 https://game-icons.net/1x1/sbed/shield.html
+https://game-icons.net/1x1/lorc/curly-wing.html
+https://game-icons.net/1x1/lorc/bouncing-sword.html#download
 https://thenounproject.com/icon/carrots-1466019/
