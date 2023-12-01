@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://bgbjg4r3naft7" path="res://Assets/Sprites/Shop/Scales/arm.png" id="6_5jn5a"]
 [ext_resource type="PackedScene" uid="uid://b42unfgrjpgta" path="res://UI/ShopSlot.tscn" id="8_d5gcj"]
 [ext_resource type="Texture2D" uid="uid://csxcuslxg4yg8" path="res://Assets/Sprites/buy_enabled.png" id="8_qri4k"]
-[ext_resource type="PackedScene" uid="uid://b3ux2ipqcro62" path="res://UI/ShopTriangleButton.tscn" id="9_2vunc"]
+[ext_resource type="PackedScene" path="res://UI/ShopTriangleButton.tscn" id="9_2vunc"]
 [ext_resource type="Texture2D" uid="uid://5422gnfuahyw" path="res://Assets/Sprites/buy_disabled.png" id="9_w6edi"]
 [ext_resource type="AudioStream" uid="uid://bxkpu8u5pbmq1" path="res://Assets/Audio/SFX/Other/Push_button.ogg" id="10_i4hxo"]
 [ext_resource type="Texture2D" uid="uid://b5gqgixgmhacq" path="res://Assets/Sprites/placeholder/icon_damage.png" id="11_p5bg3"]

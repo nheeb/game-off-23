@@ -1,11 +1,10 @@
-[gd_scene load_steps=10 format=3 uid="uid://de5ps2uixdyfh"]
+[gd_scene load_steps=9 format=3 uid="uid://de5ps2uixdyfh"]
 
 [ext_resource type="Script" path="res://UI/VictoryScreen.gd" id="1_ghchr"]
 [ext_resource type="Texture2D" uid="uid://cv7kfn6v7w866" path="res://Assets/Sprites/placeholder/circle.png" id="2_efr7h"]
-[ext_resource type="Texture2D" uid="uid://bu2jrxmu6q5tp" path="res://Assets/Sprites/placeholder/bookofwater.png" id="3_j2j2a"]
-[ext_resource type="Texture2D" uid="uid://cbh6071ug7io7" path="res://Assets/Sprites/placeholder/dragon_scale_black_2.png" id="4_ui1km"]
-[ext_resource type="Texture2D" uid="uid://ci48g7u2c8dup" path="res://Assets/Sprites/placeholder/dragon_scale_yellow_2.png" id="5_48hir"]
-[ext_resource type="Texture2D" uid="uid://bett3floolxtm" path="res://Assets/Sprites/placeholder/dragon_scale_red_2.png" id="6_pmi03"]
+[ext_resource type="Texture2D" uid="uid://dohonxnyc67li" path="res://Assets/Sprites/Scales/dragon scales yellow.png" id="3_k0jst"]
+[ext_resource type="Texture2D" uid="uid://cpofh6pkkx7rh" path="res://Assets/Sprites/Scales/dragon scales blue.png" id="4_3mjm2"]
+[ext_resource type="Texture2D" uid="uid://0del0ke3w40d" path="res://Assets/Sprites/Scales/dragon scales red.png" id="5_spjht"]
 [ext_resource type="Texture2D" uid="uid://c4qpnurxbsn8m" path="res://Assets/Textures/dafontcom_Fun Games.png" id="7_2rtwg"]
 
 [sub_resource type="Animation" id="Animation_wqwfa"]
@@ -33,7 +32,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0.6, 1),
 "transitions": PackedFloat32Array(0.482968, 1),
 "update": 0,
-"values": [Vector2(1, 1), Vector2(20, 1)]
+"values": [Vector2(1, 1), Vector2(12, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -95,14 +94,28 @@ tracks/6/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("VictoryScreenIcon/TextureRect2:visible")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3lah0"]
 _data = {
 "fly_in": SubResource("Animation_wqwfa")
 }
 
-[node name="VictoryScreen" type="Control"]
-z_index = 1000
+[node name="CanvasLayer" type="CanvasLayer"]
+layer = 128
+
+[node name="VictoryScreen" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -111,9 +124,9 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_ghchr")
 
-[node name="Background" type="TextureRect" parent="."]
+[node name="Background" type="TextureRect" parent="VictoryScreen"]
 unique_name_in_owner = true
-modulate = Color(1, 1, 1, 0)
+modulate = Color(1, 1, 1, 0.5)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -121,7 +134,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="Background"]
+[node name="ColorRect" type="ColorRect" parent="VictoryScreen/Background"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -130,18 +143,18 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.0745098, 0.0745098, 0.0745098, 1)
 
-[node name="VictoryScreenIcon" type="Control" parent="."]
+[node name="VictoryScreenIcon" type="Control" parent="VictoryScreen"]
 layout_mode = 1
 anchor_top = -2.07099
 anchor_right = 1.0
 anchor_bottom = -1.07099
-offset_top = 749.002
-offset_bottom = 749.001
+offset_top = 1329.0
+offset_bottom = 1329.0
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
 
-[node name="TextureRect" type="TextureRect" parent="VictoryScreenIcon"]
+[node name="TextureRect" type="TextureRect" parent="VictoryScreen/VictoryScreenIcon"]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.430556
@@ -160,7 +173,7 @@ texture = ExtResource("2_efr7h")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="TextureRect2" type="TextureRect" parent="VictoryScreenIcon"]
+[node name="TextureRect2" type="TextureRect" parent="VictoryScreen/VictoryScreenIcon"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -173,12 +186,19 @@ offset_right = 14.0
 offset_bottom = 51.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(20, 1)
+scale = Vector2(12, 1)
 pivot_offset = Vector2(20, 40)
-texture = ExtResource("3_j2j2a")
 expand_mode = 1
 
-[node name="Scales" type="Control" parent="VictoryScreenIcon"]
+[node name="ColorRect" type="ColorRect" parent="VictoryScreen/VictoryScreenIcon/TextureRect2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Scales" type="Control" parent="VictoryScreen/VictoryScreenIcon"]
 layout_mode = 1
 anchor_left = 0.482639
 anchor_top = 0.469136
@@ -193,41 +213,47 @@ grow_vertical = 2
 scale = Vector2(1.75, 1.75)
 pivot_offset = Vector2(20, 20)
 
-[node name="Scale" type="Sprite2D" parent="VictoryScreenIcon/Scales"]
-position = Vector2(-18, 73)
-rotation = -1.68223
-texture = ExtResource("4_ui1km")
+[node name="Scale" type="Sprite2D" parent="VictoryScreen/VictoryScreenIcon/Scales"]
+position = Vector2(-26.8571, 82.286)
+rotation = -0.119398
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("3_k0jst")
 
-[node name="Scale2" type="Sprite2D" parent="VictoryScreenIcon/Scales"]
-position = Vector2(59, 73)
-rotation = -3.25329
-texture = ExtResource("5_48hir")
+[node name="Scale2" type="Sprite2D" parent="VictoryScreen/VictoryScreenIcon/Scales"]
+position = Vector2(67.4286, 81.7146)
+rotation = -4.72411
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("4_3mjm2")
 
-[node name="Scale3" type="Sprite2D" parent="VictoryScreenIcon/Scales"]
-position = Vector2(19, 90)
-rotation = 3.92699
-texture = ExtResource("6_pmi03")
+[node name="Scale3" type="Sprite2D" parent="VictoryScreen/VictoryScreenIcon/Scales"]
+position = Vector2(17.7144, 96.0002)
+rotation = 6.29708
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("5_spjht")
 
-[node name="TextureRect3" type="TextureRect" parent="VictoryScreenIcon"]
-layout_mode = 0
-offset_left = 355.0
-offset_top = 270.0
-offset_right = 811.0
-offset_bottom = 385.0
+[node name="TextureRect3" type="TextureRect" parent="VictoryScreen/VictoryScreenIcon"]
+modulate = Color(1, 1, 1, 0.3)
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.30816
+anchor_top = 0.459877
+anchor_right = 0.686632
+anchor_bottom = 0.580248
 texture = ExtResource("7_2rtwg")
 expand_mode = 1
+metadata/_edit_use_anchors_ = true
 
-[node name="Credits" type="Control" parent="."]
+[node name="Credits" type="Control" parent="VictoryScreen"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = 535.942
-offset_bottom = 535.782
+offset_top = 654.0
+offset_bottom = 653.795
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="Credits"]
+[node name="MarginContainer" type="MarginContainer" parent="VictoryScreen/Credits"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -237,20 +263,20 @@ grow_vertical = 2
 theme_override_constants/margin_left = 250
 theme_override_constants/margin_right = 250
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Credits/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VictoryScreen/Credits/MarginContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Credits/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="VictoryScreen/Credits/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "Credits"
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Credits/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VictoryScreen/Credits/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 20
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Credits/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="VictoryScreen/Credits/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Nitai
@@ -270,7 +296,7 @@ Thimras
 "
 text_direction = 2
 
-[node name="RichTextLabel2" type="RichTextLabel" parent="Credits/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="RichTextLabel2" type="RichTextLabel" parent="VictoryScreen/Credits/MarginContainer/VBoxContainer/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Coding   3D - Art
@@ -288,18 +314,18 @@ Coding   3D - Art
 Music
 Sound     Voices"
 
-[node name="Label2" type="Label" parent="Credits/MarginContainer/VBoxContainer"]
+[node name="Label2" type="Label" parent="VictoryScreen/Credits/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "third party assets"
 horizontal_alignment = 1
 
-[node name="RichTextLabel" type="RichTextLabel" parent="Credits/MarginContainer/VBoxContainer"]
+[node name="RichTextLabel" type="RichTextLabel" parent="VictoryScreen/Credits/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="VictoryScreen"]
 unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_3lah0")
 }
 
-[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="VictoryScreen/AnimationPlayer" to="VictoryScreen" method="_on_animation_player_animation_finished"]
