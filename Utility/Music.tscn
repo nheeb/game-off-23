@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://d37nrxxcr5mq8"]
+[gd_scene load_steps=23 format=3 uid="uid://d37nrxxcr5mq8"]
 
 [ext_resource type="Script" path="res://Utility/Music.gd" id="1_c3bne"]
 [ext_resource type="AudioStream" uid="uid://d1opaw7is7kk1" path="res://Assets/Audio/Music/ANOTHER_EPIC_BATTLE.mp3" id="2_nehde"]
@@ -21,6 +21,7 @@
 [ext_resource type="AudioStream" uid="uid://0otfn3q5n1mj" path="res://Assets/Audio/SFX/Player/hit_no_dmg_06.ogg" id="18_o8ydn"]
 [ext_resource type="AudioStream" uid="uid://cm4vrsdnfscob" path="res://Assets/Audio/SFX/Player/hit_no_dmg_07.ogg" id="19_nj188"]
 [ext_resource type="AudioStream" uid="uid://ux4m3tq5hoe8" path="res://Assets/Audio/SFX/Player/hit_no_dmg_08.ogg" id="20_tklbn"]
+[ext_resource type="AudioStream" uid="uid://h8v172fnl7ye" path="res://Assets/Audio/Spellbook_summon.ogg" id="22_wii54"]
 
 [node name="Music" type="Node" node_paths=PackedStringArray("audio_player")]
 script = ExtResource("1_c3bne")
@@ -38,19 +39,27 @@ bus = &"Music"
 
 [node name="AudioStreamScale" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
+volume_db = -15.0
 bus = &"SFX"
 
 [node name="AudioStreamScale2" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
+volume_db = -15.0
 bus = &"SFX"
 
 [node name="AudioStreamScale3" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
+volume_db = -15.0
 bus = &"SFX"
 
 [node name="AudioStreamShop" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("13_k0myr")
 bus = &"Music"
+
+[node name="AudioSpellbook" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("22_wii54")
+volume_db = -10.0
 
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
