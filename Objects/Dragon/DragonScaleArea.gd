@@ -71,10 +71,8 @@ func take_damage(damage: int = 1):
 	
 	# Throw fallen scales
 	var fallen_scale_count = randi_range(2, 3)
-	if randi_range(0, 3) < Game.death_count:
+	if randi_range(0, 4) < Game.death_count:
 		fallen_scale_count += 1
-#	if randf_range(0, 5) == 0:
-#		fallen_scale_count -= 1
 	for i in range(fallen_scale_count):
 		var direction = global_transform.basis.y + .7 * Vector3.UP + 2.0 * (randf()-.5) * global_transform.basis.x
 		direction = direction.normalized() * randf_range(2.5, 4.5)
