@@ -17,6 +17,8 @@ extends Node
 @export var music_thirdtrack : Array
 @export var music_victory : Array
 
+@export var sound_hit_no_dmg : Array
+
 var current_track : :
 	set(new_track):
 		if (current_track != null):
@@ -111,3 +113,20 @@ func continue_battle_music(duration:float=2):
 
 func play_shop_music():
 	%AudioStreamShop.play()
+
+var count : int = 0 :
+	set(value):
+		count = value % 3
+
+func play_hit_no_dmg():
+	if(count % 3 == 1): 
+		%AudioStreamScale.stream = sound_hit_no_dmg.pick_random()
+		%AudioStreamScale.play()
+	if(count % 3 == 2):
+		%AudioStreamScale2.stream = sound_hit_no_dmg.pick_random()
+		%AudioStreamScale2.play()
+	if(count % 3 == 0):
+		%AudioStreamScale3.stream = sound_hit_no_dmg.pick_random()
+		%AudioStreamScale3.play()
+	count += 1
+	
