@@ -96,3 +96,18 @@ func play_cutscene_music():
 	#fade_out(1.5,Music.music_ethnic[0],2)
 	start_track(Music.music_ethnic[0])
 	loop = false
+
+func continue_battle_music(duration:float=2):
+	var previous_volume = %AudioStreamShop.volume_db
+	var tween := get_tree().create_tween()
+	tween.tween_property(%AudioStreamShop,"volume_db", -80 ,duration)
+	await tween.finished
+	
+	if (previous_volume > 0): previous_volume = 0 #volume should not be higher than 0dB
+	%AudioStreamShop.stop()
+	%AudioStreamShop.volume_db = previous_volume
+	
+	audio_player.play()
+
+func play_shop_music():
+	%AudioStreamShop.play()

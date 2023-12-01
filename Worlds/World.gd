@@ -60,6 +60,7 @@ func make_everything_ready_for_battle():
 	Game.dragon.force_state_change("PreCutscene")
 	Game.player.global_position = player_spawn_battle.global_position
 	if Game.current_game_state == Game.GAME_STATE.Loading:
+		Music.continue_battle_music()
 		await get_tree().create_timer(3.0).timeout
 	Game.current_game_state = Game.GAME_STATE.Battle
 	Game.dragon.force_state_change("Idle")

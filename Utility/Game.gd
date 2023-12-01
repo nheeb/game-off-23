@@ -40,6 +40,7 @@ func hit_pause():
 func load_shop():
 	get_tree().change_scene_to_file(shop_scene_path)
 	current_game_state = GAME_STATE.Shop
+	Music.play_shop_music()
 	player_ui.visible = false
 
 func load_game(with_intro : bool = true):

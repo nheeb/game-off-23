@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://d37nrxxcr5mq8"]
+[gd_scene load_steps=14 format=3 uid="uid://d37nrxxcr5mq8"]
 
 [ext_resource type="Script" path="res://Utility/Music.gd" id="1_c3bne"]
 [ext_resource type="AudioStream" uid="uid://d1opaw7is7kk1" path="res://Assets/Audio/Music/ANOTHER_EPIC_BATTLE.mp3" id="2_nehde"]
@@ -12,6 +12,7 @@
 [ext_resource type="AudioStream" uid="uid://2po73d84s8sd" path="res://Assets/Audio/Music/GAMEJAM_ETHNIC_BATTLE_MUSIC.mp3" id="10_b10we"]
 [ext_resource type="AudioStream" uid="uid://b7xwlk1eyl408" path="res://Assets/Audio/Music/ANOTHER_EPIC_ETHNIC_BATTLE.mp3" id="11_60f88"]
 [ext_resource type="AudioStream" uid="uid://cyfjihgj0874s" path="res://Assets/Audio/Music/DARK_SOULS_VIBE-EPIC_BATTLE_ORCHESTA.mp3" id="12_gl0tj"]
+[ext_resource type="AudioStream" uid="uid://do8xs8atiw5pb" path="res://Assets/Audio/shop_with_flute_arp_fast.mp3" id="13_k0myr"]
 
 [node name="Music" type="Node" node_paths=PackedStringArray("audio_player")]
 script = ExtResource("1_c3bne")
@@ -34,5 +35,10 @@ unique_name_in_owner = true
 
 [node name="AudioStreamScale3" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
+
+[node name="AudioStreamShop" type="AudioStreamPlayer" parent="."]
+unique_name_in_owner = true
+stream = ExtResource("13_k0myr")
+bus = &"Music"
 
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]
