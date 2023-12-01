@@ -67,7 +67,10 @@ func take_damage(damage: int = 1):
 		next_scale_index += damage * scales_per_damage
 	
 	# Throw fallen scales
-	for i in range(randi_range(2,4)):
+	var fallen_scale_count = randi_range(2,4)
+#	if randf_range(0, 5) == 0:
+#		fallen_scale_count -= 1
+	for i in range(fallen_scale_count):
 		var direction = global_transform.basis.y + .7 * Vector3.UP + 2.0 * (randf()-.5) * global_transform.basis.x
 		direction = direction.normalized() * randf_range(2.5, 4.5)
 		#TODO spawn the Fallen Scale
