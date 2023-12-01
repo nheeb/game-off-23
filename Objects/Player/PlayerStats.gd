@@ -57,4 +57,6 @@ func reset_and_render_equipped_items():
 	Game.player_ui.set_item_visible(active_spell != SPELL_TYPE.None)
 	await get_tree().process_frame
 	Game.world.everything_ready.connect(func (): Game.player.get_magic_casting().apply_cooldown(8), CONNECT_ONE_SHOT)
+	if Items.get_items_for_shop().is_empty():
+		sword_slash_damage = 2
 		

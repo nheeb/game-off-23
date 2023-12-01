@@ -5,7 +5,7 @@ var equipment: Dictionary = {} # SLOTS -> ItemData
 var scale_bank: Array[int] = [8, 8, 8]
 const SCALE_RATE = 9
 
-const CHEAT_ALL_COSTS_1 = true
+const CHEAT_ALL_COSTS_1 = false
 
 func _ready():
 	items.append_array(get_children().filter(func (x): return x is ItemData))

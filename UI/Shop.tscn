@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bkjep3xq6tfxs"]
+[gd_scene load_steps=29 format=3 uid="uid://bkjep3xq6tfxs"]
 
 [ext_resource type="Script" path="res://UI/Shop.gd" id="1_hwity"]
 [ext_resource type="Texture2D" uid="uid://dn2uq5dybbnd0" path="res://Assets/Sprites/Shop/background.png" id="2_0th4s"]
@@ -6,12 +6,13 @@
 [ext_resource type="Material" uid="uid://dnp0xhin1lo0l" path="res://Shaders/ItemBurn.tres" id="2_nje68"]
 [ext_resource type="Texture2D" uid="uid://bgjitr5girrb" path="res://Assets/Sprites/placeholder/firesprite.png" id="4_b1whx"]
 [ext_resource type="Texture2D" uid="uid://dg7dmv5tloixc" path="res://Assets/Sprites/Shop/Scales/scale.png" id="5_aglen"]
-[ext_resource type="Texture2D" uid="uid://dsy5m87xkhbe3" path="res://Assets/Sprites/placeholder/shop_buy_enabled.png" id="6_2kpmp"]
 [ext_resource type="Texture2D" uid="uid://bgbjg4r3naft7" path="res://Assets/Sprites/Shop/Scales/arm.png" id="6_5jn5a"]
-[ext_resource type="Texture2D" uid="uid://b8hgq30xt4aak" path="res://Assets/Sprites/placeholder/shop_buy_disabled.png" id="7_1yekj"]
 [ext_resource type="PackedScene" uid="uid://b42unfgrjpgta" path="res://UI/ShopSlot.tscn" id="8_d5gcj"]
-[ext_resource type="PackedScene" path="res://UI/ShopTriangleButton.tscn" id="9_2vunc"]
+[ext_resource type="Texture2D" uid="uid://csxcuslxg4yg8" path="res://Assets/Sprites/buy_enabled.png" id="8_qri4k"]
+[ext_resource type="PackedScene" uid="uid://b3ux2ipqcro62" path="res://UI/ShopTriangleButton.tscn" id="9_2vunc"]
+[ext_resource type="Texture2D" uid="uid://5422gnfuahyw" path="res://Assets/Sprites/buy_disabled.png" id="9_w6edi"]
 [ext_resource type="AudioStream" uid="uid://bxkpu8u5pbmq1" path="res://Assets/Audio/SFX/Other/Push_button.ogg" id="10_i4hxo"]
+[ext_resource type="Texture2D" uid="uid://b5gqgixgmhacq" path="res://Assets/Sprites/placeholder/icon_damage.png" id="11_p5bg3"]
 [ext_resource type="AudioStream" uid="uid://pvux7ata0wv0" path="res://Assets/Audio/SFX/Other/Scale_pickup.ogg" id="11_uswxo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mi0mg"]
@@ -258,12 +259,13 @@ text = "Fight the Dragon"
 [node name="Buy" type="TextureButton" parent="Control"]
 texture_filter = 1
 layout_mode = 0
-offset_left = 585.0
-offset_top = 548.0
-offset_right = 665.0
-offset_bottom = 625.0
-texture_normal = ExtResource("6_2kpmp")
-texture_disabled = ExtResource("7_1yekj")
+offset_left = 797.0
+offset_top = 579.0
+offset_right = 1365.0
+offset_bottom = 769.0
+scale = Vector2(0.225, 0.225)
+texture_normal = ExtResource("8_qri4k")
+texture_disabled = ExtResource("9_w6edi")
 stretch_mode = 0
 
 [node name="scale_spawn_point" type="Node2D" parent="."]
@@ -297,6 +299,25 @@ position = Vector2(300, 0)
 scale = Vector2(0.654661, 0.654661)
 caption = "Spell"
 tooltip = "Press E to cast"
+
+[node name="Cheers" type="Label" parent="Equipment"]
+unique_name_in_owner = true
+visible = false
+offset_left = -86.0
+offset_top = 51.0
+offset_right = 89.0
+offset_bottom = 77.0
+text = "You have all the items!"
+
+[node name="IconDamage" type="Sprite2D" parent="Equipment/Cheers"]
+position = Vector2(-38, 13)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("11_p5bg3")
+
+[node name="IconDamage2" type="Sprite2D" parent="Equipment/Cheers"]
+position = Vector2(210, 13)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("11_p5bg3")
 
 [node name="TriangleButtons" type="Node2D" parent="."]
 

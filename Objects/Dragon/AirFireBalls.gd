@@ -23,7 +23,7 @@ func effect_start(index):
 	%AudioDragonWings.stream = Game.dragon.sound_dragon_wing.pick_random()
 	%AudioDragonWings.play()
 
-	for i in range(3 if dragon.stage >= 1 else 5):
+	for i in range(3 if dragon.stage <= 1 else 6):
 		await get_tree().create_timer(.8).timeout
 		if (i % 3 == 0):
 			%AudioFireball.stream = fireball_sound.pick_random()

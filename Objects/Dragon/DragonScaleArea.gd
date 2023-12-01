@@ -35,6 +35,9 @@ func _on_hit(hit_object: PlayerHurtArea):
 const FALLEN_SCALE = preload("res://Objects/Projectiles/FallenScale.tscn")
 const HIT_EFFECT = preload("res://Objects/Effects/HitEffect.tscn")
 func take_damage(damage: int = 1):
+	# Very dirty and scuffed implementaton of damage boost
+	damage = max(PlayerStats.sword_slash_damage, damage)
+	
 	# Player after hit hook
 	Game.player.get_after_hit_system().player_hit_dragon()
 	
@@ -64,7 +67,10 @@ func take_damage(damage: int = 1):
 		next_scale_index += damage * scales_per_damage
 	
 	# Throw fallen scales
-	for i in range(randi_range(2,4)):
+	var fallen_scale_count = randi_range(2,4)
+#	if randf_range(0, 5) == 0:
+#		fallen_scale_count -= 1
+	for i in range(fallen_scale_count):
 		var direction = global_transform.basis.y + .7 * Vector3.UP + 2.0 * (randf()-.5) * global_transform.basis.x
 		direction = direction.normalized() * randf_range(2.5, 4.5)
 		#TODO spawn the Fallen Scale

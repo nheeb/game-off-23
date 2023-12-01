@@ -47,7 +47,7 @@ func cast_water():
 	health_system.armour = 0
 	
 func cast_carrot():
-	apply_cooldown(25)
+	apply_cooldown(20)
 	
 	var book = SPELLBOOK_EFFECT.instantiate()
 	book.set_color(Color.ORANGE)
@@ -56,9 +56,10 @@ func cast_carrot():
 	
 	magic_particles.emitting = true
 	await get_tree().create_timer(0.5).timeout
-	for i in range(3):
-		var pos = Game.player.global_position \
-		+ Vector3(randf() * 25 - 12.5, 0.0, randf() * 25 - 12.5)
+	for i in range(2):
+		var pos = Game.player.global_position + Vector3.UP + Vector3.RIGHT * 5 * (1 if i == 0 else -1)
+#		var pos = Game.player.global_position \
+#		+ Vector3(randf() * 25 - 12.5, 0.0, randf() * 25 - 12.5)
 		pos = Functions.get_nearest_ground(pos) + Vector3.UP * 2.0
 		var pickup: CarrotPickup = PICKUP_CARROT.instantiate()
 		get_tree().get_root().add_child(pickup)

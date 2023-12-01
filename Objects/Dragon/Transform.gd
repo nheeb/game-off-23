@@ -6,6 +6,7 @@ func get_probability() -> float:
 func get_z_relative_to_dragon(node: Node3D) -> float:
 	return dragon.to_local(node.global_position).z
 
+const PICKUP_CARROT = preload("res://Objects/Pickups/CarrotPickup.tscn")
 func effect_start(index):
 	dragon.is_flying = false
 	dragon.animations.is_flying = false
@@ -26,7 +27,14 @@ func effect_start(index):
 	await get_tree().create_timer(1.5).timeout
 	dragon.revive_hp()
 	dragon.animations.is_roaring = true
-	await get_tree().create_timer(4.5).timeout
+	for i in range(3):
+		await get_tree().create_timer(.7).timeout
+		var pos = Game.dragon.global_position + Vector3.UP + 6 * Vector3.RIGHT.rotated(Vector3.UP, i*2*PI/3.0)
+		pos = Functions.get_nearest_ground(pos) + Vector3.UP * 2.0
+		var pickup: CarrotPickup = PICKUP_CARROT.instantiate()
+		get_tree().get_root().add_child(pickup)
+		pickup.transform = Transform3D(Basis(), pos)
+	await get_tree().create_timer(2.5).timeout
 	dragon.animations.is_roaring = false
 	next_state = "Idle"
 

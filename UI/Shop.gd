@@ -267,6 +267,8 @@ func _on_exit_pressed():
 	%AudioStreamPlayer.play()
 	if transition: return
 	if not equipment_menu:
+		if Items.get_items_for_shop().is_empty():
+			%Cheers.visible = true
 		transition = true
 		var tween := get_tree().create_tween()
 		tween.tween_property($Camera2D, "position:x", $Camera2D.position.x + get_viewport_rect().size.x, 1.6).set_ease(Tween.EASE_IN_OUT).set_trans(Tween.TRANS_CUBIC)
@@ -295,7 +297,7 @@ func setup_equipment():
 func place_in_stash(item: ShopItem, hide_tooltip := false):
 	if not item.equipment_object:
 		printerr("Wrong item state: Not equipment")
-	item.global_position = %EquipmentItemSpawn.global_position + Vector2.RIGHT * randi_range(-200, 200)
+	item.global_position = %EquipmentItemSpawn.global_position + Vector2.RIGHT * randi_range(-300, 300)
 	if hide_tooltip:
 		var slot = shop_slots[item.item_data_node.slot]
 		slot.show_tooltip(false)

@@ -68,6 +68,14 @@ func _on_area_input(viewport, event, shape_idx):
 		else:
 			Game.shop.toggle_item_on_scale(self)
 
+func _physics_process(delta):
+	if abs(global_position.y ) > 10000:
+		if not equipment_object:
+			Game.shop.toggle_item_on_scale(self)
+		else:
+			Game.shop.place_in_stash(self)
+		
+
 func visual_burn():
 	can_sleep = false
 	sleeping = false
