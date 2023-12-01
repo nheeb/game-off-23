@@ -8,6 +8,7 @@ const AIR = preload("res://Objects/Effects/CircularAir.tscn")
 
 const LANDING_TIME = 2.7
 func effect_start(index):
+	dragon.animations.is_flying = false
 	%AudioDragonWings.stream = Game.dragon.sound_dragon_wing.pick_random()
 	%AudioDragonWings.play()
 	get_tree().create_tween().tween_property(dragon, "global_position", Functions.get_nearest_ground(dragon.global_position), LANDING_TIME)

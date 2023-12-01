@@ -14,7 +14,7 @@ func clamp_map(value: float, istart: float, istop: float, ostart: float, ostop: 
 	value = clamp(value, istart, istop)
 	return ostart + (ostop - ostart) * ((value - istart) / (istop - istart))
 
-func get_nearest_ground(pos: Vector3, padding: float = .07) -> Vector3:
+func get_nearest_ground(pos: Vector3, padding: float = .15) -> Vector3:
 	$GroundFeeler.global_position = pos
 	$GroundFeeler.target_position = Vector3.DOWN * 100.0
 	$GroundFeeler.force_raycast_update()

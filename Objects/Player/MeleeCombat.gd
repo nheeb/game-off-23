@@ -26,7 +26,7 @@ func _update_animation_state():
 	animations.combo_state = combo_state
 
 func _start_attack():
-	Game.player.play_sound(Game.player.SoundType.Attack)
+	Game.player.call_deferred('play_sound', Game.player.SoundType.Attack)
 	print('preparing '+str(combo_state))
 	attack_state = ATTACK_STATE.Preparing
 	combo_state += 1

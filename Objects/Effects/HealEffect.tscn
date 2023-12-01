@@ -44,7 +44,6 @@ lifetime = 1.5
 one_shot = true
 explosiveness = 0.67
 visibility_aabb = AABB(-4.12475, -2.94498, -4.27211, 8.83492, 9.29557, 7.90407)
-local_coords = true
 process_material = SubResource("ParticleProcessMaterial_0q1ph")
 draw_pass_1 = SubResource("QuadMesh_dgv1s")
 script = ExtResource("2_401nl")

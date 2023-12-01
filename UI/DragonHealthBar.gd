@@ -14,12 +14,19 @@ var health_reduce_delay = 0.05
 var last_health_change = 0
 
 var textures = [
-	load("res://Assets/Sprites/Scales/dragon scales yellow.png"),
-	load("res://Assets/Sprites/Scales/dragon scales yellow.png"),
-	load("res://Assets/Sprites/Scales/dragon scales red.png"),
-	load("res://Assets/Sprites/Scales/dragon scales red.png"),
-	load("res://Assets/Sprites/placeholder/dragon_health_b1.png"),
-	load("res://Assets/Sprites/placeholder/dragon_health_b2.png"),
+	load("res://Assets/Sprites/scale_yellow.png"),
+	load("res://Assets/Sprites/scale_yellow.png"),
+	load("res://Assets/Sprites/scale_red.png"),
+	load("res://Assets/Sprites/scale_red.png"),
+	load("res://Assets/Sprites/scale_blue.png"),
+	load("res://Assets/Sprites/scale_blue.png")
+#	load("res://Assets/Sprites/Scales/dragon scales yellow.png"),
+#	load("res://Assets/Sprites/Scales/dragon scales yellow.png"),
+#	load("res://Assets/Sprites/Scales/dragon scales red.png"),
+#	load("res://Assets/Sprites/Scales/dragon scales red.png"),
+#	load("res://Assets/Sprites/Scales/dragon scales blue.png"),
+#	load("res://Assets/Sprites/Scales/dragon scales blue.png"),
+#	load("res://Assets/Sprites/placeholder/dragon_health_b1.png"),"res://Assets/Sprites/Scales/dragon scales blue.png"
 ]
 @onready var baked_randomness = decide_variants()
 
@@ -83,5 +90,5 @@ func _physics_process(delta):
 				last_health_change = health_reduce_delay
 				displayed_health -= 1
 				render()
-	else:
-		visible = false
+#	else:
+#		visible = false

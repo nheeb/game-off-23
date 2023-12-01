@@ -12,6 +12,7 @@ func get_probability() -> float:
 	return Functions.clamp_map(dragon.player_distance, HIGH_DIST_MIN, HIGH_DIST_MAX, 0.0, 0.35)
 
 func effect_start(index):
+	dragon.animations.is_flying = false
 	timer = MAX_DURATION
 	dragon.movement_speed *= 1.5
 	dragon.movement_type = Dragon.MovementType.DIRECTIONAL

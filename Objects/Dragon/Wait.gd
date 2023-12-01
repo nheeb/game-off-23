@@ -7,6 +7,7 @@ func get_probability() -> float:
 	return 0.1
 
 func effect_start(index):
+	dragon.animations.is_flying = false
 	if randi() % 2 == 0:
 		dragon.turn_type = Dragon.TurnType.TURN
 		dragon.body_direction_target_position = Game.player.global_position

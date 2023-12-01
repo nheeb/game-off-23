@@ -11,6 +11,7 @@ func get_probability() -> float:
 	return 0.25 if dragon.player_distance >= MIN_DIST else 0.0
 
 func effect_start(index):
+	dragon.animations.is_flying = true
 	%AudioDragonWings.stream = Game.dragon.sound_dragon_wing.pick_random()
 	%AudioDragonWings.play()
 	dragon.movement_type = Dragon.MovementType.DIRECTIONAL
@@ -22,6 +23,7 @@ func effect_start(index):
 	hint.global_rotation = dragon.head_position.global_rotation
 	hint.rotation_degrees.x = -50
 	await get_tree().create_timer(.9).timeout
+	dragon.animations.is_spitting_fire = true
 	var fire_cone = FIRE_CONE.instantiate()
 	%AudioDragonHead.stream = sound_fire_cone.pick_random()
 	%AudioDragonHead.play()
@@ -31,6 +33,7 @@ func effect_start(index):
 	fire_cone.rotation_degrees.x = -50
 	fire_cone.hint_can_fade.connect(hint.start_closing)
 	await get_tree().create_timer(2.5).timeout
+	dragon.animations.is_spitting_fire = false
 	next_state = "Idle"
 
 func effect_process(delta):

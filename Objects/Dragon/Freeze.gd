@@ -6,6 +6,7 @@ func get_probability() -> float:
 	return 0.0
 
 func effect_start(index):
+	dragon.animations.is_flying = false
 	dragon.is_flying = false
 	%AudioDragonBody.stream = sound_freeeze.pick_random()
 	%AudioDragonBody.play()

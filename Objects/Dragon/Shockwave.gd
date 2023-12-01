@@ -11,6 +11,7 @@ func get_probability() -> float:
 	return 0.3 if dragon.player_distance >= MIN_DIST and dragon.player_distance <= MAX_DIST else 0.0
 
 func effect_start(index):
+	dragon.animations.is_flying = false
 	dragon.turn_type = Dragon.TurnType.TURN
 	dragon.body_direction_target_position = Game.player.global_position
 	await dragon.turn_done

@@ -1,13 +1,14 @@
 extends DragonState
 
 func get_probability() -> float:
-	return 0.04
+	return 0.04 if dragon.hp > 6 else 0.013
 
 const RISE_TIME = 2.7
 
 const AIR = preload("res://Objects/Effects/CircularAir.tscn")
 
 func effect_start(index):
+	dragon.animations.is_flying = true
 	%AudioDragonWings.stream = Game.dragon.sound_dragon_wing.pick_random()
 	%AudioDragonWings.play()
 	dragon.body_direction_target_node = Game.player

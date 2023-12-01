@@ -10,6 +10,7 @@ const DISTANCE_TO_WALL = 3.5
 const MIN_DIST = 4.0
 
 func effect_start(index):
+	dragon.animations.is_flying = true
 	max_duration = 3.0 + randf() * 2.0
 	timer = max_duration
 	for i in range(10):

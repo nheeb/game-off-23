@@ -4,6 +4,7 @@ func get_probability() -> float:
 	return 0.0
 
 func effect_start(index: int):
+	dragon.animations.is_flying = false
 	if dragon.first_idle_state:
 		dragon.first_idle_state = false
 		dragon.refresh_hp()

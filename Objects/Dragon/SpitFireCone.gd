@@ -14,6 +14,7 @@ func get_probability() -> float:
 func effect_start(index):
 #	%AudioDragonHead.stream = fireball_sound.pick_random()
 #	%AudioDragonHead.play()
+	dragon.animations.is_flying = false
 	dragon.turn_type = Dragon.TurnType.TURN
 	dragon.body_direction_target_position = Game.player.global_position
 	await dragon.turn_done

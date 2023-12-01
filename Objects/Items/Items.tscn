@@ -33,9 +33,9 @@ stats = {
 "damage": 0,
 "frozen": 0,
 "shield": 0,
-"speed": 3
+"speed": 2
 }
-tooltip = "Long dash"
+tooltip = "Long Dash"
 
 [node name="Sprite2D" type="Sprite2D" parent="Wingedboots"]
 visible = false
@@ -85,7 +85,7 @@ stats = {
 "shield": 1,
 "speed": 0
 }
-tooltip = "Creates a shield"
+tooltip = "Creates a Shield"
 
 [node name="Sprite2D" type="Sprite2D" parent="BookOfWater"]
 visible = false
@@ -101,6 +101,16 @@ polygon = PackedVector2Array(125, 3.8, 125, 28.5, 118.5, 32.4, 125, 65, 125, 66,
 script = ExtResource("6_tp5em")
 order_index = 3
 price = 5
+stats = {
+"armor": 0,
+"carrot": 0,
+"damage": 1,
+"frozen": 0,
+"shield": 0,
+"speed": 0,
+"throw": 1,
+"wing": 0
+}
 tooltip = "Throw Attack"
 
 [node name="Sprite2D" type="Sprite2D" parent="BoomerangSword"]
@@ -126,7 +136,8 @@ stats = {
 "damage": 0,
 "frozen": 0,
 "shield": 0,
-"speed": 1
+"speed": 1,
+"wing": 1
 }
 tooltip = "Jump Dash"
 
@@ -170,6 +181,15 @@ script = ExtResource("14_c17gs")
 order_index = 6
 slot = 2
 price = 8
+stats = {
+"armor": 0,
+"carrot": 0,
+"damage": 0,
+"frozen": 1,
+"shield": 0,
+"speed": 0
+}
+tooltip = "Freezes the Dragon"
 
 [node name="Sprite2D" type="Sprite2D" parent="BookOfIce"]
 visible = false
@@ -218,7 +238,7 @@ stats = {
 "shield": 0,
 "speed": 0
 }
-tooltip = "Fight with Carrots"
+tooltip = "Throw Carrots"
 
 [node name="Sprite2D" type="Sprite2D" parent="CarrotSword"]
 visible = false
@@ -245,6 +265,7 @@ stats = {
 "shield": 0,
 "speed": 1
 }
+tooltip = "Heal with 2 Carrots"
 
 [node name="Sprite2D" type="Sprite2D" parent="CarrotBoots"]
 visible = false
