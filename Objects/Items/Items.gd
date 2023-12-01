@@ -18,6 +18,14 @@ func _ready():
 		scale_bank = [18, 18, 45]
 		Game.player_ui.get_node("Cheats").visible = true
 
+func _physics_process(delta):
+	if Input.is_action_just_pressed("cheats"):
+		for item in get_children():
+			item.price = 1
+		await get_tree().process_frame
+		scale_bank = [18, 18, 45]
+		Game.player_ui.get_node("Cheats").visible = true
+
 func get_items_for_shop() -> Array[ItemData]:
 	var item_array: Array[ItemData] = []
 	item_array.append_array(items.filter(func(x): return (not x.obtained) and x.can_be_obtained()))
