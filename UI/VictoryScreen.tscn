@@ -126,7 +126,7 @@ script = ExtResource("1_ghchr")
 
 [node name="Background" type="TextureRect" parent="VictoryScreen"]
 unique_name_in_owner = true
-modulate = Color(1, 1, 1, 0.5)
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -167,13 +167,14 @@ offset_right = -106.0
 offset_bottom = -94.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(5, 5)
+scale = Vector2(40, 40)
 pivot_offset = Vector2(20, 20)
 texture = ExtResource("2_efr7h")
 expand_mode = 1
 stretch_mode = 5
 
 [node name="TextureRect2" type="TextureRect" parent="VictoryScreen/VictoryScreenIcon"]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -186,7 +187,6 @@ offset_right = 14.0
 offset_bottom = 51.0
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(12, 1)
 pivot_offset = Vector2(20, 40)
 expand_mode = 1
 
@@ -210,7 +210,6 @@ offset_right = -6.00012
 offset_bottom = 5.99988
 grow_horizontal = 2
 grow_vertical = 2
-scale = Vector2(1.75, 1.75)
 pivot_offset = Vector2(20, 20)
 
 [node name="Scale" type="Sprite2D" parent="VictoryScreen/VictoryScreenIcon/Scales"]
@@ -232,7 +231,7 @@ scale = Vector2(0.2, 0.2)
 texture = ExtResource("5_spjht")
 
 [node name="TextureRect3" type="TextureRect" parent="VictoryScreen/VictoryScreenIcon"]
-modulate = Color(1, 1, 1, 0.3)
+modulate = Color(1, 1, 1, 0)
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.30816
