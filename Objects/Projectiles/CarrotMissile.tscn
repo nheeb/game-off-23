@@ -6,7 +6,7 @@
 
 [sub_resource type="CylinderShape3D" id="CylinderShape3D_o6fp7"]
 height = 1.67892
-radius = 0.366568
+radius = 0.41875
 
 [node name="CarrotMissile" type="CharacterBody3D"]
 collision_layer = 0
@@ -25,7 +25,7 @@ transform = Transform3D(0.999997, -0.00140086, 0.00224523, 0.00224963, 0.0031309
 shape = SubResource("CylinderShape3D_o6fp7")
 
 [node name="carrot2" parent="." instance=ExtResource("2_oteuu")]
-transform = Transform3D(0.1, 0, 0, 0, -4.37114e-09, 0.1, 0, -0.1, -4.37114e-09, 0, 0, -0.253221)
+transform = Transform3D(0.125, 0, 0, 0, -5.46392e-09, 0.125, 0, -0.125, -5.46392e-09, 0, 0, -0.365736)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.999997, -0.00140086, 0.00224523, 0.00224963, 0.00313091, -0.999992, 0.00139373, 0.999994, 0.00313399, 1.18353e-05, 0.0129093, -0.00206757)

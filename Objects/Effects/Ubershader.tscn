@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://dxad0qhxford7"]
+[gd_scene load_steps=15 format=3 uid="uid://dxad0qhxford7"]
 
 [ext_resource type="PackedScene" uid="uid://c6fi4uotdsqog" path="res://Objects/Effects/Fire.tscn" id="1_mm727"]
 [ext_resource type="Script" path="res://Objects/Effects/Ubershader.gd" id="1_nht25"]
@@ -11,8 +11,9 @@
 [ext_resource type="Material" uid="uid://cidjeb21r43u4" path="res://Shaders/ShaderPageMat.tres" id="9_x5uo6"]
 [ext_resource type="PackedScene" uid="uid://dnuqnunqdjtaq" path="res://Objects/Effects/RoarEffect.tscn" id="10_7kjaq"]
 [ext_resource type="PackedScene" uid="uid://b62j6yjwux6fs" path="res://Objects/Effects/HealEffect.tscn" id="11_d7lor"]
+[ext_resource type="PackedScene" uid="uid://cad1lqnci1crw" path="res://Objects/Projectiles/Boulder.tscn" id="12_oerpq"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_de5j3"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t7dfk"]
 resource_local_to_scene = true
 render_priority = 0
 shader = ExtResource("5_u7owr")
@@ -43,7 +44,7 @@ visible = false
 
 [node name="AttackHintFallingDebris" parent="Pivot" instance=ExtResource("2_m4ji4")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1029, 0, 0.00934958)
-material_override = SubResource("ShaderMaterial_de5j3")
+material_override = SubResource("ShaderMaterial_t7dfk")
 skeleton = NodePath("../..")
 
 [node name="AttackHintFireCone" parent="Pivot" instance=ExtResource("3_rjqw1")]
@@ -65,3 +66,6 @@ mesh = SubResource("QuadMesh_75cti")
 transform = Transform3D(16.3317, 0, 0, 0, 16.3317, 0, 0, 0, 16.3317, 0, 0, 0)
 
 [node name="HealEffect" parent="Pivot" instance=ExtResource("11_d7lor")]
+
+[node name="Boulder" parent="Pivot" instance=ExtResource("12_oerpq")]
+uber = true

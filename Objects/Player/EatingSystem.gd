@@ -13,3 +13,4 @@ func eat():
 		
 func use_up(count: int):
 	progress  = max(0, progress - count)
+	Game.player_ui.set_carrot(progress)

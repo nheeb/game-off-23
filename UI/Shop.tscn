@@ -250,10 +250,10 @@ text = "Change Equipment"
 
 [node name="Fight" type="Button" parent="Control"]
 layout_mode = 0
-offset_left = 1644.0
-offset_top = 33.0
-offset_right = 1799.0
-offset_bottom = 64.0
+offset_left = 1672.0
+offset_top = 30.0
+offset_right = 1827.0
+offset_bottom = 61.0
 text = "Fight the Dragon"
 
 [node name="Buy" type="TextureButton" parent="Control"]
@@ -273,7 +273,7 @@ position = Vector2(140, -258)
 
 [node name="Equipment" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(1731, 344)
+position = Vector2(1750, 344)
 
 [node name="EquipmentItemSpawn" type="Node2D" parent="Equipment"]
 unique_name_in_owner = true
@@ -323,14 +323,14 @@ texture = ExtResource("11_p5bg3")
 
 [node name="ShopTriangleButtonUp" parent="TriangleButtons" instance=ExtResource("9_2vunc")]
 unique_name_in_owner = true
-position = Vector2(993, 596)
-scale = Vector2(2.66002, 2.66002)
+position = Vector2(993, 570)
+scale = Vector2(4, 4)
 
 [node name="ShopTriangleButtonDown" parent="TriangleButtons" instance=ExtResource("9_2vunc")]
 unique_name_in_owner = true
-position = Vector2(993, 603)
+position = Vector2(993, 577)
 rotation = -3.14159
-scale = Vector2(2.66002, 2.66002)
+scale = Vector2(4, 4)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true

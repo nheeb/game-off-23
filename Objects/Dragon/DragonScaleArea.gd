@@ -26,7 +26,9 @@ func _physics_process(delta):
 			_on_hit(hit_object)
 
 func _on_hit(hit_object: PlayerHurtArea):
-	if dead: return
+	if dead: 
+		# TODO NIELS CLONK SOUND JETZT ABSPIELEN
+		return
 	if $Timer.is_stopped() and not Game.dragon.invincible:
 		take_damage(hit_object.damage)
 		hit_object.set_attacking(false)
@@ -67,7 +69,7 @@ func take_damage(damage: int = 1):
 		next_scale_index += damage * scales_per_damage
 	
 	# Throw fallen scales
-	var fallen_scale_count = randi_range(2,4)
+	var fallen_scale_count = randi_range(2,3)
 #	if randf_range(0, 5) == 0:
 #		fallen_scale_count -= 1
 	for i in range(fallen_scale_count):
