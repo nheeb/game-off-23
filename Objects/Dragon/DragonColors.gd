@@ -48,7 +48,7 @@ class_name DragonColors extends Node
 
 @export var freeze_mat: Material
 
-var freeze_effect := 0:
+var freeze_effect : float = 0.0:
 	set(x):
 		freeze_effect = x
 		freeze_mat.set("shader_parameter/progress", x)

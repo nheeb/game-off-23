@@ -12,9 +12,9 @@ func effect_start(index):
 	%AudioDragonBody.play()
 	var tween := get_tree().create_tween()
 	tween.tween_property(dragon.colors, "freeze_effect", 1.0, 1.0).from(0.0)
-	await get_tree().create_timer(5).timeout
-	tween = get_tree().create_tween()
-	tween.tween_property(dragon.colors, "freeze_effect", 0.0, 1.0).from(1.0)
+	await get_tree().create_timer(5.5).timeout
+	var tween2 := get_tree().create_tween()
+	tween2.tween_property(dragon.colors, "freeze_effect", 0.0, 1.0).from(1.0)
 	await get_tree().create_timer(.5).timeout
 	next_state = "Idle"
 

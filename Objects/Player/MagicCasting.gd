@@ -79,7 +79,7 @@ func cast_ice():
 	await book.spell_cast
 	
 	magic_particles.emitting = true
-	Game.dragon.force_state_change("Freeze")
+	Game.dragon.force_state_change("Freeze", true)
 
 
 func _on_cooldown_reset():

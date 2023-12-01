@@ -214,19 +214,16 @@ pivot_offset = Vector2(20, 20)
 
 [node name="Scale" type="Sprite2D" parent="VictoryScreen/VictoryScreenIcon/Scales"]
 position = Vector2(-26.8571, 82.286)
-rotation = -0.119398
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("3_k0jst")
 
 [node name="Scale2" type="Sprite2D" parent="VictoryScreen/VictoryScreenIcon/Scales"]
 position = Vector2(67.4286, 81.7146)
-rotation = -4.72411
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("4_3mjm2")
 
 [node name="Scale3" type="Sprite2D" parent="VictoryScreen/VictoryScreenIcon/Scales"]
 position = Vector2(17.7144, 96.0002)
-rotation = 6.29708
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("5_spjht")
 
