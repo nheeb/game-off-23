@@ -34,10 +34,10 @@ func _ready():
 	set_volume(Music.MUSIC_BUS_ID,0.2) # .5 was way to loud for me
 	set_volume(Music.SFX_BUS_ID,0.5)
 
-@export var debug_fade_out : bool = false : 
+@export var set_victory_screen : bool = false : 
 	set(value):
 		if (true):
-			fade_out(4, playlist.pick_random())
+			add_child(load("res://UI/VictoryScreen.tscn").instantiate())
 
 
 func set_volume(bus_index:int,value:float) -> float: #range between 0 and 1
