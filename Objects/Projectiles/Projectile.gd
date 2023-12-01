@@ -31,7 +31,7 @@ func _physics_process(delta):
 	
 	if progress > 0.4:
 		var query = PhysicsRayQueryParameters3D.create(global_position, target_position_for_tick)
-		#query.collision_mask = 3
+		query.collision_mask = 3
 		var result = space_state.intersect_ray(query)
 		if result:
 			drop(target_position_for_tick - global_position)
