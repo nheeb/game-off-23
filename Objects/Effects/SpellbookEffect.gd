@@ -12,5 +12,5 @@ func set_color(color: Color):
 	$book/PageMiddle.material_override.set("shader_parameter/text_col_magic", color)
 
 func _ready():
-	pass
+	Music.flip_through_pages()
 	# HIER NIELS MAGIC SPELL SOUND

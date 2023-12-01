@@ -129,4 +129,6 @@ func play_hit_no_dmg():
 		%AudioStreamScale3.stream = sound_hit_no_dmg.pick_random()
 		%AudioStreamScale3.play()
 	count += 1
-	
+
+func flip_through_pages():
+	%AudioSpellbook.play()
