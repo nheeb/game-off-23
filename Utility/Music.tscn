@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://d37nrxxcr5mq8"]
+[gd_scene load_steps=24 format=3 uid="uid://d37nrxxcr5mq8"]
 
 [ext_resource type="Script" path="res://Utility/Music.gd" id="1_c3bne"]
 [ext_resource type="AudioStream" uid="uid://d1opaw7is7kk1" path="res://Assets/Audio/Music/ANOTHER_EPIC_BATTLE.mp3" id="2_nehde"]
@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://cyfjihgj0874s" path="res://Assets/Audio/Music/DARK_SOULS_VIBE-EPIC_BATTLE_ORCHESTA.mp3" id="12_gl0tj"]
 [ext_resource type="AudioStream" uid="uid://do8xs8atiw5pb" path="res://Assets/Audio/shop_with_flute_arp_fast.mp3" id="13_k0myr"]
 [ext_resource type="AudioStream" uid="uid://c3o20iepfy1y8" path="res://Assets/Audio/SFX/Player/hit_no_dmg_01.ogg" id="13_uk1c0"]
+[ext_resource type="AudioStream" uid="uid://ld8pg8e0xbbi" path="res://Assets/Audio/Music/YOU_WIN_THE_DRAGON_FANFARE.mp3" id="13_xqrkl"]
 [ext_resource type="AudioStream" uid="uid://cuen2xmm1tg7v" path="res://Assets/Audio/SFX/Player/hit_no_dmg_02.ogg" id="14_e7h7g"]
 [ext_resource type="AudioStream" uid="uid://cjvbdm7l7wyhr" path="res://Assets/Audio/SFX/Player/hit_no_dmg_03.ogg" id="15_hu1rf"]
 [ext_resource type="AudioStream" uid="uid://d1i1b3bs55etd" path="res://Assets/Audio/SFX/Player/hit_no_dmg_04.ogg" id="16_lkfbl"]
@@ -31,7 +32,7 @@ music_titlescreen = [ExtResource("8_1wc7h")]
 music_ethnic = [ExtResource("3_pi5k0"), ExtResource("9_y5w1y"), ExtResource("10_b10we")]
 music_anotherepic = [ExtResource("2_nehde"), ExtResource("11_60f88")]
 music_thirdtrack = [ExtResource("12_gl0tj")]
-music_victory = [null]
+music_victory = [ExtResource("13_xqrkl")]
 sound_hit_no_dmg = [ExtResource("13_uk1c0"), ExtResource("14_e7h7g"), ExtResource("15_hu1rf"), ExtResource("16_lkfbl"), ExtResource("17_pmkru"), ExtResource("18_o8ydn"), ExtResource("19_nj188"), ExtResource("20_tklbn")]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
@@ -60,6 +61,6 @@ bus = &"Music"
 [node name="AudioSpellbook" type="AudioStreamPlayer" parent="."]
 unique_name_in_owner = true
 stream = ExtResource("22_wii54")
-volume_db = -10.0
+bus = &"SFX"
 
 [connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

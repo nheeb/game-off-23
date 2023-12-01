@@ -132,3 +132,6 @@ func play_hit_no_dmg():
 
 func flip_through_pages():
 	%AudioSpellbook.play()
+
+func play_victory_track():
+	start_track(music_victory.pick_random())
