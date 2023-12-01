@@ -53,11 +53,14 @@
 [ext_resource type="Material" uid="uid://c8vscq8ib10aa" path="res://Assets/Materials/dragon_dark.tres" id="31_2ge1n"]
 [ext_resource type="Material" uid="uid://cbjbyfq17gyqr" path="res://Assets/Materials/dragon_wings.tres" id="32_nwrji"]
 [ext_resource type="Material" uid="uid://c34vcbxgh2e8f" path="res://Assets/Materials/dragon_scale.tres" id="33_p63q4"]
+[ext_resource type="AudioStream" uid="uid://w6udcrjeok3f" path="res://Assets/Audio/SFX/Dragon/Fireball_launch.ogg" id="33_s7d7v"]
 [ext_resource type="Material" uid="uid://mp6sgss4eiob" path="res://Assets/Materials/dragon_yolk.tres" id="34_jysc7"]
+[ext_resource type="AudioStream" uid="uid://c1opshafgm7vw" path="res://Assets/Audio/SFX/Dragon/Fireball_explosion.ogg" id="34_yintt"]
 [ext_resource type="AudioStream" uid="uid://cvts5jw4jicas" path="res://Assets/Audio/SFX/Dragon/Dragon_impact.ogg" id="35_05x6o"]
 [ext_resource type="AnimationNodeBlendSpace2D" uid="uid://7o48gnm7j66d" path="res://Objects/Dragon/MovementAndIdle.tres" id="37_753c5"]
 [ext_resource type="Script" path="res://Objects/Dragon/DragonAnimations.gd" id="38_6jqdu"]
 [ext_resource type="Script" path="res://Objects/Dragon/Freeze.gd" id="46_leu43"]
+[ext_resource type="AudioStream" uid="uid://dw37y7fyfirs6" path="res://Assets/Audio/SFX/Dragon/Dragon_freeze.ogg" id="47_c16uy"]
 
 [sub_resource type="Curve" id="Curve_hfnbm"]
 _data = [Vector2(0, 0), 0.0, 3.7213, 0, 0, Vector2(0.284483, 1), 4.60243, 0.0, 0, 0, Vector2(1, 0), -2.10909, 0.0, 0, 0]
@@ -833,6 +836,8 @@ script = ExtResource("8_u8nhm")
 [node name="SpitFireBall" type="Node" parent="States"]
 script = ExtResource("9_ev16w")
 fireball_sound = [ExtResource("16_5posu")]
+radial_fire_sound = [ExtResource("16_5posu")]
+hit_ground_sound = [ExtResource("16_5posu")]
 
 [node name="SpitFireCone" type="Node" parent="States"]
 script = ExtResource("10_b6fvh")
@@ -845,6 +850,8 @@ radialfire_sound = [ExtResource("16_5posu")]
 [node name="Roar" type="Node" parent="States"]
 script = ExtResource("11_5ddqa")
 roar_sound = [ExtResource("16_a1283")]
+boulder_sound = [ExtResource("33_s7d7v")]
+hit_ground_sound = [ExtResource("34_yintt")]
 
 [node name="QuickTurn" type="Node" parent="States"]
 script = ExtResource("12_kl28g")
@@ -865,7 +872,8 @@ natural_state = false
 
 [node name="AirFireBalls" type="Node" parent="States"]
 script = ExtResource("16_a1ca1")
-fireball_sound = [ExtResource("16_5posu")]
+fireball_sound = [ExtResource("33_s7d7v")]
+ground_hit_sound = [ExtResource("16_5posu")]
 air_state = true
 
 [node name="AirFireCone" type="Node" parent="States"]
@@ -879,7 +887,7 @@ air_state = true
 
 [node name="LandingAttack" type="Node" parent="States"]
 script = ExtResource("18_qyu4h")
-sound_impact = [ExtResource("35_05x6o")]
+sound_impact = [ExtResource("34_yintt")]
 air_state = true
 
 [node name="SlowLanding" type="Node" parent="States"]
@@ -903,6 +911,7 @@ invincible_state = true
 
 [node name="Freeze" type="Node" parent="States"]
 script = ExtResource("46_leu43")
+sound_freeeze = [ExtResource("47_c16uy")]
 natural_state = false
 
 [node name="CollisionBody" type="CharacterBody3D" parent="."]
@@ -1175,6 +1184,14 @@ unique_name_in_owner = true
 bus = &"SFX"
 
 [node name="AudioFireball3" type="AudioStreamPlayer3D" parent="Audio"]
+unique_name_in_owner = true
+bus = &"SFX"
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Audio"]
+unique_name_in_owner = true
+bus = &"SFX"
+
+[node name="AudioStreamPlayer3D2" type="AudioStreamPlayer3D" parent="Audio"]
 unique_name_in_owner = true
 bus = &"SFX"
 

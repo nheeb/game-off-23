@@ -32,7 +32,7 @@
 [ext_resource type="Script" path="res://Objects/Player/PlayerHurtArea.gd" id="14_ora01"]
 [ext_resource type="Script" path="res://Objects/Player/EatingSystem.gd" id="15_1ory6"]
 [ext_resource type="PackedScene" uid="uid://dxad0qhxford7" path="res://Objects/Effects/Ubershader.tscn" id="17_7kt5q"]
-[ext_resource type="PackedScene" uid="uid://bqt11ve8iqv6q" path="res://Objects/Effects/Magic.tscn" id="21_ysipw"]
+[ext_resource type="PackedScene" path="res://Objects/Effects/Magic.tscn" id="21_ysipw"]
 [ext_resource type="Script" path="res://Objects/Player/AfterHitSystem.gd" id="27_6k40g"]
 [ext_resource type="PackedScene" uid="uid://b62j6yjwux6fs" path="res://Objects/Effects/HealEffect.tscn" id="34_0uun1"]
 
