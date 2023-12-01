@@ -31,3 +31,9 @@ func _on_dragon_detection_body_entered(body):
 
 func _on_dragon_detection_area_entered(area):
 	crush()
+
+@export var uber := false
+func _ready():
+	if uber:
+		get_tree().create_timer(.5).timeout
+		crush()

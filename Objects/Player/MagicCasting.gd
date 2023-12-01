@@ -31,7 +31,7 @@ func apply_cooldown(amount: float):
 	timer.start()
 
 func cast_water():
-	apply_cooldown(25)
+	apply_cooldown(30)
 	
 	var book = SPELLBOOK_EFFECT.instantiate()
 	book.set_color(Color.ROYAL_BLUE)
@@ -42,12 +42,17 @@ func cast_water():
 	await get_tree().create_timer(0.5).timeout
 	bubble_mesh.visible = true
 	health_system.armour = 1
-	await get_tree().create_timer(9.0).timeout
+	await get_tree().create_timer(5.0).timeout
+	for i in range(3):
+		bubble_mesh.visible = false
+		await get_tree().create_timer(.5).timeout
+		bubble_mesh.visible = true
+		await get_tree().create_timer(.5).timeout
 	bubble_mesh.visible = false
 	health_system.armour = 0
-	
+ 
 func cast_carrot():
-	apply_cooldown(20)
+	apply_cooldown(22)
 	
 	var book = SPELLBOOK_EFFECT.instantiate()
 	book.set_color(Color.ORANGE)
@@ -66,7 +71,7 @@ func cast_carrot():
 		pickup.transform = Transform3D(Basis(), pos)
 	
 func cast_ice():
-	apply_cooldown(25)
+	apply_cooldown(26)
 	
 	var book = SPELLBOOK_EFFECT.instantiate()
 	book.set_color(Color.WHITE)

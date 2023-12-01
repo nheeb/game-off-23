@@ -6,6 +6,7 @@ var is_returning: bool = false
 const speed: float = 12.0
 
 func _ready():
+	$player_hurt_box.set_attacking(true, 2)
 	call_deferred('lifetime')
 
 func lifetime():

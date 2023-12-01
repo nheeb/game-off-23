@@ -30,9 +30,9 @@ func set_stage(s):
 	if stage == 1:
 		price_weight = 1
 	elif stage == 2:
-		price_weight = 3
+		price_weight = 2
 	elif stage == 3:
-		price_weight = 5
+		price_weight = 3
 #	var size:float = 1.0+(s-1.0)/2.0
 #	$Sprite.scale *= size
 #	$Collision.scale *= size
