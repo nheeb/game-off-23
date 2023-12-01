@@ -38,6 +38,7 @@ enum SoundType {Attack,Hurt,Dash,Death}
 func play_sound(type:SoundType) -> void:
 	match(type):
 		SoundType.Attack:
+			await get_tree().create_timer(0.1).timeout
 			%AudioPlayerAttack.stream = sound_attack.pick_random()
 			%AudioPlayerAttack.play()
 			return
