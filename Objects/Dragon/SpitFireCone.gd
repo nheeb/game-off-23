@@ -22,7 +22,7 @@ func effect_start(index):
 	Game.world.add_child(hint)
 	hint.global_position = dragon.head_position.global_position + cone_offset
 	hint.global_rotation = dragon.head_position.global_rotation
-	await get_tree().create_timer(.6).timeout
+	await get_tree().create_timer(.5).timeout
 	%AudioDragonHead.stream = firecone_sound.pick_random()
 	%AudioDragonHead.play()
 	dragon.animations.is_spitting_fire = true
@@ -31,7 +31,7 @@ func effect_start(index):
 	fire_cone.global_position = dragon.head_position.global_position + cone_offset
 	fire_cone.global_rotation = dragon.head_position.global_rotation
 	fire_cone.hint_can_fade.connect(hint.start_closing)
-	await get_tree().create_timer(1.1).timeout
+	await get_tree().create_timer(1.3).timeout
 	dragon.animations.is_spitting_fire = false
 	next_state = "Idle"
 

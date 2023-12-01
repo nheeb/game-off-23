@@ -20,6 +20,8 @@ func effect_start(index):
 	dragon.animations.is_spitting_fire = true
 	%AudioDragonHead.stream = fireball_sound.pick_random()
 	%AudioDragonHead.play()
+	
+	
 	var fire_ball = FIRE_BALL.instantiate()
 	Game.world.add_child(fire_ball)
 	fire_ball.call_reference = self
@@ -31,6 +33,21 @@ func effect_start(index):
 	var hint_normal = Functions.get_nearest_ground_normal(Game.player.global_position)
 	Functions.align_node(hint, Vector3.UP, hint_normal)
 	fire_ball.fireball_explode.connect(hint.queue_free)
+	
+	if dragon.stage > 1:
+		var target_pos := Functions.no_y_normalized(Game.player.get_motion().last_frame_global_movement) * 4.5 + Game.player.global_position
+		var fire_ball2 = FIRE_BALL.instantiate()
+		Game.world.add_child(fire_ball2)
+		fire_ball2.call_reference = self
+		fire_ball2.start(dragon.head_position.global_position, target_pos)
+		var hint2 = ATTACK_HINT_BALL.instantiate()
+		Game.world.add_child(hint2)
+		hint2.size = 5
+		hint2.global_position = Functions.get_nearest_ground(target_pos)
+		var hint_normal2 = Functions.get_nearest_ground_normal(target_pos)
+		Functions.align_node(hint2, Vector3.UP, hint_normal2)
+		fire_ball2.fireball_explode.connect(hint2.queue_free)
+	
 	await get_tree().create_timer(2.0).timeout
 #	%AudioFireball.stream = ground_hit_sound.pick_random()
 #	%AudioStreamPlayer3D.stream = radial_fire_sound.pick_random()
