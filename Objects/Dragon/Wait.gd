@@ -4,7 +4,7 @@ var duration := 0.0
 var timer := 0.0
 
 func get_probability() -> float:
-	return 0.1
+	return 0.1 + .03 * Game.death_count
 
 func effect_start(index):
 	dragon.animations.is_flying = false

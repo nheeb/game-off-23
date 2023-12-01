@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://UI/ParallaxBackgroundMenu.gd" id="1_buylq"]
 [ext_resource type="Texture2D" uid="uid://dnkpl5yk1w8ml" path="res://UI/2D Art/background.png" id="2_8heai"]
-[ext_resource type="Texture2D" uid="uid://uorcnbgnb6sp" path="res://Assets/Textures/dragon_scales.png" id="3_7qw1m"]
+[ext_resource type="Texture2D" uid="uid://bxlinswtifmca" path="res://Assets/Sprites/title.png" id="3_fvs3l"]
 [ext_resource type="Texture2D" uid="uid://cl78bjr8eihh6" path="res://UI/2D Art/rabbit.png" id="4_cyvcf"]
 
 [node name="ParallaxBackground" type="ParallaxBackground"]
@@ -17,11 +17,12 @@ scale = Vector2(0.680112, 0.680112)
 texture = ExtResource("2_8heai")
 
 [node name="ParallaxLayerMidRange" type="ParallaxLayer" parent="."]
-motion_scale = Vector2(0.25, 0.25)
+motion_scale = Vector2(0.2, 0.2)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxLayerMidRange"]
-position = Vector2(585, 95)
-texture = ExtResource("3_7qw1m")
+position = Vector2(579, 153)
+scale = Vector2(0.804279, 0.852536)
+texture = ExtResource("3_fvs3l")
 
 [node name="ParallaxLayerForeground" type="ParallaxLayer" parent="."]
 motion_scale = Vector2(0.75, 0.75)

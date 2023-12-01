@@ -16,6 +16,8 @@ var dragon: Dragon
 var world: World
 var shop: Shop
 
+var death_count := 0
+
 enum GRAPHICS {Potato = 0, Low = 1, Medium = 2, High = 3, Ultra = 4}
 signal graphic_settings_changed(new_settings: GRAPHICS)
 var active_graphics_settings : GRAPHICS : 
@@ -38,6 +40,7 @@ func hit_pause():
 #	get_tree().paused = false
 
 func load_shop():
+	death_count += 1
 	get_tree().change_scene_to_file(shop_scene_path)
 	current_game_state = GAME_STATE.Shop
 	Music.play_shop_music()

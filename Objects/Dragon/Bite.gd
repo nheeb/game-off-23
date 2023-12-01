@@ -9,13 +9,9 @@ func get_probability() -> float:
 func effect_start(index):
 	dragon.animations.is_flying = false
 	dragon.animations.is_biting = true
-	await get_tree().create_timer(1.0).timeout
+	await get_tree().create_timer(1.8).timeout
 	dragon.bite_area.activate()
-	await get_tree().create_timer(.8).timeout
-	dragon.bite_area.activate()
-	await get_tree().create_timer(.8).timeout
-	dragon.bite_area.activate()
-	await get_tree().create_timer(1.2).timeout
+	await get_tree().create_timer(2).timeout
 	
 	dragon.animations.is_biting = false
 	if is_active():

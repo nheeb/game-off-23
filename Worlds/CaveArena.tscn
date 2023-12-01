@@ -18,15 +18,15 @@
 [ext_resource type="PackedScene" uid="uid://bgbemoovy7w08" path="res://Objects/Pickups/CarrotPickup.tscn" id="15_knxhg"]
 [ext_resource type="PackedScene" uid="uid://wkuvk8a37glh" path="res://Objects/Props/House2.tscn" id="16_8jxxt"]
 [ext_resource type="PackedScene" uid="uid://bhe1erf0qkl1e" path="res://Objects/Props/House3.tscn" id="17_imf02"]
-[ext_resource type="PackedScene" path="res://Objects/Chair.tscn" id="18_60ft8"]
-[ext_resource type="PackedScene" path="res://Objects/Props/Well2.tscn" id="18_dgme4"]
+[ext_resource type="PackedScene" uid="uid://d1ksmgvm5voqr" path="res://Objects/Chair.tscn" id="18_60ft8"]
+[ext_resource type="PackedScene" uid="uid://cspxxw5e6vkt4" path="res://Objects/Props/Well2.tscn" id="18_dgme4"]
 [ext_resource type="PackedScene" uid="uid://bsmlfnjqi70jl" path="res://Assets/Models/cave/boulder.blend" id="18_dt1lb"]
 [ext_resource type="PackedScene" uid="uid://cua8geyfluloy" path="res://Assets/Models/Buildings/House2.gltf" id="18_fpyce"]
 [ext_resource type="PackedScene" uid="uid://dwtwqt3k2jlmw" path="res://Objects/Props/Path.tscn" id="19_xxqcy"]
 [ext_resource type="AudioStream" uid="uid://ceklk0jowui6d" path="res://Assets/Audio/SFX/Player/Scales_post_death_absorb.ogg" id="21_ucbpe"]
 [ext_resource type="PackedScene" uid="uid://bqh656omnggrt" path="res://Assets/Models/Buildings/Well.gltf" id="23_8n7y7"]
-[ext_resource type="PackedScene" path="res://Objects/Fence.tscn" id="25_5bkgp"]
-[ext_resource type="PackedScene" path="res://Objects/Altar.tscn" id="26_qw1s6"]
+[ext_resource type="PackedScene" uid="uid://drh7ri8udbf5i" path="res://Objects/Fence.tscn" id="25_5bkgp"]
+[ext_resource type="PackedScene" uid="uid://dkobdwtjrs2gu" path="res://Objects/Altar.tscn" id="26_qw1s6"]
 [ext_resource type="PackedScene" uid="uid://c3b0ys2pkk6dg" path="res://Assets/Models/Buildings/ToolShed.gltf" id="27_jdyar"]
 [ext_resource type="PackedScene" uid="uid://c8ofk4lg4njsq" path="res://Assets/Models/cave/small_rock.blend" id="29_viqwv"]
 [ext_resource type="PackedScene" uid="uid://c0dsol7a6j3ye" path="res://Assets/Models/Objects/wine1.blend" id="30_l2vku"]
@@ -133,6 +133,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 54.8018)
 material_override = SubResource("StandardMaterial3D_7al5n")
 
 [node name="Plane" parent="level/dragon_cave2" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.60063, -0.702746, 61.3272)
 material_override = SubResource("StandardMaterial3D_85bbq")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="level/dragon_cave2/Plane" index="0"]
@@ -292,15 +293,15 @@ shape = SubResource("CylinderShape3D_g4nq8")
 [node name="InvisWalls" type="StaticBody3D" parent="level"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="level/InvisWalls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.4155, 0, 109.394)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.0077, 0, 109.394)
 shape = SubResource("BoxShape3D_f34qc")
 
 [node name="CollisionShape3D3" type="CollisionShape3D" parent="level/InvisWalls"]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.29675, 0, 118.645)
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 1.29675, 0, 108.55)
 shape = SubResource("BoxShape3D_f34qc")
 
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="level/InvisWalls"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.7178, 0, 109.394)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.7186, 0, 109.394)
 shape = SubResource("BoxShape3D_f34qc")
 
 [node name="PositionsForCutscene" type="Node3D" parent="."]

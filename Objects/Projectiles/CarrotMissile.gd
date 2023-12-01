@@ -3,10 +3,10 @@ class_name CarrotMissile extends CharacterBody3D
 var progress: float = 0.0
 var path_time: float = 1.0
 var is_returning: bool = false
-const speed: float = 12.0
+const speed: float = 10.0
 
 func _ready():
-	$player_hurt_box.set_attacking(true, 2)
+	$player_hurt_box.set_attacking(true, 3)
 	call_deferred('lifetime')
 
 func lifetime():
