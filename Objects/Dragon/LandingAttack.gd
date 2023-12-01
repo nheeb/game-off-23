@@ -22,11 +22,11 @@ func effect_start(index):
 	tween.tween_property(dragon, "global_position", landing_pos, landing_time)
 	
 	await tween.finished
+	%AudioDragonBody.stream = sound_impact.pick_random()
+	%AudioDragonBody.play()
 	dragon.jump_landing_area.activate()
 	
 	await get_tree().create_timer(1.1).timeout
-	%AudioDragonBody.stream = sound_impact.pick_random()
-	%AudioDragonBody.play()
 	next_state = "Idle"
 
 func effect_process(delta):

@@ -13,6 +13,7 @@ var curve_height := 3.0
 const EXPLOSION = preload("res://Objects/Effects/Explosion.tscn")
 
 var timer := 0.0
+var call_reference
 
 func start(_origin_pos, _target_pos):
 	origin_pos = _origin_pos
@@ -35,4 +36,7 @@ func explode():
 	Game.world.add_child(explosion)
 	explosion.scale = 1.85 * Vector3.ONE
 	explosion.global_position = global_position
+	call_reference.play_ground_hit_sound()
 	queue_free()
+
+

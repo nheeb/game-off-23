@@ -1,6 +1,7 @@
 extends Node3D
 
 const ATTACK_HINT_BALL = preload("res://Objects/Effects/AttackHintFallingDebris.tscn")
+var roar_reference
 
 func fall_down(target_pos: Vector3):
 	var tween := get_tree().create_tween()
@@ -13,6 +14,7 @@ func fall_down(target_pos: Vector3):
 	Functions.align_node(hint, Vector3.UP, hint_normal)
 	tween.finished.connect(hint.queue_free)
 	await tween.finished
+	roar_reference.play_dawnfall_sound()
 	$PlayerDamageArea.activate()
 	Game.main_cam.screen_shake(.6)
 
